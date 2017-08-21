@@ -59,4 +59,10 @@ Rails.application.configure do
     BetterErrors::Middleware.allow_ip! ENV["TRUSTED_IP"]
     config.web_console.whitelisted_ips = [ ENV["TRUSTED_IP"], "10.0.0.0/16" ]
   end
+
+  # Census Authorization Handler descendants preloading on development environment
+  config.eager_load_paths += Dir['app/services/*.rb']
+  ActiveSupport::Reloader.to_prepare do
+    Dir['app/services/*.rb'].each {|file| require_dependency file}
+  end
 end

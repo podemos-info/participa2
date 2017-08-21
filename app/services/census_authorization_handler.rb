@@ -2,8 +2,6 @@
 
 # This class performs a request to the census database for personal data handling
 class CensusAuthorizationHandler < Decidim::AuthorizationHandler
-  include ActionView::Helpers::SanitizeHelper
-
   attribute :first_name, String
   attribute :last_name1, String
   attribute :last_name2, String
@@ -14,18 +12,28 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   attribute :gender, Symbol
   attribute :address, String
   attribute :address_scope_id, Integer
-  attribute :postal_code, String
   attribute :scope_id, Integer
+  attribute :postal_code, String
   attribute :phone, String
 
-  validates :first_name, :last_name1, :born_at, presence: true, if: :needs_data?
-  validates :document_type, inclusion: { in: %w(dni nie passport) }, presence: true, if: :needs_data?
-  validates :document_number, format: { with: /\A[A-z0-9]*\z/ }, presence: true, if: :needs_data?
-  validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/ }, if: :needs_data?
-  validates :scope_id, presence: true, if: :needs_data?
+  attribute :document_file1
+  attribute :document_file2
 
-  validate :document_type_valid, if: :needs_data?
+  attribute :address_scope_code, Integer
+  attribute :scope_code, Integer
+
+  validates :first_name, :last_name1, :born_at, presence: true, if: :needs_data?
+  validates :document_type, inclusion: { in: %i(dni nie passport) }, presence: true, if: :needs_data?
+  validates :gender, inclusion: { in: %i(female male other undisclosed) }, presence: true, if: :needs_data?
+  validates :document_id, format: { with: /\A[A-z0-9]*\z/ }, presence: true, if: :needs_data?
+  validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/ }, if: :needs_data?
+  validates :scope_id, :address_scope_id, presence: true, if: :needs_data?
+
   validate :over_14, if: :needs_data?
+
+  def level
+    raise NotImplementedError, "Subclasses must define `level`."
+  end
 
   def metadata
     {}
@@ -37,40 +45,84 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     end
   end
 
+  def genders
+    %w(female male other undisclosed).map do |type|
+      [I18n.t(type, scope: "decidim.census_authorization_handler.genders"), type]
+    end
+  end
+
   def unique_id
     nil
   end
 
   def needs_data?
     if @needs_data.nil?
-      census_authorizations = CensusAuthorizationHandler.descendants.map(&:to_s)
+      census_authorizations = CensusAuthorizationHandler.descendants.map(&:to_s).map(&:underscore)
       @needs_data = !user.authorizations.where(name: census_authorizations).exists?
     end
     @needs_data
   end
 
+  def valid?
+    super && response
+  end
+
+  def address_scope
+    Decidim::Scope.find_by_id(address_scope_id)
+  end
+
+  def scope
+    Decidim::Scope.find_by_id(scope_id)
+  end
+
+  def scope_root
+    Decidim::Scope.find_by_code("ES")
+  end
+
+  def create_lower_handlers
+    CensusAuthorizationHandler.descendants.sort_by(&:order).each do |handler|
+      break if handler.class == self.class
+
+      authorization = Decidim::Authorization.find_or_initialize_by(
+        user: user,
+        name: handler.handler_name
+      )
+
+      authorization.save! if authorization.handler.class==handler && !authorization.persisted?
+    end
+  end
+
   private
 
-  def document_type_valid
-    return nil if response.blank?
+  def prepare_data
+    data = { level: level }
+    return data if !needs_data?
 
-    errors.add(:document_number, I18n.t("census_authorization_handler.invalid_document")) unless response.xpath("//codiRetorn").text == "01"
+    data[:person] = attributes.except(:user, :handler_name, :scope_id, :address_scope_id)
+    data[:person][:extra] = { participa_id: user.id }
+    data[:person][:email] = user.email
+    data[:person][:scope_code] = scope&.code
+    data[:person][:address_scope_code] = address_scope&.code
+    data
   end
 
   def response
-    return nil if document_number.blank? ||
-                  document_type.blank? ||
-                  postal_code.blank? ||
-                  born_at.blank?
-
     return @response if defined?(@response)
 
-    response ||= Faraday.post "https://#{Rails.application.secrets.census_domain}/api/procedure.json" do |request|
-      request.headers["Content-Type"] = "text/json"
-      request.body = attributes.to_json
+    if needs_data?
+      method = :post
+      action = "people"
+    else
+      method = :patch
+      action = "people/#{user.id}/change_membership_level"
     end
 
-    @response ||= JSON::parse(response.body)
+    response ||= Faraday.run_request method,
+                                     "#{Rails.application.secrets.census_url}/api/v1/#{action}.json",
+                                     prepare_data.to_json,
+                                     { "Content-Type" => "application/json" }
+
+    response.success? && create_lower_handlers
   end
 
   def over_14
@@ -86,5 +138,15 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     )
 
     now.year - born_at.year - (extra_year ? 0 : 1)
+  end
+end
+
+class ActionDispatch::Http::UploadedFile
+  def as_json(options={})
+    {
+      filename: original_filename,
+      content_type: content_type,
+      base64_content: Base64.encode64(tempfile.read)
+    }
   end
 end
