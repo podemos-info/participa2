@@ -6,7 +6,7 @@ Decidim.configure do |config|
   config.authorization_handlers = [FollowerAuthorizationHandler, MemberAuthorizationHandler]
 
   # Change this line to set your preferred locales
-  config.available_locales = [:ca, :es, :eu, :gl]
+  config.available_locales = [:ca, :es, :eu]
   config.default_locale = :es
 
   # Geocoder configuration
