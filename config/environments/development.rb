@@ -46,7 +46,7 @@ Rails.application.configure do
   config.assets.debug = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  config.assets.quiet = false
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -55,14 +55,19 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+
   if ENV["TRUSTED_IP"]
     BetterErrors::Middleware.allow_ip! ENV["TRUSTED_IP"]
     config.web_console.whitelisted_ips = [ ENV["TRUSTED_IP"], "10.0.0.0/16" ]
   end
 
   # Census Authorization Handler descendants preloading on development environment
-  config.eager_load_paths += Dir['app/services/*.rb']
+  config.eager_load_paths += Dir["app/services/*.rb"]
   ActiveSupport::Reloader.to_prepare do
-    Dir['app/services/*.rb'].each {|file| require_dependency file}
+    Dir["app/services/*.rb"].each { |file| require_dependency file }
   end
+
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 20 * 1024 * 1024)
+
+  I18n::Debug.logger = Logger.new(File.join(Rails.root, "log", "i18n-debug.log"))
 end

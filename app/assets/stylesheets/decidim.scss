@@ -52,3 +52,17 @@ $secondary3: #97c2b8;
   height: 1.1rem;
   margin-bottom: -0.15rem;
 }
+
+
+.radio-options {
+  display: flex;
+  flex-wrap: wrap;
+
+  label {
+    height: 1.5rem;
+    flex-grow: 1;
+  }
+  input {
+    height: 1.5rem;
+  }
+}

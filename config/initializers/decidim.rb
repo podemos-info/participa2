@@ -3,11 +3,10 @@
 Decidim.configure do |config|
   config.application_name = "Portal de Participación"
   config.mailer_sender = "noreply@podemos.info"
-  config.authorization_handlers = [FollowerAuthorizationHandler, MemberAuthorizationHandler]
 
   # Change this line to set your preferred locales
-  config.available_locales = [:ca, :es, :eu]
-  config.default_locale = :es
+  config.available_locales = [:en, :ca, :es, :eu, :gl]
+  config.default_locale = :en
 
   # Geocoder configuration
   # config.geocoder = {

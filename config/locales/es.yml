@@ -1,21 +1,12 @@
 es:
-  activemodel:
-    attributes:
-      census_authorization_handler:
-        first_name: Nombre
-        last_name1: Primer apellido
-        last_name2: Segundo apellido
-        document_number: Número de documento
-        document_type: Tipo de documento
-        postal_code: Código postal
-        date_of_birth: Fecha de nacimiento
-        scope_id: Lugar de participación
   decidim:
     admin:
       managed_users:
         form:
           name: Alias
     authorization_handlers:
+      census:
+        explanation: Inscripción en el censo de Podemos
       member_authorization_handler:
         name: Inscrito/a
       follower_authorization_handler:
@@ -35,20 +26,6 @@ es:
         actions:
           member_authorization_handler: Verificarse como inscrito/a
           follower_authorization_handler: Verificarse como simpatizante
-    census_authorization_handler:
-      document_types:
-        dni: DNI
-        nie: NIE
-        passport: Pasaporte
-      genders:
-        female: Femenino
-        male: Masculino
-        other: Otro
-        undisclosed: No quiero decirlo
   census_authorization:
     form:
       data_not_needed: Ya has enviado tus datos personales, no es necesario que los envíes de nuevo.
-  layouts:
-    decidim:
-      user_profile:
-        authorizations: Nivel de membresía
