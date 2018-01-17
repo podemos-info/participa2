@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229181426) do
+ActiveRecord::Schema.define(version: 20180117152059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 20171229181426) do
     t.boolean "scopes_enabled", default: true, null: false
     t.index ["decidim_organization_id", "slug"], name: "index_unique_assembly_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_assemblies_on_decidim_organization_id"
+  end
+
+  create_table "decidim_assembly_user_roles", force: :cascade do |t|
+    t.integer "decidim_user_id"
+    t.integer "decidim_assembly_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_assembly_id", "decidim_user_id", "role"], name: "index_unique_user_and_assembly_role", unique: true
   end
 
   create_table "decidim_attachments", id: :serial, force: :cascade do |t|
@@ -437,6 +446,16 @@ ActiveRecord::Schema.define(version: 20171229181426) do
     t.index ["report_count"], name: "decidim_moderations_report_count"
   end
 
+  create_table "decidim_module_blogs_posts", id: :serial, force: :cascade do |t|
+    t.jsonb "title"
+    t.jsonb "body"
+    t.integer "decidim_feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "decidim_author_id"
+    t.index ["decidim_feature_id"], name: "index_decidim_module_blogs_posts_on_decidim_feature_id"
+  end
+
   create_table "decidim_newsletters", id: :serial, force: :cascade do |t|
     t.jsonb "subject"
     t.jsonb "body"
@@ -775,6 +794,8 @@ ActiveRecord::Schema.define(version: 20171229181426) do
     t.string "nickname", limit: 20
     t.datetime "officialized_at"
     t.jsonb "officialized_as"
+    t.string "personal_url"
+    t.text "about"
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "decidim_organization_id"], name: "index_decidim_users_on_email_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false))"

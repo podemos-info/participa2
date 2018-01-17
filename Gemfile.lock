@@ -1,7 +1,7 @@
 PATH
   remote: ../decidim-module-blogs
   specs:
-    decidim-blogs (0.9.0.pre)
+    decidim-module-blogs (0.9.0.pre)
       decidim-core (= 0.9.0.pre)
       httparty (~> 0.15.0)
       jquery-tmpl-rails (~> 1.1.0)
@@ -657,10 +657,10 @@ DEPENDENCIES
   binding_of_caller
   byebug
   decidim!
-  decidim-blogs!
   decidim-census_connector!
   decidim-collaborations!
   decidim-dev!
+  decidim-module-blogs!
   decidim-votings!
   faker (~> 1.8.4)
   i18n-debug

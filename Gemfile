@@ -8,6 +8,7 @@ gem "decidim", path: "../decidim"
 gem "decidim-census_connector", path: "../decidim-module-census_connector"
 gem "decidim-collaborations", path: "../decidim-module-crowdfundings"
 gem "decidim-votings", path: "../decidim-module-votings"
+gem "decidim-module-blogs", path: "../decidim-module-blogs"
 
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"
