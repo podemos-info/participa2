@@ -19,6 +19,7 @@ gem "decidim-module-blogs", github: "decidim/decidim-module-blogs"
 
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"
+gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
 #  gem "decidim", path: "../decidim"
