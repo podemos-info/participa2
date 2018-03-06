@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/decidim/decidim-module-blogs.git
   revision: f0441df6bc54d53713da7ae171c8428d52d0871f
+  branch: master
   specs:
     decidim-module-blogs (0.10.0.pre)
       decidim-core (= 0.10.0.pre)
@@ -10,7 +11,8 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: b741f2be4413d0672d2f7e031928d056b93e6515
+  revision: 08043eea7efc9ec9b3eb7c26d35eb50667900dd3
+  branch: master
   specs:
     decidim (0.10.0.pre)
       decidim-accountability (= 0.10.0.pre)
@@ -82,7 +84,7 @@ GIT
       premailer-rails (~> 1.9)
       rails (~> 5.1.5)
       rails-i18n (~> 5.0)
-      rectify (~> 0.10.0)
+      rectify (~> 0.11.0)
       redis (~> 4.0)
       rubyzip (~> 1.2)
       sassc-rails (~> 1.3)
@@ -109,7 +111,7 @@ GIT
       rails-controller-testing (~> 1.0)
       rspec-html-matchers (~> 0.9.1)
       rspec-rails (~> 3.7)
-      rubocop (~> 0.52.1)
+      rubocop (~> 0.53.0)
       rubocop-rspec (~> 1.21)
       selenium-webdriver (~> 3.7)
       simplecov (~> 0.13)
@@ -149,6 +151,7 @@ GIT
 GIT
   remote: https://github.com/podemos-info/decidim-module-census_connector.git
   revision: af03b9be7dc9b0b6d420f61fc39b800a8e175bc7
+  branch: master
   specs:
     decidim-census_connector (0.10.0.pre)
       decidim-core (= 0.10.0.pre)
@@ -158,6 +161,7 @@ GIT
 GIT
   remote: https://github.com/podemos-info/decidim-module-crowdfundings.git
   revision: 13ef5c13e92a25a71a56af6b23cd9334446ec8ae
+  branch: master
   specs:
     decidim-collaborations (0.10.0.pre)
       decidim-admin (= 0.10.0.pre)
@@ -169,6 +173,7 @@ GIT
 GIT
   remote: https://github.com/podemos-info/decidim-module-votings.git
   revision: b2154dfaab5305bc42cc8364d6d58b4052a14a11
+  branch: master
   specs:
     decidim-votings (0.10.0.pre)
       active_model_serializers
@@ -477,7 +482,7 @@ GEM
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.1)
     parallel (1.12.1)
-    parser (2.5.0.2)
+    parser (2.5.0.3)
       ast (~> 2.4.0)
     pg (1.0.0)
     polyamorous (1.3.3)
@@ -541,7 +546,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rectify (0.10.0)
+    rectify (0.11.0)
       activemodel (>= 4.1.0)
       activerecord (>= 4.1.0)
       activesupport (>= 4.1.0)
@@ -578,15 +583,15 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    rubocop (0.52.1)
+    rubocop (0.53.0)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    rubocop-rspec (1.23.0)
-      rubocop (>= 0.52.1)
+    rubocop-rspec (1.24.0)
+      rubocop (>= 0.53.0)
     ruby-ole (1.2.12.1)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
