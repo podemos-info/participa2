@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306214728) do
+ActiveRecord::Schema.define(version: 20180306215560) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,6 +329,19 @@ ActiveRecord::Schema.define(version: 20180306214728) do
     t.datetime "updated_at", null: false
     t.index ["decidim_user_id", "decidim_followable_id", "decidim_followable_type"], name: "index_uniq_on_follows_user_and_followable", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_follows_on_decidim_user_id"
+  end
+
+  create_table "decidim_gravity_forms_gravity_forms", force: :cascade do |t|
+    t.jsonb "title", null: false
+    t.jsonb "description"
+    t.integer "form_number", null: false
+    t.string "slug", null: false
+    t.boolean "require_login", default: true, null: false
+    t.bigint "decidim_feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "hidden", default: false, null: false
+    t.index ["decidim_feature_id"], name: "index_decidim_gravity_forms_gravity_forms_on_decidim_feature_id"
   end
 
   create_table "decidim_identities", id: :serial, force: :cascade do |t|

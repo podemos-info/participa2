@@ -171,6 +171,14 @@ GIT
       iban_bic
 
 GIT
+  remote: https://github.com/podemos-info/decidim-module-gravity_forms.git
+  revision: 59b47c228b0a1a53f38fe419a94aabdc7bbe90e9
+  branch: master
+  specs:
+    decidim-gravity_forms (0.10.0.pre)
+      decidim-core (= 0.10.0.pre)
+
+GIT
   remote: https://github.com/podemos-info/decidim-module-votings.git
   revision: b2154dfaab5305bc42cc8364d6d58b4052a14a11
   branch: master
@@ -698,6 +706,7 @@ DEPENDENCIES
   decidim-census_connector!
   decidim-collaborations!
   decidim-dev!
+  decidim-gravity_forms!
   decidim-module-blogs!
   decidim-votings!
   dotenv-rails
