@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from decidim_votings (originally 20171128124013)
 class ChangeVotingDatesToDatetimes < ActiveRecord::Migration[5.1]
   def up
@@ -11,5 +13,4 @@ class ChangeVotingDatesToDatetimes < ActiveRecord::Migration[5.1]
     change_column :decidim_votings_votings, :end_date, :date
     change_column :decidim_votings_votings, :census_date_limit, :date
   end
-
 end

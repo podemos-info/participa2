@@ -15,7 +15,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
@@ -55,10 +55,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-
   if ENV["TRUSTED_IP"]
     BetterErrors::Middleware.allow_ip! ENV["TRUSTED_IP"]
-    config.web_console.whitelisted_ips = [ ENV["TRUSTED_IP"], "10.0.0.0/16" ]
+    config.web_console.whitelisted_ips = [ENV["TRUSTED_IP"], "10.0.0.0/16"]
   end
 
   # Census Authorization Handler descendants preloading on development environment
@@ -67,7 +66,7 @@ Rails.application.configure do
     Dir["app/services/*.rb"].each { |file| require_dependency file }
   end
 
-  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 20 * 1024 * 1024)
+  config.logger = ActiveSupport::Logger.new(config.paths["log"].first, 1, 20 * 1024 * 1024)
 
-  I18n::Debug.logger = Logger.new(File.join(Rails.root, "log", "i18n-debug.log"))
+  I18n::Debug.logger = Logger.new(Rails.root.join("log", "i18n-debug.log"))
 end

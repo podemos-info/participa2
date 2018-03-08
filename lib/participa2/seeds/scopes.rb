@@ -23,7 +23,7 @@ module Participa2
 
         Decidim::ScopeType.transaction do
           @scope_types.values.each do |info|
-            Decidim::ScopeType.find_or_initialize_by(id: info[:id]).update_attributes!(info)
+            Decidim::ScopeType.find_or_initialize_by(id: info[:id]).update!(info)
           end
         end
 
