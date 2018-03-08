@@ -1,17 +1,29 @@
 # frozen_string_literal: true
 
+if Rails.env.development?
+  ENV["SEED"] = "true"
+
+  Decidim.seed!
+
+  Decidim::Scope.destroy_all
+  Decidim::ScopeType.destroy_all
+end
+
 require "participa2/seeds/scopes"
 
 base_path = File.expand_path("./seeds/", __dir__)
 
-organization = Decidim::Organization.first || Decidim::Organization.create!(
+organization = Decidim::Organization.find_or_initialize_by(
+  host: ENV["DECIDIM_HOST"] || "localhost"
+)
+
+organization.update!(
   name: "Participa Podemos",
   twitter_handler: "ahorapodemos",
   facebook_handler: "ahorapodemos",
   instagram_handler: "ahorapodemos",
   youtube_handler: "CirculosPodemos",
   github_handler: "podemos-info",
-  host: ENV["DECIDIM_HOST"] || "localhost",
   welcome_text: { ca: "Bienvenido/a al Portal de Participación de Podemos.",
                   es: "Bienvenido/a al Portal de Participación de Podemos.",
                   eu: "Bienvenido/a al Portal de Participación de Podemos.",
@@ -43,46 +55,4 @@ organization = Decidim::Organization.first || Decidim::Organization.create!(
   reference_prefix: "POD"
 )
 
-Decidim::System::CreateDefaultPages.call(organization)
-
 Participa2::Seeds::Scopes.seed organization, base_path: base_path
-
-if Rails.env.development?
-  system_admin = Decidim::System::Admin.find_or_initialize_by(email: "system@example.org")
-
-  system_admin.update!(
-    password: "decidim123456",
-    password_confirmation: "decidim123456"
-  )
-
-  admin = Decidim::User.find_or_initialize_by(email: "admin@example.org")
-
-  admin.update!(
-    name: Faker::Name.name,
-    nickname: Faker::Lorem.unique.characters(rand(1..20)),
-    password: "decidim123456",
-    password_confirmation: "decidim123456",
-    organization: organization,
-    confirmed_at: Time.current,
-    locale: I18n.default_locale,
-    admin: true,
-    tos_agreement: true,
-    personal_url: Faker::Internet.url,
-    about: Faker::Lorem.paragraph(2)
-  )
-
-  regular_user = Decidim::User.find_or_initialize_by(email: "user@example.org")
-
-  regular_user.update!(
-    name: Faker::Name.name,
-    nickname: Faker::Lorem.unique.characters(rand(1..20)),
-    password: "decidim123456",
-    password_confirmation: "decidim123456",
-    confirmed_at: Time.current,
-    locale: I18n.default_locale,
-    organization: organization,
-    tos_agreement: true,
-    personal_url: Faker::Internet.url,
-    about: Faker::Lorem.paragraph(2)
-  )
-end
