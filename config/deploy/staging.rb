@@ -34,7 +34,6 @@ set :rails_env, :production
 set :rvm_type, :system
 set :rvm_custom_path, "/usr/share/rvm"
 
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a

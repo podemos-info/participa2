@@ -19,7 +19,7 @@ class CreateDecidimVotingsVotings < ActiveRecord::Migration[5.1]
       t.string :voting_system
       t.jsonb :system_configuration
 
-      t.references :decidim_feature, index: { name: 'decidim_votings_feature_index' }
+      t.references :decidim_feature, index: { name: "decidim_votings_feature_index" }
 
       t.timestamps
     end

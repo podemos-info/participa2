@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from decidim_collaborations (originally 20171129083613)
 class RemoveTotalCollectedFromDecidimCollaborationsCollaborations < ActiveRecord::Migration[5.1]
   def change
