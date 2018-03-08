@@ -15,8 +15,8 @@ gem "decidim", github: "decidim/decidim", branch: "master"
 gem "decidim-census_connector", github: "podemos-info/decidim-module-census_connector", branch: "master"
 gem "decidim-collaborations", github: "podemos-info/decidim-module-crowdfundings", branch: "master"
 gem "decidim-gravity_forms", github: "podemos-info/decidim-module-gravity_forms", branch: "master"
-gem "decidim-votings", github: "podemos-info/decidim-module-votings", branch: "master"
 gem "decidim-module-blogs", github: "decidim/decidim-module-blogs", branch: "master"
+gem "decidim-votings", github: "podemos-info/decidim-module-votings", branch: "master"
 
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"
@@ -35,9 +35,9 @@ group :development do
   gem "capistrano-rails", "~> 1.3", require: false
   gem "capistrano-rvm", require: false
   gem "capistrano3-puma", require: false
+  gem "i18n-debug"
   gem "letter_opener_web", "~> 1.3.0"
   gem "listen", "~> 3.1.0"
-  gem "i18n-debug"
   gem "pry"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"

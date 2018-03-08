@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from decidim_collaborations (originally 20171107151211)
 class CreateDecidimCollaborationsCollaborations < ActiveRecord::Migration[5.1]
   def change
@@ -9,7 +11,7 @@ class CreateDecidimCollaborationsCollaborations < ActiveRecord::Migration[5.1]
       t.integer :target_amount
       t.decimal :total_collected, precision: 11, scale: 2
       t.date :active_until
-      t.references :decidim_feature, index: { name: 'decidim_colaborations_feature_index' }
+      t.references :decidim_feature, index: { name: "decidim_colaborations_feature_index" }
 
       t.timestamps
     end
