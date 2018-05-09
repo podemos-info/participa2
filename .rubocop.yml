@@ -12,6 +12,9 @@ Naming/FileName:
   Exclude:
     - config/initializers/decidim-census_connector.rb
     - config/initializers/decidim-collaborations.rb
+    - Capfile
+    - Gemfile
+    - Rakefile
 
 Rails/Output:
   Exclude:
