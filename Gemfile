@@ -7,15 +7,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "2.4.2"
+ruby "2.5.1"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
-gem "decidim", github: "decidim/decidim", branch: "master"
+gem "decidim", "~> 0.11.0.pre1"
 gem "decidim-census_connector", github: "podemos-info/decidim-module-census_connector", branch: "master"
 gem "decidim-collaborations", github: "podemos-info/decidim-module-crowdfundings", branch: "master"
 gem "decidim-gravity_forms", github: "podemos-info/decidim-module-gravity_forms", branch: "master"
-gem "decidim-module-blogs", github: "decidim/decidim-module-blogs", branch: "master"
 gem "decidim-votings", github: "podemos-info/decidim-module-votings", branch: "master"
 
 gem "faker", "~> 1.8.4"
@@ -25,7 +24,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug", platform: :mri
 
-  gem "decidim-dev", github: "decidim/decidim", branch: "master"
+  gem "decidim-dev", "~> 0.11.0.pre1"
 end
 
 group :development do
