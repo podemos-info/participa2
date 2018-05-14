@@ -25,6 +25,8 @@ module Participa2
           @scope_types.values.each do |info|
             Decidim::ScopeType.find_or_initialize_by(id: info[:id]).update!(info)
           end
+          max_id = Decidim::ScopeType.maximum(:id)
+          Decidim::ScopeType.connection.execute("ALTER SEQUENCE decidim_scope_types_id_seq RESTART WITH #{max_id + 1}")
         end
 
         @translations = Hash.new { |h, k| h[k] = {} }
