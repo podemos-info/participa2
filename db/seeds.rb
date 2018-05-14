@@ -1,23 +1,63 @@
 # frozen_string_literal: true
 
-if Rails.env.development?
-  ENV["SEED"] = "true"
-
-  Decidim.seed!
-
-  Decidim::Scope.destroy_all
-  Decidim::ScopeType.destroy_all
-end
-
 require "participa2/seeds/scopes"
 
-base_path = File.expand_path("./seeds/", __dir__)
+def base_path
+  @base_path ||= File.expand_path("seeds/", __dir__)
+end
 
-organization = Decidim::Organization.find_or_initialize_by(
-  host: ENV["DECIDIM_HOST"] || "localhost"
-)
+def main_organization
+  @main_organization ||= Decidim::Organization.find_or_initialize_by(host: ENV["DECIDIM_HOST"] || "localhost")
+end
 
-organization.update!(
+def load_real_scopes
+  Participa2::Seeds::Scopes.seed(main_organization, base_path: base_path) unless Decidim::Scope.any?
+end
+
+if !Rails.env.production? || ENV["SEED"]
+  class TempClass
+    def self.create!(*_args)
+      OpenStruct.new(code: "fake")
+    end
+  end
+
+  class Decidim::Core::Engine
+    def load_seed
+      truncate_tables
+      disable_scopes
+      super
+      enable_scopes
+      load_real_scopes
+    end
+
+    private
+
+    def truncate_tables
+      tables = ActiveRecord::Base.connection.tables - %w(decidim_organizations decidim_scopes decidim_scope_types schema_migrations ar_internal_metadata)
+
+      # Delete fake data
+      ActiveRecord::Base.connection_pool.with_connection do |conn|
+        conn.execute("TRUNCATE #{tables.join(", ")} RESTART IDENTITY")
+      end
+    end
+
+    def disable_scopes
+      @old_scope_type = Decidim::ScopeType
+      @old_scope = Decidim::Scope
+      Decidim.const_set("ScopeType", TempClass)
+      Decidim.const_set("Scope", TempClass)
+    end
+
+    def enable_scopes
+      Decidim.const_set("ScopeType", @old_scope_type)
+      Decidim.const_set("Scope", @old_scope)
+    end
+  end
+
+  Decidim.seed!
+end
+
+main_organization.update!(
   name: "Participa Podemos",
   twitter_handler: "ahorapodemos",
   facebook_handler: "ahorapodemos",
@@ -52,7 +92,8 @@ organization.update!(
   official_url: "http://podemos.info",
   default_locale: Decidim.default_locale,
   available_locales: Decidim.available_locales,
-  reference_prefix: "POD"
+  reference_prefix: "POD",
+  available_authorizations: Decidim.authorization_workflows.map(&:name)
 )
 
-Participa2::Seeds::Scopes.seed organization, base_path: base_path
+load_real_scopes
