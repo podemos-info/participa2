@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
-require "participa2/seeds/scopes"
-
-def base_path
-  @base_path ||= File.expand_path("seeds/", __dir__)
-end
-
 def main_organization
   @main_organization ||= Decidim::Organization.find_or_initialize_by(host: ENV["DECIDIM_HOST"] || "localhost")
 end
 
 def load_real_scopes
-  Participa2::Seeds::Scopes.seed(main_organization, base_path: base_path) unless Decidim::Scope.any?
+  Decidim::CensusConnector::Seeds::Scopes.seed(main_organization) unless main_organization.top_scopes.any?
 end
 
 if !Rails.env.production? || ENV["SEED"]
@@ -33,7 +27,7 @@ if !Rails.env.production? || ENV["SEED"]
     private
 
     def truncate_tables
-      tables = ActiveRecord::Base.connection.tables - %w(decidim_organizations decidim_scopes decidim_scope_types schema_migrations ar_internal_metadata)
+      tables = ActiveRecord::Base.connection.tables - %w(schema_migrations ar_internal_metadata)
 
       # Delete fake data
       ActiveRecord::Base.connection_pool.with_connection do |conn|
@@ -57,6 +51,7 @@ if !Rails.env.production? || ENV["SEED"]
   Decidim.seed!
 end
 
+base_path ||= File.expand_path("seeds/", __dir__)
 main_organization.update!(
   name: "Participa Podemos",
   twitter_handler: "ahorapodemos",
