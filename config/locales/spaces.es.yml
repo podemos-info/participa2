@@ -72,6 +72,8 @@ es:
             active_assemblies: Espacios activos
             see_all_assemblies: Ver todos los espacios
       show:
+        assembly_type: Tipo de espacios
+        children: Espacios
         target: '¿A quién va dirigido?'
       statistics:
         assemblies_count: Espacios
