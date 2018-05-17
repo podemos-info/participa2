@@ -53,7 +53,6 @@ $secondary3: #97c2b8;
   margin-bottom: -0.15rem;
 }
 
-
 .radio-options {
   display: flex;
   flex-wrap: wrap;
@@ -64,5 +63,11 @@ $secondary3: #97c2b8;
   }
   input {
     height: 1.5rem;
+  }
+}
+
+.field {
+  .data-picker {
+    margin-bottom: 1rem;
   }
 }
