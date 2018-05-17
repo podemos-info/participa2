@@ -30,3 +30,18 @@ jobs:
       - run:
           name: Run rubocop
           command: bundle exec rubocop
+
+      - add_ssh_keys:
+          fingerprints:
+            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
+
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "enhancement/continuous_deploy" ]
+            then
+              mkdir /tmp/deploy
+              BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy > /tmp/deploy/output.log 2> /tmp/deploy/error.log
+            fi
+
+      - store_artifacts:
+          path: /tmp/deploy

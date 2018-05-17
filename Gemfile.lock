@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/podemos-info/decidim-module-census_connector.git
-  revision: c5c6be51a9e90e5fa9bf49c0d4b0d4ab80a48a2b
+  revision: c10cbb9a43e2f963091413b4d81ea4bf321ca61c
   branch: master
   specs:
     decidim-census_connector (0.11.0.pre1)
@@ -92,7 +92,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.4.1)
+    autoprefixer-rails (8.5.0)
       execjs
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -102,7 +102,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -398,8 +398,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
-    file_validators (2.1.0)
-      activemodel (>= 3.0)
+    file_validators (2.3.0)
+      activemodel (>= 3.2)
       mime-types (>= 1.0)
     foundation-rails (6.4.3.0)
       railties (>= 3.1.0)
@@ -735,7 +735,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     wisper (2.0.0)
-    wisper-rspec (1.0.1)
+    wisper-rspec (1.1.0)
     xpath (3.0.0)
       nokogiri (~> 1.8)
 

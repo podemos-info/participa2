@@ -5,8 +5,8 @@ Decidim.configure do |config|
   config.mailer_sender = "noreply@podemos.info"
 
   # Change this line to set your preferred locales
-  config.available_locales = [:en, :ca, :es, :eu, :gl]
-  config.default_locale = :en
+  config.available_locales = [:ca, :es, :eu, :gl]
+  config.default_locale = :es
 
   # Geocoder configuration
   # config.geocoder = {
