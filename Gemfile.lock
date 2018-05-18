@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/podemos-info/decidim-module-census_connector.git
-  revision: 61643efb9441b23874166deff5237bf988e87364
+  revision: 0ec905589e514429faf0814bbfcef6da4891f58e
   branch: master
   specs:
     decidim-census_connector (0.11.0.pre1)
@@ -417,7 +417,7 @@ GEM
     graphiql-rails (1.4.10)
       railties
       sprockets-rails
-    graphql (1.7.14)
+    graphql (1.8.0)
     hashdiff (0.3.7)
     hashie (3.5.7)
     high_voltage (3.1.0)
