@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/podemos-info/decidim-module-census_connector.git
-  revision: 0ec905589e514429faf0814bbfcef6da4891f58e
+  revision: 0c4026bef5632df9d5cbe9b22d475cf5cdcfa81d
   branch: master
   specs:
     decidim-census_connector (0.11.0.pre1)
