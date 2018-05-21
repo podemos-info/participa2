@@ -1,0 +1,29 @@
+
+<% person_participatory_spaces.each do |participatory_space| %>
+  <% with_participatory_space(participatory_space) do %>
+<section class="extended">
+  <div class="wrapper-home">
+    <div class="row">
+      <div class="columns small-centered large-10 card-grid">
+        <div class="row column large-6">
+          <article class="card card--assembly card--mini">
+            <%= link_to decidim_assemblies.assembly_path(participatory_space), class: "card__link" do %>
+              <div class="card__image-top"
+                style="background-image:url(<%= participatory_space.hero_image.url %>)"></div>
+            <% end %>
+            <div class="card__content">
+              <%= link_to decidim_assemblies.assembly_path(participatory_space), class: "card__link" do %>
+                <h4 class="card__title"><%= translated_attribute participatory_space.title %></h4>
+              <% end %>
+            </div>
+          </article>
+        </div>
+        <div class="row">
+          <%= render_hook(:participatory_space_highlighted_elements) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <% end %>
+<% end %>

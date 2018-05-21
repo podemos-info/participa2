@@ -8,4 +8,18 @@ class DecidimController < ApplicationController
 
   helper Decidim::Collaborations::CollaborationsHelper
   helper Decidim::Collaborations::TotalsHelper
+
+  helper Decidim::ResourceReferenceHelper
+  helper Decidim::ResourceHelper
+  helper_method :current_participatory_space, :with_participatory_space
+
+  def current_participatory_space
+    @temp_participatory_space || request.env["decidim.current_participatory_space"]
+  end
+
+  def with_participatory_space(participatory_space)
+    @temp_participatory_space = participatory_space
+    yield
+    @temp_participatory_space = nil
+  end
 end
