@@ -58,6 +58,8 @@ if !Rails.env.production? || ENV["SEED"]
   Decidim::Core::Engine.load_seed
 end
 
+Decidim::System::CreateDefaultPages.call(main_organization)
+
 base_path ||= File.expand_path("seeds/", __dir__)
 
 main_organization.update!(
@@ -87,7 +89,7 @@ main_organization.update!(
 
 load_real_scopes
 
-parent = Decidim::Assembly.create!(
+assembly = Decidim::Assembly.create!(
   title: localize("Podemos Estatal"),
   slug: "podemos-estatal",
   subtitle: localize("Espacio de participación para todas las personas que forman parte de Podemos"),
@@ -119,13 +121,13 @@ parent = Decidim::Assembly.create!(
 )
 
 Decidim.component_manifests.each do |manifest|
-  manifest.seed!(parent.reload)
+  manifest.seed!(assembly.reload)
 end
 
 local_scope = Decidim::Scope.find_by(code: Decidim::CensusConnector.census_local_code)
 local_scope.children.each do |scope|
   local_name = scope.name[Decidim.default_locale.to_s]
-  child = Decidim::Assembly.create!(
+  assembly = Decidim::Assembly.create!(
     title: scope.name.map { |locale, name| [locale, "Podemos #{name}"] }.to_h,
     slug: "podemos-#{local_name.parameterize}",
     subtitle: localize("Espacio de participación para todas las personas que forman parte de Podemos"),
@@ -153,11 +155,10 @@ local_scope.children.each do |scope|
     included_at: nil,
     closing_date: nil,
     closing_date_reason: nil,
-    internal_organisation: nil,
-    parent: parent
+    internal_organisation: nil
   )
   Decidim.component_manifests.each do |manifest|
-    manifest.seed!(child.reload)
+    manifest.seed!(assembly.reload)
   end
 end
 
