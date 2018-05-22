@@ -37,4 +37,4 @@ namespace :deploy do
   end
 end
 
-after "deploy:publishing", "deploy:db:seed"
+after "deploy:finished", "deploy:db:seed"
