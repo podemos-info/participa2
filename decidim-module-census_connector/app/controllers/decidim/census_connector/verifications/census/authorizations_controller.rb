@@ -94,10 +94,8 @@ module Decidim
           def form_context
             {
               user: current_user,
-              census_qualified_id: census_qualified_id,
-              local_qualified_id: local_qualified_id,
               local_scope: local_scope,
-              person: person
+              person_proxy: person_proxy
             }
           end
 
