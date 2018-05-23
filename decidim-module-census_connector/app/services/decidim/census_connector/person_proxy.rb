@@ -3,21 +3,22 @@
 module Decidim
   module CensusConnector
     class PersonProxy
-      def initialize(user: nil, authorization: nil)
-        raise "PersonProxy must receive a user or an authorization" unless user || authorization
-
-        @user = user
-        @census_authorization = authorization
-      end
-
-      def census_authorization
-        @census_authorization ||= Decidim::Authorization.find_or_initialize_by(
+      def self.for(user)
+        census_authorization = Decidim::Authorization.find_or_initialize_by(
           user: user,
           name: "census"
         ) do |authorization|
           authorization.metadata = {}
         end
+
+        new(census_authorization)
       end
+
+      def initialize(census_authorization)
+        @census_authorization = census_authorization
+      end
+
+      attr_reader :census_authorization
 
       def user
         @user ||= census_authorization.user

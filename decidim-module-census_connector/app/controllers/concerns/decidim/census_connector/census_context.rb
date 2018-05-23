@@ -59,7 +59,7 @@ module Decidim
         private
 
         def person_proxy
-          @person_proxy ||= Decidim::CensusConnector::PersonProxy.new(user: current_user) if current_user
+          @person_proxy ||= Decidim::CensusConnector::PersonProxy.for(current_user) if current_user
         end
       end
     end
