@@ -33,6 +33,10 @@ module Decidim
             @census_person ||= ::Census::API::Person.new(handler.census_qualified_id)
           end
 
+          def has_no_person?
+            !handler.person_proxy.has_person?
+          end
+
           def attributes
             handler.attributes.except(:user, :handler_name)
           end

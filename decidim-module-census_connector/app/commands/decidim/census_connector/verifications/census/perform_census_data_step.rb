@@ -7,7 +7,7 @@ module Decidim
         # A command to create a partial authorization for a user.
         class PerformCensusDataStep < PerformCensusStep
           def perform
-            if authorization.new_record?
+            if has_no_person?
               person_id = ::Census::API::Person.create(person_params.merge(origin_qualified_id: handler.local_qualified_id))
 
               authorization.update!(metadata: { "person_id" => person_id })
