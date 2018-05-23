@@ -8,8 +8,6 @@ module Decidim
         class PerformCensusDataStep < PerformCensusStep
           def perform
             if authorization.new_record?
-              broadcast :invalid unless handler.valid?
-
               person_id = ::Census::API::Person.create(person_params.merge(origin_qualified_id: handler.local_qualified_id))
 
               authorization.update!(metadata: { "person_id" => person_id })
