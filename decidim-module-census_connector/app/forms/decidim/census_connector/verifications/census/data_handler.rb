@@ -76,7 +76,7 @@ module Decidim
           end
 
           def verified?
-            context.person&.verified?
+            person&.verified?
           end
 
           private

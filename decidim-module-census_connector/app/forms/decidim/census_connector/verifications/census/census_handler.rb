@@ -5,7 +5,7 @@ module Decidim
     module Verifications
       module Census
         class CensusHandler < Decidim::AuthorizationHandler
-          delegate :local_scope, :user, :person_id, :census_qualified_id, :local_qualified_id, to: :context
+          delegate :local_scope, :user, :person, :person_id, :census_qualified_id, :local_qualified_id, to: :context
 
           def use_default_values; end
 
