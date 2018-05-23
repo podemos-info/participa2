@@ -28,11 +28,19 @@ module Decidim
       end
 
       def has_person?
-        person_id.present?
+        person_id.present? && census_person_id.present?
+      end
+
+      def census_person_id
+        census_person[:id]
+      end
+
+      def census_person
+        @census_person ||= ::Census::API::Person.find(census_qualified_id)
       end
 
       def person
-        @person ||= Person.new(::Census::API::Person.find(census_qualified_id)) if has_person?
+        @person ||= Person.new(census_person) if has_person?
       end
 
       def census_qualified_id
