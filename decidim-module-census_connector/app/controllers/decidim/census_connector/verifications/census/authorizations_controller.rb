@@ -16,11 +16,12 @@ module Decidim
           STEPS = %w(data verification membership_level).freeze
 
           def index
-            if has_person?
-              @form = current_form_object.from_model(person).with_context(form_context)
-            else
-              @form = current_form_object.new.with_context(form_context)
-            end
+            @form = if has_person?
+                      current_form_object.from_model(person).with_context(form_context)
+                    else
+                      current_form_object.new.with_context(form_context)
+                    end
+
             render current_form
           end
 
