@@ -14,10 +14,10 @@
               <%= decidim_sanitize t(".directions") %>
             </p>
 
-            <%= decidim_form_for(@handler, url: current_form_path) do |form| %>
+            <%= decidim_form_for(@form, url: current_form_path) do |form| %>
               <div class="field">
                 <ul class="membership_levels">
-                <% @handler.class.membership_levels.each do |membership_level, value| %>
+                <% @form.class.membership_levels.each do |membership_level, value| %>
                   <li>
                     <%= form.radio_button :membership_level, value, label: membership_level %>
                     <p><%= t(".#{value}.description") %></p>

@@ -4,9 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        class VerificationHandler < Decidim::Form
-          mimic :verification_handler
-
+        class VerificationForm < Decidim::Form
           attribute :document_file1
           attribute :document_file2
           attribute :tos_agreement, Boolean

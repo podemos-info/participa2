@@ -22,15 +22,15 @@ module Decidim
 
           def person_params
             attributes.except(:document_scope_id, :scope_id, :address_scope_id).merge(
-              email: handler.email,
-              document_scope_code: handler.document_scope&.code,
-              scope_code: handler.scope&.code,
-              address_scope_code: handler.address_scope&.code
+              email: form.email,
+              document_scope_code: form.document_scope&.code,
+              scope_code: form.scope&.code,
+              address_scope_code: form.address_scope&.code
             )
           end
 
           def origin_qualified_id
-            "#{handler.user.id}@decidim"
+            "#{form.user.id}@decidim"
           end
         end
       end

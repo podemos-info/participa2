@@ -17,16 +17,16 @@ module Decidim
 
           def index
             if has_person?
-              @handler = current_handler.from_model(person).with_context(form_context)
+              @form = current_form_object.from_model(person).with_context(form_context)
             else
-              @handler = current_handler.new.with_context(form_context)
+              @form = current_form_object.new.with_context(form_context)
             end
             render current_form
           end
 
           def create
-            @handler = current_handler.from_params(params).with_context(form_context)
-            current_command.call(census_authorization, @handler) do
+            @form = current_form_object.from_params(params).with_context(form_context)
+            current_command.call(census_authorization, @form) do
               on(:ok) do
                 redirect_to next_path
               end
@@ -68,8 +68,8 @@ module Decidim
             @current_form ||= step? ? current_step : valid_step(request[:form])
           end
 
-          def current_handler
-            @current_handler ||= "decidim/census_connector/verifications/census/#{current_form}_handler".classify.constantize
+          def current_form_object
+            @current_form_object ||= "decidim/census_connector/verifications/census/#{current_form}_form".classify.constantize
           end
 
           def current_command

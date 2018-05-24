@@ -2,7 +2,7 @@
 es:
   activemodel:
     attributes:
-      data_handler:
+      data:
         address: Dirección
         address_scope_id: Domicilio
         born_at: Fecha de nacimiento
@@ -15,7 +15,7 @@ es:
         last_name2: Segundo apellido
         postal_code: Código postal
         scope_id: Lugar de participación
-      membership_level_handler:
+      membership_level:
         membership_level: Nivel de compromiso
   census:
     api:

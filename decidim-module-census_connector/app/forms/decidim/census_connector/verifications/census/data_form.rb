@@ -4,9 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        class DataHandler < Decidim::Form
-          mimic :data_handler
-
+        class DataForm < Decidim::Form
           delegate :local_scope, :person_proxy, :user, to: :context
           delegate :person, to: :person_proxy
           delegate :email, to: :user

@@ -2,7 +2,7 @@ $(() => {
   window.DecidimCensusConnector = window.DecidimCensusConnector || {};
 
   window.DecidimCensusConnector.verificationCensusInitialize = () => {
-    const $documentType = $("#data_handler_document_type");
+    const $documentType = $("#data_document_type");
     if ($documentType.length > 0) {
       const $documentScope = $("#document_scope_selector");
       const toggleDocumentScope = () => {
@@ -16,7 +16,7 @@ $(() => {
       $documentType.on('change', toggleDocumentScope);
     }
 
-    const $addressScope = $("#data_handler_address_scope_id");
+    const $addressScope = $("#data_address_scope_id");
     if ($addressScope.length > 0) {
       const $scope = $("#scope_selector");
       const localScopeRanges = $addressScope.parent().data("localScopeRanges");

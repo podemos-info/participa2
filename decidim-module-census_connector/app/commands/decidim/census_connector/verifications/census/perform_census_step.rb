@@ -9,20 +9,20 @@ module Decidim
           # Public: Initializes the command.
           #
           # authorization - An Authorization object.
-          # handler - An AuthorizationHandler object.
-          def initialize(authorization, handler)
+          # form - A Decidim::Form object.
+          def initialize(authorization, form)
             @authorization = authorization
-            @handler = handler
+            @form = form
           end
 
           # Executes the command. Broadcasts these events:
           #
           # - :ok when everything is valid.
-          # - :invalid if the handler wasn't valid and we couldn't proceed.
+          # - :invalid if the form wasn't valid and we couldn't proceed.
           #
           # Returns nothing.
           def call
-            return broadcast(:invalid) if handler.invalid?
+            return broadcast(:invalid) if form.invalid?
 
             perform
           end
@@ -38,14 +38,14 @@ module Decidim
           end
 
           def person_proxy
-            handler.context.person_proxy
+            form.context.person_proxy
           end
 
           def attributes
-            handler.attributes.except(:user, :handler_name)
+            form.attributes.except(:user, :handler_name)
           end
 
-          attr_reader :authorization, :handler
+          attr_reader :authorization, :form
         end
       end
     end

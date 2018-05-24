@@ -178,12 +178,12 @@ describe "Census verification", type: :system do
 
     year, month, day = birth_date.split("-")
 
-    execute_script("$('#date_field_data_handler_born_at').focus()")
+    execute_script("$('#date_field_data_born_at').focus()")
     find(".datepicker-dropdown .year:not(.new):not(.old)", text: year, exact_text: true).click
     find(".datepicker-dropdown .month:not(.new):not(.old)", text: month, exact_text: true).click
     find(".datepicker-dropdown .day:not(.new):not(.old)", text: day, exact_text: true).click
 
-    scope_pick select_data_picker(:data_handler_address_scope_id), scope
+    scope_pick select_data_picker(:data_address_scope_id), scope
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
 
@@ -191,8 +191,8 @@ describe "Census verification", type: :system do
   end
 
   def complete_document_step
-    attach_file "verification_handler_document_file1", Decidim::Dev.asset("id.jpg"), visible: false
-    attach_file "verification_handler_document_file2", Decidim::Dev.asset("id.jpg"), visible: false
+    attach_file "verification_document_file1", Decidim::Dev.asset("id.jpg"), visible: false
+    attach_file "verification_document_file2", Decidim::Dev.asset("id.jpg"), visible: false
 
     click_button "Send"
   end

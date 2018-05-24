@@ -10,20 +10,20 @@
       <div class="columns large-9 medium-centered">
         <div class="card">
           <div class="card__content">
-            <% if @handler.information_page %>
-              <h5 class="card__title"><%= strip_tags(translated_attribute(@handler.information_page.title)) %></h5>
-              <div class="verification_information"><%= decidim_sanitize translated_attribute(@handler.information_page.content) %></div>
+            <% if @form.information_page %>
+              <h5 class="card__title"><%= strip_tags(translated_attribute(@form.information_page.title)) %></h5>
+              <div class="verification_information"><%= decidim_sanitize translated_attribute(@form.information_page.content) %></div>
             <% end %>
             <p>
               <%= decidim_sanitize t(".directions") %>
             </p>
-            <%= decidim_form_for(@handler, url: current_form_path) do |form| %>
+            <%= decidim_form_for(@form, url: current_form_path) do |form| %>
               <div class="row">
                 <div class="column large-6 document_uploader">
                   <div class="field">
                     <%= form.label(:document_file1) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{@handler.document_type}-sample1.png", alt: t(".sample1-description.#{@handler.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample1-description.#{@handler.document_type}") %></div>
+                      <%= image_tag "decidim/census_connector/verifications/census/#{@form.document_type}-sample1.png", alt: t(".sample1-description.#{@form.document_type}") %>
+                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample1-description.#{@form.document_type}") %></div>
                     <% end %>
                     <div class="upload">
                       <%= form.upload :document_file1, accept: "image/*"%>
@@ -33,8 +33,8 @@
                 <div class="column large-6 document_uploader">
                   <div class="field">
                     <%= form.label(:document_file2) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{@handler.document_type}-sample2.png", alt: t(".sample2-description.#{@handler.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample2-description.#{@handler.document_type}") %></div>
+                      <%= image_tag "decidim/census_connector/verifications/census/#{@form.document_type}-sample2.png", alt: t(".sample2-description.#{@form.document_type}") %>
+                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample2-description.#{@form.document_type}") %></div>
                     <% end %>
                     <div class="upload">
                       <%= form.upload :document_file2, accept: "image/*"%>
@@ -43,13 +43,13 @@
                 </div>
               </div>
 
-              <% if @handler.terms_and_conditions_page %>
+              <% if @form.terms_and_conditions_page %>
               <p class="lopd-text">
-                <strong><%= translated_attribute(@handler.terms_and_conditions_page.title) %></strong><br/>
-                <%= strip_tags(translated_attribute(@handler.terms_and_conditions_page.content)) %>
+                <strong><%= translated_attribute(@form.terms_and_conditions_page.title) %></strong><br/>
+                <%= strip_tags(translated_attribute(@form.terms_and_conditions_page.content)) %>
               </p>
               <div class="field">
-                <%= form.check_box :tos_agreement, label: t("tos_agreement", scope: "decidim.devise.registrations.new", link: link_to(t("terms", scope: "decidim.devise.registrations.new"), decidim.page_path(@handler.terms_and_conditions_page))) %>
+                <%= form.check_box :tos_agreement, label: t("tos_agreement", scope: "decidim.devise.registrations.new", link: link_to(t("terms", scope: "decidim.devise.registrations.new"), decidim.page_path(@form.terms_and_conditions_page))) %>
               </div>
               <% end %>
 
