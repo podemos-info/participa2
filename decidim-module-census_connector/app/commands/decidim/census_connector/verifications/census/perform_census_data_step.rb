@@ -22,7 +22,7 @@ module Decidim
 
           def person_params
             attributes.except(:document_scope_id, :scope_id, :address_scope_id).merge(
-              email: handler.user.email,
+              email: handler.email,
               document_scope_code: handler.document_scope&.code,
               scope_code: handler.scope&.code,
               address_scope_code: handler.address_scope&.code

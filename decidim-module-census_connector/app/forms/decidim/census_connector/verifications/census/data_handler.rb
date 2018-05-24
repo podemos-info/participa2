@@ -7,6 +7,8 @@ module Decidim
         class DataHandler < CensusHandler
           mimic :data_handler
 
+          delegate :email, to: :user
+
           def self.document_types
             Person.document_types
           end
