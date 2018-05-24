@@ -30,7 +30,7 @@ module Decidim
           private
 
           def census_person
-            @census_person ||= ::Census::API::Person.new(handler.census_qualified_id)
+            @census_person ||= ::Census::API::Person.new(handler.person_id)
           end
 
           def has_no_person?

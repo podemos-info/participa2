@@ -37,19 +37,11 @@ module Decidim
       end
 
       def census_person
-        @census_person ||= ::Census::API::Person.new(census_qualified_id).find
+        @census_person ||= ::Census::API::Person.new(person_id).find
       end
 
       def person
         @person ||= Person.new(census_person) if has_person?
-      end
-
-      def census_qualified_id
-        "#{person_id}@census" if person_id.present?
-      end
-
-      def local_qualified_id
-        "#{user.id}@decidim"
       end
     end
   end

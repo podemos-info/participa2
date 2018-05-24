@@ -16,8 +16,8 @@ module Census
 
       attr_reader :qualified_id
 
-      def initialize(qualified_id)
-        @qualified_id = qualified_id
+      def initialize(person_id)
+        @qualified_id = "#{person_id}@census"
       end
 
       # PUBLIC retrieve the available information for the given person.

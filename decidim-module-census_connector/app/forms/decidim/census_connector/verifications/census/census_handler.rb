@@ -6,7 +6,7 @@ module Decidim
       module Census
         class CensusHandler < Decidim::AuthorizationHandler
           delegate :local_scope, :person_proxy, :user, to: :context
-          delegate :person, :person_id, :census_qualified_id, :local_qualified_id, to: :person_proxy
+          delegate :person, :person_id, to: :person_proxy
 
           def handler_name
             "census"

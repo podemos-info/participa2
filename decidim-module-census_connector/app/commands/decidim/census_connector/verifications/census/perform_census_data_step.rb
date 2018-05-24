@@ -8,7 +8,7 @@ module Decidim
         class PerformCensusDataStep < PerformCensusStep
           def perform
             if has_no_person?
-              person_id = ::Census::API::Person.create(person_params.merge(origin_qualified_id: handler.local_qualified_id))
+              person_id = ::Census::API::Person.create(person_params.merge(origin_qualified_id: origin_qualified_id))
 
               authorization.update!(metadata: { "person_id" => person_id })
             else
@@ -27,6 +27,10 @@ module Decidim
               scope_code: handler.scope&.code,
               address_scope_code: handler.address_scope&.code
             )
+          end
+
+          def origin_qualified_id
+            "#{handler.user.id}@decidim"
           end
         end
       end
