@@ -14,7 +14,7 @@ module Decidim
           private
 
           def create_verification
-            person.create_verification(verification_params)
+            census_person.create_verification(verification_params)
           end
 
           def verification_params

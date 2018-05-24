@@ -29,8 +29,8 @@ module Decidim
 
           private
 
-          def person
-            @person ||= ::Census::API::Person.new(handler.census_qualified_id)
+          def census_person
+            @census_person ||= ::Census::API::Person.new(handler.census_qualified_id)
           end
 
           def attributes

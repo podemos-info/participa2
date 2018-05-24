@@ -12,7 +12,7 @@ module Decidim
 
               authorization.update!(metadata: { "person_id" => person_id })
             else
-              person.update(person_params)
+              census_person.update(person_params)
             end
 
             broadcast :ok

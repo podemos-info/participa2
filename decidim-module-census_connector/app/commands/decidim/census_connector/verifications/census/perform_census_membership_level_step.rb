@@ -14,7 +14,7 @@ module Decidim
           private
 
           def update_membership_level
-            person.create_membership_level(membership_level_params)
+            census_person.create_membership_level(membership_level_params)
           end
 
           def membership_level_params
