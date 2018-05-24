@@ -14,17 +14,17 @@ module Census
         response[:person_id]
       end
 
-      # PUBLIC retrieve the available information for the given person.
-      def self.find(qualified_id)
-        send_request do
-          get("/api/v1/people/#{qualified_id}")
-        end
-      end
-
       attr_reader :qualified_id
 
       def initialize(qualified_id)
         @qualified_id = qualified_id
+      end
+
+      # PUBLIC retrieve the available information for the given person.
+      def find
+        send_request do
+          get("/api/v1/people/#{qualified_id}")
+        end
       end
 
       # PUBLIC update the person with the given params.

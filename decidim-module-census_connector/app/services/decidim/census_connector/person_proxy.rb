@@ -37,7 +37,7 @@ module Decidim
       end
 
       def census_person
-        @census_person ||= ::Census::API::Person.find(census_qualified_id)
+        @census_person ||= ::Census::API::Person.new(census_qualified_id).find
       end
 
       def person
