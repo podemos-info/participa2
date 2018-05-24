@@ -49,7 +49,7 @@ module Decidim
       end
 
       def local_qualified_id
-        "#{user.id}@#{Decidim::CensusConnector.system_identifier}"
+        "#{user.id}@decidim"
       end
     end
   end
