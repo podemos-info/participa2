@@ -20,7 +20,6 @@ module Decidim
               @handler = current_handler.from_model(person).with_context(form_context)
             else
               @handler = current_handler.new.with_context(form_context)
-              @handler.use_default_values
             end
             render current_form
           end

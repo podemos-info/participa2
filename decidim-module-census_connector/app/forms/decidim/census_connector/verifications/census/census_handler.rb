@@ -8,8 +8,6 @@ module Decidim
           delegate :local_scope, :person_proxy, :user, to: :context
           delegate :person, :person_id, :census_qualified_id, :local_qualified_id, to: :person_proxy
 
-          def use_default_values; end
-
           def handler_name
             "census"
           end
