@@ -4,10 +4,6 @@ def main_organization
   @main_organization ||= Decidim::Organization.first
 end
 
-def load_real_scopes
-  Decidim::CensusConnector::Seeds::Scopes.seed(main_organization) unless main_organization.top_scopes.any?
-end
-
 def localize(text)
   { ca: text, es: text, eu: text, gl: text } # TO-DO: load translations
 end
@@ -18,44 +14,8 @@ original_locales = I18n.available_locales
 I18n.available_locales = original_locales + [:en] unless original_locales.include?(:en)
 
 if !Rails.env.production? || ENV["SEED"]
-  class TempClass
-    def self.create!(*_args)
-      OpenStruct.new(code: "fake")
-    end
-  end
-
-  class Decidim::Core::Engine
-    def load_seed
-      truncate_tables
-      disable_scopes
-      super
-      enable_scopes
-    end
-
-    private
-
-    def truncate_tables
-      tables = ActiveRecord::Base.connection.tables - %w(schema_migrations ar_internal_metadata)
-
-      # Delete fake data
-      ActiveRecord::Base.connection_pool.with_connection do |conn|
-        conn.execute("TRUNCATE #{tables.join(", ")} RESTART IDENTITY")
-      end
-    end
-
-    def disable_scopes
-      @old_scope_type = Decidim::ScopeType
-      @old_scope = Decidim::Scope
-      Decidim.const_set("ScopeType", TempClass)
-      Decidim.const_set("Scope", TempClass)
-    end
-
-    def enable_scopes
-      Decidim.const_set("ScopeType", @old_scope_type)
-      Decidim.const_set("Scope", @old_scope)
-    end
-  end
   Decidim::Core::Engine.load_seed
+  Decidim::CensusConnector::Engine.load_seed
 end
 
 Decidim::System::CreateDefaultPages.call(main_organization)
@@ -86,8 +46,6 @@ main_organization.update!(
   reference_prefix: "POD",
   available_authorizations: Decidim.authorization_workflows.map(&:name)
 )
-
-load_real_scopes
 
 assembly = Decidim::Assembly.create!(
   title: localize("Podemos Estatal"),
