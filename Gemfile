@@ -11,7 +11,7 @@ ruby "2.5.1"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
-gem "decidim", "~> 0.11.0.pre1"
+gem "decidim", "~> 0.11"
 gem "decidim-census_connector", github: "podemos-info/decidim-module-census_connector", branch: "master"
 gem "decidim-collaborations", github: "podemos-info/decidim-module-crowdfundings", branch: "master"
 gem "decidim-gravity_forms", github: "podemos-info/decidim-module-gravity_forms", branch: "master"
@@ -24,7 +24,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug", platform: :mri
 
-  gem "decidim-dev", "~> 0.11.0.pre1"
+  gem "decidim-dev", "~> 0.11"
 end
 
 group :development do
