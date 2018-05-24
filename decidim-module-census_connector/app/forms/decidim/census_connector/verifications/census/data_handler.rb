@@ -4,11 +4,11 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        class DataHandler < Decidim::AuthorizationHandler
+        class DataHandler < Decidim::Form
           mimic :data_handler
 
           delegate :local_scope, :person_proxy, :user, to: :context
-          delegate :person, :person_id, to: :person_proxy
+          delegate :person, to: :person_proxy
           delegate :email, to: :user
 
           def self.document_types
@@ -17,14 +17,6 @@ module Decidim
 
           def self.genders
             Person.genders
-          end
-
-          def handler_name
-            "census"
-          end
-
-          def metadata
-            { "person_id" => person_id }
           end
 
           attribute :first_name, String
