@@ -4,7 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        class MembershipLevelHandler < CensusHandler
+        class MembershipLevelHandler < Decidim::Form
           mimic :membership_level_handler
 
           attribute :membership_level, Symbol

@@ -4,7 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        class VerificationHandler < CensusHandler
+        class VerificationHandler < Decidim::Form
           mimic :verification_handler
 
           attribute :document_file1
@@ -20,7 +20,7 @@ module Decidim
           end
 
           def document_type
-            @document_type ||= person.document_type
+            @document_type ||= context.person_proxy.person.document_type
           end
 
           def information_page

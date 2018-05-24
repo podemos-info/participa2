@@ -30,11 +30,15 @@ module Decidim
           private
 
           def census_person
-            @census_person ||= ::Census::API::Person.new(handler.person_id)
+            @census_person ||= ::Census::API::Person.new(person_proxy.person_id)
           end
 
           def has_no_person?
-            !handler.person_proxy.has_person?
+            !person_proxy.has_person?
+          end
+
+          def person_proxy
+            handler.context.person_proxy
           end
 
           def attributes
