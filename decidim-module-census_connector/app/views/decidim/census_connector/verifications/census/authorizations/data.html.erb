@@ -32,7 +32,7 @@
                 <div class="row">
                   <div class="column large-3">
                     <div class="field">
-                      <%= form.select :document_type, @form.class.document_types, include_blank: false %>
+                      <%= form.select :document_type, Decidim::CensusConnector::Person.document_types, include_blank: false %>
                     </div>
                   </div>
                   <div class="column large-9">
@@ -49,7 +49,7 @@
                 <div class="field">
                   <%= form.label :gender %>
                   <div class="radio-options">
-                    <%= form.collection_radio_buttons :gender, @form.class.genders, :last, :first %>
+                    <%= form.collection_radio_buttons :gender, Decidim::CensusConnector::Person.genders, :last, :first %>
                   </div>
                 </div>
 

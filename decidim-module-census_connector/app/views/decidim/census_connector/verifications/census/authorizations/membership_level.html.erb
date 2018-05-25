@@ -17,7 +17,7 @@
             <%= decidim_form_for(@form, url: current_form_path) do |form| %>
               <div class="field">
                 <ul class="membership_levels">
-                <% @form.class.membership_levels.each do |membership_level, value| %>
+                <% Decidim::CensusConnector::Person.membership_levels.each do |membership_level, value| %>
                   <li>
                     <%= form.radio_button :membership_level, value, label: membership_level %>
                     <p><%= t(".#{value}.description") %></p>

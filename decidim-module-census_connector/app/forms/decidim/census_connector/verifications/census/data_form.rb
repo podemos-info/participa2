@@ -9,14 +9,6 @@ module Decidim
           delegate :person, to: :person_proxy
           delegate :email, to: :user
 
-          def self.document_types
-            Person.document_types
-          end
-
-          def self.genders
-            Person.genders
-          end
-
           attribute :first_name, String
           attribute :last_name1, String
           attribute :last_name2, String
@@ -34,15 +26,15 @@ module Decidim
           attribute :postal_code, String
 
           validates :first_name, :last_name1, :born_at, presence: true, unless: :verified?
-          validates :document_type, inclusion: { in: document_types.values }, unless: :verified?
+          validates :document_type, inclusion: { in: Person.document_types.values }, unless: :verified?
           validates :document_id, format: { with: /\A[A-z0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }, presence: true, unless: :verified?
           validates :document_scope, presence: true, unless: -> { local_document? || verified? }
-          validates :gender, inclusion: { in: genders.values }, presence: true, unless: :verified?
+          validates :gender, inclusion: { in: Person.genders.values }, presence: true, unless: :verified?
           validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }
           validates :scope, :address, :address_scope_id, presence: true
 
           def document_type
-            @document_type ||= self.class.document_types.values.first
+            @document_type ||= Person.document_types.values.first
           end
 
           def document_scope_id
