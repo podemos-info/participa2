@@ -158,6 +158,27 @@ describe "Census verification", type: :system do
     end
   end
 
+  context "when registering with census with invalid data" do
+    let(:cassette) { "registration_with_invalid_data" }
+
+    before do
+      click_link 'Authorize with "Census"'
+
+      VCR.use_cassette(cassette) do
+        click_button "Send"
+      end
+    end
+
+    it "shows errors" do
+      expect(page).to have_content("Name no puede estar en blanco")
+      expect(page).to have_content("First surname no puede estar en blanco")
+      expect(page).to have_content("Document no puede estar en blanco")
+      expect(page).to have_content("Birth date no puede estar en blanco")
+      expect(page).to have_content("Address no puede estar en blanco")
+      expect(page).to have_content("Postal code no puede estar en blanco")
+    end
+  end
+
   private
 
   def register_with_census

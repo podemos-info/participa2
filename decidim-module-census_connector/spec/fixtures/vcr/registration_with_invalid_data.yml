@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/people
+    body:
+      encoding: UTF-8
+      string: first_name=&last_name1=&last_name2=&document_type=dni&document_id=&born_at=&gender=&address=&postal_code=&email=user1%40example.org&document_scope_code=ES&scope_code=&address_scope_code=&origin_qualified_id=4305761%40decidim
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=c359acaf-8057-41a6-aab9-782705affbf7; path=/; expires=Sat, 26 May
+        2018 01:59:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=6e5e7036-9685-434d-ae7b-3331ed207693; path=/; expires=Mon, 25
+        May 2020 21:59:10 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 6d49d168-5354-4509-b9cd-60f1c4258307
+      X-Runtime:
+      - '0.035094'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"first_name":["no puede estar en blanco"],"last_name1":["no puede
+        estar en blanco"],"document_id":["no puede estar en blanco"],"born_at":["no
+        puede estar en blanco"],"gender":["no puede estar en blanco"],"address":["no
+        puede estar en blanco"],"postal_code":["no puede estar en blanco"],"address_scope":["no
+        puede estar en blanco"],"scope":["no puede estar en blanco"]}'
+    http_version: 
+  recorded_at: Fri, 25 May 2018 21:59:10 GMT
+recorded_with: VCR 4.0.0

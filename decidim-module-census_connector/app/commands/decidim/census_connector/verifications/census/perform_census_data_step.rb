@@ -16,6 +16,8 @@ module Decidim
             if result
               broadcast :ok
             else
+              add_errors_to_form
+
               broadcast :invalid
             end
           end
@@ -32,6 +34,12 @@ module Decidim
 
           def update_person
             census_person.update(person_params)
+          end
+
+          def add_errors_to_form
+            census_person.errors.each do |key, value|
+              form.errors.add(key, value) if form.respond_to?(key)
+            end
           end
 
           def person_params
