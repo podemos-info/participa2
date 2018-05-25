@@ -6,18 +6,18 @@ module Census
     class Person
       include CensusAPI
 
+      attr_reader :person_id
+
+      def initialize(person_id)
+        @person_id = person_id
+      end
+
       # PUBLIC creates a person with the given params.
-      def self.create(params)
+      def create(params)
         response = send_request do
           post("/api/v1/people", body: params)
         end
         response[:person_id]
-      end
-
-      attr_reader :qualified_id
-
-      def initialize(person_id)
-        @qualified_id = "#{person_id}@census"
       end
 
       # PUBLIC retrieve the available information for the given person.
@@ -54,6 +54,12 @@ module Census
         send_request do
           post("/api/v1/people/#{qualified_id}/membership_levels", body: params)
         end
+      end
+
+      private
+
+      def qualified_id
+        "#{person_id}@census"
       end
     end
   end
