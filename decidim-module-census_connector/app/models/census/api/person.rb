@@ -17,7 +17,12 @@ module Census
         response = send_request do
           post("/api/v1/people", body: params)
         end
-        response[:person_id]
+
+        result = valid?(response)
+
+        @person_id = response[:person_id]
+
+        result
       end
 
       # PUBLIC retrieve the available information for the given person.
@@ -29,9 +34,11 @@ module Census
 
       # PUBLIC update the person with the given params.
       def update(params)
-        send_request do
+        response = send_request do
           patch("/api/v1/people/#{qualified_id}", body: params)
         end
+
+        valid?(response)
       end
 
       # PUBLIC add a verification process for the person.
@@ -60,6 +67,16 @@ module Census
 
       def qualified_id
         "#{person_id}@census"
+      end
+
+      def valid?(response)
+        http_response_code = response.delete(:http_response_code)
+
+        if [202, 204].include?(http_response_code)
+          true
+        else
+          false
+        end
       end
     end
   end
