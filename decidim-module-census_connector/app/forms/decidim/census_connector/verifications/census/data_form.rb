@@ -28,7 +28,8 @@ module Decidim
           validates :first_name, :last_name1, :born_at, presence: true, unless: :verified?
           validates :document_type, inclusion: { in: Person.document_types.values }, unless: :verified?
           validates :document_id, format: { with: /\A[A-z0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }, presence: true, unless: :verified?
-          validates :document_scope, presence: true, unless: -> { local_document? || verified? }
+          validates :document_scope_id, presence: true, unless: :local_document?
+          validates :document_scope, presence: true, unless: :verified?
           validates :gender, inclusion: { in: Person.genders.values }, presence: true, unless: :verified?
           validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }
           validates :scope, :address, :address_scope_id, presence: true
