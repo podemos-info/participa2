@@ -80,7 +80,6 @@ es:
                 passport: Página adicional del pasaporte (opcional)
               title: Verifica tu identidad
           errors:
-            age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
             create: Se ha producido un error al guardar tus datos personales.
           extra_explanation_age: Necesitas tener al menos %{minimum_age} años.
           extra_explanation_age_and_document_type: Necesitas tener al menos %{minimum_age} años y estar registrada usando %{allowed_documents}.

@@ -16,10 +16,6 @@ module Decidim
       "ES"
     end
 
-    config_accessor :person_minimum_age do
-      14
-    end
-
     # Entry point for Census API
     config_accessor :census_api_base_uri do
       "https://census.example.org"

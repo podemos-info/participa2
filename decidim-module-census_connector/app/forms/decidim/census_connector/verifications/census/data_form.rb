@@ -41,8 +41,6 @@ module Decidim
           validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }
           validates :scope, :address, :address_scope_id, presence: true
 
-          validate :over_min_age
-
           def document_type
             @document_type ||= self.class.document_types.values.first
           end
@@ -81,15 +79,6 @@ module Decidim
 
           def verified?
             person&.verified?
-          end
-
-          private
-
-          def over_min_age
-            minimum_age = Decidim::CensusConnector.person_minimum_age
-            if born_at.present? && born_at >= minimum_age.years.ago
-              errors.add(:born_at, I18n.t("errors.age_under_minimum_age", scope: "decidim.census_connector.verifications.census", min_age: minimum_age))
-            end
           end
         end
       end
