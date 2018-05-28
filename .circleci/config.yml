@@ -32,8 +32,4 @@ jobs:
             - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
 
       - deploy:
-          command: |
-            if [ "${CIRCLE_BRANCH}" = "master" ]
-            then
-              BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy | sed "s/$STAGING_SERVER_MASTER_HOST/***/g" | sed "s/$STAGING_SERVER_MASTER_PORT/***/g" | sed "s/$STAGING_SERVER_SLAVE_HOST/***/g" | sed "s/$STAGING_SERVER_SLAVE_PORT/***/g"
-            fi
+          command: bin/deploy.sh
