@@ -67,8 +67,14 @@ es:
               one: Votación
               other: Votaciones
         votings:
+          electoral_district_fields:
+            remove: Eliminar
+            title: Información del distrito electoral
+            a_scope: un ámbito
           form:
+            add_electoral_district: Añadir información de distrito electoral
             start_date_help: Fecha de inicio
+            electoral_districts: Distritos electorales
             end_date_help: Fecha de fin
             census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
           index:
