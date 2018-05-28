@@ -2,7 +2,7 @@
   <div class="card-divider">
     <h2 class="card-title">
       <%= t('.title') %>
-      <%= link_to t('actions.new', scope: 'decidim.budgets', name: t('models.collaboration.name', scope: 'decidim.collaborations.admin')),
+      <%= link_to t('actions.new', scope: 'decidim.collaborations'),
                   new_collaboration_path, class: 'button tiny button--title' if can? :manage, current_component %>
     </h2>
   </div>

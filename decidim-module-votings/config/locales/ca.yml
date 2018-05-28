@@ -37,6 +37,7 @@ es:
           vote: Votar
     votings:
       actions:
+        new: Nueva
         title: Accions
         preview: Previsualitzar
         edit: Editar

@@ -38,6 +38,7 @@ es:
     votings:
       actions:
         title: Acciones
+        new: Nueva
         preview: Previsualizar
         edit: Editar
         destroy: Borrar

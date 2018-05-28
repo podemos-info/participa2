@@ -80,6 +80,7 @@ ca:
             rejected: Rebutjada
             paused: Suspesa
       actions:
+        new: Nou
         title: Acciones
         preview: Previsualitzar
         edit: Editar

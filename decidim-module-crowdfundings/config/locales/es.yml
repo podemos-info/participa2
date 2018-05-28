@@ -82,6 +82,7 @@ es:
             rejected: Rechazada
             paused: Suspendida
       actions:
+        new: Nueva
         title: Acciones
         preview: Previsualizar
         edit: Editar

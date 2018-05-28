@@ -82,6 +82,7 @@ en:
             rejected: Rejected
             paused: Suspended
       actions:
+        new: New
         title: Actions
         preview: Preview
         edit: Edit
