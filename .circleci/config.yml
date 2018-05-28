@@ -24,6 +24,10 @@ jobs:
             - /usr/local/bundle
 
       - run:
+          name: Run tests
+          command: bundle exec rspec
+
+      - run:
           name: Run rubocop
           command: bundle exec rubocop
 
