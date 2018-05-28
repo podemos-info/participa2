@@ -1,0 +1,101 @@
+es:
+  activemodel:
+    errors:
+      voting:
+        voting_range:
+          outside_process_range: La fecha está fuera del intervalo de tiempo del proceso participativo.
+    attributes:
+      voting:
+        title: Título
+        description: Descripción
+        start_date: Fecha de inicio
+        end_date: Fecha de fin
+        image: Imagen
+        decidim_scope: Ámbito de participación
+        decidim_scope_id: Ámbito de participación
+        status: Estado
+        statuses:
+          upcoming: Próxima
+          active: Activa
+          closed: Cerrada
+        census_date_limit: Fecha límite de incorporación al censo
+        importance: Importancia
+        voting_system: Sistema de votación
+        voting_domain_name: Nombre de dominio
+        voting_identifier: Identificador
+        shared_key: Clave compartida
+        system_configuration: Configuración
+  decidim:
+    components:
+      votings:
+        name: Votaciones
+        settings:
+          global:
+            remote_authorization: Autorización remota?
+            remote_authorization_url: URL
+        actions:
+          vote: Votar
+    votings:
+      actions:
+        title: Acciones
+        preview: Previsualizar
+        edit: Editar
+        destroy: Borrar
+        confirm_destroy: ¿Estás seguro?
+        voters: Descargar identificadores de votantes
+      messages:
+        census_limit: Tu usuario no tiene la antigüedad requerida para participar en esta votación.
+        finished: Ha llegado la fecha límite para votar. La votación está cerrada.
+        invalid_scope: No puedes votar en esta zona.
+        already_voted: Ya has votado en esta votación. No obstante, puedes cambiar tu voto mientras la votación continúe abierta
+      models:
+        voting:
+          fields:
+            title: Título
+            start_date: Inicio
+            end_date: Fin
+            pending_votes: Votos emitidos
+            confirmed_votes: Votos confirmados
+            status: Estado
+          voting_system:
+            nvotes_html: 'La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.'
+      admin:
+        models:
+          voting:
+            name:
+              one: Votación
+              other: Votaciones
+        votings:
+          form:
+            start_date_help: Fecha de inicio
+            end_date_help: Fecha de fin
+            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
+          index:
+            title: Votaciones
+          new:
+            title: Nueva votación
+            create: Crear
+          edit:
+            title: Editar votación
+            simulation_address: Enlace para simulación
+            update: Actualizar
+          create:
+            invalid: No se pudo crear la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente creada.
+          update:
+            invalid: No se pudo actualizar la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente actualizada.
+          destroy:
+            success: La votación ha sido correctamente borrada.
+      votings:
+        index:
+          title: Votaciones
+          no_votings_warning: En este momento no hay ninguna votación activa.
+        show:
+          vote: Vota
+          simulate_vote: Simular voto
+        votings:
+          no_votings: En estos momentos no hay votaciones activas. Te avisaremos cuando se produzcan.
+      votes:
+        nvotes:
+          loading_cabin: Cargando cabina de votación...

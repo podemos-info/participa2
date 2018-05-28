@@ -2,20 +2,15 @@
 
 source "https://rubygems.org"
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
 ruby "2.5.1"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
 gem "decidim", "~> 0.11"
-gem "decidim-census_connector", github: "podemos-info/decidim-module-census_connector", branch: "master"
-gem "decidim-collaborations", github: "podemos-info/decidim-module-crowdfundings", branch: "master"
-gem "decidim-gravity_forms", github: "podemos-info/decidim-module-gravity_forms", branch: "master"
-gem "decidim-votings", github: "podemos-info/decidim-module-votings", branch: "master"
+gem "decidim-census_connector", path: "decidim-module-census_connector"
+gem "decidim-collaborations", path: "decidim-module-crowdfundings"
+gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
+gem "decidim-votings", path: "decidim-module-votings"
 
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"

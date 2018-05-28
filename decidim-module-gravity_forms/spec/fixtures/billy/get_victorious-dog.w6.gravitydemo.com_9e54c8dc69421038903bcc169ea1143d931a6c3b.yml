@@ -1,0 +1,76 @@
+---
+:scope: 
+:url: http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/sandbox/static/js/script.js?ver=1.0.9
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 08 May 2018 19:38:52 GMT
+  Server: Apache/2.4.26 (Red Hat)
+  Last-Modified: Mon, 07 May 2018 15:32:20 GMT
+  ETag: '"189b-56b9f601e1932"'
+  Accept-Ranges: bytes
+  Content-Length: '6299'
+  Connection: close
+  Content-Type: application/javascript
+:content: "jQuery(document).on( 'click', '#test_drive_welcome_notice .notice-dismiss',
+  function() {\n\t\n\tvar data = {\n\t\taction: 'sandbox_notice_dismiss',\n\t};\t\t\n\tjQuery.ajax({\n\t\ttype:
+  'POST',\n\t\turl: ajaxurl,\n\t\tdata: data,\n\t\tsuccess: function(response) {},\t\t\t\t\n\t\tdataType:
+  \"json\"\n\t});\n\n});\n\njQuery(function($) {\t\n\n\t$(document).ready(function(){\n\n\t\tupdate_sandbox_timer
+  = function(){\n\t\t\tvar data = {\n\t\t\t\taction: 'sandbox_expiration_time'\n\t\t\t};\n\t\t\tjQuery.ajax({\n\t\t\t\ttype:
+  'POST',\n\t\t\t\turl: ajaxurl,\n\t\t\t\tdata: data,\n\t\t\t\tsuccess: function(response)
+  {\n\t\t\t\t\t$('.poopy_menu').find('.ab-item').html(response.timer);\n\t\t\t\t\t$('.sandbox-time-to-expire').find('strong').html(response.timer.replace('Expires
+  in ',''));\n\t\t\t\t},\n\t\t\t\tdataType: \"json\"\n\t\t\t});\n\t\t};\n\t\tif (timer_interval
+  > 0){\n\t\t\tupdate_sandbox_timer();\n\t\t\tsetInterval(update_sandbox_timer, timer_interval);\n\t\t}\n\n\t\t$(\"#sandbox-datepicker\").datepicker({\n\t\t\tbeforeShow
+  : function(){\n\t\t\t\tif(!$('.sandbox_datepicker_wrapper').length){\n\t\t\t\t\t$('#ui-datepicker-div').wrap('<span
+  class=\"sandbox_datepicker_wrapper\"></span>');\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\n\t\t//
+  swither show/hide logic\n\t\t$('input.switcher').live('change', function (e) {\n\n\t\t\tif
+  ($(this).is(':radio:checked')) {\n\t\t\t\t$(this).parents('form').find('input.switcher:radio[name=\"'
+  + $(this).attr('name') + '\"]').not(this).change();\n\t\t\t}\n\t\t\tvar $switcherID
+  = $(this).attr('id');\n\n\t\t\tvar $targets = $('.switcher-target-' + $switcherID);\n\n\t\t\tvar
+  is_show = $(this).is(':checked'); if ($(this).is('.switcher-reversed')) is_show
+  = ! is_show;\n\t\t\tif (is_show) {\n\t\t\t\t$targets.fadeIn('fast');\n\t\t\t} else
+  {\n\t\t\t\t$targets.hide().find('.clear-on-switch').add($targets.filter('.clear-on-switch')).val('');\n\t\t\t}\n\t\t}).change();\n\n\t\t//
+  actions for poopy sandbox\n\t\tif (is_poopy){\n\t\t\t// saving sandbox expiration
+  settings\n\t\t\t$('form.sandbox-settings-form').find('input.save-expiration-settings').click(function(e){\n\t\t\t\te.preventDefault();\n\t\t\t\t$(
+  this ).effect( \"shake\" );\n\t\t\t\t$('input[name=sandbox_expiration_date]').val('');\n\t\t\t\t$('.sandbox-time-to-expire').css({'color':'red'});\n\t\t\t\tsetTimeout(function()
+  {\n\t\t\t\t\t$( '.sandbox-time-to-expire' ).animate({\n\t\t\t          color:'black'\n\t\t\t
+  \       }, 1000 );\n\t\t\t\t}, 700);\n\t\t\t});\n\t\t\t// saving sandbox template
+  settings\n\t\t\t$('form.sandbox-settings-form').find('input.save-template-settings').click(function(e){\n\t\t\t\te.preventDefault();\n\t\t\t\t$(
+  this ).effect( \"shake\" );\n\t\t\t});\n\t\t\t// saving sandbox template settings\n\t\t\t$('form.sandbox-settings-form').find('input.save-template-permissions').click(function(e){\n\t\t\t\te.preventDefault();\n\t\t\t\t$(
+  this ).effect( \"shake\" );\n\t\t\t});\n\t\t\t// saving sandbox advanced settings\n\t\t\t$('form.sandbox-settings-form').find('input.save-advanced-settings').click(function(e){\n\t\t\t\te.preventDefault();\n\t\t\t\t$(
+  this ).effect( \"shake\" );\n\t\t\t\t$('select[name=php_version]').prop('selectedIndex',
+  0);\n\t\t\t\t$('.sandbox-php-version').css({'color':'red'});\n\t\t\t\tsetTimeout(function()
+  {\n\t\t\t\t\t$( '.sandbox-php-version' ).animate({\n\t\t\t          color:'black'\n\t\t\t
+  \       }, 1000 );\n\t\t\t\t}, 700);\n\t\t\t});\n\t\t\t$('.poopy_menu').hover(  function()
+  {\n\t\t\t\t$( '.poopy_menu_content' ).show();\n\t\t\t}, function() {\n\t\t\t\t$(
+  '.poopy_menu_content' ).hide();\n\t\t\t});\n\t\t}\n\t\telse{\n\t\t\t// saving sandbox
+  advanced settings\n\t\t\t$('form.sandbox-settings-form').find('input.save-advanced-settings').click(function(e){\n\t\t\t\te.preventDefault();\n\t\t\t\t$(this).attr('disabled',
+  'disabled');\n\t\t\t\tvar $php = $('select[name=php_version]').val();\n\t\t\t\tvar
+  data = {\n\t\t\t\t\taction: 'sandbox_change_php_version',\n\t\t\t\t\tversion: $php\n\t\t\t\t};\n\t\t\t\tjQuery.ajax({\n\t\t\t\t\ttype:
+  'POST',\n\t\t\t\t\turl: ajaxurl,\n\t\t\t\t\tdata: data,\n\t\t\t\t\tsuccess: function(response)
+  {\n\t\t\t\t\t\twindow.location.reload(true);\n\t\t\t\t\t},\n\t\t\t\t\terror: function(response){\n\t\t\t\t\t\twindow.location.reload(true);\n\t\t\t\t\t},\n\t\t\t\t\tdataType:
+  \"json\"\n\t\t\t\t});\n\t\t\t});\n\t\t}\n\n\t\t$('<span id=\"tdr_drive_confirmation_template\"
+  style=\"display:none;\"></span>').insertAfter('#test_drive_confirmation_notice');\n\t\t$('#tdr_drive_confirmation_template').html($('#test_drive_confirmation_notice').html());\n\n\t\t$('#tdr_email_submit').click(function(){\n\t\t\t\n\t\t\t$('#test_drive_confirmation_notice').hide();\n\t\t\tvar
+  email = $('#tdr_email_input');\n\t\t\tvar subscribe = $('#tdr_subscribe').is(':checked');\n\n\t\t\t$('#test_drive_confirmation_notice').html($('#tdr_drive_confirmation_template').html().replace('[tdr_submitted_email]',
+  email.val()));\n\t\t\t\n\t\t\tvar data = {\n\t\t\t\taction: 'sandbox_send_confirmation_email',\n\t\t\t\temail:
+  email.val(),\t\n\t\t\t\tsubscribe:subscribe\t\t\t\t\t\t\n\t\t\t};\t\t\n\t\t\t$('#tdr_email_input').attr('disabled',
+  'disabled');\n\t\t\t$('#tdr_email_submit').attr('disabled', 'disabled');\n\t\t\t$.ajax({\n\t\t\t\ttype:
+  'POST',\n\t\t\t\turl: ajaxurl,\n\t\t\t\tdata: data,\n\t\t\t\tsuccess: function(response)
+  {\t\n\t\t\t\t\t\n\t\t\t\t\tif (response.result)\n\t\t\t\t\t{\n\t           \t\t\t//
+  $('#sandbox_welcome_notice').hide();\n\t\t\t\t\t}\n\t\t\t\t\telse{\n\t\t\t\t\t\tconsole.log(response.msg);\n\t\t\t\t\t}\n\t\t\t\t\t$('#test_drive_confirmation_notice').show();\n\t\t\t\t\t$('#tdr_email_input').removeAttr('disabled');\n\t\t\t\t\t$('#tdr_email_submit').removeAttr('disabled');\t\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\tdataType:
+  \"json\"\n\t\t\t});\n\n\t\t});\n\t\t$('.test_drive_notice').find('.notice-dismiss').live('click',
+  function(){\n\t\t\t$(this).parents('.test_drive_notice:first').slideUp();\n\t\t});\n\t\t$('textarea[name=sandbox_redirect_url]').keyup(function(){\n\t\t\tvar
+  $url = $('#template_url').data('url') + '&url=' + $(this).val();\n\t\t\tif (!is_poopy){\n\t\t\t\t$('#template_url').attr('href',
+  $url);\n\t\t\t}\n\t\t\t$('#template_url').html($url);\n\t\t});\n\t});\t\n\n\tfunction
+  is_valid_email(email, strict)\n\t{\n\t\tif ( !strict ) \n\t\t\temail = email.replace(/^\\s+|\\s+$/g,
+  '');\n\t\treturn (/^([a-z0-9_\\-]+\\.)*[a-z0-9_\\-]+@([a-z0-9][a-z0-9\\-]*[a-z0-9]\\.)+[a-z]{2,4}$/i).test(email);\n\t}\n\n\t//
+  help icons\n\t$('.sandbox-help').tipsy({\n\t\tgravity: function() {\n\t\t\tvar ver
+  = 'n';\n\t\t\tif ($(document).scrollTop() < $(this).offset().top - $('.tipsy').height()
+  - 2) {\n\t\t\t\tver = 's';\n\t\t\t}\n\t\t\tvar hor = '';\n\t\t\tif ($(this).offset().left
+  + $('.tipsy').width() < $(window).width() + $(document).scrollLeft()) {\n\t\t\t\thor
+  = 'w';\n\t\t\t} else if ($(this).offset().left - $('.tipsy').width() > $(document).scrollLeft())
+  {\n\t\t\t\thor = 'e';\n\t\t\t}\n\t        return ver + hor;\n\t    },\n\t\tlive:
+  true,\n\t\thtml: true,\n\t\topacity: 1\n\t}).live('click', function () {\n\t\treturn
+  false;\n\t}).each(function () { // fix tipsy title for IE\n\t\t$(this).attr('original-title',
+  $(this).attr('title'));\n\t\t$(this).removeAttr('title');\n\t});\n\n});"

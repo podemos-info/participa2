@@ -1,0 +1,6 @@
+<% if collaboration.terms_and_conditions.present? %>
+  <div class="lopd-text">
+    <strong><%=t 'activemodel.attributes.collaboration.terms_and_conditions' %></strong>
+    <%= sanitize translated_attribute collaboration.terms_and_conditions %>
+  </div>
+<% end %>

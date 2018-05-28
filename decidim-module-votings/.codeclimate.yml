@@ -1,0 +1,44 @@
+---
+
+version: "2"
+
+checks:
+  identical-code:
+    enabled: false
+
+  method-complexity:
+    config:
+      threshold: 6
+
+  similar-code:
+    enabled: false
+
+plugins:
+  grep:
+    enabled: true
+
+    config:
+      patterns:
+        no-trailing-whitespace:
+          pattern: \s*$
+          annotation: "Don't leave trailing whitespace"
+          severity: minor
+          categories: Style
+
+        no-tabs:
+          pattern: "	"
+          annotation: "Don't use hard tabs"
+          severity: minor
+          categories: Style
+
+  markdownlint:
+    enabled: true
+
+  stylelint:
+    enabled: true
+
+exclude_patterns:
+  - development_app
+  - spec/decidim_dummy_app
+  - coverage
+  - node_modules

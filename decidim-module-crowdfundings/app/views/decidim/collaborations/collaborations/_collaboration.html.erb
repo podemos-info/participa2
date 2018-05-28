@@ -1,0 +1,19 @@
+<div id="collaboration-<%= collaboration.id %>-item" class="card--list__item">
+  <div class="card--list__text">
+    <div>
+      <%= link_to collaboration, class: 'card__link' do %>
+        <h5 class="card__title collaboration-list__title">
+          <%= translated_attribute collaboration.title %>
+        </h5>
+      <% end %>
+    </div>
+  </div>
+  <div class="card--list__data collaboration-list__data">
+    <% if can? :support, collaboration %>
+      <%= link_to t('.support'), collaboration, class: 'button tiny hollow collaboration--list__action' %>
+    <% end %>
+    <span class="card--list__data__number collaboration-list__number">
+      <%= total_collected_to_currency(collaboration.total_collected) %>
+    </span>
+  </div>
+</div>

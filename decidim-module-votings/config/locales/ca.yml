@@ -1,0 +1,101 @@
+es:
+  activemodel:
+    errors:
+      voting:
+        voting_range:
+          outside_process_range: La fecha esta fuera del intervalo de tiempo del proceso participativo.
+    attributes:
+      voting:
+        title: Títol
+        description: Descripció
+        start_date: Data d'inici
+        end_date: Data de fi
+        image: Imatge
+        decidim_scope: Àmbit
+        decidim_scope_id: Ámbit
+        status: Estat
+        statuses:
+          upcoming: Proper
+          active: Activa
+          closed: Tancada
+        census_date_limit: Data límit d'incorporació al cens
+        importance: Importància
+        voting_system: Sistema de votació
+        voting_domain_name: Nom de domini
+        voting_identifier: Identificador
+        shared_key: Clau compartida
+        system_configuration: Configuració
+  decidim:
+    components:
+      votings:
+        name: Votaciones
+        settings:
+          global:
+            remote_authorization: Autorització remota?
+            remote_authorization_url: URL
+        actions:
+          vote: Votar
+    votings:
+      actions:
+        title: Accions
+        preview: Previsualitzar
+        edit: Editar
+        destroy: Esborrar
+        confirm_destroy: ¿Estàs segur?
+        voters: descarregar identificadors de votants
+      messages:
+        census_limit: El teu usuari no té l'antiguitat requerida per participar en aquesta votació.
+        finished: Ha arribat la data límit per votar. La votació està tancada.
+        invalid_scope: No pots votar en aquesta zona.
+        already_voted: Ja has votat en aquesta votació. No obstant això, pots canviar el teu vot mentre la votació continuï oberta
+      models:
+        voting:
+          fields:
+            title: Títol
+            start_date: Inici
+            end_date: Fi
+            pending_votes: Vots emesos
+            confirmed_votes: Vots confirmats
+            status: Estat
+          voting_system:
+            nvotes_html: 'La votació utilitza el sistema segur de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.'
+      admin:
+        models:
+          voting:
+            name:
+              one: Votación
+              other: Votaciones
+        votings:
+          form:
+            start_date_help: Fecha de inicio
+            end_date_help: Fecha de fin
+            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
+          index:
+            title: Votaciones
+          new:
+            title: Nueva votación
+            create: Crear
+          edit:
+            title: Editar votación
+            simulation_address: Enllaç per simulació
+            update: Actualizar
+          create:
+            invalid: No se pudo crear la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente creada.
+          update:
+            invalid: No se pudo actualizar la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente actualizada.
+          destroy:
+            success: La votación ha sido correctamente borrada.
+      votings:
+        index:
+          title: Votacions
+          no_votings_warning: En aquest moment no hi ha cap votació activa
+        show:
+          vote: Vota
+          simulate_vote: Voto simulat
+        votings:
+          no_votings: No hi ha cap votació
+      votes:
+        nvotes:
+          loading_cabin: Carregant cabina de votació...

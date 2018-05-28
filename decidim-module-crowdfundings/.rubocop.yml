@@ -1,0 +1,9 @@
+---
+
+inherit_from:
+  - https://raw.githubusercontent.com/decidim/decidim/v0.11.0.pre1/.rubocop.yml
+  - https://raw.githubusercontent.com/decidim/decidim/v0.11.0.pre1/.rubocop_rails.yml
+
+Naming/FileName:
+  Exclude:
+    - lib/generators/decidim/census_connector/install/templates/config/initializers/decidim-census_connector.rb

@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t('.title') %>
+      <%= link_to t('actions.new', scope: 'decidim.budgets', name: t('models.collaboration.name', scope: 'decidim.collaborations.admin')),
+                  new_collaboration_path, class: 'button tiny button--title' if can? :manage, current_component %>
+    </h2>
+  </div>
+
+  <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+        <tr>
+          <th>
+            <%=t 'models.collaboration.fields.title', scope: 'decidim.collaborations'  %>
+          </th>
+          <th class="right">
+            <%=t 'models.collaboration.fields.target_amount', scope: 'decidim.collaborations' %>
+          </th>
+          <th class="right">
+            <%=t 'models.collaboration.fields.total_collected', scope: 'decidim.collaborations' %>
+          </th>
+          <th class="center">
+            <%=t 'models.collaboration.fields.active_until', scope: 'decidim.collaborations' %>
+          </th>
+          <th class="actions"><%=t 'actions.title', scope: 'decidim.collaborations' %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% collaborations.each do |collaboration| %>
+            <tr data-id="<%= collaboration.id %>">
+              <td>
+                <%= translated_attribute(collaboration.title) %>
+              </td>
+              <td class="right">
+                <%= collaboration.target_amount.blank? ? "-" : decidim_number_to_currency(collaboration.target_amount) %>
+              </td>
+              <td class="right">
+                <%= total_collected_to_currency collaboration.total_collected %>
+              </td>
+              <td class="center">
+                <%=l collaboration.active_until unless collaboration.active_until.nil? %>
+              </td>
+              <td class="table-list__actions">
+                <%= icon_link_to 'eye',
+                                 resource_locator(collaboration).path,
+                                 t('actions.preview', scope: 'decidim.collaborations'),
+                                 target: :blank,
+                                 class: 'action-icon--preview' %>
+
+                <% if can? :update, current_component %>
+                    <%= icon_link_to 'pencil',
+                                     edit_collaboration_path(collaboration),
+                                     t('actions.edit', scope: 'decidim.collaborations'),
+                                     class: 'action-icon--edit' %>
+                <% end %>
+
+                <% if can? :destroy, current_component %>
+                    <%= icon_link_to 'circle-x',
+                                     collaboration_path(collaboration),
+                                     t('actions.destroy', scope: 'decidim.collaborations'),
+                                     method: :delete,
+                                     class: 'action-icon--remove',
+                                     data: { confirm: t('actions.confirm_destroy', scope: 'decidim.collaborations') } %>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= paginate collaborations, theme: 'decidim' %>
+    </div>
+  </div>
+</div>

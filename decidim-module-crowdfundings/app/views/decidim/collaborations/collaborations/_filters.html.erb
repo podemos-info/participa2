@@ -1,0 +1,16 @@
+<%= filter_form_for filter do |form| %>
+  <div class="filters__section">
+    <div class="filters__search">
+      <div class="input-group">
+        <%= form.search_field :search_text, label: false, class: 'input-group-field', placeholder: t('.search') %>
+        <div class="input-group-button">
+          <button type="submit" class="button button--muted">
+            <%= icon 'magnifying-glass', aria_label: t('.search') %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form.hidden_field :random_seed %>
+<% end %>

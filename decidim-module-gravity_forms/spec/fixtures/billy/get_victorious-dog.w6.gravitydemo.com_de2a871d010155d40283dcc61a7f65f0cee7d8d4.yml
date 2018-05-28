@@ -1,0 +1,206 @@
+---
+:scope: 
+:url: http://victorious-dog.w6.gravitydemo.com/gfembed/?f=1
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 08 May 2018 19:38:50 GMT
+  Server: Apache/2.4.26 (Red Hat)
+  X-Powered-By: PHP/5.6.35
+  Connection: close
+  Transfer-Encoding: chunked
+  Content-Type: text/html; charset=UTF-8
+:content: "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>Advanced
+  Contact Form</title>\n<style type=\"text/css\">\nbody {\n\tpadding: 0;\n\tfont-family:
+  sans-serif;\n\tfont-size: 13px;\n}\n</style>\n</head>\n<body>\n<link rel='stylesheet'
+  id='gforms_reset_css-css'  href='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/css/formreset.min.css?ver=2.2.5.5'
+  type='text/css' media='all' />\n<link rel='stylesheet' id='gforms_formsmain_css-css'
+  \ href='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/css/formsmain.min.css?ver=2.2.5.5'
+  type='text/css' media='all' />\n<link rel='stylesheet' id='gforms_ready_class_css-css'
+  \ href='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/css/readyclass.min.css?ver=2.2.5.5'
+  type='text/css' media='all' />\n<link rel='stylesheet' id='gforms_browsers_css-css'
+  \ href='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/css/browsers.min.css?ver=2.2.5.5'
+  type='text/css' media='all' />\n<script type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/jquery.json.min.js?ver=2.2.5.5'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=2.2.5.5'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/conditional_logic.min.js?ver=2.2.5.5'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/jquery.maskedinput.min.js?ver=2.2.5.5'></script>\n<script
+  type=\"text/javascript\"> var gf_global = {\"gf_currency_config\":{\"name\":\"U.S.
+  Dollar\",\"symbol_left\":\"$\",\"symbol_right\":\"\",\"symbol_padding\":\"\",\"thousand_separator\":\",\",\"decimal_separator\":\".\",\"decimals\":2},\"base_url\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\",\"number_formats\":[],\"spinnerUrl\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\\/images\\/spinner.gif\"};
+  </script>\n                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_1'
+  style='display:none'><a id='gf_1' class='gform_anchor' ></a><form method='post'
+  enctype='multipart/form-data'  id='gform_1'  action='/gfembed/?f=1#gf_1'>\n                        <div
+  class='gform_body'><ul id='gform_fields_1' class='gform_fields top_label form_sublabel_below
+  description_below'><li id='field_1_7' class='gfield gsection field_sublabel_below
+  field_description_below gfield_visibility_visible' ><h2 class='gsection_title'>About
+  You</h2><div class='gsection_description'>Tell us a little about yourself. Don't
+  be shy. Let's be friends.</div></li><li id='field_1_1' class='gfield gfield_contains_required
+  field_sublabel_below field_description_below gfield_visibility_visible' ><label
+  class='gfield_label gfield_label_before_complex' for='input_1_1_3' >Your Name<span
+  class='gfield_required'>*</span></label><div class='ginput_complex ginput_container
+  no_prefix has_first_name no_middle_name has_last_name no_suffix gf_name_has_2 ginput_container_name
+  gfield_trigger_change' id='input_1_1'>\n                            \n                            <span
+  id='input_1_1_3_container' class='name_first' >\n                                                    <input
+  type='text' name='input_1.3' id='input_1_1_3' value='' aria-label='First name' tabindex='2'
+  \ aria-required=\"true\" aria-invalid=\"false\" placeholder='First Name'/>\n                                                    <label
+  for='input_1_1_3' >First</label>\n                                                </span>\n
+  \                           \n                            <span id='input_1_1_6_container'
+  class='name_last' >\n                                                    <input
+  type='text' name='input_1.6' id='input_1_1_6' value='' aria-label='Last name' tabindex='4'
+  \ aria-required=\"true\" aria-invalid=\"false\" placeholder='Last Name'/>\n                                                    <label
+  for='input_1_1_6' >Last</label>\n                                                </span>\n
+  \                           \n                        </div></li><li id='field_1_4'
+  class='gfield field_sublabel_below field_description_below gfield_visibility_visible'
+  ><label class='gfield_label gfield_label_before_complex' for='input_1_4_1' >Your
+  Address</label>    \n                    <div class='ginput_complex ginput_container
+  has_street has_street2 has_city has_zip has_country ginput_container_address gfield_trigger_change'
+  id='input_1_4' >\n                         <span class='ginput_full address_line_1'
+  id='input_1_4_1_container' >\n                                        <input type='text'
+  name='input_4.1' id='input_1_4_1' value='' tabindex='6'  placeholder='Street Address'/>\n
+  \                                       <label for='input_1_4_1' id='input_1_4_1_label'
+  >Street Address</label>\n                                    </span><span class='ginput_full
+  address_line_2' id='input_1_4_2_container' >\n                                        <input
+  type='text' name='input_4.2' id='input_1_4_2' value='' tabindex='7'  placeholder='Address
+  2'/>\n                                        <label for='input_1_4_2' id='input_1_4_2_label'
+  >Address Line 2</label>\n                                    </span><span class='ginput_left
+  address_city' id='input_1_4_3_container' >\n                                    <input
+  type='text' name='input_4.3' id='input_1_4_3' value='' tabindex='8'  placeholder='City'/>\n
+  \                                   <label for='input_1_4_3' id='input_1_4_3_label'
+  >City</label>\n                                 </span><input type='hidden' class='gform_hidden'
+  name='input_4.4' id='input_1_4_4' value='Virginia'/><span class='ginput_right address_zip'
+  id='input_1_4_5_container' >\n                                    <input type='text'
+  name='input_4.5' id='input_1_4_5' value='' tabindex='9'  placeholder='Zip/Postal
+  Code'/>\n                                    <label for='input_1_4_5' id='input_1_4_5_label'
+  >ZIP Code</label>\n                                </span><input type='hidden' class='gform_hidden'
+  name='input_4.6' id='input_1_4_6' value='United States'/>\n                    <div
+  class='gf_clear gf_clear_complex'></div>\n                </div></li><li id='field_1_10'
+  class='gfield gsection field_sublabel_below field_description_below gfield_visibility_visible'
+  ><h2 class='gsection_title'>How Can We Reach You?</h2><div class='gsection_description'>We
+  would love to chat with you. How can we get in touch with you?</div></li><li id='field_1_11'
+  class='gfield field_sublabel_below field_description_below gfield_visibility_visible'
+  ><label class='gfield_label' for='input_1_11' >Preferred Method of Contact</label><div
+  class='ginput_container ginput_container_select'><select name='input_11' id='input_1_11'
+  onchange='gf_apply_rules(1,[5,12]);' class='medium gfield_select' tabindex='10'
+  \  aria-invalid=\"false\"><option value='Email' >Email</option><option value='Phone'
+  >Phone</option></select></div></li><li id='field_1_2' class='gfield gfield_contains_required
+  field_sublabel_below field_description_below gfield_visibility_visible' ><label
+  class='gfield_label gfield_label_before_complex' for='input_1_2' >Your Email Address<span
+  class='gfield_required'>*</span></label><div class='ginput_complex ginput_container
+  ginput_container_email' id='input_1_2_container'>\n                                <span
+  id='input_1_2_1_container' class='ginput_left'>\n                                    <input
+  class='' type='text' name='input_2' id='input_1_2' value='' tabindex='11'   placeholder='Email
+  Address' aria-required=\"true\" aria-invalid=\"false\"/>\n                                    <label
+  for='input_1_2' >Email Address</label>\n                                </span>\n
+  \                               <span id='input_1_2_2_container' class='ginput_right'>\n
+  \                                   <input class='' type='text' name='input_2_2'
+  id='input_1_2_2' value='' tabindex='12'  placeholder='Confirm Your Email Address'
+  aria-required=\"true\" aria-invalid=\"false\"/>\n                                    <label
+  for='input_1_2_2' >Confirm Email Address</label>\n                                </span>\n
+  \                               <div class='gf_clear gf_clear_complex'></div>\n
+  \                           </div></li><li id='field_1_5' class='gfield gfield_contains_required
+  field_sublabel_below field_description_below gfield_visibility_visible' ><label
+  class='gfield_label' for='input_1_5' >Your Phone<span class='gfield_required'>*</span></label><div
+  class='ginput_container ginput_container_phone'><input name='input_5' id='input_1_5'
+  type='text' value='' class='medium' tabindex='13'  placeholder='Your Phone Numer'
+  aria-required=\"true\" aria-invalid=\"false\" /></div></li><li id='field_1_12' class='gfield
+  gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'
+  ><label class='gfield_label' for='input_1_12' >Best Time to Call You<span class='gfield_required'>*</span></label><div
+  class='ginput_container ginput_container_select'><select name='input_12' id='input_1_12'
+  \ class='medium gfield_select' tabindex='14'  aria-required=\"true\" aria-invalid=\"false\"><option
+  value='' selected='selected' class='gf_placeholder'>Select A Best Time To Call</option><option
+  value='' selected='selected'>Select A Time</option><option value='12:00 am' >12:00
+  am</option><option value='12:30 am' >12:30 am</option><option value='1:00 am' >1:00
+  am</option><option value='1:30 am' >1:30 am</option><option value='2:00 am' >2:00
+  am</option><option value='2:30 am' >2:30 am</option><option value='3:00 am' >3:00
+  am</option><option value='3:30 am' >3:30 am</option><option value='4:00 am' >4:00
+  am</option><option value='4:30 am' >4:30 am</option><option value='5:00 am' >5:00
+  am</option><option value='5:30 am' >5:30 am</option><option value='6:00 am' >6:00
+  am</option><option value='6:30 am' >6:30 am</option><option value='7:00 am' >7:00
+  am</option><option value='7:30 am' >7:30 am</option><option value='8:00 am' >8:00
+  am</option><option value='8:30 am' >8:30 am</option><option value='9:00 am' >9:00
+  am</option><option value='9:30 am' >9:30 am</option><option value='10:00 am' >10:00
+  am</option><option value='10:30 am' >10:30 am</option><option value='11:00 am' >11:00
+  am</option><option value='11:30 am' >11:30 am</option><option value='12:00 pm' >12:00
+  pm</option><option value='12:30 pm' >12:30 pm</option><option value='1:00 pm' >1:00
+  pm</option><option value='1:30 pm' >1:30 pm</option><option value='2:00 pm' >2:00
+  pm</option><option value='2:30 pm' >2:30 pm</option><option value='3:00 pm' >3:00
+  pm</option><option value='3:30 pm' >3:30 pm</option><option value='4:00 pm' >4:00
+  pm</option><option value='4:30 pm' >4:30 pm</option><option value='5:00 pm' >5:00
+  pm</option><option value='5:30 pm' >5:30 pm</option><option value='6:00 pm' >6:00
+  pm</option><option value='6:30 pm' >6:30 pm</option><option value='7:00 pm' >7:00
+  pm</option><option value='7:30 pm' >7:30 pm</option><option value='8:00 pm' >8:00
+  pm</option><option value='8:30 pm' >8:30 pm</option><option value='9:00 pm' >9:00
+  pm</option><option value='9:30 pm' >9:30 pm</option><option value='10:00 pm' >10:00
+  pm</option><option value='10:30 pm' >10:30 pm</option><option value='11:00 pm' >11:00
+  pm</option><option value='11:30 pm' >11:30 pm</option></select></div></li><li id='field_1_8'
+  class='gfield gsection field_sublabel_below field_description_below gfield_visibility_visible'
+  ><h2 class='gsection_title'>What&#039;s on your mind?</h2><div class='gsection_description'>Please
+  let us know what's on your mind. Have a question for us? Ask away.</div></li><li
+  id='field_1_3' class='gfield gfield_contains_required field_sublabel_below field_description_below
+  gfield_visibility_visible' ><label class='gfield_label' for='input_1_3' >Your Comments/Quesitons<span
+  class='gfield_required'>*</span></label><div class='ginput_container ginput_container_textarea'><textarea
+  name='input_3' id='input_1_3' class='textarea medium' tabindex='15'  placeholder='Please
+  share any comments or questions you may have for us.' aria-required=\"true\" aria-invalid=\"false\"
+  \  rows='10' cols='50'></textarea></div></li><li id='field_1_9' class='gfield gsection
+  field_sublabel_below field_description_below gfield_visibility_visible' ><h2 class='gsection_title'>Are
+  You a Spammer? Of Course You&#039;re Not.</h2><div class='gsection_description'>Please
+  complete the \"captcha\" field below to prove that you're not an evil spammer wasting
+  our time. Thanks.</div></li><li id='field_1_6' class='gfield field_sublabel_below
+  field_description_below gfield_visibility_visible' ><label class='gfield_label'
+  for='input_1_6' ></label><div class='gfield_captcha_container'><img class='gfield_captcha'
+  src='' alt='' width='' height='' /><div class='gfield_captcha_input_container simple_captcha_medium'><input
+  type='text' name='input_6' id='input_1_6' tabindex='16'/><input type='hidden' name='input_captcha_prefix_6'
+  value='' /></div></div><div class='gfield_description'>please help us prevent spam
+  by typing the letters into the field above.</div></li>\n                            </ul></div>\n
+  \       <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_1'
+  class='gform_button button' value='Submit' tabindex='17' onclick='if(window[\"gf_submitting_1\"]){return
+  false;}  window[\"gf_submitting_1\"]=true;  ' onkeypress='if( event.keyCode == 13
+  ){ if(window[\"gf_submitting_1\"]){return false;} window[\"gf_submitting_1\"]=true;
+  \ jQuery(\"#gform_1\").trigger(\"submit\",[true]); }' /> \n            <input type='hidden'
+  class='gform_hidden' name='is_submit_1' value='1' />\n            <input type='hidden'
+  class='gform_hidden' name='gform_submit' value='1' />\n            \n            <input
+  type='hidden' class='gform_hidden' name='gform_unique_id' value='' />\n            <input
+  type='hidden' class='gform_hidden' name='state_1' value='WyJbXSIsIjI4ZTYyMGI3NzdjMzJjM2JkN2YyNzZkNzZlMWNhNWIzIl0='
+  />\n            <input type='hidden' class='gform_hidden' name='gform_target_page_number_1'
+  id='gform_target_page_number_1' value='0' />\n            <input type='hidden' class='gform_hidden'
+  name='gform_source_page_number_1' id='gform_source_page_number_1' value='1' />\n
+  \           <input type='hidden' name='gform_field_values' value='' />\n            \n
+  \       </div>\n                        </form>\n                        </div><script
+  type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {\"gf_currency_config\":{\"name\":\"U.S.
+  Dollar\",\"symbol_left\":\"$\",\"symbol_right\":\"\",\"symbol_padding\":\"\",\"thousand_separator\":\",\",\"decimal_separator\":\".\",\"decimals\":2},\"base_url\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\",\"number_formats\":[],\"spinnerUrl\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\\/images\\/spinner.gif\"};jQuery(document).bind('gform_post_render',
+  function(event, formId, currentPage){if(formId == 1) {gf_global[\"number_formats\"][1]
+  = {\"7\":{\"price\":false,\"value\":false},\"1\":{\"price\":false,\"value\":false},\"4\":{\"price\":false,\"value\":false},\"10\":{\"price\":false,\"value\":false},\"11\":{\"price\":false,\"value\":false},\"2\":{\"price\":false,\"value\":false},\"5\":{\"price\":false,\"value\":false},\"12\":{\"price\":false,\"value\":false},\"8\":{\"price\":false,\"value\":false},\"3\":{\"price\":false,\"value\":false},\"9\":{\"price\":false,\"value\":false},\"6\":{\"price\":false,\"value\":false}};if(window['jQuery']){if(!window['gf_form_conditional_logic'])window['gf_form_conditional_logic']
+  = new Array();window['gf_form_conditional_logic'][1] = { logic: { 5: {\"field\":{\"actionType\":\"show\",\"logicType\":\"all\",\"rules\":[{\"fieldId\":\"11\",\"operator\":\"is\",\"value\":\"Phone\"}]},\"nextButton\":null,\"section\":\"\"},12:
+  {\"field\":{\"actionType\":\"show\",\"logicType\":\"all\",\"rules\":[{\"fieldId\":\"11\",\"operator\":\"is\",\"value\":\"Phone\"}]},\"nextButton\":null,\"section\":\"\"}
+  }, dependents: { 5: [\"5\"],12: [\"12\"] }, animation: 0, defaults: {\"1\":{\"1.2\":\"\",\"1.3\":\"\",\"1.4\":\"\",\"1.6\":\"\",\"1.8\":\"\"},\"4\":{\"4.1\":\"\",\"4.2\":\"\",\"4.3\":\"\",\"4.4\":\"Virginia\",\"4.5\":\"\",\"4.6\":\"United
+  States\"},\"2\":{\"2\":\"\",\"2.2\":\"\"},\"12\":\"\"}, fields: {\"7\":[],\"1\":[],\"4\":[],\"10\":[],\"11\":[5,12],\"2\":[],\"5\":[],\"12\":[],\"8\":[],\"3\":[],\"9\":[],\"6\":[]}
+  }; if(!window['gf_number_format'])window['gf_number_format'] = 'decimal_dot';jQuery(document).ready(function(){gf_apply_rules(1,
+  [\"5\",\"12\"], true);jQuery('#gform_wrapper_1').show();jQuery(document).trigger('gform_post_conditional_logic',
+  [1, null, true]);} );} if(typeof Placeholders != 'undefined'){\n                        Placeholders.enable();\n
+  \                   }if(!/(android)/i.test(navigator.userAgent)){jQuery('#input_1_5').mask('(999)
+  999-9999').bind('keypress', function(e){if(e.which == 13){jQuery(this).blur();}
+  } );}} } );jQuery(document).bind('gform_post_conditional_logic', function(event,
+  formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render',
+  [1, 1]) } ); </script>\t\t<script>\n\t\t(function( window, undefined ) {\n\t\t\twindow.addEventListener(
+  'message', function( e ) {\n\t\t\t\tif ( 'size' === e.data.message ) {\n\t\t\t\t\te.source.postMessage({\n\t\t\t\t\t\tmessage:
+  'size',\n\t\t\t\t\t\t// @link https://stackoverflow.com/a/1147768\n\t\t\t\t\t\theight:
+  getBodyHeight(),\n\t\t\t\t\t\tindex: e.data.index,\n\t\t\t\t\t\twidth: document.body.scrollWidth\n\t\t\t\t\t},
+  e.origin );\n\t\t\t\t}\n\t\t\t});\n\n\t\t\tfunction getBodyHeight() {\n\t\t\t\tvar
+  styles = getComputedStyle( document.body );\n\t\t\t\treturn parseInt( styles.height,
+  10 ) + parseInt( styles.marginTop, 10 ) + parseInt( styles.marginBottom );\n\t\t\t}\n\t\t})(
+  this );\n\t\t</script>\n\t\t<script type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/sandbox/static/js/jquery.tipsy.js?ver=4.9.5'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/effect.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-includes/js/jquery/ui/effect-shake.min.js?ver=1.11.4'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/sandbox/static/js/script.js?ver=1.0.9'></script>\n<script
+  type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/placeholders.jquery.min.js?ver=2.2.5.5'></script>\n</body>\n</html>\n"

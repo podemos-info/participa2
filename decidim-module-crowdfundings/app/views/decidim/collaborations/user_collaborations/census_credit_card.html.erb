@@ -1,0 +1,11 @@
+<%= form_tag @census[:action], method: :post, id: 'census-form' do %>
+  <% @census[:fields].each do |key, value| %>
+    <%= hidden_field_tag key, value %>
+  <% end %>
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function () {
+    $('#census-form').submit();
+  });
+<% end %>

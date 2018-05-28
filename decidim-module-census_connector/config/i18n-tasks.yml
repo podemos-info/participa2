@@ -1,0 +1,35 @@
+# i18n-tasks finds and manages missing and unused translations: https://github.com/glebm/i18n-tasks
+
+# The "main" locale.
+base_locale: en
+
+# Read and write translations.
+data:
+  yaml:
+    write:
+      # do not wrap lines at 80 characters
+      line_width: -1
+
+# Find translate calls
+search:
+  paths:
+    - app
+    - lib
+
+  ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
+  strict: false
+
+ignore_unused:
+  - activemodel.attributes.*
+  - decidim.authorization_handlers.admin.census.help
+  - decidim.authorization_handlers.census.*
+  - decidim.verifications.authorizations.first_login.*
+  - decidim.census_connector.verifications.census.extra_explanation*
+
+ignore_missing:
+  - decidim.authorization_handlers.census.fields.*
+  - decidim.scopes.prompt
+  - decidim.devise.*
+  - decidim.verifications.authorizations.new.authorize
+  - decidim.authorization_handlers.census.fields.*
+  - errors.messages.uppercase_only_letters_numbers

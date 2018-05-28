@@ -1,0 +1,21 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# rspec failure tracking
+.rspec-failures
+
+# default test application
+spec/decidim_dummy_app
+
+# default development application
+development_app
+
+# rubocop cached remote config
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-v0-11-0-pre1--rubocop-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-v0-11-0-pre1--rubocop-rails-yml

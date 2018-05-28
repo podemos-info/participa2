@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="row collapse">
+    <div class="row collapse">
+      <div class="columns large-8 large-centered text-center page-title">
+        <h1><%= t(".title") %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns large-9 medium-centered">
+        <div class="card">
+          <div class="card__content">
+            <p>
+              <%= decidim_sanitize t(".directions") %>
+            </p>
+
+            <%= decidim_form_for(@handler, url: current_form_path) do |form| %>
+              <div class="field">
+                <ul class="membership_levels">
+                <% @handler.class.membership_levels.each do |membership_level, value| %>
+                  <li>
+                    <%= form.radio_button :membership_level, value, label: membership_level %>
+                    <p><%= t(".#{value}.description") %></p>
+                  </li>
+                <% end %>
+                </ul>
+              </div>
+
+              <div class="actions">
+                <%= form.submit t("authorize", scope: "decidim.verifications.authorizations.new"), class: "button expanded" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= stylesheet_link_tag "decidim/census_connector/verifications/census" %>

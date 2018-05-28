@@ -1,0 +1,29 @@
+.electoral-district-fields{
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .inline-field{
+    margin-bottom: 0;
+    margin-right: 10px;
+    height: 40px;
+
+    .data-picker,
+    input[type=text],
+    .action-icon *{
+      height: 100%;
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+
+  .inline-field--main{
+    flex: 1 0 400px;
+  }
+
+  .inline-field--action{
+    flex: 0;
+  }
+}

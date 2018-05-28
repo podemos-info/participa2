@@ -1,17 +1,13 @@
-GIT
-  remote: https://github.com/podemos-info/decidim-module-census_connector.git
-  revision: 3558eb7e7be6916b7d979c79b64fc72dbb18e4c9
-  branch: master
+PATH
+  remote: decidim-module-census_connector
   specs:
     decidim-census_connector (0.11.1)
       decidim-core (~> 0.11.a)
       decidim-verifications (~> 0.11.a)
       httparty
 
-GIT
-  remote: https://github.com/podemos-info/decidim-module-crowdfundings.git
-  revision: bfc76256d018149bee4d4aa0444a75d6661ba8e7
-  branch: master
+PATH
+  remote: decidim-module-crowdfundings
   specs:
     decidim-collaborations (0.11.1)
       decidim-admin (~> 0.11.a)
@@ -20,18 +16,14 @@ GIT
       httparty
       iban_bic
 
-GIT
-  remote: https://github.com/podemos-info/decidim-module-gravity_forms.git
-  revision: a1bf4c01139f46702f09ae0314b5013f82ebec12
-  branch: master
+PATH
+  remote: decidim-module-gravity_forms
   specs:
     decidim-gravity_forms (0.11.1)
       decidim-core (~> 0.11.a)
 
-GIT
-  remote: https://github.com/podemos-info/decidim-module-votings.git
-  revision: cd9a21d1ff1f1f4a08e6b37a73cb06457ef8ffde
-  branch: master
+PATH
+  remote: decidim-module-votings
   specs:
     decidim-votings (0.11.1)
       active_model_serializers

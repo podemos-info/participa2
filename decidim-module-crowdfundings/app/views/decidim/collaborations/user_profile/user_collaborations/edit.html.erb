@@ -1,0 +1,31 @@
+<h1><%= translated_attribute(collaboration.title) %></h1>
+<%= decidim_form_for(user_collaboration_form,
+                     url: user_collaboration_path(user_collaboration),
+                     html: { class: 'form edit_user_collaboration' }) do |f| %>
+
+
+  <h2 class=section-heading><%=t '.select_amount' %></h2>
+  <div class="amount-selector">
+    <%= f.amount_selection :amount, collaboration.amounts, collaboration.minimum_custom_amount %>
+  </div>
+
+  <h2 class=section-heading><%=t '.select_frequency' %></h2>
+  <div class="radio-selector">
+    <% recurrent_frequency_options.each do |option| %>
+      <%= f.label :frequency, '', value: option[1] do %>
+        <%= f.radio_button :frequency, option[1], label: false %>
+        <div><%= option[0] %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if f.object.errors.key? :frequency %>
+    <small class="form-error is-visible"><%= f.object.errors[:frequency].join(', ') %></small>
+  <% end %>
+
+  <div class="form-general-submit">
+    <%= f.submit t('.update'), class: 'button secondary support' %>
+  </div>
+<% end %>
+
+<%= javascript_include_tag 'decidim/collaborations/user_collaborations' %>

@@ -1,0 +1,42 @@
+<% provide(:title, translated_attribute(voting.title)) %>
+
+<% add_decidim_meta_tags(
+       title: translated_attribute(voting.title),
+       description: translated_attribute(voting.description),
+       url: voting_url(voting)
+   ) %>
+
+<div class="row column view-header">
+  <div class="float-right"><%= voting_status(voting) %></div>
+  <h2 class="heading2"><%= translated_attribute voting.title %></h2>
+</div>
+
+<div class="row">
+  <div class="columns section mediumlarge-8 large-9">
+    <%= render partial: "voting_period", locals: { voting: voting } %>
+    <%= render partial: "scope", locals: { voting: voting } %>
+    <%= image_tag voting.image.url if voting.image.present? %>
+    <%= sanitize translated_attribute voting.description %>
+  </div>
+  <% unless voting.finished? %>
+    <div class="columns section view-side mediumlarge-4 large-3 ">
+      <div class="card extra">
+        <div class="card__content">
+          <%= t "#{voting.voting_system.downcase}_html", scope: 'decidim.votings.models.voting.voting_system' %>
+        </div>
+        <% if !voting.finished? && voting.has_voted?(current_user) %>
+          <div class="card__content">
+            <%= t 'decidim.votings.messages.already_voted' %>
+          </div>
+      <% end %>
+        <div class="card__content">
+          <% if voting.started? %>
+            <%= action_authorized_button_to :vote, t('.vote'), voting_vote_path(voting.id), class: "card__button button expanded button--sc", method: :get %>
+          <% else %>
+            <%= action_authorized_button_to :vote, t('.simulate_vote'), voting_vote_path(voting.id, key: params[:key]), class: "card__button button expanded button--sc hollow", method: :get %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/decidim-collaborations
+      - "gems:/gems"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  pgsql-data: {}
+  gems: {}

@@ -1,0 +1,43 @@
+@import "decidim";
+
+.verification_information{
+  &:after{
+    clear: both;
+    content: "";
+    display: block;
+  }
+  .ql-video{
+    height: 36vh;
+  }
+  @include breakpoint(medium){
+    .ql-video{
+      float: right;
+      min-width: 350px;
+      width: 50%;
+      margin: 20px;
+    }
+  }
+  & + *{
+    clear: right;
+  }
+}
+.document_uploader{
+  img{
+    cursor: pointer;
+    width: 100%;
+  }
+  .upload{
+    input[type=file], label{
+      display: none;
+    }
+  }
+}
+ul.membership_levels {
+  margin-left: inherit;
+  li {
+    list-style: none;
+    label {
+      font-size: 2rem;
+    }
+  }
+}

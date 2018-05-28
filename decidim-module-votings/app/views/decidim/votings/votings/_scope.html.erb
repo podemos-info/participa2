@@ -1,0 +1,5 @@
+<% if voting.scope.present? %>
+<div class=".reference">
+  <%= translated_attribute(voting.scope&.name) %>
+</div>
+<% end %>

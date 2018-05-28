@@ -1,0 +1,59 @@
+---
+en:
+  activemodel:
+    attributes:
+      gravity_form:
+        description: Description
+        form_number: Form number
+        hidden: Hidden
+        require_login: Requires login
+        slug: Slug
+        title: Title
+  decidim:
+    components:
+      gravity_forms:
+        name: Forms
+        settings:
+          global:
+            domain: Domain
+    gravity_forms:
+      actions:
+        edit: Edit
+        new: New
+        preview: Preview
+        title: Actions
+      admin:
+        gravity_forms:
+          create:
+            invalid: There has been a problem while creating the gravity form.
+            success: Gravity form created successfully.
+          edit:
+            title: Edit gravity form
+            update: Update gravity form
+          form:
+            form_number_help: Form number on Gravity Forms
+            hidden_help: Whether the form will appear in form listings or will only
+              be accessible via URL
+            require_login_help: Whether the form requires authenticated users in order
+              to be filled in
+            slug_help: 'URL slugs are used to generate the URLs that load this form.
+              Only accepts letters, numbers and dashes, and must start with a letter.
+              Example: %{url}'
+          index:
+            title: Gravity Forms
+          new:
+            create: Create Gravity Form
+            title: New Gravity Form
+          update:
+            invalid: There has been a problem while updating the gravity form.
+            success: Gravity form updated successfully.
+        models:
+          gravity_form:
+            name: Gravity Form
+      gravity_forms:
+        gravity_form:
+          fill_in: Fill in
+        index:
+          gravity_forms_count:
+            one: "%{count} form"
+            other: "%{count} forms"
