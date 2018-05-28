@@ -31,10 +31,6 @@ module Decidim
         (start_date.to_datetime..end_date.to_datetime).cover? DateTime.current
       end
 
-      def in_scope?(_user)
-        true
-      end
-
       def started?
         start_date < Time.zone.now
       end

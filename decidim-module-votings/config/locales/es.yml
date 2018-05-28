@@ -46,7 +46,6 @@ es:
         voters: Descargar identificadores de votantes
       messages:
         finished: Ha llegado la fecha límite para votar. La votación está cerrada.
-        invalid_scope: No puedes votar en esta zona.
         already_voted: Ya has votado en esta votación. No obstante, puedes cambiar tu voto mientras la votación continúe abierta
       models:
         voting:

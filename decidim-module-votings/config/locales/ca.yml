@@ -46,7 +46,6 @@ ca:
         voters: descarregar identificadors de votants
       messages:
         finished: Ha arribat la data límit per votar. La votació està tancada.
-        invalid_scope: No pots votar en aquesta zona.
         already_voted: Ja has votat en aquesta votació. No obstant això, pots canviar el teu vot mentre la votació continuï oberta
       models:
         voting:
