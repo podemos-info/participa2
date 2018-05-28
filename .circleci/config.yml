@@ -35,9 +35,5 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" = "master" ]
             then
-              mkdir /tmp/deploy
-              BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy | sed "s/$STAGING_SERVER_MASTER_HOST/***/g" | sed "s/$STAGING_SERVER_MASTER_PORT/***/g" | sed "s/$STAGING_SERVER_SLAVE_HOST/***/g" | sed "s/$STAGING_SERVER_SLAVE_PORT/***/g" > /tmp/deploy/output.log 2> /tmp/deploy/error.log
+              BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy | sed "s/$STAGING_SERVER_MASTER_HOST/***/g" | sed "s/$STAGING_SERVER_MASTER_PORT/***/g" | sed "s/$STAGING_SERVER_SLAVE_HOST/***/g" | sed "s/$STAGING_SERVER_SLAVE_PORT/***/g"
             fi
-
-      - store_artifacts:
-          path: /tmp/deploy
