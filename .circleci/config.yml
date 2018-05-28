@@ -37,7 +37,7 @@ jobs:
 
       - deploy:
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]
+            if [ "${CIRCLE_BRANCH}" = "master" ]
             then
               mkdir /tmp/deploy
               BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy > /tmp/deploy/output.log 2> /tmp/deploy/error.log
