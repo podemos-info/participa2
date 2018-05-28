@@ -17,6 +17,7 @@ set :branch, ENV["BRANCH"] || "master"
 
 def db_tasks_environment
   {
+    disable_database_environment_check: 1,
     rails_env: :production,
     seed: true
   }
