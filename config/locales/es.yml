@@ -1,33 +1,5 @@
+---
 es:
   decidim:
-    admin:
-      managed_users:
-        form:
-          name: Alias
-    authorization_handlers:
-      census:
-        explanation: Inscripción en el censo de Podemos
-      member_authorization_handler:
-        name: Inscrito/a
-      follower_authorization_handler:
-        name: Simpatizante
-      activist_authorization_handler:
-        name: Militante
-      census_authorization_handler:
-        name: Datos personales
-        fields:
-          document_number: Número de documento
-          document_type: Tipo de documento
-          postal_code: Código postal
-          date_of_birth: Fecha de nacimiento
-          scope_id: Lugar de participación
-    authorizations:
-      first_login:
-        actions:
-          member_authorization_handler: Verificarse como inscrito/a
-          follower_authorization_handler: Verificarse como simpatizante
     scopes:
-      global: Mundo
-  census_authorization:
-    form:
-      data_not_needed: Ya has enviado tus datos personales, no es necesario que los envíes de nuevo.
+      global: World
