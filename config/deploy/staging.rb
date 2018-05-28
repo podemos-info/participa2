@@ -22,14 +22,14 @@ def db_tasks_environment
   }
 end
 
-desc "Seed database with random data"
+desc "Reset database"
 namespace :deploy do
   namespace :db do
-    task :seed do
+    task :reset do
       on primary :db do
         within release_path do
           with db_tasks_environment do
-            execute :rake, "db:seed"
+            execute :rake, "db:reset"
           end
         end
       end
@@ -37,4 +37,4 @@ namespace :deploy do
   end
 end
 
-after "deploy:finished", "deploy:db:seed"
+after "deploy:finished", "deploy:db:reset"
