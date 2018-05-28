@@ -1,4 +1,6 @@
-#!/bin/bash -eo pipefail
+#!/usr/bin/env bash
+
+set -eo pipefail
 
 if [ "${CIRCLE_BRANCH}" = "master" ]
 then
