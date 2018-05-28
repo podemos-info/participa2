@@ -26,17 +26,11 @@ module Decidim
 
       # PUBLIC Human readable frequency value
       def frequency_label(frequency)
-        I18n.t(
-          frequency.to_sym,
-          scope: "decidim.collaborations.labels.frequencies"
-        )
+        I18n.t("labels.frequencies.#{frequency}", scope: "decidim.collaborations")
       end
 
       def state_label(user_collaboration_state)
-        I18n.t(
-          user_collaboration_state.to_sym,
-          scope: "decidim.collaborations.labels.user_collaboration.states"
-        )
+        I18n.t("labels.user_collaboration.states.#{user_collaboration_state}", scope: "decidim.collaborations")
       end
 
       # PUBLIC returns a list of payment method options that can
@@ -50,10 +44,7 @@ module Decidim
 
       # PUBLIC Human readable payment method type value
       def payment_method_label(type)
-        I18n.t(
-          type.to_sym,
-          scope: "decidim.collaborations.labels.payment_method_types"
-        )
+        I18n.t("labels.payment_method_types.#{type}", scope: "decidim.collaborations")
       end
 
       private
