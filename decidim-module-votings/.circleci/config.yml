@@ -31,19 +31,6 @@ jobs:
           paths:
             - /usr/local/bundle
 
-      - restore_cache:
-          keys:
-            - yarn-dependencies-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: Install yarn dependencies
-          command: yarn install
-
-      - save_cache:
-          key: yarn-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -59,10 +46,6 @@ jobs:
       - run:
           name: Run rubocop
           command: bundle exec rubocop
-
-      - run:
-          name: Run yarn lints
-          command: yarn lint
 
       - store_artifacts:
           path: /app/spec/decidim_dummy_app/tmp/screenshots

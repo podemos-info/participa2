@@ -23,6 +23,19 @@ jobs:
           paths:
             - /usr/local/bundle
 
+      - restore_cache:
+          keys:
+            - yarn-dependencies-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install yarn dependencies
+          command: yarn install
+
+      - save_cache:
+          key: yarn-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
       - run:
           name: Run tests
           command: bundle exec rspec
@@ -30,6 +43,10 @@ jobs:
       - run:
           name: Run rubocop
           command: bundle exec rubocop
+
+      - run:
+          name: Run yarn lints
+          command: yarn lint
 
       - add_ssh_keys:
           fingerprints:

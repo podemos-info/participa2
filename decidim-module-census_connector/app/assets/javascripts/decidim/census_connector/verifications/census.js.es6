@@ -6,7 +6,7 @@ $(() => {
     if ($documentType.length > 0) {
       const $documentScope = $("#document_scope_selector");
       const toggleDocumentScope = () => {
-        if ($documentType.val()=="passport") {
+        if ($documentType.val() === "passport") {
           $documentScope.show();
         } else {
           $documentScope.hide();
@@ -21,7 +21,7 @@ $(() => {
       const $scope = $("#scope_selector");
       const localScopeRanges = $addressScope.parent().data("localScopeRanges");
       const toggleScope = (addressScopeId) => {
-        if (addressScopeId == null || localScopeRanges.some(range => range[0] <= addressScopeId && addressScopeId <= range[1])) {
+        if (addressScopeId === null || localScopeRanges.some((range) => range[0] <= addressScopeId && addressScopeId <= range[1])) {
           $scope.hide();
         } else {
           $scope.show();
