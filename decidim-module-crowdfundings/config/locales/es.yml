@@ -1,110 +1,80 @@
+---
 es:
   activemodel:
+    attributes:
+      collaboration:
+        active_until: Activa hasta
+        amounts: Importes
+        default_amount: Monto por defecto
+        description: Descripción
+        minimum_custom_amount: Mínimo monto válido
+        target_amount: Monto objetivo
+        terms_and_conditions: Términos y condiciones
+        title: Título
+        total_collected: Total recaudado
+      user_collaboration:
+        accept_terms_and_conditions: Acepto los términos y condiciones
+        amount: Importe
+        collaboration: Campaña de colaboración
+        frequency: Frecuencia
+        iban: IBAN
+        over_18: Soy mayor de 18 años
+        payment_method_id: Forma de pago
+        payment_method_type: Forma de pago
+        state: Estado
+        user: Usuario
     errors:
       models:
         collaboration:
           attributes:
-            amounts:
-              invalid_format: Formáto inválido.
             active_until:
               outside_process_range: La fecha esta fuera del intervalo de tiempo del proceso participativo.
+            amounts:
+              invalid_format: Formáto inválido.
         user_collaboration:
           attributes:
+            amount:
+              annual_limit_exceeded: El importe seleccionado supera el máximo anual permitido.
+              minimum_valid_amount: El importe mínimo válido es %{amount}
             frequency:
               blank: Debes elegir una frecuencia per tu aportación.
+            iban:
+              invalid_country_check: tiene un código de país inválido.
+              invalid_format: tiene un formato inválido.
             payment_method_type:
               blank: Debes elegir una forma de pago.
-            amount:
-              minimum_valid_amount: 'El importe mínimo válido es %{amount}'
-              annual_limit_exceeded: El importe seleccionado supera el máximo anual permitido.
-            iban:
-              invalid_format: tiene un formato inválido.
-              invalid_country_check: tiene un código de país inválido.
-    attributes:
-      collaboration:
-        title: Título
-        description: Descripción
-        terms_and_conditions: Términos y condiciones
-        default_amount: Monto por defecto
-        minimum_custom_amount: Mínimo monto válido
-        target_amount: Monto objetivo
-        total_collected: Total recaudado
-        active_until: Activa hasta
-        amounts: Importes
-      user_collaboration:
-        collaboration: Campaña de colaboración
-        user: Usuario
-        state: Estado
-        amount: Importe
-        frequency: Frecuencia
-        payment_method_type: Forma de pago
-        iban: IBAN
-        payment_method_id: Forma de pago
-        over_18: Soy mayor de 18 años
-        accept_terms_and_conditions: Acepto los términos y condiciones
   decidim:
-    menu:
-      collaborations: Colaboraciones
-    form_builder:
-      support_tag:
-        other: Otros
-    components:
-      collaborations:
-        name: Aportaciones
-        actions:
-          support: Colaborar
-        settings:
-          global:
-            maximum_annual_collaboration: Monto máximo anual por persona
-          step:
-            collaborations_allowed: Aportaciones permitidas
     collaborations:
-      labels:
-        not_available: n/d
-        frequencies:
-          punctual: Puntual
-          monthly: Mensual
-          quarterly: Trimestral
-          annual: Anual
-        support_status:
-          collaboration_not_allowed: La colaboración no está permitida en estos momentos.
-          maximum_annual_exceeded: No puedes realizar mas colaboraciones. Has alcanzado el máximo anual permitido.
-          support_period_finished: El periodo para realizar colaboraciones ha concluido.
-        payment_method_types:
-          existing_payment_method: Método de pago existente
-          direct_debit: Débito directo
-          credit_card_external: Tarjeta de crédito
-        user_collaboration:
-          states:
-            pending: Pendiente
-            accepted: Aceptada
-            rejected: Rechazada
-            paused: Suspendida
       actions:
-        new: Nueva
-        title: Acciones
-        preview: Previsualizar
-        edit: Editar
+        confirm_destroy: "¿Estás seguro?"
         destroy: Borrar
-        confirm_destroy: ¿Estás seguro?
+        edit: Editar
+        new: Nueva
         pause: Suspender
+        preview: Previsualizar
         resume: Reanudar
-      models:
-        collaboration:
-          fields:
-            title: Título
-            target_amount: Monto objetivo
-            total_collected: Total recaudado
-            active_until: Activa hasta
-        user_collaboration:
-          fields:
-            collaboration: Campaña de colaboración
-            user: Usuario
-            state: Estado
-            amount: Importe
-            frequency: Frecuencia
-            last_order_request_date: Última petición
+        title: Acciones
       admin:
+        collaborations:
+          create:
+            invalid: No se pudo crear la campaña de colaboración. Comprueba los datos y corrige los errores.
+            success: La campaña de colaboración ha sido correctamente creada.
+          destroy:
+            success: La campaña de colaboración ha sido correctamente borrada.
+          edit:
+            title: Editar campaña de colaboración
+            update: Actualizar
+          form:
+            active_until_help: Esta fecha debe estar dentro de las fases del proceso participativo. En caso de que una fase no acepte donaciones se ignorará y por tanto no será aplicada.
+            amounts_help: Introduce las cantidades válidas separadas por comas.
+          index:
+            title: Aportaciones
+          new:
+            create: Crear
+            title: Nueva campaña de colaboración
+          update:
+            invalid: No se pudo actualizar la campaña de colaboración. Comprueba los datos y corrige los errores.
+            success: La campaña de colaboración ha sido correctamente actualizada.
         models:
           collaboration:
             name:
@@ -114,92 +84,123 @@ es:
             name:
               one: Aportación de usuario
               other: Aportaciones de usuario
-        collaborations:
-          index:
-            title: Aportaciones
-          new:
-            title: Nueva campaña de colaboración
-            create: Crear
-          edit:
-            title: Editar campaña de colaboración
-            update: Actualizar
-          create:
-            invalid: No se pudo crear la campaña de colaboración. Comprueba los datos y corrige los errores.
-            success: La campaña de colaboración ha sido correctamente creada.
-          update:
-            invalid: No se pudo actualizar la campaña de colaboración. Comprueba los datos y corrige los errores.
-            success: La campaña de colaboración ha sido correctamente actualizada.
-          destroy:
-            success: La campaña de colaboración ha sido correctamente borrada.
-          form:
-            amounts_help: Introduce las cantidades válidas separadas por comas.
-            active_until_help: Esta fecha debe estar dentro de las fases del proceso participativo. En caso de que una fase no acepte donaciones se ignorará y por tanto no será aplicada.
       collaborations:
+        collaboration:
+          support: Apoyar
         count:
           collaborations_count:
             one: 1 campaña de colaboración
             other: "%{count} campañas de colaboración"
+        filters:
+          search: Buscar
         filters_small_view:
           close_modal: Cerrar ventana
           filter: Filtrar
           filter_by: Filtrar por
           unfold: Desplegar
-        filters:
-          search: Buscar
-        collaboration:
-          support: Apoyar
-        totals:
-          overall_totals: Acumulado
-          user_totals: Usuario
-          target_amount: "Objetivo: %{amount}"
-          overall_percentage: Porcentaje total
         show:
-          current_accepted_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}.
-          current_paused_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}, pero tu aportación está detenida.
-          current_pending_recurrent_support: Iniciaste una colaboración de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
-          current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la colaboración fue rechazada.
           change_accepted_collaboration: cambiar aportación
           change_paused_collaboration: reactivar aportación
           change_pending_collaboration: cambiar aportación
           change_rejected_collaboration: arreglar solicitud
+          current_accepted_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}.
+          current_paused_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}, pero tu aportación está detenida.
+          current_pending_recurrent_support: Iniciaste una colaboración de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
+          current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la colaboración fue rechazada.
           support: Apoyar
         support_form:
           select_amount: Seleccciona la cantidad
           select_frequency: Seleccciona la frecuencia
           select_payment_method: Selecciona la forma de pago
           support: Apoyar
+        totals:
+          overall_percentage: Porcentaje total
+          overall_totals: Acumulado
+          target_amount: 'Objetivo: %{amount}'
+          user_totals: Usuario
+      labels:
+        frequencies:
+          annual: Anual
+          monthly: Mensual
+          punctual: Puntual
+          quarterly: Trimestral
+        not_available: n/d
+        payment_method_types:
+          credit_card_external: Tarjeta de crédito
+          direct_debit: Débito directo
+          existing_payment_method: Método de pago existente
+        support_status:
+          collaboration_not_allowed: La colaboración no está permitida en estos momentos.
+          maximum_annual_exceeded: No puedes realizar mas colaboraciones. Has alcanzado el máximo anual permitido.
+          support_period_finished: El periodo para realizar colaboraciones ha concluido.
+        user_collaboration:
+          states:
+            accepted: Aceptada
+            paused: Suspendida
+            pending: Pendiente
+            rejected: Rechazada
+      models:
+        collaboration:
+          fields:
+            active_until: Activa hasta
+            target_amount: Monto objetivo
+            title: Título
+            total_collected: Total recaudado
+        user_collaboration:
+          fields:
+            amount: Importe
+            collaboration: Campaña de colaboración
+            frequency: Frecuencia
+            last_order_request_date: Última petición
+            state: Estado
+            user: Usuario
       pages:
         home:
           highlighted_collaborations:
-            title: Colaboraciones destacadas
             support: Apoyar
+            title: Colaboraciones destacadas
       user_collaborations:
+        confirm_form:
+          are_you_sure: "¿Estás seguro?"
+          collaboration_resume: Resumen de la colaboración
+          confirm: Confirmar
+          fill_required_data: Completa los siguientes campos
         create:
           invalid: Falló la operación.
           success: Has apoyado la campaña de colaboración.
         validate:
           invalid: La operación ha sido denegada.
           success: Has apoyado la campaña de colaboración.
-        confirm_form:
-          collaboration_resume: Resumen de la colaboración
-          confirm: Confirmar
-          are_you_sure: ¿Estás seguro?
-          fill_required_data: Completa los siguientes campos
       user_profile:
         user_collaborations:
-          index:
-            title: Tus colaboraciones periódicas
-            no_records_found: No se han encontrado colaboraciones.
-          pause:
-            success: Tu colaboración ha sido suspendida satisfactoriamente.
-            fail: No se ha podido suspender tu colaboración.
-          resume:
-            success: Tu colaboración ha sido reanudada satisfactoriamente.
-            fail: No se ha podido reanudar tu colaboración.
           edit:
             select_amount: Seleccciona la cantidad
             select_frequency: Seleccciona la frecuencia
             update: Actualiza
+          index:
+            no_records_found: No se han encontrado colaboraciones.
+            title: Tus colaboraciones periódicas
+          pause:
+            fail: No se ha podido suspender tu colaboración.
+            success: Tu colaboración ha sido suspendida satisfactoriamente.
+          resume:
+            fail: No se ha podido reanudar tu colaboración.
+            success: Tu colaboración ha sido reanudada satisfactoriamente.
           update:
-            success: Tu colaboración ha sido actualizada satisfactoriamente.
             fail: No se ha podido actualizar tu colaboración.
+            success: Tu colaboración ha sido actualizada satisfactoriamente.
+    components:
+      collaborations:
+        actions:
+          support: Colaborar
+        name: Aportaciones
+        settings:
+          global:
+            maximum_annual_collaboration: Monto máximo anual por persona
+          step:
+            collaborations_allowed: Aportaciones permitidas
+    form_builder:
+      support_tag:
+        other: Otros
+    menu:
+      collaborations: Colaboraciones

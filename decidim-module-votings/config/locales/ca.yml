@@ -1,63 +1,50 @@
+---
 ca:
   activemodel:
+    attributes:
+      voting:
+        census_date_limit: Data límit d'incorporació al cens
+        decidim_scope: Àmbit
+        decidim_scope_id: Ámbit
+        description: Descripció
+        end_date: Data de fi
+        image: Imatge
+        importance: Importància
+        shared_key: Clau compartida
+        start_date: Data d'inici
+        status: Estat
+        statuses:
+          active: Activa
+          closed: Tancada
+          upcoming: Proper
+        system_configuration: Configuració
+        title: Títol
+        voting_domain_name: Nom de domini
+        voting_identifier: Identificador
+        voting_system: Sistema de votació
     errors:
       voting:
         voting_range:
           outside_process_range: La fecha esta fuera del intervalo de tiempo del proceso participativo.
-    attributes:
-      voting:
-        title: Títol
-        description: Descripció
-        start_date: Data d'inici
-        end_date: Data de fi
-        image: Imatge
-        decidim_scope: Àmbit
-        decidim_scope_id: Ámbit
-        status: Estat
-        statuses:
-          upcoming: Proper
-          active: Activa
-          closed: Tancada
-        census_date_limit: Data límit d'incorporació al cens
-        importance: Importància
-        voting_system: Sistema de votació
-        voting_domain_name: Nom de domini
-        voting_identifier: Identificador
-        shared_key: Clau compartida
-        system_configuration: Configuració
   decidim:
     components:
       votings:
+        actions:
+          vote: Votar
         name: Votaciones
         settings:
           global:
             remote_authorization: Autorització remota?
             remote_authorization_url: URL
-        actions:
-          vote: Votar
     votings:
       actions:
-        new: Nueva
-        title: Accions
-        preview: Previsualitzar
-        edit: Editar
+        confirm_destroy: "¿Estàs segur?"
         destroy: Esborrar
-        confirm_destroy: ¿Estàs segur?
+        edit: Editar
+        new: Nueva
+        preview: Previsualitzar
+        title: Accions
         voters: descarregar identificadors de votants
-      messages:
-        finished: Ha arribat la data límit per votar. La votació està tancada.
-        already_voted: Ja has votat en aquesta votació. No obstant això, pots canviar el teu vot mentre la votació continuï oberta
-      models:
-        voting:
-          fields:
-            title: Títol
-            start_date: Inici
-            end_date: Fi
-            pending_votes: Vots emesos
-            confirmed_votes: Vots confirmats
-            status: Estat
-          voting_system:
-            nvotes_html: 'La votació utilitza el sistema segur de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.'
       admin:
         models:
           voting:
@@ -65,36 +52,50 @@ ca:
               one: Votación
               other: Votaciones
         votings:
-          form:
-            start_date_help: Fecha de inicio
-            end_date_help: Fecha de fin
-            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
-          index:
-            title: Votaciones
-          new:
-            title: Nueva votación
-            create: Crear
-          edit:
-            title: Editar votación
-            simulation_address: Enllaç per simulació
-            update: Actualizar
           create:
             invalid: No se pudo crear la votación. Comprueba los datos y corrige los errores.
             success: La votación ha sido correctamente creada.
+          destroy:
+            success: La votación ha sido correctamente borrada.
+          edit:
+            simulation_address: Enllaç per simulació
+            title: Editar votación
+            update: Actualizar
+          form:
+            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
+            end_date_help: Fecha de fin
+            start_date_help: Fecha de inicio
+          index:
+            title: Votaciones
+          new:
+            create: Crear
+            title: Nueva votación
           update:
             invalid: No se pudo actualizar la votación. Comprueba los datos y corrige los errores.
             success: La votación ha sido correctamente actualizada.
-          destroy:
-            success: La votación ha sido correctamente borrada.
-      votings:
-        index:
-          title: Votacions
-          no_votings_warning: En aquest moment no hi ha cap votació activa
-        show:
-          vote: Vota
-          simulate_vote: Voto simulat
-        votings:
-          no_votings: No hi ha cap votació
+      messages:
+        already_voted: Ja has votat en aquesta votació. No obstant això, pots canviar el teu vot mentre la votació continuï oberta
+        finished: Ha arribat la data límit per votar. La votació està tancada.
+      models:
+        voting:
+          fields:
+            confirmed_votes: Vots confirmats
+            end_date: Fi
+            pending_votes: Vots emesos
+            start_date: Inici
+            status: Estat
+            title: Títol
+          voting_system:
+            nvotes_html: La votació utilitza el sistema segur de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
       votes:
         nvotes:
           loading_cabin: Carregant cabina de votació...
+      votings:
+        index:
+          no_votings_warning: En aquest moment no hi ha cap votació activa
+          title: Votacions
+        show:
+          simulate_vote: Voto simulat
+          vote: Vota
+        votings:
+          no_votings: No hi ha cap votació

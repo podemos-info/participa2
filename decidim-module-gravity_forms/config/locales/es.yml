@@ -32,13 +32,9 @@ es:
             update: Actualizar Gravity Form
           form:
             form_number_help: Número de formulario en Gravity Forms
-            hidden_help: Especifica si el formulario será incluído en listados o sólo
-              será accesible directamente por URL
-            require_login_help: Especificia si el formulario requiere que el usuario
-              haya hecho login para ser rellenado
-            slug_help: 'El "slug" se utiliza para generarar las URLs que muestran
-              este formulario. Sólo se aceptan letras, números o guiones y debe empezar
-              con una letra. Ejemplo: %{url}'
+            hidden_help: Especifica si el formulario será incluído en listados o sólo será accesible directamente por URL
+            require_login_help: Especificia si el formulario requiere que el usuario haya hecho login para ser rellenado
+            slug_help: 'El "slug" se utiliza para generarar las URLs que muestran este formulario. Sólo se aceptan letras, números o guiones y debe empezar con una letra. Ejemplo: %{url}'
           index:
             title: Formularios de Gravity Forms
           new:

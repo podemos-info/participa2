@@ -1,108 +1,80 @@
+---
 ca:
   activemodel:
+    attributes:
+      collaboration:
+        active_until: Activa fins
+        amounts: Imports
+        default_amount: Import per defecte
+        description: Descripció
+        minimum_custom_amount: Mínim import vàlid
+        target_amount: Import objectiu
+        terms_and_conditions: Termes i condicions
+        title: Títol
+        total_collected: Total recaudat
+      user_collaboration:
+        accept_terms_and_conditions: Accepte els termes i condicions
+        amount: Quantitat
+        collaboration: Campanya de col·laboració
+        frequency: Freqüència
+        iban: IBAN
+        over_18: Soc major de 18 anys
+        payment_method_id: Forma de pagament
+        payment_method_type: Forma de pagament
+        state: Estat
+        user: Usuari
     errors:
       models:
         collaboration:
           attributes:
-            amounts:
-              invalid_format: Format invàlid.
             active_until:
               outside_process_range: La data està fora del rango del proceso participativo.
+            amounts:
+              invalid_format: Format invàlid.
         user_collaboration:
           attributes:
+            amount:
+              annual_limit_exceeded: L'import sel·leccionat supera el màxim anual permes.
+              minimum_valid_amount: L'import mínim vàlid es %{amount}
             frequency:
               blank: Deus sel·leccionar una freqüència per la teua aportació.
+            iban:
+              invalid_country_check: codi de país invàlid.
+              invalid_format: format invàlid.
             payment_method_type:
               blank: Deus sel·leccionar una forma de pagament.
-            amount:
-              minimum_valid_amount: "L'import mínim vàlid es %{amount}"
-              annual_limit_exceeded: L'import sel·leccionat supera el màxim anual permes.
-            iban:
-              invalid_format: format invàlid.
-              invalid_country_check: codi de país invàlid.
-    attributes:
-      collaboration:
-        title: Títol
-        description: Descripció
-        terms_and_conditions: Termes i condicions
-        default_amount: Import per defecte
-        minimum_custom_amount: Mínim import vàlid
-        target_amount: Import objectiu
-        total_collected: Total recaudat
-        active_until: Activa fins
-        amounts: Imports
-      user_collaboration:
-        collaboration: Campanya de col·laboració
-        user: Usuari
-        state: Estat
-        amount: Quantitat
-        frequency: Freqüència
-        payment_method_type: Forma de pagament
-        iban: IBAN
-        payment_method_id: Forma de pagament
-        over_18: Soc major de 18 anys
-        accept_terms_and_conditions: Accepte els termes i condicions
   decidim:
-    menu:
-      collaborations: Col·laboracions
-    form_builder:
-      support_tag:
-        other: Altres
-    components:
-      collaborations:
-        name: Aportacions
-        settings:
-          global:
-            maximum_annual_collaboration: Import màxim anual per persona
-          step:
-            collaborations_allowed: Aportacions permeses
     collaborations:
-      labels:
-        not_available: n/d
-        frequencies:
-          punctual: Puntual
-          monthly: Mensual
-          quarterly: Trimestral
-          annual: Anual
-        support_status:
-          collaboration_not_allowed: La col·laboració no está permesa en estos moments.
-          maximum_annual_exceeded: No pots realitzar mes col·laboracions. Has arribat al màxim anual permés.
-          support_period_finished: El periode per a realitzar colaboracions ha finalitzat.
-        payment_method_types:
-          existing_payment_method: Forma de pagament existent
-          direct_debit: Dèbit directe
-          credit_card_external: Targeta de crèdit
-        user_collaboration:
-          states:
-            pending: Pendent
-            accepted: Acceptadd
-            rejected: Rebutjada
-            paused: Suspesa
       actions:
-        new: Nou
-        title: Acciones
-        preview: Previsualitzar
-        edit: Editar
+        confirm_destroy: "¿Estas segur?"
         destroy: Esborrar
-        confirm_destroy: ¿Estas segur?
+        edit: Editar
+        new: Nou
         pause: Suspendre
+        preview: Previsualitzar
         resume: Rependre
-      models:
-        collaboration:
-          fields:
-            title: Títol
-            target_amount: Quantitat objectiu
-            total_collected: Total recaudat
-            active_until: Activa fins
-          user_collaboration:
-            fields:
-              collaboration: Campanya de col·laboració
-              user: Usuari
-              state: Estat
-              amount: Quantitat
-              frequency: Freqüència
-              last_order_request_date: Última petició
+        title: Acciones
       admin:
+        collaborations:
+          create:
+            invalid: No s'hi ha pogut crear la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
+            success: La campanya de col·laboració s'ha creat correctament.
+          destroy:
+            success: La campanya de col·laboració s'ha esborrat correctament.
+          edit:
+            title: Editar campanya de col·laboració
+            update: Actualitzar
+          form:
+            active_until_help: Aquesta data ha d'estar dins de les fases del procés participatiu. En cas que una fase no accepti donacions, s'ignorarà i, per tant, no s'aplicarà.
+            amounts_help: Introdueix les quantiats vàlides separades per comes.
+          index:
+            title: Aportacions
+          new:
+            create: Crea
+            title: Nova campanya de col·laboració
+          update:
+            invalid: No s'hi ha pogut actualitzar la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
+            success: La campanya de col·laboració s'ha actualitzar correctament.
         models:
           collaboration:
             name:
@@ -112,45 +84,20 @@ ca:
             name:
               one: Aportació d'usuari
               other: Aportacions d'usuaris
-        collaborations:
-          index:
-            title: Aportacions
-          new:
-            title: Nova campanya de col·laboració
-            create: Crea
-          edit:
-            title: Editar campanya de col·laboració
-            update: Actualitzar
-          create:
-            invalid: No s'hi ha pogut crear la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
-            success: La campanya de col·laboració s'ha creat correctament.
-          update:
-            invalid: No s'hi ha pogut actualitzar la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
-            success: La campanya de col·laboració s'ha actualitzar correctament.
-          destroy:
-            success: La campanya de col·laboració s'ha esborrat correctament.
-          form:
-            amounts_help: Introdueix les quantiats vàlides separades per comes.
-            active_until_help: Aquesta data ha d'estar dins de les fases del procés participatiu. En cas que una fase no accepti donacions, s'ignorarà i, per tant, no s'aplicarà.
       collaborations:
+        collaboration:
+          support: Donar suport
         count:
           collaborations_count:
             one: 1 campanya de col·laboració
             other: "%{count} campanyes de col·laboració"
+        filters:
+          search: Cerca
         filters_small_view:
           close_modal: Tancar finestra
           filter: Filtra
           filter_by: Filtra per
           unfold: Desplegar
-        filters:
-          search: Cerca
-        collaboration:
-          support: Donar suport
-        totals:
-          overall_totals: Acumulat
-          user_totals: Usuari
-          target_amount: "Objetiu: %{amount}"
-          overall_percentage: Percentatge total
         show:
           support: Donar suport
         support_form:
@@ -158,33 +105,87 @@ ca:
           select_frequency: Sel·lecciona la frequència
           select_payment_method: Sel·lecciona la forma de pagament
           support: Donar suport
+        totals:
+          overall_percentage: Percentatge total
+          overall_totals: Acumulat
+          target_amount: 'Objetiu: %{amount}'
+          user_totals: Usuari
+      labels:
+        frequencies:
+          annual: Anual
+          monthly: Mensual
+          punctual: Puntual
+          quarterly: Trimestral
+        not_available: n/d
+        payment_method_types:
+          credit_card_external: Targeta de crèdit
+          direct_debit: Dèbit directe
+          existing_payment_method: Forma de pagament existent
+        support_status:
+          collaboration_not_allowed: La col·laboració no está permesa en estos moments.
+          maximum_annual_exceeded: No pots realitzar mes col·laboracions. Has arribat al màxim anual permés.
+          support_period_finished: El periode per a realitzar colaboracions ha finalitzat.
+        user_collaboration:
+          states:
+            accepted: Acceptadd
+            paused: Suspesa
+            pending: Pendent
+            rejected: Rebutjada
+      models:
+        collaboration:
+          fields:
+            active_until: Activa fins
+            target_amount: Quantitat objectiu
+            title: Títol
+            total_collected: Total recaudat
+          user_collaboration:
+            fields:
+              amount: Quantitat
+              collaboration: Campanya de col·laboració
+              frequency: Freqüència
+              last_order_request_date: Última petició
+              state: Estat
+              user: Usuari
       user_collaborations:
+        confirm_form:
+          are_you_sure: "¿Estas segur?"
+          collaboration_resume: Resum de la col·laboració
+          confirm: Confirmar
+          fill_required_data: Completa els següents camps
         create:
           invalid: L'operació ha fallat.
           success: Has donat suport a la campanya de col·laboració.
         validate:
           invalid: L'operació ha estat denegada.
           success: Has donat suport a la campanya de col·laboració.
-        confirm_form:
-          collaboration_resume: Resum de la col·laboració
-          confirm: Confirmar
-          are_you_sure: ¿Estas segur?
-          fill_required_data: Completa els següents camps
       user_profile:
         user_collaborations:
-          index:
-            title: Les teves col·laboracions periòdiques
-            no_records_found: No s'hi han trobat col·laboracions
-          pause:
-            success: La teva col·laboració s'hi ha suspes satisfactoriament.
-            fail: No s'hi ha pogut suspendre la col·laboració.
-          resume:
-            success: La teva col·laboració s'hi ha repres satisfactoriament.
-            fail: No s'hi ha pogut rependre la col·laboració.
           edit:
             select_amount: Sel·lecciona la quantitat
             select_frequency: Sel·lecciona la frequència
             update: Actualitza
+          index:
+            no_records_found: No s'hi han trobat col·laboracions
+            title: Les teves col·laboracions periòdiques
+          pause:
+            fail: No s'hi ha pogut suspendre la col·laboració.
+            success: La teva col·laboració s'hi ha suspes satisfactoriament.
+          resume:
+            fail: No s'hi ha pogut rependre la col·laboració.
+            success: La teva col·laboració s'hi ha repres satisfactoriament.
           update:
-            success: La teva col·laboració s'ha actualitzat satisfactoriament.
             fail: No s'ha pogut actualitzar la col·laboració.
+            success: La teva col·laboració s'ha actualitzat satisfactoriament.
+    components:
+      collaborations:
+        name: Aportacions
+        settings:
+          global:
+            maximum_annual_collaboration: Import màxim anual per persona
+          step:
+            collaborations_allowed: Aportacions permeses
+    form_builder:
+      support_tag:
+        other: Altres
+    menu:
+      collaborations: Col·laboracions
