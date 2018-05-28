@@ -7,10 +7,6 @@ jobs:
     docker:
       - image: ruby:2.5.1
 
-    # Until bundler 1.16.2 is released. See https://github.com/bundler/bundler/pull/6279
-    environment:
-      LANG: C.UTF-8
-
     steps:
       - checkout
 
@@ -36,12 +32,4 @@ jobs:
             - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
 
       - deploy:
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]
-            then
-              mkdir /tmp/deploy
-              BRANCH=$CIRCLE_BRANCH bundle exec cap staging deploy > /tmp/deploy/output.log 2> /tmp/deploy/error.log
-            fi
-
-      - store_artifacts:
-          path: /tmp/deploy
+          command: bin/deploy-staging.sh
