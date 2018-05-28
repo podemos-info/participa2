@@ -31,10 +31,6 @@ module Decidim
         (start_date.to_datetime..end_date.to_datetime).cover? DateTime.current
       end
 
-      def in_census_limit?(user)
-        user.created_at < census_date_limit
-      end
-
       def in_scope?(_user)
         true
       end

@@ -45,7 +45,6 @@ ca:
         confirm_destroy: ¿Estàs segur?
         voters: descarregar identificadors de votants
       messages:
-        census_limit: El teu usuari no té l'antiguitat requerida per participar en aquesta votació.
         finished: Ha arribat la data límit per votar. La votació està tancada.
         invalid_scope: No pots votar en aquesta zona.
         already_voted: Ja has votat en aquesta votació. No obstant això, pots canviar el teu vot mentre la votació continuï oberta

@@ -47,7 +47,6 @@ en:
         confirm_destroy: ¿Are you sure?
         voters: Download voters identifiers
       messages:
-        census_limit: Tu usuario no tiene la antigüedad requerida para participar en esta votación.
         finished: Ha llegado la fecha límite para votar. La votación está cerrada.
         invalid_scope: No puedes votar en esta zona.
         already_voted: You have already voted on this voting. However, you can change your vote while the voting is still open
