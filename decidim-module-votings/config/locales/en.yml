@@ -69,7 +69,6 @@ en:
         votings:
           electoral_district_fields:
             remove: Remove
-            title: Electoral district information
             a_scope: a scope
           form:
             add_electoral_district: Add electoral district information

@@ -67,7 +67,6 @@ es:
         votings:
           electoral_district_fields:
             remove: Eliminar
-            title: Información del distrito electoral
             a_scope: un ámbito
           form:
             add_electoral_district: Añadir información de distrito electoral
