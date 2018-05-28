@@ -58,7 +58,6 @@ ca:
             collaborations_allowed: Aportacions permeses
     collaborations:
       labels:
-        other: Altres
         not_available: n/d
         frequencies:
           punctual: Puntual

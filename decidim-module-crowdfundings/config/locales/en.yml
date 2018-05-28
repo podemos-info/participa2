@@ -60,7 +60,6 @@ en:
             collaborations_allowed: Collaborations allowed
     collaborations:
       labels:
-        other: Other
         not_available: n/a
         frequencies:
           punctual: Punctual
@@ -163,7 +162,6 @@ en:
           change_paused_collaboration: resume collaboration
           change_pending_collaboration: change collaboration
           change_rejected_collaboration: fix collaboration
-          here: here
           support: Support
         support_form:
           select_amount: Select the amount

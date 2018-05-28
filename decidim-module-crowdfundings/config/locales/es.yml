@@ -60,7 +60,6 @@ es:
             collaborations_allowed: Aportaciones permitidas
     collaborations:
       labels:
-        other: Otro
         not_available: n/d
         frequencies:
           punctual: Puntual
@@ -163,7 +162,6 @@ es:
           change_paused_collaboration: reactivar aportación
           change_pending_collaboration: cambiar aportación
           change_rejected_collaboration: arreglar solicitud
-          here: aquí
           support: Apoyar
         support_form:
           select_amount: Seleccciona la cantidad
