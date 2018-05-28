@@ -159,10 +159,10 @@ es:
           current_paused_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}, pero tu aportación está detenida.
           current_pending_recurrent_support: Iniciaste una colaboración de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
           current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la colaboración fue rechazada.
-          change_accepted_collaboration_html: cambiar aportación
-          change_paused_collaboration_html: reactivar aportación
-          change_pending_collaboration_html: cambiar aportación
-          change_rejected_collaboration_html: arreglar solicitud
+          change_accepted_collaboration: cambiar aportación
+          change_paused_collaboration: reactivar aportación
+          change_pending_collaboration: cambiar aportación
+          change_rejected_collaboration: arreglar solicitud
           here: aquí
           support: Apoyar
         support_form:

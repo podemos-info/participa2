@@ -160,9 +160,9 @@ en:
           current_pending_recurrent_support: You applied to give %{amount} with %{periodicity} periodicity to this campaign, your collaboration is being reviewed.
           current_rejected_recurrent_support: You tried to give %{amount} with %{periodicity} periodicity, but the collaboration was rejected.
           change_accepted_collaboration: change collaboration
-          change_paused_collaboration_html: resume collaboration
-          change_pending_collaboration_html: change collaboration
-          change_rejected_collaboration_html: fix collaboration
+          change_paused_collaboration: resume collaboration
+          change_pending_collaboration: change collaboration
+          change_rejected_collaboration: fix collaboration
           here: here
           support: Support
         support_form:
