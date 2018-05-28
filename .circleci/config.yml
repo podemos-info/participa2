@@ -32,4 +32,4 @@ jobs:
             - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
 
       - deploy:
-          command: bin/deploy.sh
+          command: bin/deploy-staging.sh
