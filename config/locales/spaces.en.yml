@@ -1,0 +1,92 @@
+es:
+  pages:
+    home:
+      statistics:
+        assemblies_count: Spaces
+  decidim:
+    admin:
+      assemblies:
+        create:
+          error: There was an error when creating the new space.
+          success: Space created successfully.
+        destroy:
+          success: Space destroyed successfully.
+        new:
+          title: New space
+        update:
+          error: There was an error when updating this space.
+          success: The space has been successfully updated.
+      assemblies_copies:
+        create:
+          error: There was an error duplicating this space.
+          success: Space duplicated successfully.
+      assembly_copies:
+        new:
+          title: Duplicate space
+      assembly_publications:
+        create:
+          error: There was an error publicating this space.
+          success: Space publicated successfully.
+        destroy:
+          error: There was an error when unpublishing this space.
+          success: Space unpublished successfully.
+      assembly_user_roles:
+        create:
+          error: There was an error adding the user for this space.
+          success: User created successfully for this space.
+        destroy:
+          success: User destroyed successfully for this space.
+        edit:
+          title: Update space user.
+        index:
+          assembly_admins_title: Space users
+        new:
+          title: New space user.
+        update:
+          error: There was an error updating the user for this space.
+          success: User updated successfully for this space.
+      menu:
+        assemblies: Spaces
+        assemblies_submenu:
+          assembly_admins: Space users
+      models:
+        assembly:
+          name: Space
+        assembly_user_role:
+          name: Space user
+      titles:
+        assemblies: Spaces
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            slug_help: 'URL slugs are used to generate the URLs that point to this space. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'URL slugs are used to generate the URLs that point to this space. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}'
+      index:
+        title: Spaces
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Active spaces
+            see_all_assemblies: See all spaces
+      show:
+        assembly_type: Space types
+        children: Spaces
+        target: Target
+      statistics:
+        assemblies_count: Spaces
+    menu:
+      assemblies: Spaces
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          promoted_assemblies: Promoted spaces
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} space"
+            other: "%{count} spaces"
+      assembly_header:
+        assembly_menu_item: The space
