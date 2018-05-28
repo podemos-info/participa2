@@ -57,7 +57,7 @@ jobs:
 
   census_connector:
     docker:
-      - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -101,7 +101,7 @@ jobs:
 
   crowdfundings:
     docker:
-      - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -145,7 +145,7 @@ jobs:
 
   gravity_forms:
     docker:
-      - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -203,7 +203,7 @@ jobs:
 
   votings:
     docker:
-      - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
