@@ -27,10 +27,6 @@ module Decidim
       scope :active, -> { where("? BETWEEN start_date AND end_date", DateTime.current) }
       scope :order_by_importance, -> { order(:importance) }
 
-      def active?
-        (start_date.to_datetime..end_date.to_datetime).cover? DateTime.current
-      end
-
       def started?
         start_date < Time.zone.now
       end
