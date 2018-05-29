@@ -90,14 +90,14 @@ jobs:
 
       - run:
           name: Generate test app
-          command: bundle exec rake decidim:generate_external_test_app
+          command: cd decidim-module-census_connector && bundle exec rake test_app
 
       - run:
           name: Run RSpec tests
           command: cd decidim-module-census_connector && bundle exec rspec
 
       - store_artifacts:
-          path: /app/spec/decidim_dummy_app/tmp/screenshots
+          path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
 
   crowdfundings:
     docker:
@@ -134,14 +134,14 @@ jobs:
 
       - run:
           name: Generate test app
-          command: bundle exec rake decidim:generate_external_test_app
+          command: cd decidim-module-crowdfundings && bundle exec rake test_app
 
       - run:
           name: Run RSpec tests
           command: cd decidim-module-crowdfundings && bundle exec rspec
 
       - store_artifacts:
-          path: /app/spec/decidim_dummy_app/tmp/screenshots
+          path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
 
   gravity_forms:
     docker:
@@ -191,14 +191,14 @@ jobs:
 
       - run:
           name: Generate test app
-          command: bundle exec rake decidim:generate_external_test_app
+          command: cd decidim-module-gravity_forms && bundle exec rake test_app
 
       - run:
           name: Run RSpec tests
           command: cd decidim-module-gravity_forms && bundle exec rspec
 
       - store_artifacts:
-          path: /app/spec/decidim_dummy_app/tmp/screenshots
+          path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
 
   votings:
     docker:
@@ -234,14 +234,14 @@ jobs:
 
       - run:
           name: Generate test app
-          command: bundle exec rake decidim:generate_external_test_app
+          command: cd decidim-module-votings && bundle exec rake test_app
 
       - run:
           name: Run RSpec tests
           command: cd decidim-module-votings && bundle exec rspec
 
       - store_artifacts:
-          path: /app/spec/decidim_dummy_app/tmp/screenshots
+          path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
 
 workflows:
   version: 2
