@@ -249,13 +249,8 @@ workflows:
   test_and_deploy:
     jobs:
       - census_connector
-
-      - crowdfundings:
-          requires:
-            - census_connector
-
+      - crowdfundings
       - gravity_forms
-
       - votings
 
       - main:
