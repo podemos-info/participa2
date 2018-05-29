@@ -5,7 +5,7 @@ version: 2
 jobs:
   main:
     docker:
-      - image: ruby:2.5.1
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
 
     steps:
       - checkout
