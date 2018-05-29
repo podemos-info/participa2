@@ -1,9 +1,9 @@
 {
-  "name": "decidim-votings",
-  "description": "Votings module for decidim",
-  "version": "0.10.0-pre",
+  "name": "participa2",
+  "description": "Podemos Participa",
+  "version": "0.11.0",
   "repository": {
-    "url": "git@github.com:podemos-info/decidim-module-votings.git",
+    "url": "git@github.com:podemos-info/participa2",
     "type": "git"
   },
   "author": "David Rodríguez <deivid.rodriguez@riseup.net>",
