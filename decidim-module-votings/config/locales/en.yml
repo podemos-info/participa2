@@ -1,0 +1,106 @@
+---
+en:
+  activemodel:
+    attributes:
+      voting:
+        census_date_limit: Limit date for incorporating to census
+        decidim_scope: Scope
+        decidim_scope_id: Scope
+        description: Description
+        end_date: End date
+        image: Image
+        importance: Importance
+        shared_key: Shared Key
+        start_date: Start date
+        status: Status
+        statuses:
+          active: Active
+          closed: Closed
+          upcoming: Upcoming
+        system_configuration: Voting system configuration
+        title: Title
+        voting_domain_name: Domain name
+        voting_identifier: Identifier
+        voting_system: Voting system
+    errors:
+      voting:
+        voting_range:
+          outside_process_range: Date is outside process range.
+  decidim:
+    components:
+      votings:
+        actions:
+          vote: Vote
+        name: Votings
+        settings:
+          global:
+            remote_authorization: Remote authorization?
+            remote_authorization_url: URL
+    votings:
+      actions:
+        confirm_destroy: "¿Are you sure?"
+        destroy: Destroy
+        edit: Edit
+        new: New
+        preview: Previsualize
+        title: Actions
+        voters: Download voters identifiers
+      admin:
+        models:
+          voting:
+            name:
+              one: Votación
+              other: Votaciones
+        votings:
+          create:
+            invalid: Voting can't be created. Check the form data and correct the errors.
+            success: Voting created successfully.
+          destroy:
+            success: Voting has been successfully erased.
+          edit:
+            simulation_address: Simulation link
+            title: Edit voting
+            update: Update
+          electoral_district_fields:
+            a_scope: a scope
+            remove: Remove
+          form:
+            add_electoral_district: Add electoral district information
+            census_date_limit_help: Census closing date.
+            electoral_districts: Electoral districts
+            end_date_help: End date
+            start_date_help: Start date
+          index:
+            title: Votings
+          new:
+            create: Create
+            title: New voting
+          update:
+            invalid: Voting can't be updated. Check the form data and correct the errors.
+            success: Voting updated successfully.
+      messages:
+        already_voted: You have already voted on this voting. However, you can change your vote while the voting is still open
+        finished: Ha llegado la fecha límite para votar. La votación está cerrada.
+      models:
+        voting:
+          fields:
+            confirmed_votes: Confirmed votes
+            end_date: End
+            pending_votes: Generated votes
+            start_date: Start
+            status: Status
+            title: Title
+          voting_system:
+            nvotes_html: Voting uses secure system of <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
+      votes:
+        nvotes:
+          loading_cabin: Loading voting cabin...
+      votings:
+        index:
+          no_votings_warning: There is no active voting at this time
+          title: Votings
+        show:
+          simulate_vote: Simulate vote
+          vote: Vote
+        votings:
+          no_votings: No votings

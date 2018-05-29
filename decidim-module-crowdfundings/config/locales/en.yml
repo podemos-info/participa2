@@ -1,0 +1,206 @@
+---
+en:
+  activemodel:
+    attributes:
+      collaboration:
+        active_until: Active until
+        amounts: Amounts
+        default_amount: Default amount
+        description: Description
+        minimum_custom_amount: Minimum valid amount
+        target_amount: Target amount
+        terms_and_conditions: Terms and conditions
+        title: Title
+        total_collected: Total collected
+      user_collaboration:
+        accept_terms_and_conditions: I accept all the terms and conditions
+        amount: Amount
+        collaboration: Collaboration campaign
+        frequency: Frequency
+        iban: IBAN
+        over_18: I'm over 18
+        payment_method_id: Payment method
+        payment_method_type: Payment method
+        state: State
+        user: User
+    errors:
+      models:
+        collaboration:
+          attributes:
+            active_until:
+              outside_process_range: The date is outside the time range of the participatory process.
+            amounts:
+              invalid_format: Invalid format.
+        user_collaboration:
+          attributes:
+            amount:
+              annual_limit_exceeded: The selected amount is greater than the maximum annual allowed amount.
+              minimum_valid_amount: Minimum valid amount is %{amount}
+            frequency:
+              blank: You must select the frequency.
+            iban:
+              invalid_country_check: has an invalid country code.
+              invalid_format: has an invalid format.
+            payment_method_type:
+              blank: You must select a payment method.
+  decidim:
+    collaborations:
+      actions:
+        confirm_destroy: Are you sure?
+        destroy: Destroy
+        edit: Edit
+        new: New
+        pause: Suspend
+        preview: Preview
+        resume: Resume
+        title: Actions
+      admin:
+        collaborations:
+          create:
+            invalid: Can't create the collaboration campaing. Check the form data and correct the errors.
+            success: The collaboration campaign has been successfully created.
+          destroy:
+            success: The collaboration campaign has been successfully erased.
+          edit:
+            title: Edit collaboration campaign
+            update: Update
+          form:
+            active_until_help: This date must be inside the participatory process phases. In case a phase doesn't accept supports it will be ignored and thus not applied.
+            amounts_help: Type the valid amounts. Separe the values with comas.
+          index:
+            title: Collaborations
+          new:
+            create: Create
+            title: New collaboration campaign
+          update:
+            invalid: Can't update the collaboration campaing. Check the form data and correct the errors.
+            success: The collaboration campaign has been successfully updated.
+        models:
+          collaboration:
+            name:
+              one: Collaboration
+              other: Collaborations
+          user_collaboration:
+            name:
+              one: User collaboration
+              other: User collaborations
+      collaborations:
+        collaboration:
+          support: Support
+        count:
+          collaborations_count:
+            one: 1 collaboration campaign
+            other: "%{count} collaboration campaigns"
+        filters:
+          search: Search
+        filters_small_view:
+          close_modal: Close modal
+          filter: Filter
+          filter_by: Filter by
+          unfold: Unfold
+        show:
+          change_accepted_collaboration: change collaboration
+          change_paused_collaboration: resume collaboration
+          change_pending_collaboration: change collaboration
+          change_rejected_collaboration: fix collaboration
+          current_accepted_recurrent_support: You are currently giving %{amount} with %{periodicity} periodicity.
+          current_paused_recurrent_support: You were giving %{amount} with %{periodicity} periodicity, but you paused the support.
+          current_pending_recurrent_support: You applied to give %{amount} with %{periodicity} periodicity to this campaign, your collaboration is being reviewed.
+          current_rejected_recurrent_support: You tried to give %{amount} with %{periodicity} periodicity, but the collaboration was rejected.
+          support: Support
+        support_form:
+          select_amount: Select the amount
+          select_frequency: Select the frequency
+          select_payment_method: Select the payment method
+          support: Support
+        totals:
+          overall_percentage: Overall percentage
+          overall_totals: Overall totals
+          target_amount: 'Target amount: %{amount}'
+          user_totals: User totals
+      labels:
+        frequencies:
+          annual: Annual
+          monthly: Monthly
+          punctual: Punctual
+          quarterly: Quarterly
+        not_available: n/a
+        payment_method_types:
+          credit_card_external: Credit card
+          direct_debit: Direct debit
+          existing_payment_method: Existing payment method
+        support_status:
+          collaboration_not_allowed: Collaboration is not allowed at this moment.
+          maximum_annual_exceeded: You can not create more collaborations. You have reached the maximum yearly allowed.
+          support_period_finished: The period for accepting collaborations has expired.
+        user_collaboration:
+          states:
+            accepted: Accepted
+            paused: Suspended
+            pending: Pending
+            rejected: Rejected
+      models:
+        collaboration:
+          fields:
+            active_until: Active until
+            target_amount: Target ammount
+            title: Title
+            total_collected: Total collected
+        user_collaboration:
+          fields:
+            amount: Amount
+            collaboration: Collaboration campaign
+            frequency: Frequency
+            last_order_request_date: Last request
+            state: State
+            user: User
+      pages:
+        home:
+          highlighted_collaborations:
+            support: Support
+            title: Highlighted collaborations
+      user_collaborations:
+        confirm_form:
+          are_you_sure: Are you sure?
+          collaboration_resume: Collaboration resume
+          confirm: Confirm
+          fill_required_data: Fill the following fields
+        create:
+          invalid: Operation failed.
+          success: You have successfully supported the collaboration campaign.
+        validate:
+          invalid: Operation has been denied.
+          success: You have successfully supported the collaboration campaign.
+      user_profile:
+        user_collaborations:
+          edit:
+            select_amount: Select the amount
+            select_frequency: Select the frequency
+            update: Update
+          index:
+            no_records_found: No collaborations found
+            title: Your recurrent collaborations
+          pause:
+            fail: Couldn't suspend the collaboration.
+            success: Your collaboration has been successfully suspended.
+          resume:
+            fail: Couldn't resume the collaboration.
+            success: Your collaboration has been successfully resumed.
+          update:
+            fail: Couldn't update the collaboration.
+            success: Your collaboration has been successfully updated.
+    components:
+      collaborations:
+        actions:
+          support: Support
+        name: Collaborations
+        settings:
+          global:
+            maximum_annual_collaboration: Maximum anual collaboration per person
+          step:
+            collaborations_allowed: Collaborations allowed
+    form_builder:
+      support_tag:
+        other: Other
+    menu:
+      collaborations: Collaborations

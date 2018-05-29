@@ -1,0 +1,55 @@
+---
+es:
+  activemodel:
+    attributes:
+      gravity_form:
+        description: Descripción
+        form_number: Número de formulario
+        hidden: Oculto
+        require_login: Requiere login
+        slug: Slug
+        title: Título
+  decidim:
+    components:
+      gravity_forms:
+        name: Formularios
+        settings:
+          global:
+            domain: Dominio
+    gravity_forms:
+      actions:
+        edit: Editar
+        new: Nuevo
+        preview: Previsualizar
+        title: Acciones
+      admin:
+        gravity_forms:
+          create:
+            invalid: Hubo un problema creando el formulario de Gravity.
+            success: Formulario de Gravity creado con éxito.
+          edit:
+            title: Editar Gravity Form
+            update: Actualizar Gravity Form
+          form:
+            form_number_help: Número de formulario en Gravity Forms
+            hidden_help: Especifica si el formulario será incluído en listados o sólo será accesible directamente por URL
+            require_login_help: Especificia si el formulario requiere que el usuario haya hecho login para ser rellenado
+            slug_help: 'El "slug" se utiliza para generarar las URLs que muestran este formulario. Sólo se aceptan letras, números o guiones y debe empezar con una letra. Ejemplo: %{url}'
+          index:
+            title: Formularios de Gravity Forms
+          new:
+            create: Crear Gravity Form
+            title: Nuevo Gravity Form
+          update:
+            invalid: Hubo un problema al actualizar el formulario de Gravity.
+            success: Formulario de Gravity actualizado con éxito.
+        models:
+          gravity_form:
+            name: Gravity Form
+      gravity_forms:
+        gravity_form:
+          fill_in: Completar
+        index:
+          gravity_forms_count:
+            one: "%{count} formulario"
+            other: "%{count} formularios"

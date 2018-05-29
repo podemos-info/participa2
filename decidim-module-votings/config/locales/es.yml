@@ -1,0 +1,106 @@
+---
+es:
+  activemodel:
+    attributes:
+      voting:
+        census_date_limit: Fecha límite de incorporación al censo
+        decidim_scope: Ámbito de participación
+        decidim_scope_id: Ámbito de participación
+        description: Descripción
+        end_date: Fecha de fin
+        image: Imagen
+        importance: Importancia
+        shared_key: Clave compartida
+        start_date: Fecha de inicio
+        status: Estado
+        statuses:
+          active: Activa
+          closed: Cerrada
+          upcoming: Próxima
+        system_configuration: Configuración
+        title: Título
+        voting_domain_name: Nombre de dominio
+        voting_identifier: Identificador
+        voting_system: Sistema de votación
+    errors:
+      voting:
+        voting_range:
+          outside_process_range: La fecha está fuera del intervalo de tiempo del proceso participativo.
+  decidim:
+    components:
+      votings:
+        actions:
+          vote: Votar
+        name: Votaciones
+        settings:
+          global:
+            remote_authorization: Autorización remota?
+            remote_authorization_url: URL
+    votings:
+      actions:
+        confirm_destroy: "¿Estás seguro?"
+        destroy: Borrar
+        edit: Editar
+        new: Nueva
+        preview: Previsualizar
+        title: Acciones
+        voters: Descargar identificadores de votantes
+      admin:
+        models:
+          voting:
+            name:
+              one: Votación
+              other: Votaciones
+        votings:
+          create:
+            invalid: No se pudo crear la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente creada.
+          destroy:
+            success: La votación ha sido correctamente borrada.
+          edit:
+            simulation_address: Enlace para simulación
+            title: Editar votación
+            update: Actualizar
+          electoral_district_fields:
+            a_scope: un ámbito
+            remove: Eliminar
+          form:
+            add_electoral_district: Añadir información de distrito electoral
+            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
+            electoral_districts: Distritos electorales
+            end_date_help: Fecha de fin
+            start_date_help: Fecha de inicio
+          index:
+            title: Votaciones
+          new:
+            create: Crear
+            title: Nueva votación
+          update:
+            invalid: No se pudo actualizar la votación. Comprueba los datos y corrige los errores.
+            success: La votación ha sido correctamente actualizada.
+      messages:
+        already_voted: Ya has votado en esta votación. No obstante, puedes cambiar tu voto mientras la votación continúe abierta
+        finished: Ha llegado la fecha límite para votar. La votación está cerrada.
+      models:
+        voting:
+          fields:
+            confirmed_votes: Votos confirmados
+            end_date: Fin
+            pending_votes: Votos emitidos
+            start_date: Inicio
+            status: Estado
+            title: Título
+          voting_system:
+            nvotes_html: La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
+      votes:
+        nvotes:
+          loading_cabin: Cargando cabina de votación...
+      votings:
+        index:
+          no_votings_warning: En este momento no hay ninguna votación activa.
+          title: Votaciones
+        show:
+          simulate_vote: Simular voto
+          vote: Vota
+        votings:
+          no_votings: En estos momentos no hay votaciones activas. Te avisaremos cuando se produzcan.

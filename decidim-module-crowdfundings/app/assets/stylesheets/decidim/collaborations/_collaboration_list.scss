@@ -1,0 +1,30 @@
+.collaboration-list__title{
+  @include breakpoint(smallmedium down){
+    font-size: $global-font-size;
+  }
+}
+
+.collaboration-list__data{
+  flex-basis: 9rem;
+  @include breakpoint(medium){
+    flex-direction: row;
+    flex-basis: 18rem;
+  }
+}
+
+.collaboration-list__number{
+  @include breakpoint(medium down){
+    font-size: 1rem;
+  }
+  @include breakpoint(medium){
+    flex-grow: 1;
+    font-size: 1.5rem;
+    margin-right: 0;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
+
+.collaboration--list__action{
+  margin-bottom: 0;
+}

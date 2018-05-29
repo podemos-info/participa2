@@ -1,0 +1,15 @@
+<div class="row columns">
+  <h2 class="section-heading">
+    <%= t '.title' %>
+  </h2>
+</div>
+<div class="row">
+  <% if @votings.empty? %>
+    <div class="callout warning">
+      <%= t ".no_votings_warning" %>
+    </div>
+  <% end %>
+  <div id="votings" class="columns mediumlarge-8 large-9">
+    <%= render partial: 'votings' %>
+  </div>
+</div>

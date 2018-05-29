@@ -1,0 +1,7 @@
+/tmp/
+
+# rspec failure tracking
+.rspec-failures
+
+# default test application
+spec/decidim_dummy_app

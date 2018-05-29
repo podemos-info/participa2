@@ -3,9 +3,70 @@
 version: 2
 
 jobs:
-  build:
+  main:
     docker:
-      - image: ruby:2.5.1
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: bundle install
+
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+      - restore_cache:
+          keys:
+            - npm-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Install npm dependencies
+          command: npm install
+
+      - save_cache:
+          key: npm-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Run tests
+          command: bundle exec rspec
+
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+
+      - run:
+          name: Run npm lints
+          command: npm run lint
+
+      - add_ssh_keys:
+          fingerprints:
+            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
+
+      - deploy:
+          command: bin/deploy-staging.sh
+
+  census_connector:
+    docker:
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+        environment:
+          DATABASE_USERNAME: postgres
+          CENSUS_URL: http://mycensus:3001
+
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: /app
 
     steps:
       - checkout
@@ -24,12 +85,177 @@ jobs:
             - /usr/local/bundle
 
       - run:
-          name: Run rubocop
-          command: bundle exec rubocop
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
-      - add_ssh_keys:
-          fingerprints:
-            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
+      - run:
+          name: Generate test app
+          command: cd decidim-module-census_connector && bundle exec rake test_app
 
-      - deploy:
-          command: bin/deploy-staging.sh
+      - run:
+          name: Run RSpec tests
+          command: cd decidim-module-census_connector && bundle exec rspec
+
+      - store_artifacts:
+          path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
+
+  crowdfundings:
+    docker:
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+        environment:
+          DATABASE_USERNAME: postgres
+          CENSUS_URL: http://mycensus:3001
+
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: /app
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: bundle install
+
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Generate test app
+          command: cd decidim-module-crowdfundings && bundle exec rake test_app
+
+      - run:
+          name: Run RSpec tests
+          command: cd decidim-module-crowdfundings && bundle exec rspec
+
+      - store_artifacts:
+          path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
+
+  gravity_forms:
+    docker:
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+        environment:
+          DATABASE_USERNAME: postgres
+
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: /app
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: bundle install
+
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+      - run:
+          name: Install firefox
+          command: |
+            echo "deb http://ftp.us.debian.org/debian/ sid main" > /etc/apt/sources.list.d/firefox.list
+            apt-get update
+            apt-get install -y firefox
+
+      - run:
+          name: Install geckodriver
+          command: |
+            curl --silent --show-error --location --fail --retry 3 --output /tmp/geckodriver_linux64.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
+            tar xvzf /tmp/geckodriver_linux64.tar.gz -C /usr/local/bin
+            rm /tmp/geckodriver_linux64.tar.gz
+
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Generate test app
+          command: cd decidim-module-gravity_forms && bundle exec rake test_app
+
+      - run:
+          name: Run RSpec tests
+          command: cd decidim-module-gravity_forms && bundle exec rspec
+
+      - store_artifacts:
+          path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
+
+  votings:
+    docker:
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+        environment:
+          DATABASE_USERNAME: postgres
+
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: /app
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: bundle install
+
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Generate test app
+          command: cd decidim-module-votings && bundle exec rake test_app
+
+      - run:
+          name: Run RSpec tests
+          command: cd decidim-module-votings && bundle exec rspec
+
+      - store_artifacts:
+          path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
+
+workflows:
+  version: 2
+
+  test_and_deploy:
+    jobs:
+      - census_connector
+      - crowdfundings
+      - gravity_forms
+      - votings
+
+      - main:
+          requires:
+            - census_connector
+            - crowdfundings
+            - gravity_forms
+            - votings

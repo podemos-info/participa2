@@ -1,0 +1,6 @@
+<div class="card card--list collaboration-list">
+  <% collaborations.each do |collaboration| %>
+    <%= render partial: 'collaboration', locals: { collaboration: collaboration } %>
+  <% end %>
+</div>
+<%= decidim_paginate collaborations, random_seed: random_seed %>

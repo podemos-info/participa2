@@ -1,0 +1,9 @@
+---
+en:
+  decidim:
+    assemblies:
+      scopes:
+        global: World
+    participatory_processes:
+      scopes:
+        global: World

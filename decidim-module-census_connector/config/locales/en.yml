@@ -1,0 +1,93 @@
+---
+en:
+  activemodel:
+    attributes:
+      data_handler:
+        address: Address
+        address_scope_id: City
+        born_at: Birth date
+        document_number: Document number
+        document_scope_id: Document country
+        document_type: Document type
+        first_name: Name
+        gender: Gender
+        last_name1: First surname
+        last_name2: Second surname
+        postal_code: Postal code
+        scope_id: Participation place
+      membership_level_handler:
+        membership_level: Engagement level
+  census:
+    api:
+      person:
+        document_type:
+          dni: DNI
+          nie: NIE
+          passport: Passport
+        gender:
+          female: Female
+          male: Male
+          other: Other
+          undisclosed: Undisclosed
+        membership_level:
+          follower: Follower
+          member: Member
+  decidim:
+    authorization_handlers:
+      admin:
+        census:
+          help:
+          - People registered at Podemos census
+      census:
+        fields:
+          age: Age
+          document_type: Document type
+        name: Census
+    census_connector:
+      account:
+        account:
+          index:
+            data_heading: Personal data
+            membership_heading: Membership level
+            not_yet_registered: You're not yet registered with Podemos' census.
+            pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+            scope_heading: Location
+            sign_up_to_vote: Sign up to take part in votings.
+        menu:
+          census: Census
+      verifications:
+        census:
+          authorizations:
+            data:
+              title: Personal data
+            membership_level:
+              directions: Choose your membership level
+              follower:
+                description: To support Podemos activity.
+              member:
+                description: To participate in elections and consultations.
+              title: Membership level
+            verification:
+              choose: Choose
+              directions: "<ul><li>Click on the sample images to upload pictures of your document, so that we can verify your identity.</li> <li>You can take pictures directly from your cell phone, making sure to fit the shape of the document into your screen. If you decide not to do it like that, notice that we only accept <strong>.jpg</strong> o <strong>.png</strong> formats.</li> <li>If you have any trouble, you can get in touch with us by sending an email to <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
+              sample1-description:
+                dni: DNI anverse
+                nie: 'Anverse of your residence card. UE citizens: certificate of registration as EU citizen'
+                passport: Main passport page
+              sample2-description:
+                dni: DNI reverse
+                nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
+                passport: Additional passport page (optional)
+              title: Identity verification
+          errors:
+            age_under_minimum_age: You should be older than %{minimum_age} years old to register
+            create: Error when saving
+          extra_explanation_age: You need to be a least %{minimum_age} years old.
+          extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
+          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
+          or: or
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            census: Get verified with Podemos census to get full access to the platform

@@ -1,0 +1,41 @@
+.amount-selector {
+  display: inline-block;
+  margin-bottom: 1em;
+
+  label {
+    cursor: pointer;
+    float: left;
+    display: inline-block;
+    margin-right: 10pt;
+    margin-bottom: 0.5em;
+    font-size: 22px;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked+div {
+      background-color: transparent;
+      color: $secondary;
+      border: 1px solid $secondary;
+      font-weight: bold;
+    }
+
+    input[type="radio"]+div {
+      padding: 4pt 11pt;
+      background: $secondary;
+      color: white;
+      border-radius: 5pt;
+      width: 80pt;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+  }
+
+  .field {
+    clear: left;
+    label {
+      width: 100%;
+    }
+  }
+}

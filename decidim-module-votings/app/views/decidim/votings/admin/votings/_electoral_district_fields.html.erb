@@ -1,0 +1,30 @@
+<div id="<%= nested_form_id %>" class="card-section electoral-district-fields">
+  <span class="inline-field inline-field--main">
+    <%= scopes_picker_tag "voting[electoral_districts][][decidim_scope_id]",
+                          electoral_district.decidim_scope_id,
+                          id: "#{nested_form_id}-decidim-scope-id",
+                          field: t(".a_scope") %>
+  </span>
+
+  <span class="inline-field">
+    <%= text_field_tag "voting[electoral_districts][][voting_identifier]",
+                       electoral_district.voting_identifier,
+                       id: "#{nested_form_id}-voting-identifier",
+                       label: false,
+                       placeholder: "Voting identifier" %>
+
+    <% unless electoral_district.for_creation? %>
+      <%= hidden_field_tag "voting[electoral_districts][][id]",
+                           electoral_district.id,
+                           id: "#{nested_form_id}-id" %>
+
+      <%= hidden_field_tag "voting[electoral_districts][][deleted]",
+                           electoral_district.deleted,
+                           id: "#{nested_form_id}-deleted" %>
+    <% end %>
+  </span>
+
+  <span class="inline-field inline-field--action">
+    <%= icon_link_to "circle-x", "#", t(".remove"), class: "action-icon--remove remove-electoral-district" %>
+  </span>
+</div>

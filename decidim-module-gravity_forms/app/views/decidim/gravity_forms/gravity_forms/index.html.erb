@@ -1,0 +1,15 @@
+<div class="row columns">
+  <div class="title-action">
+    <h2 id="gravity-forms-count" class="title-action__title section-heading">
+      <%= t(".gravity_forms_count", count: visible_gravity_forms.size) %>
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div id="gravity-forms" class="columns mediumlarge-8 large-9">
+    <div class="row small-up-1 medium-up-2 card-grid">
+      <%= render visible_gravity_forms %>
+    </div>
+  </div>
+</div>

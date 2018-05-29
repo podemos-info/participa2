@@ -2,20 +2,15 @@
 
 source "https://rubygems.org"
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
 ruby "2.5.1"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
-gem "decidim", "~> 0.11"
-gem "decidim-census_connector", github: "podemos-info/decidim-module-census_connector", branch: "master"
-gem "decidim-collaborations", github: "podemos-info/decidim-module-crowdfundings", branch: "master"
-gem "decidim-gravity_forms", github: "podemos-info/decidim-module-gravity_forms", branch: "master"
-gem "decidim-votings", github: "podemos-info/decidim-module-votings", branch: "master"
+gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.11-stable"
+gem "decidim-census_connector", path: "decidim-module-census_connector"
+gem "decidim-collaborations", path: "decidim-module-crowdfundings"
+gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
+gem "decidim-votings", path: "decidim-module-votings"
 
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"
@@ -41,4 +36,11 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
+end
+
+group :test do
+  gem "faker-spanish_document", "~> 0.1"
+  gem "puffing-billy", "~> 1.1"
+  gem "vcr", "~> 4.0"
+  gem "xxhash"
 end

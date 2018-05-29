@@ -1,0 +1,93 @@
+---
+es:
+  activemodel:
+    attributes:
+      data_handler:
+        address: Dirección
+        address_scope_id: Domicilio
+        born_at: Fecha de nacimiento
+        document_number: Número de documento
+        document_scope_id: País del documento
+        document_type: Tipo de documento
+        first_name: Nombre
+        gender: Género
+        last_name1: Primer apellido
+        last_name2: Segundo apellido
+        postal_code: Código postal
+        scope_id: Lugar de participación
+      membership_level_handler:
+        membership_level: Nivel de compromiso
+  census:
+    api:
+      person:
+        document_type:
+          dni: DNI
+          nie: NIE
+          passport: Pasaporte
+        gender:
+          female: Femenino
+          male: Masculino
+          other: Otro
+          undisclosed: No contesta
+        membership_level:
+          follower: Simpatizante
+          member: Afiliado/a
+  decidim:
+    authorization_handlers:
+      admin:
+        census:
+          help:
+          - Personas inscritas en el censo de Podemos
+      census:
+        fields:
+          age: Edad
+          document_type: Tipo de documento
+        name: Censo
+    census_connector:
+      account:
+        account:
+          index:
+            data_heading: Datos personales
+            membership_heading: Nivel de compromiso
+            not_yet_registered: Aún no estás registrado en el censo de Podemos.
+            pending_notice: Tu registro en el censo de Podemos está siendo validado. Inténtalo de nuevo más tarde o contáctanos en verificaciones@soporte.podemos.info
+            scope_heading: Ubicación
+            sign_up_to_vote: Apúntate para participar en las votaciones.
+        menu:
+          census: Censo
+      verifications:
+        census:
+          authorizations:
+            data:
+              title: Introduce tus datos personales
+            membership_level:
+              directions: En Podemos hay diferentes maneras de participar y son todas útiles y bienvenidas. En este paso puedes elegir la que más se acerque a tu nivel de compromiso con Podemos.
+              follower:
+                description: Si te interesa Podemos y defiendes nuestras ideas en los parlamentos de la vida cotidiana y de las redes sociales.
+              member:
+                description: Si deseas participar en los procesos internos y las consultas.
+              title: Elige tu nivel de compromiso
+            verification:
+              choose: Elegir
+              directions: "<ul><li>Pincha en las imágenes de ejemplo para subir fotos de tu documento, así podremos verificar tu identidad.</li> <li>Puedes hacer las fotos directamente con tu teléfono móvil intentado ajustar los bordes del documento dentro de la pantalla. Si decides no hacerlo así ten en cuenta que sólo admitimos imágenes en formato <strong>.jpg</strong> o <strong>.png</strong>.</li> <li>Si tienes cualquier problema, puedes ponerte en contacto con nosotros enviando un email a <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
+              sample1-description:
+                dni: Anverso del DNI
+                nie: 'Anverso de la tarjeta de residencia. Comunitarios: Certificado de registro de ciudadano de la Unión'
+                passport: Página principal del pasaporte
+              sample2-description:
+                dni: Reverso del DNI
+                nie: 'Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional'
+                passport: Página adicional del pasaporte (opcional)
+              title: Verifica tu identidad
+          errors:
+            age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
+            create: Se ha producido un error al guardar tus datos personales.
+          extra_explanation_age: Necesitas tener al menos %{minimum_age} años.
+          extra_explanation_age_and_document_type: Necesitas tener al menos %{minimum_age} años y estar registrada usando %{allowed_documents}.
+          extra_explanation_document_type: Necesitas estar registrada usando %{allowed_documents}.
+          or: o
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            census: Verifícate en el censo de Podemos census para tener acceso a toda la plataforma

@@ -1,0 +1,15 @@
+<div class="column">
+  <article class="card card--voting">
+    <div class="card__content">
+      <div class="card__header">
+        <div class="float-right"><%= voting_status(voting) %></div>
+        <%= link_to voting do%>
+          <h5 class="card__title"><%= translated_attribute voting.title %></h5>
+        <% end %>
+        <%= render partial: "voting_period", locals: { voting: voting } %>
+        <%= render partial: "scope", locals: { voting: voting } %>
+      </div>
+      <p><%= truncate(translated_attribute(voting.description).html_safe, length: 100, escape: false) %></p>
+    </div>
+  </article>
+</div>

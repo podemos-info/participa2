@@ -1,0 +1,16 @@
+<div class="card__datetime">
+  <div class="card__datetime__date" style="margin-right:0;">
+    <%= l voting.start_date, format: "%d" %> <span class="card__datetime__month"><%= l voting.start_date, format: "%B %Y" %></span>
+  </div>
+  <div class="card__datetime__time">
+    <%= voting.start_date.strftime("%H:%M") %>
+  </div>
+   &nbsp;/&nbsp;
+  <div class="card__datetime__date" style="margin-right:0;">
+    <%= l end_date_changed(voting.end_date), format: "%d" %> <span class="card__datetime__month"><%= l end_date_changed(voting.end_date), format: "%B %Y" %></span>
+  </div>
+  <div class="card__datetime__time">
+    <%= end_date_changed(voting.end_date).strftime("%H:%M") %>
+  </div>
+
+</div>

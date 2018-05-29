@@ -1,0 +1,68 @@
+<% if has_person? %>
+  <% if person.pending? %>
+    <div class="callout announcement secondary">
+      <div class="row column">
+        <%= t(".pending_notice") %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="card card--list">
+    <div class="card--list__item">
+      <div class="card--list__text">
+        <div>
+          <h6 class="card--list__heading heading6">
+            <%= t(".data_heading") %>
+          </h6>
+          <span class="text-small"><%= person_presenter.full_name %></span><br/>
+          <span class="text-small"><%= person_presenter.full_document %></span><br/>
+          <span class="text-small"><%= person_presenter.born_info %></span>
+        </div>
+      </div>
+      <% if person.verified? %>
+        <div class="card--list__data">
+          <span class="card--list__data__icon"><%=icon("check", class: "checked")%></span>
+        </div>
+      <% else %>
+        <div class="card--list__data">
+          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("check")%></a>
+        </div>
+        <div class="card--list__data">
+          <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%></a>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card--list__item">
+      <div class="card--list__text">
+        <div>
+          <h6 class="card--list__heading heading6">
+            <%= t(".scope_heading") %>
+          </h6>
+          <span class="text-small"><%= person_presenter.full_address %></span><br/>
+          <span class="text-small"><%= person_presenter.participation_scope %></span>
+        </div>
+      </div>
+      <div class="card--list__data">
+        <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%></a>
+      </div>
+    </div>
+
+    <div class="card--list__item">
+      <div class="card--list__text">
+        <div>
+          <h6 class="card--list__heading heading6">
+            <%= t(".membership_heading") %>
+          </h6>
+          <span class="text-small"><%= person_presenter.membership_level %></span>
+        </div>
+      </div>
+      <div class="card--list__data">
+        <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("pencil")%></a>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p><%= t(".not_yet_registered") %><br/><a href="<%= decidim_census.root_path %>"><%= t(".sign_up_to_vote") %></a></p>
+<% end %>
+<%= stylesheet_link_tag "decidim/census_connector/account/account" %>

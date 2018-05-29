@@ -1,0 +1,31 @@
+<div class="row" id="highlighted-collaborations">
+  <h3 class="section-heading"><%= t(".title") %></h3>
+  <div class="row collapse">
+    <div class="row small-up-1 smallmedium-up-<%= [highlighted_collaborations_count, 2].min %> mediumlarge-up-<%= [highlighted_collaborations_count, 3].min %>
+      large-up-<%= [2, [highlighted_collaborations_count, 4].min].max %> card-grid">
+      <% highlighted_collaborations.each do |collaboration|
+        resource_locator = ::Decidim::ResourceLocatorPresenter.new(collaboration) %>
+        <div class="column">
+          <article class="card card--assembly card--mini">
+            <div class="card__content">
+              <%= link_to resource_locator.path, class: "card__link" do %>
+                <h4 class="card__title"><%= translated_attribute collaboration.title %></h4>
+              <% end %>
+              <%= sanitize translated_attribute collaboration.description %>
+            </div>
+            <div class="card__footer">
+              <div class="card__support">
+                <div class="card__support-data">
+                <% if collaboration.target_amount.present? %>
+                    <%= percentage_tag collaboration, nil %>
+                <% end %>
+                </div>
+              <%= link_to t('.support'), resource_locator.path, class: 'card__button button small' %>
+              </div>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

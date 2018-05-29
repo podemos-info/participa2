@@ -1,0 +1,93 @@
+# i18n-tasks finds and manages missing and unused translations: https://github.com/glebm/i18n-tasks
+
+# The "main" locale.
+base_locale: en
+
+# Read and write translations.
+data:
+  yaml:
+    write:
+      # do not wrap lines at 80 characters
+      line_width: -1
+
+  read:
+    - decidim-*/config/locales/%{locale}.yml
+
+  write:
+    - ["decidim.census_connector.*", "decidim-module-census_connector/config/locales/%{locale}.yml"]
+    - ["decidim.collaborations.*", "decidim-module-crowdfundings/config/locales/%{locale}.yml"]
+    - ["decidim.gravity_forms.*", "decidim-module-gravity_forms/config/locales/%{locale}.yml"]
+    - ["decidim.votings.*", "decidim-module-votings/config/locales/%{locale}.yml"]
+
+# Find translate calls
+search:
+  paths:
+    - app
+    - lib
+    - decidim-module-census_connector/app
+    - decidim-module-census_connector/lib
+    - decidim-module-crowdfundings/app
+    - decidim-module-crowdfundings/lib
+    - decidim-module-gravity_forms/app
+    - decidim-module-gravity_forms/lib
+    - decidim-module-votings/app
+    - decidim-module-votings/lib
+
+  # Root directories for relative keys resolution.
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/services
+    - app/views
+    - decidim-module-census_connector/app/controllers
+    - decidim-module-census_connector/app/helpers
+    - decidim-module-census_connector/app/mailers
+    - decidim-module-census_connector/app/services
+    - decidim-module-census_connector/app/views
+    - decidim-module-crowdfundings/app/controllers
+    - decidim-module-crowdfundings/app/helpers
+    - decidim-module-crowdfundings/app/mailers
+    - decidim-module-crowdfundings/app/services
+    - decidim-module-crowdfundings/app/views
+    - decidim-module-gravity_forms/app/controllers
+    - decidim-module-gravity_forms/app/helpers
+    - decidim-module-gravity_forms/app/mailers
+    - decidim-module-gravity_forms/app/services
+    - decidim-module-gravity_forms/app/views
+    - decidim-module-votings/app/controllers
+    - decidim-module-votings/app/helpers
+    - decidim-module-votings/app/mailers
+    - decidim-module-votings/app/services
+    - decidim-module-votings/app/views
+
+  ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
+  strict: false
+
+ignore_unused:
+  - activemodel.attributes.*
+  - activemodel.errors.models.user_collaboration.attributes.*
+  - decidim.authorization_handlers.admin.census.help
+  - decidim.authorization_handlers.census.*
+  - decidim.components.collaborations.*
+  - decidim.components.gravity_forms.*
+  - decidim.components.votings.*
+  - decidim.form_builder.support_tag.other
+  - decidim.census_connector.verifications.census.extra_explanation*
+  - decidim.verifications.authorizations.first_login.*
+  - decidim.collaborations.collaborations.show.change_*_collaboration
+  - decidim.collaborations.collaborations.show.current_*_recurrent_support
+  - decidim.collaborations.models.*
+  - decidim.collaborations.admin.models.*
+  - decidim.votings.models.*
+  - decidim.votings.admin.models.*
+
+ignore_missing:
+  - decidim.participatory_processes.scopes.global
+  - decidim.authorization_handlers.census.fields.*
+  - decidim.scopes.prompt
+  - decidim.devise.*
+  - decidim.verifications.authorizations.new.authorize
+  - decidim.authorization_handlers.census.fields.*
+  - devise.registrations.new.sign_up
+  - errors.messages.uppercase_only_letters_numbers
