@@ -36,8 +36,12 @@ module Decidim
         census_person[:id]
       end
 
+      def census_person_api_connection
+        @census_person_api_connection ||= ::Census::API::Person.new(person_id)
+      end
+
       def census_person
-        @census_person ||= ::Census::API::Person.new(person_id).find
+        @census_person ||= census_person_api_connection.find
       end
 
       def person
