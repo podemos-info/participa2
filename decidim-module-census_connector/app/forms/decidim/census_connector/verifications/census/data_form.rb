@@ -25,18 +25,12 @@ module Decidim
           attribute :scope_id, Integer
           attribute :postal_code, String
 
-          validates :document_scope_id, presence: true, unless: :local_document?
-
           def document_type
             @document_type ||= Person.document_types.values.first
           end
 
           def document_scope_id
             @document_scope_id ||= local_scope.id
-          end
-
-          def local_document?
-            Person.local_document?(document_type)
           end
 
           def verified?

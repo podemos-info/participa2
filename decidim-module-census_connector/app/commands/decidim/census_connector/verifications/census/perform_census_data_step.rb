@@ -103,7 +103,7 @@ module Decidim
           end
 
           def local_document?
-            form.local_document?
+            Person.local_document?(document_type)
           end
 
           def local_address?
