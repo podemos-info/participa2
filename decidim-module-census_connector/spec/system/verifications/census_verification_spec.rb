@@ -6,7 +6,7 @@ require "decidim/core/test/factories"
 require "faker"
 require "faker/spanish_document"
 
-describe "Census verification workflow", type: :system do
+describe "Census verification", type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: ["census"])
   end
