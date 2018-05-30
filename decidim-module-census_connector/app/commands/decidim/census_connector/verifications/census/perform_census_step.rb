@@ -41,10 +41,6 @@ module Decidim
             form.context.person_proxy
           end
 
-          def attributes
-            form.attributes.except(:user, :handler_name)
-          end
-
           attr_reader :authorization, :form
         end
       end

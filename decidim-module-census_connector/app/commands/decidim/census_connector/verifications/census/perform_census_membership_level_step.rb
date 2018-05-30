@@ -18,7 +18,9 @@ module Decidim
           end
 
           def membership_level_params
-            attributes
+            {
+              membership_level: form.membership_level
+            }
           end
         end
       end

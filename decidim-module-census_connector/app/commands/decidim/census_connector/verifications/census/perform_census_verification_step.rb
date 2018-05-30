@@ -19,7 +19,7 @@ module Decidim
 
           def verification_params
             {
-              files: attributes.fetch_values(:document_file1, :document_file2)
+              files: [form.document_file1, form.document_file2]
             }
           end
         end
