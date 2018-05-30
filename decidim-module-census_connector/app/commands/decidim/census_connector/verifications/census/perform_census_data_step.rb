@@ -44,19 +44,19 @@ module Decidim
 
           def person_params
             {
-              email: form.email,
-              first_name: form.first_name,
-              last_name1: form.last_name1,
-              last_name2: form.last_name2,
-              document_type: form.document_type,
-              document_id: form.document_id,
-              born_at: form.born_at,
-              gender: form.gender,
-              address: form.address,
-              postal_code: form.postal_code,
-              document_scope_code: document_scope&.code,
-              scope_code: scope&.code,
-              address_scope_code: address_scope&.code
+              email: email,
+              first_name: first_name,
+              last_name1: last_name1,
+              last_name2: last_name2,
+              document_type: document_type,
+              document_id: document_id,
+              born_at: born_at,
+              gender: gender,
+              address: address,
+              postal_code: postal_code,
+              document_scope_code: document_scope_code,
+              scope_code: scope_code,
+              address_scope_code: address_scope_code
             }
           end
 
@@ -65,6 +65,11 @@ module Decidim
           end
 
           delegate :local_scope, to: :form
+          delegate :email, :first_name, :last_name1, :last_name2, :document_type, :document_id, :born_at, :gender, :address, :postal_code, to: :form
+
+          delegate :code, to: :document_scope, allow_nil: true, prefix: true
+          delegate :code, to: :scope, allow_nil: true, prefix: true
+          delegate :code, to: :address_scope, allow_nil: true, prefix: true
 
           def document_scope
             @document_scope ||= begin
