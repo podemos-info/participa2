@@ -176,6 +176,7 @@ describe "Census verification", type: :system do
       expect(page).to have_content("Birth date no puede estar en blanco")
       expect(page).to have_content("Address no puede estar en blanco")
       expect(page).to have_content("Postal code no puede estar en blanco")
+      expect(page).to have_content("City Select a scope no puede estar en blanco")
     end
   end
 

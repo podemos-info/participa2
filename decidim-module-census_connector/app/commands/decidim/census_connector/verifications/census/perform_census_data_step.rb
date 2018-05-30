@@ -38,12 +38,16 @@ module Decidim
 
           def add_errors_to_form
             census_person.errors.each do |key, value|
-              form.errors.add(key, value) if form.respond_to?(key)
+              if key.match?(/scope\Z/)
+                form.errors.add("#{key}_id", value)
+              elsif form.respond_to?(key)
+                form.errors.add(key, value)
+              end
             end
           end
 
           def person_params
-            {
+            base = {
               email: email,
               first_name: first_name,
               last_name1: last_name1,
@@ -55,9 +59,12 @@ module Decidim
               address: address,
               postal_code: postal_code,
               document_scope_code: document_scope_code,
-              scope_code: scope_code,
               address_scope_code: address_scope_code
             }
+
+            base[:scope_code] = scope_code if address_scope.present?
+
+            base
           end
 
           def origin_qualified_id
