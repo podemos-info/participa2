@@ -26,7 +26,6 @@ module Decidim
           attribute :postal_code, String
 
           validates :document_scope_id, presence: true, unless: :local_document?
-          validates :document_scope, presence: true, unless: :verified?
 
           def document_type
             @document_type ||= Person.document_types.values.first
