@@ -54,14 +54,48 @@ module Decidim
               gender: form.gender,
               address: form.address,
               postal_code: form.postal_code,
-              document_scope_code: form.document_scope&.code,
-              scope_code: form.scope&.code,
-              address_scope_code: form.address_scope&.code
+              document_scope_code: document_scope&.code,
+              scope_code: scope&.code,
+              address_scope_code: address_scope&.code
             }
           end
 
           def origin_qualified_id
             "#{form.user.id}@decidim"
+          end
+
+          delegate :local_scope, to: :form
+
+          def document_scope
+            @document_scope ||= begin
+              if local_document?
+                local_scope
+              else
+                Decidim::Scope.find_by(id: form.document_scope_id)
+              end
+            end
+          end
+
+          def address_scope
+            @address_scope ||= Decidim::Scope.find_by(id: form.address_scope_id)
+          end
+
+          def scope
+            @scope ||= begin
+              if local_address?
+                address_scope
+              else
+                Decidim::Scope.find_by(id: form.scope_id)
+              end
+            end
+          end
+
+          def local_document?
+            form.local_document?
+          end
+
+          def local_address?
+            local_scope.ancestor_of?(address_scope)
           end
         end
       end

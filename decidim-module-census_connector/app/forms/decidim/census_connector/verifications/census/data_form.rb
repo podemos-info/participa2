@@ -35,36 +35,8 @@ module Decidim
             @document_scope_id ||= local_scope.id
           end
 
-          def document_scope
-            @document_scope ||= begin
-              if local_document?
-                local_scope
-              else
-                Decidim::Scope.find_by(id: document_scope_id)
-              end
-            end
-          end
-
-          def address_scope
-            @address_scope ||= Decidim::Scope.find_by(id: address_scope_id)
-          end
-
-          def scope
-            @scope ||= begin
-              if local_address?
-                address_scope
-              else
-                Decidim::Scope.find_by(id: scope_id)
-              end
-            end
-          end
-
           def local_document?
             Person.local_document?(document_type)
-          end
-
-          def local_address?
-            local_scope.ancestor_of?(address_scope)
           end
 
           def verified?
