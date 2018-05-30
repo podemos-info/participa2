@@ -27,7 +27,16 @@ $(() => {
           $scope.show();
         }
       }
-      toggleScope($("input[type=hidden]", $addressScope).val());
+
+      const $addressScopeValueField = $addressScope.find("input[type=hidden]");
+
+      let addressScopeId = null;
+
+      if ($addressScopeValueField.length > 0) {
+        addressScopeId = $addressScopeValueField.val();
+      }
+
+      toggleScope(addressScopeId);
       $addressScope.on("change", "input[type=hidden]", (event) => toggleScope($(event.target).val()));
     }
 
