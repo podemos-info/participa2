@@ -11,7 +11,7 @@
         <div class="card">
           <div class="card__content">
             <%= decidim_form_for(@form, url: current_form_path) do |form| %>
-              <% if !@form.verified? %>
+              <% if !person&.verified? %>
                 <div class="field">
                   <%= form.text_field :first_name %>
                 </div>

@@ -5,8 +5,7 @@ module Decidim
     module Verifications
       module Census
         class DataForm < Decidim::Form
-          delegate :local_scope, :person_proxy, :user, to: :context
-          delegate :person, to: :person_proxy
+          delegate :local_scope, :user, to: :context
           delegate :email, to: :user
 
           attribute :first_name, String
@@ -31,10 +30,6 @@ module Decidim
 
           def document_scope_id
             @document_scope_id ||= local_scope.id
-          end
-
-          def verified?
-            person&.verified?
           end
         end
       end

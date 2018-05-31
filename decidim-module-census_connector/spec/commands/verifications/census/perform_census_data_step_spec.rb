@@ -6,13 +6,15 @@ require "faker/spanish_document"
 
 module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusDataStep do
-    subject { described_class.new(authorization, form) }
+    subject { described_class.new(person_proxy, authorization, form) }
 
     let(:organization) { create(:organization) }
     let(:user) { create(:user, organization: organization) }
 
     let!(:authorization) { create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 }) }
     let!(:scope) { create(:scope, code: "ES", organization: organization, id: 1) }
+
+    let(:person_proxy) { PersonProxy.for(user) }
 
     let(:first_name) { "Marlin" }
     let(:last_name1) { "D'Amore" }
@@ -37,7 +39,6 @@ module Decidim::CensusConnector
         scope_id: nil,
         postal_code: postal_code
       ).with_context(
-        person_proxy: PersonProxy.for(user),
         local_scope: scope,
         user: user
       )

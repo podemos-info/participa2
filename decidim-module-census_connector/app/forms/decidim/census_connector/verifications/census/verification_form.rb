@@ -11,10 +11,6 @@ module Decidim
 
           validates :tos_agreement, allow_nil: true, acceptance: true
 
-          def document_type
-            @document_type ||= context.person_proxy.person.document_type
-          end
-
           def information_page
             @information_page ||= Decidim::StaticPage.find_by(slug: "verification-information")
           end

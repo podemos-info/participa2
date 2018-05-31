@@ -22,8 +22,8 @@
                 <div class="column large-6 document_uploader">
                   <div class="field">
                     <%= form.label(:document_file1) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{@form.document_type}-sample1.png", alt: t(".sample1-description.#{@form.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample1-description.#{@form.document_type}") %></div>
+                      <%= image_tag "decidim/census_connector/verifications/census/#{person.document_type}-sample1.png", alt: t(".sample1-description.#{person.document_type}") %>
+                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample1-description.#{person.document_type}") %></div>
                     <% end %>
                     <div class="upload">
                       <%= form.upload :document_file1, accept: "image/*"%>
@@ -33,8 +33,8 @@
                 <div class="column large-6 document_uploader">
                   <div class="field">
                     <%= form.label(:document_file2) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{@form.document_type}-sample2.png", alt: t(".sample2-description.#{@form.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample2-description.#{@form.document_type}") %></div>
+                      <%= image_tag "decidim/census_connector/verifications/census/#{person.document_type}-sample2.png", alt: t(".sample2-description.#{person.document_type}") %>
+                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample2-description.#{person.document_type}") %></div>
                     <% end %>
                     <div class="upload">
                       <%= form.upload :document_file2, accept: "image/*"%>

@@ -27,7 +27,7 @@ module Decidim
 
           def create
             @form = current_form_object.from_params(params).with_context(form_context)
-            current_command.call(census_authorization, @form) do
+            current_command.call(person_proxy, census_authorization, @form) do
               on(:ok) do
                 redirect_to next_path
               end
@@ -94,8 +94,7 @@ module Decidim
           def form_context
             {
               user: current_user,
-              local_scope: local_scope,
-              person_proxy: person_proxy
+              local_scope: local_scope
             }
           end
 

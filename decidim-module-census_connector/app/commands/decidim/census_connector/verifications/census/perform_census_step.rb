@@ -10,7 +10,9 @@ module Decidim
           #
           # authorization - An Authorization object.
           # form - A Decidim::Form object.
-          def initialize(authorization, form)
+          # person_proxy - A Decidim::CensusConnector::PersonProxy object
+          def initialize(person_proxy, authorization, form)
+            @person_proxy = person_proxy
             @authorization = authorization
             @form = form
           end
@@ -30,18 +32,14 @@ module Decidim
           private
 
           def census_person
-            @census_person ||= ::Census::API::Person.new(person_proxy.person_id)
+            person_proxy.census_person_api_connection
           end
 
           def has_no_person?
             !person_proxy.has_person?
           end
 
-          def person_proxy
-            form.context.person_proxy
-          end
-
-          attr_reader :authorization, :form
+          attr_reader :authorization, :form, :person_proxy
         end
       end
     end
