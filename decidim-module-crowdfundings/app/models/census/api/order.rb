@@ -9,6 +9,7 @@ module Census
       def self.create(params)
         response = post_order("/api/v1/payments/orders", body: params)
 
+        return { http_response_code: 500 } if response.nil?
         return { http_response_code: response.code } if response.code / 100 == 5
 
         json_response = JSON.parse(response.body, symbolize_names: true)
@@ -21,7 +22,7 @@ module Census
       rescue StandardError => e
         Rails.logger.debug "Request to #{url} failed with code #{e.response.code}: #{e.response.message}"
 
-        e.response
+        nil
       end
 
       private_class_method :post_order
