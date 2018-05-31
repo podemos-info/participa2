@@ -12,7 +12,7 @@ module Decidim
         helper_method :document_scopes, :local_scope, :local_scope_ranges, :has_person?, :person, :person_participatory_spaces
 
         def document_scopes
-          current_organization.scopes.where(parent_id: nil).order(name: :asc)
+          current_organization.scopes.top_level.order(name: :asc)
         end
 
         def local_scope
