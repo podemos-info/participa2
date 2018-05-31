@@ -19,6 +19,7 @@ es:
         membership_level: Nivel de compromiso
   census:
     api:
+      global_error: El censo de Podemos no está disponible en este momento. Por favor inténtalo de nuevo más tarde o contactanos en verificaciones@soporte.podemos.info si el problema persiste
       person:
         document_type:
           dni: DNI

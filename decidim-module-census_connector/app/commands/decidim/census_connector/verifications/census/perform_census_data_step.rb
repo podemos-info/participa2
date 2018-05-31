@@ -16,9 +16,9 @@ module Decidim
             if result
               broadcast :ok
             else
-              add_errors_to_form
+              add_errors_to_form if census_person.errors
 
-              broadcast :invalid
+              broadcast :invalid, census_person.global_error
             end
           end
 

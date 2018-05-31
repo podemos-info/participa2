@@ -12,14 +12,18 @@ module Decidim
             if result
               broadcast :ok
             else
-              broadcast :invalid, formatted_errors
+              broadcast :invalid, formatted_error
             end
           end
 
           private
 
-          def formatted_errors
-            census_person.errors.map { |key, value| "#{key}: #{value.join(", ")}" }
+          def formatted_error
+            if census_person.errors
+              census_person.errors.map { |key, value| "#{key}: #{value.join(", ")}" }
+            else
+              census_person.global_error
+            end
           end
 
           def create_verification

@@ -6,7 +6,7 @@ module Census
     class Person
       include CensusAPI
 
-      attr_reader :person_id, :errors
+      attr_reader :person_id, :errors, :global_error
 
       def initialize(person_id)
         @person_id = person_id
@@ -76,8 +76,12 @@ module Census
 
         if [202, 204].include?(http_response_code)
           true
-        else
+        elsif http_response_code == 422
           @errors = response
+
+          false
+        else
+          @global_error = I18n.t("census.api.global_error")
 
           false
         end

@@ -32,8 +32,8 @@ module Decidim
                 redirect_to next_path
               end
 
-              on(:invalid) do
-                flash.now[:alert] = t("errors.create", scope: "decidim.census_connector.verifications.census")
+              on(:invalid) do |message|
+                flash.now[:alert] = message || t("errors.create", scope: "decidim.census_connector.verifications.census")
                 render current_form
               end
             end
