@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/people
     body:
       encoding: UTF-8
-      string: first_name=&last_name1=&last_name2=&document_type=dni&document_id=&born_at=&gender=&address=&postal_code=&email=user1%40example.org&document_scope_code=ES&scope_code=&address_scope_code=&origin_qualified_id=4305761%40decidim
+      string: email=user3%40example.org&first_name=&last_name1=&last_name2=&document_type=dni&document_id=&born_at=&gender=&address=&postal_code=&document_scope_code=ES&address_scope_code=&origin_qualified_id=8795206%40decidim
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,14 +23,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=c359acaf-8057-41a6-aab9-782705affbf7; path=/; expires=Sat, 26 May
-        2018 01:59:10 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6e5e7036-9685-434d-ae7b-3331ed207693; path=/; expires=Mon, 25
-        May 2020 21:59:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=a96db8bd-91ce-4417-bac6-97f4e311947e; path=/; expires=Thu, 31 May
+        2018 16:57:51 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=0a9302ea-1b5d-4a81-9489-e387e6dbebce; path=/; expires=Sun, 31
+        May 2020 12:57:51 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6d49d168-5354-4509-b9cd-60f1c4258307
+      - 0b55c29f-415f-4ade-bb46-148d801094e1
       X-Runtime:
-      - '0.035094'
+      - '0.036755'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -58,5 +58,5 @@ http_interactions:
         puede estar en blanco"],"postal_code":["no puede estar en blanco"],"address_scope":["no
         puede estar en blanco"],"scope":["no puede estar en blanco"]}'
     http_version: 
-  recorded_at: Fri, 25 May 2018 21:59:10 GMT
+  recorded_at: Thu, 31 May 2018 12:57:51 GMT
 recorded_with: VCR 4.0.0
