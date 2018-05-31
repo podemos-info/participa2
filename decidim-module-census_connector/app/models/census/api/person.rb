@@ -60,9 +60,11 @@ module Census
 
       # PUBLIC associate a membership level for the person.
       def create_membership_level(params)
-        send_request do
+        response = send_request do
           post("/api/v1/people/#{qualified_id}/membership_levels", params)
         end
+
+        valid?(response)
       end
 
       private

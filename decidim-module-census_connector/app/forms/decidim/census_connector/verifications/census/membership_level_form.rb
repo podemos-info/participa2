@@ -5,7 +5,7 @@ module Decidim
     module Verifications
       module Census
         class MembershipLevelForm < Decidim::Form
-          attribute :membership_level, Symbol
+          attribute :level, Symbol
         end
       end
     end
