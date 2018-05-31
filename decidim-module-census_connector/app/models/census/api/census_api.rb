@@ -30,10 +30,15 @@ module Census
       end
 
       def send_request
-        response = yield
+        begin
+          response = yield
 
-        http_response_code = response.status
-        http_response_body = response.body
+          http_response_code = response.status
+          http_response_body = response.body
+        rescue Errno::ECONNREFUSED
+          http_response_code = 500
+          http_response_body = "\n****** Census is down! ******\n"
+        end
 
         if [500, 204].include?(http_response_code)
           Rails.logger.warn http_response_body
