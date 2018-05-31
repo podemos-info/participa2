@@ -18,6 +18,7 @@ module Decidim
                inverse_of: :collaboration
 
       scope :for_component, ->(component) { where(component: component) }
+      scope :active, -> { where("active_until IS NULL or active_until >= ?", Time.zone.now) }
 
       # PUBLIC: Returns the amount collected by the campaign
       def total_collected

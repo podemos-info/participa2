@@ -1,0 +1,8 @@
+<% if collaborations.any? %>
+  <section class="section row collapse highlighted_collaborations">
+    <h4 class="section-heading"><%= t(".title") %></h4>
+    <div class="row">
+      <%= render partial: "decidim/participatory_spaces/collaboration", collection: collaborations %>
+    </div>
+  </section>
+<% end %>

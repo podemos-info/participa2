@@ -154,11 +154,6 @@ en:
             last_order_request_date: Last request
             state: State
             user: User
-      pages:
-        home:
-          highlighted_collaborations:
-            support: Support
-            title: Highlighted collaborations
       user_collaborations:
         confirm_form:
           are_you_sure: Are you sure?
@@ -204,3 +199,6 @@ en:
         other: Other
     menu:
       collaborations: Collaborations
+    participatory_spaces:
+      highlighted_collaborations:
+        title: Collaborations

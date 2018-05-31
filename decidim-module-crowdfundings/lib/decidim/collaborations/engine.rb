@@ -3,6 +3,9 @@
 require "rails"
 require "active_support/all"
 require "decidim/core"
+require "cells/rails"
+require "cells-erb"
+require "cell/partial"
 
 module Decidim
   module Collaborations
@@ -46,19 +49,26 @@ module Decidim
       end
 
       initializer "decidim_collaborations.view_hooks" do
-        Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
-          highlighted_collaborations = PersonPrioritizedCollaborations.new(view_context.person_participatory_spaces)
+        Decidim.view_hooks.register(:participatory_space_highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
+          published_components = Decidim::Component.where(participatory_space: view_context.current_participatory_space).published
+          collaborations = Decidim::Collaborations::Collaboration.active
+                                                                 .where(component: published_components)
+                                                                 .limit(Decidim::Collaborations.config.participatory_space_highlighted_collaborations_limit)
+          next unless collaborations.any?
 
-          next unless highlighted_collaborations.any?
-
+          view_context.extend Decidim::Collaborations::CollaborationsHelper
           view_context.render(
-            partial: "decidim/collaborations/pages/home/highlighted_collaborations",
+            partial: "decidim/participatory_spaces/highlighted_collaborations",
             locals: {
-              highlighted_collaborations: highlighted_collaborations,
-              highlighted_collaborations_count: highlighted_collaborations.count
+              collaborations: collaborations
             }
           )
         end
+      end
+
+      initializer "decidim_collaborations.add_cells" do
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Collaborations::Engine.root}/app/cells")
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Collaborations::Engine.root}/app/views") # for partials
       end
     end
   end

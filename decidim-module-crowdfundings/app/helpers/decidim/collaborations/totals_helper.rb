@@ -54,17 +54,21 @@ module Decidim
 
         content_tag(:div,
                     class: "extra__percentage percentage #{css_class}".strip) do
+
+          output = []
           5.times do
-            concat(content_tag(:span, class: "percentage__item") {})
+            output << content_tag(:span, "", class: "percentage__item")
           end
 
-          concat(content_tag(:span, class: "percentage__desc") do
+          output << content_tag(:span, "", class: "percentage__desc") do
             decidim_number_to_currency(collaboration.target_amount)
             I18n.t(
               "decidim.collaborations.collaborations.totals.target_amount",
               amount: decidim_number_to_currency(collaboration.target_amount)
             )
-          end)
+          end
+
+          safe_join(output)
         end
       end
 

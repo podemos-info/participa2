@@ -32,6 +32,12 @@ module Decidim
       15
     end
 
+    # Public Setting that defines how many collaborations will be shown in the
+    # participatory_space_highlighted_elements view hook
+    config_accessor :participatory_space_highlighted_collaborations_limit do
+      3
+    end
+
     # Default recurrent collaboration
     config_accessor :default_frequency do
       "monthly"
