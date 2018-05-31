@@ -6,12 +6,12 @@ require "decidim/core/test/factories"
 require "faker"
 require "faker/spanish_document"
 
-describe "Census verification workflow", type: :system do
+describe "Census verification", type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: ["census"])
   end
 
-  let!(:scope) { create(:scope, code: "ES", organization: organization, id: 1) }
+  let!(:scope) { create(:scope, code: "ES", organization: organization) }
 
   let(:user) do
     create(:user, :confirmed, base_user_params.merge(extra_user_params))

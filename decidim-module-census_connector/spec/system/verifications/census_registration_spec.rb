@@ -10,6 +10,7 @@ describe "Census registration", type: :system do
 
   let!(:inner_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
   let!(:exterior_scope) { create(:scope, code: "XX", organization: organization) }
+  let!(:other_organization_scope) { create(:scope) }
 
   before do
     switch_to_host(organization.host)
@@ -27,5 +28,11 @@ describe "Census registration", type: :system do
 
     scope_repick select_data_picker(:data_handler_address_scope_id), exterior_scope, inner_scope
     expect(page).to have_no_content("Participation place")
+  end
+
+  it "shows only organization scopes in the document scope selector" do
+    select "Passport", from: "Document type"
+
+    expect(page).to have_select("Document country", options: [translated(inner_scope.name), translated(exterior_scope.name)])
   end
 end

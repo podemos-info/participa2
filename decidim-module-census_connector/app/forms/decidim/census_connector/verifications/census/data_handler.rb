@@ -7,10 +7,6 @@ module Decidim
         class DataHandler < CensusHandler
           mimic :data_handler
 
-          def self.document_scopes
-            @document_scopes ||= Decidim::Scope.top_level.order(name: :asc)
-          end
-
           def self.document_types
             Person.document_types
           end

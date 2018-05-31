@@ -9,7 +9,11 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
-        helper_method :local_scope, :local_scope_ranges, :has_person?, :person, :person_participatory_spaces
+        helper_method :document_scopes, :local_scope, :local_scope_ranges, :has_person?, :person, :person_participatory_spaces
+
+        def document_scopes
+          current_organization.scopes.top_level.order(name: :asc)
+        end
 
         def local_scope
           @local_scope ||= Decidim::Scope.find_by(code: Decidim::CensusConnector.census_local_code)
