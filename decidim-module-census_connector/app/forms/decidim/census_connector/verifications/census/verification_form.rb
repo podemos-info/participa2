@@ -9,13 +9,7 @@ module Decidim
           attribute :document_file2
           attribute :tos_agreement, Boolean
 
-          validates :document_file1, presence: true
-          validates :document_file2, presence: true, if: :require_document_file2?
           validates :tos_agreement, allow_nil: true, acceptance: true
-
-          def require_document_file2?
-            document_type == "passport"
-          end
 
           def document_type
             @document_type ||= context.person_proxy.person.document_type

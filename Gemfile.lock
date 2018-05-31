@@ -169,7 +169,7 @@ PATH
     decidim-census_connector (0.11.1)
       decidim-core (~> 0.11.a)
       decidim-verifications (~> 0.11.a)
-      httparty
+      faraday
 
 PATH
   remote: decidim-module-crowdfundings
@@ -783,6 +783,7 @@ DEPENDENCIES
   dotenv-rails
   faker (~> 1.8.4)
   faker-spanish_document (~> 0.1)
+  faraday
   i18n-debug
   letter_opener_web (~> 1.3.0)
   listen (~> 3.1.0)

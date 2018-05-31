@@ -15,7 +15,7 @@ module Census
       # PUBLIC creates a person with the given params.
       def create(params)
         response = send_request do
-          post("/api/v1/people", body: params)
+          post("/api/v1/people", params)
         end
 
         result = valid?(response)
@@ -35,7 +35,7 @@ module Census
       # PUBLIC update the person with the given params.
       def update(params)
         response = send_request do
-          patch("/api/v1/people/#{qualified_id}", body: params)
+          patch("/api/v1/people/#{qualified_id}", params)
         end
 
         valid?(response)
@@ -51,15 +51,17 @@ module Census
           }
         end
 
-        send_request do
-          post("/api/v1/people/#{qualified_id}/document_verifications", body: { files: files })
+        response = send_request do
+          post("/api/v1/people/#{qualified_id}/document_verifications", files: files)
         end
+
+        valid?(response)
       end
 
       # PUBLIC associate a membership level for the person.
       def create_membership_level(params)
         send_request do
-          post("/api/v1/people/#{qualified_id}/membership_levels", body: params)
+          post("/api/v1/people/#{qualified_id}/membership_levels", params)
         end
       end
 

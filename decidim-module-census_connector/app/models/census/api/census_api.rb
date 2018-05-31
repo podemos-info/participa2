@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "active_support/concern"
-require "httparty"
+require "faraday"
 
 module Census
   module API
@@ -9,28 +9,35 @@ module Census
       extend ActiveSupport::Concern
 
       included do
-        include ::HTTParty
-
-        base_uri ::Decidim::CensusConnector.census_api_base_uri
-
-        http_proxy Decidim::CensusConnector.census_api_proxy_address, Decidim::CensusConnector.census_api_proxy_port if Decidim::CensusConnector.census_api_proxy_address.present?
-
-        debug_output if Decidim::CensusConnector.census_api_debug
-
-        delegate :send_request, :get, :patch, :post, to: :class
+        delegate :get, :patch, :post, to: :connection
       end
 
-      class_methods do
-        def send_request
-          response = yield
+      def proxy
+        return if Decidim::CensusConnector.census_api_proxy_address.blank?
 
-          http_response_code = response.code.to_i
-          return { http_response_code: http_response_code } if [500, 204].include?(http_response_code)
+        "#{Decidim::CensusConnector.census_api_proxy_address}:#{Decidim::CensusConnector.census_api_proxy_port}"
+      end
 
-          json_response = JSON.parse(response.body, symbolize_names: true)
-          json_response[:http_response_code] = http_response_code
-          json_response
+      def connection
+        Faraday.new(url: ::Decidim::CensusConnector.census_api_base_uri, proxy: proxy) do |conn|
+          conn.request :multipart
+          conn.request :url_encoded
+
+          conn.adapter Faraday.default_adapter
+
+          conn.response :logger, ::Logger.new(STDOUT), bodies: true if Decidim::CensusConnector.census_api_debug
         end
+      end
+
+      def send_request
+        response = yield
+
+        http_response_code = response.status
+        return { http_response_code: http_response_code } if [500, 204].include?(http_response_code)
+
+        json_response = JSON.parse(response.body, symbolize_names: true)
+        json_response[:http_response_code] = http_response_code
+        json_response
       end
     end
   end
