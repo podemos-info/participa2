@@ -1,16 +1,11 @@
 # frozen_string_literal: true
 
-require "active_support/concern"
 require "faraday"
 
 module Census
   module API
     module CensusAPI
-      extend ActiveSupport::Concern
-
-      included do
-        delegate :get, :patch, :post, to: :connection
-      end
+      delegate :get, :patch, :post, to: :connection
 
       def proxy
         return if Decidim::CensusConnector.census_api_proxy_address.blank?
