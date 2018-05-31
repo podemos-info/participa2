@@ -154,11 +154,6 @@ es:
             last_order_request_date: Última petición
             state: Estado
             user: Usuario
-      pages:
-        home:
-          highlighted_collaborations:
-            support: Apoyar
-            title: Colaboraciones destacadas
       user_collaborations:
         confirm_form:
           are_you_sure: "¿Estás seguro?"
@@ -192,7 +187,7 @@ es:
     components:
       collaborations:
         actions:
-          support: Colaborar
+          support: Apoyar
         name: Aportaciones
         settings:
           global:
@@ -204,3 +199,6 @@ es:
         other: Otros
     menu:
       collaborations: Colaboraciones
+    participatory_spaces:
+      highlighted_collaborations:
+        title: Colaboraciones

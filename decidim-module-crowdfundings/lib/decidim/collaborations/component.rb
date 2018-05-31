@@ -7,6 +7,7 @@ Decidim.register_component(:collaborations) do |component|
   component.admin_engine = Decidim::Collaborations::AdminEngine
   component.icon = "decidim/collaborations/icon.svg"
   component.stylesheet = "decidim/collaborations/collaborations"
+  component.card = "decidim/collaborations/collaboration"
 
   component.on(:before_destroy) do |instance|
     raise StandardError, "Can't remove this component" if Decidim::Collaboration.where(component: instance).any?
