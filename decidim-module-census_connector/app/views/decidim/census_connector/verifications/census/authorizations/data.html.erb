@@ -43,7 +43,7 @@
                 </div>
 
                 <div id="document_scope_selector" class="field">
-                  <%= form.select :document_scope_id, @handler.class.document_scopes.map { |scope| [translated_attribute(scope.name), scope.id] } %>
+                  <%= form.select :document_scope_id, document_scopes.map { |scope| [translated_attribute(scope.name), scope.id] } %>
                 </div>
 
                 <div class="field">
