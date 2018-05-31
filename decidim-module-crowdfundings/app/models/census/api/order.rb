@@ -9,7 +9,7 @@ module Census
       def self.create(params)
         response = post_order("/api/v1/payments/orders", body: params)
 
-        return { http_response_code: response.code, message: response.message } if response.code / 100 == 5
+        return { http_response_code: response.code } if response.code / 100 == 5
 
         json_response = JSON.parse(response.body, symbolize_names: true)
         json_response[:http_response_code] = response.code
