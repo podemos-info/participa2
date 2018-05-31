@@ -33,9 +33,15 @@ module Census
         response = yield
 
         http_response_code = response.status
-        return { http_response_code: http_response_code } if [500, 204].include?(http_response_code)
+        http_response_body = response.body
 
-        json_response = JSON.parse(response.body, symbolize_names: true)
+        if [500, 204].include?(http_response_code)
+          Rails.logger.warn http_response_body
+
+          return { http_response_code: http_response_code }
+        end
+
+        json_response = JSON.parse(http_response_body, symbolize_names: true)
         json_response[:http_response_code] = http_response_code
         json_response
       end
