@@ -44,13 +44,13 @@
               </div>
 
               <% if @form.terms_and_conditions_page %>
-              <p class="lopd-text">
-                <strong><%= translated_attribute(@form.terms_and_conditions_page.title) %></strong><br/>
-                <%= strip_tags(translated_attribute(@form.terms_and_conditions_page.content)) %>
-              </p>
-              <div class="field">
-                <%= form.check_box :tos_agreement, label: t("tos_agreement", scope: "decidim.devise.registrations.new", link: link_to(t("terms", scope: "decidim.devise.registrations.new"), decidim.page_path(@form.terms_and_conditions_page))) %>
-              </div>
+                <p class="lopd-text">
+                  <strong><%= translated_attribute(@form.terms_and_conditions_page.title) %></strong><br/>
+                  <%= strip_tags(translated_attribute(@form.terms_and_conditions_page.content)) %>
+                </p>
+                <div class="field">
+                  <%= form.check_box :tos_agreement, label: t("tos_agreement", scope: "decidim.devise.registrations.new", link: link_to(t("terms", scope: "decidim.devise.registrations.new"), decidim.page_path(@form.terms_and_conditions_page))) %>
+                </div>
               <% end %>
 
               <div class="actions">
