@@ -4,7 +4,7 @@ module Census
   module API
     # This class represents an totals retrieval request in Census API
     class Totals
-      include CensusAPI
+      extend CensusAPI
 
       URL_PATH = "/api/v1/payments/orders/total"
 
@@ -46,7 +46,7 @@ module Census
 
       # Process response from totals service in Census.
       def self.process_response(response)
-        unless response.ok?
+        unless response.success?
           Rails.logger.info "[API error] #{response.body}"
           return
         end
@@ -57,10 +57,7 @@ module Census
 
       # Performs a totals request to Census service.
       def self.totals_request(params)
-        get(
-          URL_PATH,
-          query: params
-        )
+        get(URL_PATH, params)
       end
     end
   end
