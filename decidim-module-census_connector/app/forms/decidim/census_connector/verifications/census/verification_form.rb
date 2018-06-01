@@ -18,6 +18,10 @@ module Decidim
           def terms_and_conditions_page
             @terms_and_conditions_page ||= Decidim::StaticPage.find_by(slug: "verification-terms-and-conditions")
           end
+
+          def files
+            [document_file1, document_file2].compact
+          end
         end
       end
     end

@@ -32,7 +32,7 @@ module Decidim
 
           def verification_params
             {
-              files: [form.document_file1, form.document_file2].compact
+              files: form.files
             }
           end
         end
