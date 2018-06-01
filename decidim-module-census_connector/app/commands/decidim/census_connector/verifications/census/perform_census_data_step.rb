@@ -37,11 +37,11 @@ module Decidim
           end
 
           def add_errors_to_form
-            census_person.errors.each do |key, value|
-              if key.match?(/scope\Z/)
-                form.errors.add("#{key}_id", value)
-              elsif form.respond_to?(key)
-                form.errors.add(key, value)
+            census_person.errors.each do |attribute, errors|
+              if attribute.match?(/scope\Z/)
+                form.errors.add("#{attribute}_id", errors)
+              elsif form.respond_to?(attribute)
+                form.errors.add(attribute, errors)
               end
             end
           end
