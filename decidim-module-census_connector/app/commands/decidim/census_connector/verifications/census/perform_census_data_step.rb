@@ -37,15 +37,13 @@ module Decidim
           end
 
           def add_errors_to_form
-            census_person.errors.each do |attribute, errors|
-              errored_attribute = attribute.match?(/scope\Z/) ? "#{attribute}_id" : attribute
-
-              errors.each do |error_hash|
-                error_type = error_hash.delete(:error)
-
-                form.errors.add(errored_attribute, error_type.to_sym, error_hash)
-              end
-            end
+            ErrorConverter.new(
+              form,
+              census_person.errors,
+              document_scope: :document_scope_id,
+              address_scope: :address_scope_id,
+              scope: :scope_id
+            ).run
           end
 
           def person_params
