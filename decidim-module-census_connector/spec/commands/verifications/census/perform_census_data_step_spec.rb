@@ -53,7 +53,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /document_id=&/)
+          .with(body: hash_including(document_id: ""))
           .to_return(status: 422, body: '{"document_id":[{"error":"blank"}]}')
 
         subject.call
@@ -70,7 +70,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /document_id=11111111A/)
+          .with(body: hash_including(document_id: "11111111A"))
           .to_return(status: 422, body: '{"document_id":[{"error":"invalid"}]}')
 
         subject.call
@@ -87,7 +87,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /first_name=&/)
+          .with(body: hash_including(first_name: ""))
           .to_return(status: 422, body: '{"first_name":[{"error":"blank"}]}')
 
         subject.call
@@ -104,7 +104,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /last_name1=&/)
+          .with(body: hash_including(last_name1: ""))
           .to_return(status: 422, body: '{"last_name1":[{"error":"blank"}]}')
 
         subject.call
@@ -121,7 +121,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /born_at=&/)
+          .with(body: hash_including(born_at: ""))
           .to_return(status: 422, body: '{"born_at":[{"error":"blank"}]}')
 
         subject.call
@@ -138,7 +138,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /gender=&/)
+          .with(body: hash_including(gender: ""))
           .to_return(status: 422, body: '{"gender":[{"error":"blank"}]}')
 
         subject.call
@@ -155,7 +155,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /gender=ardilla/)
+          .with(body: hash_including(gender: "ardilla"))
           .to_return(status: 422, body: '{"gender":[{"error":"inclusion"}]}')
 
         subject.call
@@ -172,7 +172,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /address=&/)
+          .with(body: hash_including(address: ""))
           .to_return(status: 422, body: '{"address":[{"error":"blank"}]}')
 
         subject.call
@@ -189,7 +189,7 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: /postal_code=&/)
+          .with(body: hash_including(postal_code: ""))
           .to_return(status: 422, body: '{"postal_code":[{"error":"blank"}]}')
 
         subject.call
