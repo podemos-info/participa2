@@ -18,9 +18,9 @@ module Census
           conn.request :multipart
           conn.request :url_encoded
 
-          conn.adapter Faraday.default_adapter
-
           conn.response :logger, ::Logger.new(STDOUT), bodies: true if Decidim::CensusConnector.census_api_debug
+
+          conn.adapter Faraday.default_adapter
         end
       end
 
