@@ -12,15 +12,21 @@ module Decidim
             if result
               broadcast :ok
             else
+              add_errors_to_form if census_person.errors
+
               broadcast :invalid, formatted_error
             end
           end
 
           private
 
+          def add_errors_to_form
+            ErrorConverter.new(form, census_person.errors).run
+          end
+
           def formatted_error
             if census_person.errors
-              census_person.errors.map { |key, value| "#{key}: #{value.join(", ")}" }
+              form.errors.full_messages.join(", ")
             else
               census_person.global_error
             end

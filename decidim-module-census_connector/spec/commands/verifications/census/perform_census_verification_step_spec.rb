@@ -26,11 +26,20 @@ module Decidim::CensusConnector
     context "when no document files present" do
       let(:document_file1) { nil }
 
-      it "adds the API error to the form" do
+      before do
         stub_request(:post, "http://mycensus:3001/api/v1/people/1@census/document_verifications")
-          .to_return(status: 422, body: '{"files": ["es demasiado corto (2 caracteres mínimo)"]}')
+          .to_return(status: 422, body: '{"files":[{"error":"too_short"}]}')
+      end
 
-        expect { subject.call }.to broadcast(:invalid, ["files: es demasiado corto (2 caracteres mínimo)"])
+      it "adds the API error to the form" do
+        subject.call
+
+        expect(form.errors.count).to eq(1)
+        expect(form.errors.first).to eq([:files, "Is too short"])
+      end
+
+      it "broadcasts a global error message" do
+        expect { subject.call }.to broadcast(:invalid, "Files Is too short")
       end
     end
   end

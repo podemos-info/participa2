@@ -52,6 +52,9 @@ describe "Census verification", type: :system do
 
   let(:dummy_resource) { create(:dummy_resource, component: component) }
 
+  let(:age) { 18 }
+  let(:document_type) { "DNI" }
+
   before do |example|
     Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
 
@@ -68,9 +71,6 @@ describe "Census verification", type: :system do
   end
 
   context "when registering with census" do
-    let(:age) { 18 }
-    let(:document_type) { "DNI" }
-
     before do
       click_link 'Authorize with "Census"'
 
@@ -158,7 +158,7 @@ describe "Census verification", type: :system do
     end
   end
 
-  context "when registering with census with invalid data" do
+  context "when registering with census with invalid data in the first step" do
     let(:cassette) { "registration_with_invalid_data" }
 
     before do
@@ -177,6 +177,24 @@ describe "Census verification", type: :system do
       expect(page).to have_content("Address can't be blank")
       expect(page).to have_content("Postal code can't be blank")
       expect(page).to have_content("City Select a scope can't be blank")
+    end
+  end
+
+  context "when registering with census with invalid data in the second step" do
+    let(:cassette) { "registration_with_invalid_data_second_step" }
+
+    before do
+      click_link 'Authorize with "Census"'
+
+      VCR.use_cassette(cassette) do
+        complete_data_step
+
+        click_button "Send"
+      end
+    end
+
+    it "shows errors" do
+      expect(page).to have_content("Files Is too short")
     end
   end
 
