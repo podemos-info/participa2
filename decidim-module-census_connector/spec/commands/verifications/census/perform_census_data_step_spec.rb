@@ -23,15 +23,20 @@ module Decidim::CensusConnector
     let(:first_name) { "Marlin" }
     let(:last_name1) { "D'Amore" }
     let(:document_type) { "dni" }
-    let(:document_id) { Faker::SpanishDocument.generate(:dni) }
+    let(:document_id) { "71195206V" }
     let(:born_at) { 18.years.ago }
     let(:gender) { "female" }
     let(:address) { "Rua del Percebe, 1" }
     let(:postal_code) { "08001" }
 
-    let(:address_scope_id) { local_scope.id }
-    let(:document_scope_id) { local_scope.id }
-    let(:scope_id) { local_scope.id }
+    let(:address_scope) { local_scope }
+    let(:address_scope_id) { address_scope.id }
+
+    let(:document_scope) { local_scope }
+    let(:document_scope_id) { document_scope.id }
+
+    let(:scope) { local_scope }
+    let(:scope_id) { scope.id }
 
     let(:form) do
       Verifications::Census::DataForm.new(
@@ -229,16 +234,36 @@ module Decidim::CensusConnector
     context "when document_scope_id not present" do
       let(:document_scope_id) { nil }
 
-      it "sends the local scope instead" do
-        stub = stub_request(
-          :patch, "http://mycensus:3001/api/v1/people/1@census"
-        ).with(
-          body: hash_including(document_scope_code: local_scope.code)
-        ).to_return(status: 202, body: "{}")
+      context "and document_type local" do
+        let(:document_type) { "dni" }
 
-        subject.call
+        it "sends the address scope" do
+          stub = stub_request(
+            :patch, "http://mycensus:3001/api/v1/people/1@census"
+          ).with(
+            body: hash_including(document_scope_code: address_scope.code)
+          ).to_return(status: 202, body: "{}")
 
-        expect(stub).to have_been_requested
+          subject.call
+
+          expect(stub).to have_been_requested
+        end
+      end
+
+      context "and document_type not local" do
+        let(:document_type) { "passport" }
+
+        it "sends the local scope" do
+          stub = stub_request(
+            :patch, "http://mycensus:3001/api/v1/people/1@census"
+          ).with(
+            body: hash_including(document_scope_code: local_scope.code)
+          ).to_return(status: 202, body: "{}")
+
+          subject.call
+
+          expect(stub).to have_been_requested
+        end
       end
     end
 
