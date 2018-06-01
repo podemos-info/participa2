@@ -40,7 +40,11 @@ module Decidim
             census_person.errors.each do |attribute, errors|
               errored_attribute = attribute.match?(/scope\Z/) ? "#{attribute}_id" : attribute
 
-              form.errors.add(errored_attribute, errors)
+              errors.each do |error_hash|
+                error_type = error_hash.delete(:error)
+
+                form.errors.add(errored_attribute, error_type.to_sym, error_hash)
+              end
             end
           end
 

@@ -55,14 +55,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /document_id=&/)
-          .to_return(status: 422, body: '{"document_id":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"document_id":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:document_id, ["no puede estar en blanco"]])
+        expect(form.errors.first).to eq([:document_id, "can't be blank"])
       end
     end
 
@@ -72,14 +72,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /document_id=11111111A/)
-          .to_return(status: 422, body: '{"document_id":["no es válido"]}')
+          .to_return(status: 422, body: '{"document_id":[{"error":"invalid"}]}')
 
         subject.call
       end
 
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:document_id, ["no es válido"]])
+        expect(form.errors.first).to eq([:document_id, "is invalid"])
       end
     end
 
@@ -89,14 +89,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /first_name=&/)
-          .to_return(status: 422, body: '{"first_name":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"first_name":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:first_name, ["no puede estar en blanco"]])
+        expect(form.errors.first).to eq([:first_name, "can't be blank"])
       end
     end
 
@@ -106,14 +106,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /last_name1=&/)
-          .to_return(status: 422, body: '{"last_name1":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"last_name1":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:last_name1, ["no puede estar en blanco"]])
+        expect(form.errors.first).to eq([:last_name1, "can't be blank"])
       end
     end
 
@@ -123,14 +123,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /born_at=&/)
-          .to_return(status: 422, body: '{"born_at":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"born_at":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors[:born_at]).to eq([["no puede estar en blanco"]])
+        expect(form.errors[:born_at]).to eq(["can't be blank"])
       end
     end
 
@@ -140,14 +140,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /gender=&/)
-          .to_return(status: 422, body: '{"gender":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"gender":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors[:gender]).to eq([["no puede estar en blanco"]])
+        expect(form.errors[:gender]).to eq(["can't be blank"])
       end
     end
 
@@ -157,14 +157,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /gender=ardilla/)
-          .to_return(status: 422, body: '{"gender":["no está incluido en la lista"]}')
+          .to_return(status: 422, body: '{"gender":[{"error":"inclusion"}]}')
 
         subject.call
       end
 
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors[:gender]).to eq([["no está incluido en la lista"]])
+        expect(form.errors[:gender]).to eq(["is not included in the list"])
       end
     end
 
@@ -174,14 +174,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /address=&/)
-          .to_return(status: 422, body: '{"address":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"address":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors[:address]).to eq([["no puede estar en blanco"]])
+        expect(form.errors[:address]).to eq(["can't be blank"])
       end
     end
 
@@ -191,14 +191,14 @@ module Decidim::CensusConnector
       before do
         stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
           .with(body: /postal_code=&/)
-          .to_return(status: 422, body: '{"postal_code":["no puede estar en blanco"]}')
+          .to_return(status: 422, body: '{"postal_code":[{"error":"blank"}]}')
 
         subject.call
       end
 
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
-        expect(form.errors[:postal_code]).to eq([["no puede estar en blanco"]])
+        expect(form.errors[:postal_code]).to eq(["can't be blank"])
       end
     end
   end

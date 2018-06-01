@@ -54,11 +54,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"first_name":["no puede estar en blanco"],"last_name1":["no puede
-        estar en blanco"],"document_id":["no puede estar en blanco"],"born_at":["no
-        puede estar en blanco"],"gender":["no puede estar en blanco"],"address":["no
-        puede estar en blanco"],"postal_code":["no puede estar en blanco"],"address_scope":["no
-        puede estar en blanco"],"scope":["no puede estar en blanco"]}'
+      string: '{"first_name":[{"error":"blank"}],"last_name1":[{"error":"blank"}],"document_id":[{"error":"blank"}],"born_at":[{"error":"blank"}],"gender":[{"error":"blank"}],"address":[{"error":"blank"}],"postal_code":[{"error":"blank"}],"address_scope":[{"error":"blank"}],"scope":[{"error":"blank"}]}'
     http_version: 
   recorded_at: Thu, 31 May 2018 21:14:20 GMT
 recorded_with: VCR 4.0.0
