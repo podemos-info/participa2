@@ -93,7 +93,6 @@ module Decidim
 
           def form_context
             {
-              user: current_user,
               local_scope: local_scope
             }
           end

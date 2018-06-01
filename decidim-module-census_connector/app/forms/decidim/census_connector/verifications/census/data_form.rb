@@ -5,8 +5,7 @@ module Decidim
     module Verifications
       module Census
         class DataForm < Decidim::Form
-          delegate :local_scope, :user, to: :context
-          delegate :email, to: :user
+          delegate :local_scope, to: :context
 
           attribute :first_name, String
           attribute :last_name1, String

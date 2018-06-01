@@ -48,7 +48,7 @@ module Decidim
 
           def person_params
             base = {
-              email: email,
+              email: user.email,
               first_name: first_name,
               last_name1: last_name1,
               last_name2: last_name2,
@@ -68,11 +68,12 @@ module Decidim
           end
 
           def origin_qualified_id
-            "#{form.user.id}@decidim"
+            "#{user.id}@decidim"
           end
 
+          delegate :user, to: :authorization
           delegate :local_scope, to: :form
-          delegate :email, :first_name, :last_name1, :last_name2, :document_type, :document_id, :born_at, :gender, :address, :postal_code, to: :form
+          delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, :born_at, :gender, :address, :postal_code, to: :form
 
           delegate :code, to: :document_scope, allow_nil: true, prefix: true
           delegate :code, to: :scope, allow_nil: true, prefix: true

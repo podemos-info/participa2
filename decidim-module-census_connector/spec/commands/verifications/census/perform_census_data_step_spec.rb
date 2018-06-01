@@ -39,8 +39,7 @@ module Decidim::CensusConnector
         scope_id: nil,
         postal_code: postal_code
       ).with_context(
-        local_scope: scope,
-        user: user
+        local_scope: local_scope
       )
     end
 
