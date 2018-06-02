@@ -84,13 +84,13 @@ module Decidim
               if local_document?
                 local_scope
               else
-                Decidim::Scope.find_by(id: form.document_scope_id)
+                scopes.find_by(id: form.document_scope_id)
               end
             end
           end
 
           def address_scope
-            @address_scope ||= Decidim::Scope.find_by(id: form.address_scope_id)
+            @address_scope ||= scopes.find_by(id: form.address_scope_id)
           end
 
           def scope
@@ -98,7 +98,7 @@ module Decidim
               if local_address?
                 address_scope
               else
-                Decidim::Scope.find_by(id: form.scope_id)
+                scopes.find_by(id: form.scope_id)
               end
             end
           end
@@ -109,6 +109,10 @@ module Decidim
 
           def local_address?
             local_scope.ancestor_of?(address_scope)
+          end
+
+          def scopes
+            user.organization.scopes
           end
         end
       end

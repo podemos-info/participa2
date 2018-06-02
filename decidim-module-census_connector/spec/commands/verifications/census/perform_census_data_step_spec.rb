@@ -15,6 +15,7 @@ module Decidim::CensusConnector
 
     let!(:local_scope) { create(:scope, code: scope_code, organization: organization) }
     let!(:foreign_scope) { create(:scope, organization: organization) }
+    let!(:unrelated_scope) { create(:scope) }
 
     let(:scope_code) { "ES" }
 
@@ -231,6 +232,23 @@ module Decidim::CensusConnector
       end
     end
 
+    context "when address_scope_id in other organization" do
+      let(:address_scope_id) { unrelated_scope.id }
+
+      before do
+        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
+          .with(body: hash_including(address_scope_code: nil))
+          .to_return(status: 422, body: '{"address_scope":[{"error":"blank"}]}')
+
+        subject.call
+      end
+
+      it "adds the API errors to the form" do
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
+      end
+    end
+
     context "when document_scope_id not present" do
       let(:document_scope_id) { nil }
 
@@ -267,9 +285,44 @@ module Decidim::CensusConnector
       end
     end
 
-    context "when scope_id not present" do
-      let(:scope_id) { nil }
+    context "when document_scope_id in other organization" do
+      let(:document_scope_id) { unrelated_scope.id }
 
+      context "and document_type local" do
+        let(:document_type) { "dni" }
+
+        it "sends the address scope" do
+          stub = stub_request(
+            :patch, "http://mycensus:3001/api/v1/people/1@census"
+          ).with(
+            body: hash_including(document_scope_code: address_scope.code)
+          ).to_return(status: 202, body: "{}")
+
+          subject.call
+
+          expect(stub).to have_been_requested
+        end
+      end
+
+      context "and document_type not local" do
+        let(:document_type) { "passport" }
+
+        before do
+          stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
+            .with(body: hash_including(document_scope_code: nil))
+            .to_return(status: 422, body: '{"document_scope":[{"error":"blank"}]}')
+
+          subject.call
+        end
+
+        it "adds API errors to the form" do
+          expect(form.errors.count).to eq(1)
+          expect(form.errors[:document_scope_id]).to eq(["can't be blank"])
+        end
+      end
+    end
+
+    shared_examples_for "missing scope_id" do
       context "and address_scope_id not present either" do
         let(:address_scope_id) { nil }
 
@@ -321,6 +374,18 @@ module Decidim::CensusConnector
           end
         end
       end
+    end
+
+    context "when scope_id not present" do
+      let(:scope_id) { nil }
+
+      include_examples "missing scope_id"
+    end
+
+    context "when scope_id not in organization" do
+      let(:scope_id) { unrelated_scope.id }
+
+      include_examples "missing scope_id"
     end
   end
 end
