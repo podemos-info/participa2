@@ -133,7 +133,7 @@ module Decidim
           delegate :age, :document_type, to: :person
 
           def person
-            @person ||= Decidim::CensusConnector::PersonProxy.new(authorization: authorization)&.person if authorization
+            @person ||= Decidim::CensusConnector::PersonProxy.new(authorization)&.person if authorization
           end
         end
       end

@@ -9,35 +9,37 @@ module Decidim
           # Public: Initializes the command.
           #
           # authorization - An Authorization object.
-          # handler - An AuthorizationHandler object.
-          def initialize(authorization, handler)
+          # form - A Decidim::Form object.
+          # person_proxy - A Decidim::CensusConnector::PersonProxy object
+          def initialize(person_proxy, authorization, form)
+            @person_proxy = person_proxy
             @authorization = authorization
-            @handler = handler
+            @form = form
           end
 
           # Executes the command. Broadcasts these events:
           #
           # - :ok when everything is valid.
-          # - :invalid if the handler wasn't valid and we couldn't proceed.
+          # - :invalid if the form wasn't valid and we couldn't proceed.
           #
           # Returns nothing.
           def call
-            return broadcast(:invalid) if handler.invalid?
+            return broadcast(:invalid) if form.invalid?
 
             perform
           end
 
           private
 
-          def person
-            @person ||= ::Census::API::Person.new(handler.census_qualified_id)
+          def census_person
+            person_proxy.census_person_api_connection
           end
 
-          def attributes
-            handler.attributes.except(:user, :handler_name)
+          def has_no_person?
+            !person_proxy.has_person?
           end
 
-          attr_reader :authorization, :handler
+          attr_reader :authorization, :form, :person_proxy
         end
       end
     end

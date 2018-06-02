@@ -7,19 +7,38 @@ module Decidim
         # A command to create a partial authorization for a user.
         class PerformCensusVerificationStep < PerformCensusStep
           def perform
-            create_verification
-            broadcast :ok
+            result = create_verification
+
+            if result
+              broadcast :ok
+            else
+              add_errors_to_form if census_person.errors
+
+              broadcast :invalid, formatted_error
+            end
           end
 
           private
 
+          def add_errors_to_form
+            ErrorConverter.new(form, census_person.errors).run
+          end
+
+          def formatted_error
+            if census_person.errors
+              form.errors.full_messages.join(", ")
+            else
+              census_person.global_error
+            end
+          end
+
           def create_verification
-            person.create_verification(verification_params)
+            census_person.create_verification(verification_params)
           end
 
           def verification_params
             {
-              files: attributes.fetch_values(:document_file1, :document_file2)
+              files: form.files
             }
           end
         end

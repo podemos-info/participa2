@@ -4,24 +4,25 @@ module Census
   module API
     # This class represents an Order in Census API
     class Order
-      include CensusAPI
+      extend CensusAPI
 
       def self.create(params)
         response = post_order("/api/v1/payments/orders", body: params)
 
-        return { http_response_code: response.code, message: response.message } if response.code / 100 == 5
+        return { http_response_code: 500 } if response.nil?
+        return { http_response_code: response.status } if response.status / 100 == 5
 
         json_response = JSON.parse(response.body, symbolize_names: true)
-        json_response[:http_response_code] = response.code
+        json_response[:http_response_code] = response.status
         json_response
       end
 
       def self.post_order(url, body:)
-        post("/api/v1/payments/orders", body: body)
+        post("/api/v1/payments/orders", body)
       rescue StandardError => e
         Rails.logger.debug "Request to #{url} failed with code #{e.response.code}: #{e.response.message}"
 
-        e.response
+        nil
       end
 
       private_class_method :post_order

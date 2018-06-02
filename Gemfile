@@ -12,6 +12,8 @@ gem "decidim-collaborations", path: "decidim-module-crowdfundings"
 gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
 gem "decidim-votings", path: "decidim-module-votings"
 
+gem "faraday"
+
 gem "faker", "~> 1.8.4"
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"

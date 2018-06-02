@@ -7,18 +7,25 @@ module Decidim
         # A command to create a partial authorization for a user.
         class PerformCensusMembershipLevelStep < PerformCensusStep
           def perform
-            update_membership_level
-            broadcast :ok
+            result = update_membership_level
+
+            if result
+              broadcast :ok
+            else
+              broadcast :invalid, census_person.global_error
+            end
           end
 
           private
 
           def update_membership_level
-            person.create_membership_level(membership_level_params)
+            census_person.create_membership_level(membership_level_params)
           end
 
           def membership_level_params
-            attributes
+            {
+              membership_level: form.level
+            }
           end
         end
       end

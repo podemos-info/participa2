@@ -2,7 +2,7 @@
 en:
   activemodel:
     attributes:
-      data_handler:
+      data:
         address: Address
         address_scope_id: City
         born_at: Birth date
@@ -15,10 +15,11 @@ en:
         last_name2: Second surname
         postal_code: Postal code
         scope_id: Participation place
-      membership_level_handler:
+      membership_level:
         membership_level: Engagement level
   census:
     api:
+      global_error: Podemos census is not available at this time. Please, try again later or contact us at verificaciones@soporte.podemos.info if the problem persists
       person:
         document_type:
           dni: DNI
@@ -80,7 +81,6 @@ en:
                 passport: Additional passport page (optional)
               title: Identity verification
           errors:
-            age_under_minimum_age: You should be older than %{minimum_age} years old to register
             create: Error when saving
           extra_explanation_age: You need to be a least %{minimum_age} years old.
           extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.

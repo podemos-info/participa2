@@ -1,0 +1,233 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=2000-06-01&document_id=39307807W&document_scope_code=ES&document_type=dni&email=user5%40example.org&first_name=Armando&gender=female&last_name1=Nolan&last_name2=&origin_qualified_id=1817277%40decidim&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=9cfe3e12-4028-4c7e-8fd8-fa12a468a1d8; path=/; expires=Fri, 01 Jun
+        2018 22:45:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=aeca67be-b48f-4dbe-9770-d211906f9270; path=/; expires=Mon, 01
+        Jun 2020 18:45:31 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 72de406e-3b94-4835-a3c8-c243e94376e1
+      X-Runtime:
+      - '0.065127'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":162}'
+    http_version: 
+  recorded_at: Fri, 01 Jun 2018 18:45:31 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/162@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"77920fad318fcb4a1c98c5968307b789"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=193b81ed-4bd5-4b59-b486-772f1f0c2955; path=/; expires=Fri, 01 Jun
+        2018 22:45:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=16f59190-d0ce-40a0-8c08-a62dc8f09495; path=/; expires=Mon, 01
+        Jun 2020 18:45:31 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 19165533-b941-46ff-88e6-a07cfaf032de
+      X-Runtime:
+      - '0.022280'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":162,"first_name":"Armando","last_name1":"Nolan","last_name2":"","document_type":"dni","document_id":"39307807W","born_at":"2000-06-01","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"user5@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","external_ids":{"decidim":1817277}}'
+    http_version: 
+  recorded_at: Fri, 01 Jun 2018 18:45:31 GMT
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/people/162@census/document_verifications
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=720ab715-c13f-4957-8e2c-b08b5dfabde8; path=/; expires=Fri, 01 Jun
+        2018 22:45:32 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9aac8e4e-ac20-42c9-9e73-5241e5b2fb89; path=/; expires=Mon, 01
+        Jun 2020 18:45:32 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - b1a913e1-dcc1-4fe4-b191-4c33005fa122
+      X-Runtime:
+      - '0.020989'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"files":[{"error":"too_short","count":2}]}'
+    http_version: 
+  recorded_at: Fri, 01 Jun 2018 18:45:32 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/162@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"d2df601565f667c84720e32f17164018"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=b4ed0d4f-6c93-4b9e-9c98-032fed5b498e; path=/; expires=Fri, 01 Jun
+        2018 22:53:04 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=5a678002-b926-4077-b68a-7c93dc67afa1; path=/; expires=Mon, 01
+        Jun 2020 18:53:04 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - b5860f9b-a41c-4271-86d2-63344178e70e
+      X-Runtime:
+      - '0.035315'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":162,"first_name":"Armando","last_name1":"Nolan","last_name2":"","document_type":"dni","document_id":"39307807W","born_at":"2000-06-01","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"user5@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","external_ids":{"decidim":1817277}}'
+    http_version: 
+  recorded_at: Fri, 01 Jun 2018 18:53:04 GMT
+recorded_with: VCR 4.0.0

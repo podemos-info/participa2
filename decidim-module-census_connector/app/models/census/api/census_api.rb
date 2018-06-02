@@ -1,35 +1,48 @@
 # frozen_string_literal: true
 
-require "active_support/concern"
-require "httparty"
+require "faraday"
 
 module Census
   module API
     module CensusAPI
-      extend ActiveSupport::Concern
+      delegate :get, :patch, :post, to: :connection
 
-      included do
-        include ::HTTParty
+      def proxy
+        return if Decidim::CensusConnector.census_api_proxy_address.blank?
 
-        base_uri ::Decidim::CensusConnector.census_api_base_uri
-
-        http_proxy Decidim::CensusConnector.census_api_proxy_address, Decidim::CensusConnector.census_api_proxy_port if Decidim::CensusConnector.census_api_proxy_address.present?
-
-        debug_output if Decidim::CensusConnector.census_api_debug
-
-        delegate :send_request, :get, :patch, :post, to: :class
+        "#{Decidim::CensusConnector.census_api_proxy_address}:#{Decidim::CensusConnector.census_api_proxy_port}"
       end
 
-      class_methods do
-        def send_request
+      def connection
+        Faraday.new(url: ::Decidim::CensusConnector.census_api_base_uri, proxy: proxy) do |conn|
+          conn.request :multipart
+          conn.request :url_encoded
+
+          conn.response :logger, ::Logger.new(STDOUT), bodies: true if Decidim::CensusConnector.census_api_debug
+
+          conn.adapter Faraday.default_adapter
+        end
+      end
+
+      def send_request
+        begin
           response = yield
 
-          http_response_code = response.code.to_i
-          return { http_response_code: http_response_code } if [500, 204].include?(http_response_code)
+          http_response_code = response.status
+          http_response_body = response.body
+        rescue Errno::ECONNREFUSED
+          http_response_code = 500
+          http_response_body = "\n****** Census is down! ******\n"
+        end
 
-          json_response = JSON.parse(response.body, symbolize_names: true)
+        if [200, 202, 422].include?(http_response_code)
+          json_response = JSON.parse(http_response_body, symbolize_names: true)
           json_response[:http_response_code] = http_response_code
           json_response
+        else
+          Rails.logger.warn http_response_body
+
+          { http_response_code: http_response_code }
         end
       end
     end

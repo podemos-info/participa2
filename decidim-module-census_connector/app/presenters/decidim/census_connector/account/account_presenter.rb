@@ -17,7 +17,7 @@ module Decidim
 
         def full_document
           ret = "#{I18n.t(person.document_type, scope: "census.api.person.document_type")} #{person.document_id}"
-          ret += " (#{translated_attribute(@person.document_scope.name)})" unless Person.local_document? person.document_type
+          ret += " (#{translated_attribute(@person.document_scope.name)})" unless Person.local_document?(person.document_type)
           ret
         end
 

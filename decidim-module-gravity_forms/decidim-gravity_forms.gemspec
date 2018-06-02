@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors = ["David Rodríguez"]
   s.email = ["deivid.rodriguez@riseup.net"]
   s.license = "AGPL-3.0"
-  s.homepage = "https://github.com/decidim/decidim-module-gravity_forms"
+  s.homepage = "https://github.com/podemos-info/participa2"
   s.required_ruby_version = ">= 2.3.1"
 
   s.name = "decidim-gravity_forms"

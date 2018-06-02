@@ -23,10 +23,10 @@ describe "Census registration", type: :system do
   it "asks for participation place only for exterior participants" do
     expect(page).to have_no_content("Participation place")
 
-    scope_pick select_data_picker(:data_handler_address_scope_id), exterior_scope
+    scope_pick select_data_picker(:data_address_scope_id), exterior_scope
     expect(page).to have_content("Participation place")
 
-    scope_repick select_data_picker(:data_handler_address_scope_id), exterior_scope, inner_scope
+    scope_repick select_data_picker(:data_address_scope_id), exterior_scope, inner_scope
     expect(page).to have_no_content("Participation place")
   end
 

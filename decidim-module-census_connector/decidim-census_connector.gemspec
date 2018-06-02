@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors = ["Leonardo Diez"]
   s.email = ["leiodd@gmail.com"]
   s.license = "AGPL-3.0"
-  s.homepage = "https://github.com/podemos-info/decidim-module-census_connector"
+  s.homepage = "https://github.com/podemos-info/participa2"
   s.required_ruby_version = ">= 2.3.1"
 
   s.name = "decidim-census_connector"
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim-core", compatible_constraint
   s.add_dependency "decidim-verifications", compatible_constraint
-  s.add_dependency "httparty"
+  s.add_dependency "faraday"
 
   s.add_development_dependency "decidim-dev", compatible_constraint
 end

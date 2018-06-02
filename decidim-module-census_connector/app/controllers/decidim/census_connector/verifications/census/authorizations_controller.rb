@@ -16,24 +16,24 @@ module Decidim
           STEPS = %w(data verification membership_level).freeze
 
           def index
-            if has_person?
-              @handler = current_handler.from_model(person).with_context(form_context)
-            else
-              @handler = current_handler.new.with_context(form_context)
-              @handler.use_default_values
-            end
+            @form = if has_person?
+                      current_form_object.from_model(person).with_context(form_context)
+                    else
+                      current_form_object.new.with_context(form_context)
+                    end
+
             render current_form
           end
 
           def create
-            @handler = current_handler.from_params(params).with_context(form_context)
-            current_command.call(census_authorization, @handler) do
+            @form = current_form_object.from_params(params).with_context(form_context)
+            current_command.call(person_proxy, census_authorization, @form) do
               on(:ok) do
                 redirect_to next_path
               end
 
-              on(:invalid) do
-                flash.now[:alert] = t("errors.create", scope: "decidim.census_connector.verifications.census")
+              on(:invalid) do |message|
+                flash.now[:alert] = message || t("errors.create", scope: "decidim.census_connector.verifications.census")
                 render current_form
               end
             end
@@ -69,8 +69,8 @@ module Decidim
             @current_form ||= step? ? current_step : valid_step(request[:form])
           end
 
-          def current_handler
-            @current_handler ||= "decidim/census_connector/verifications/census/#{current_form}_handler".classify.constantize
+          def current_form_object
+            @current_form_object ||= "decidim/census_connector/verifications/census/#{current_form}_form".classify.constantize
           end
 
           def current_command
@@ -93,11 +93,7 @@ module Decidim
 
           def form_context
             {
-              user: current_user,
-              census_qualified_id: census_qualified_id,
-              local_qualified_id: local_qualified_id,
-              local_scope: local_scope,
-              person: person
+              local_scope: local_scope
             }
           end
 

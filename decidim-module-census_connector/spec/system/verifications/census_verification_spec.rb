@@ -52,6 +52,9 @@ describe "Census verification", type: :system do
 
   let(:dummy_resource) { create(:dummy_resource, component: component) }
 
+  let(:age) { 18 }
+  let(:document_type) { "DNI" }
+
   before do |example|
     Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
 
@@ -68,9 +71,6 @@ describe "Census verification", type: :system do
   end
 
   context "when registering with census" do
-    let(:age) { 18 }
-    let(:document_type) { "DNI" }
-
     before do
       click_link 'Authorize with "Census"'
 
@@ -158,6 +158,46 @@ describe "Census verification", type: :system do
     end
   end
 
+  context "when registering with census with invalid data in the first step" do
+    let(:cassette) { "registration_with_invalid_data" }
+
+    before do
+      click_link 'Authorize with "Census"'
+
+      VCR.use_cassette(cassette) do
+        click_button "Send"
+      end
+    end
+
+    it "shows errors" do
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("First surname can't be blank")
+      expect(page).to have_content("Document can't be blank")
+      expect(page).to have_content("Birth date can't be blank")
+      expect(page).to have_content("Address can't be blank")
+      expect(page).to have_content("Postal code can't be blank")
+      expect(page).to have_content("City Select a scope can't be blank")
+    end
+  end
+
+  context "when registering with census with invalid data in the second step" do
+    let(:cassette) { "registration_with_invalid_data_second_step" }
+
+    before do
+      click_link 'Authorize with "Census"'
+
+      VCR.use_cassette(cassette) do
+        complete_data_step
+
+        click_button "Send"
+      end
+    end
+
+    it "shows errors" do
+      expect(page).to have_content("Files Is too short")
+    end
+  end
+
   private
 
   def register_with_census
@@ -178,12 +218,12 @@ describe "Census verification", type: :system do
 
     year, month, day = birth_date.split("-")
 
-    execute_script("$('#date_field_data_handler_born_at').focus()")
+    execute_script("$('#date_field_data_born_at').focus()")
     find(".datepicker-dropdown .year:not(.new):not(.old)", text: year, exact_text: true).click
     find(".datepicker-dropdown .month:not(.new):not(.old)", text: month, exact_text: true).click
     find(".datepicker-dropdown .day:not(.new):not(.old)", text: day, exact_text: true).click
 
-    scope_pick select_data_picker(:data_handler_address_scope_id), scope
+    scope_pick select_data_picker(:data_address_scope_id), scope
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
 
@@ -191,8 +231,8 @@ describe "Census verification", type: :system do
   end
 
   def complete_document_step
-    attach_file "verification_handler_document_file1", Decidim::Dev.asset("id.jpg"), visible: false
-    attach_file "verification_handler_document_file2", Decidim::Dev.asset("id.jpg"), visible: false
+    attach_file "verification_document_file1", Decidim::Dev.asset("id.jpg"), visible: false
+    attach_file "verification_document_file2", Decidim::Dev.asset("id.jpg"), visible: false
 
     click_button "Send"
   end

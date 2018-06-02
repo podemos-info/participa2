@@ -14,7 +14,6 @@ module Census
 
         it "Returns structure with error code and message" do
           expect(result).to have_key :http_response_code
-          expect(result).to have_key :message
         end
       end
 

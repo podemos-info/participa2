@@ -12,16 +12,8 @@ module Decidim
   module CensusConnector
     include ActiveSupport::Configurable
 
-    config_accessor :system_identifier do
-      "decidim"
-    end
-
     config_accessor :census_local_code do
       "ES"
-    end
-
-    config_accessor :person_minimum_age do
-      14
     end
 
     # Entry point for Census API
