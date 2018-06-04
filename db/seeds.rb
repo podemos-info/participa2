@@ -20,7 +20,7 @@ end
 
 Decidim::System::CreateDefaultPages.call(main_organization)
 
-base_path ||= File.expand_path("seeds/", __dir__)
+base_path = File.expand_path("seeds/", __dir__)
 
 main_organization.update!(
   name: "Participa Podemos",
