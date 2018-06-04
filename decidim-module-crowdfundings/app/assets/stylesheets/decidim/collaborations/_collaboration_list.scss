@@ -6,6 +6,7 @@
 
 .collaboration-list__data{
   flex-basis: 9rem;
+
   @include breakpoint(medium){
     flex-direction: row;
     flex-basis: 18rem;
@@ -16,6 +17,7 @@
   @include breakpoint(medium down){
     font-size: 1rem;
   }
+
   @include breakpoint(medium){
     flex-grow: 1;
     font-size: 1.5rem;

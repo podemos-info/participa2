@@ -1,41 +1,42 @@
-.percentage {
+.percentage{
   min-width: 100px;
-  margin-top: 5px
+  margin-top: 5px;
 }
 
-.percentage::before, .percentage::after {
+.percentage::before,
+.percentage::after{
   display: table;
-  content: ' '
+  content: ' ';
 }
 
-.percentage::after {
-  clear: both
+.percentage::after{
+  clear: both;
 }
 
-.popularity.extra__percentage {
+.popularity.extra__percentage{
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem
+  margin-bottom: 1.5rem;
 }
 
-.percentage__desc {
+.percentage__desc{
   color: #8c838a;
   text-transform: uppercase;
   font-size: 90%;
   padding-top: .3rem;
   display: block;
-  clear: both
+  clear: both;
 }
 
-.percentage__item {
+.percentage__item{
   float: left;
   width: 18.4%;
   height: 4px;
   background-color: lightgrey;
-  margin-left: 2%
+  margin-left: 2%;
 }
 
-.percentage__item:first-of-type {
-  margin-left: 0
+.percentage__item:first-of-type{
+  margin-left: 0;
 }
 
 .percentage--level1 .percentage__item:first-of-type,
@@ -43,34 +44,34 @@
 .percentage--level3 .percentage__item:first-of-type,
 .percentage--level4 .percentage__item:first-of-type,
 .percentage--level5 .percentage__item:first-of-type,
-.percentage--level6 .percentage__item:first-of-type {
-  background: #53c9c8
+.percentage--level6 .percentage__item:first-of-type{
+  background: #53c9c8;
 }
 
 .percentage--level2 .percentage__item:nth-of-type(2),
 .percentage--level3 .percentage__item:nth-of-type(2),
 .percentage--level4 .percentage__item:nth-of-type(2),
 .percentage--level5 .percentage__item:nth-of-type(2),
-.percentage--level6 .percentage__item:nth-of-type(2) {
+.percentage--level6 .percentage__item:nth-of-type(2){
   background: -webkit-linear-gradient(left, #53c9c8, #f9bc48);
-  background: linear-gradient(to right, #53c9c8, #f9bc48)
+  background: linear-gradient(to right, #53c9c8, #f9bc48);
 }
 
 .percentage--level3 .percentage__item:nth-of-type(3),
 .percentage--level4 .percentage__item:nth-of-type(3),
 .percentage--level5 .percentage__item:nth-of-type(3),
-.percentage--level6 .percentage__item:nth-of-type(3) {
-  background: #f9bc48
+.percentage--level6 .percentage__item:nth-of-type(3){
+  background: #f9bc48;
 }
 
 .percentage--level4 .percentage__item:nth-of-type(4),
 .percentage--level5 .percentage__item:nth-of-type(4),
-.percentage--level6 .percentage__item:nth-of-type(4) {
+.percentage--level6 .percentage__item:nth-of-type(4){
   background: -webkit-linear-gradient(left, #f9bc48 50%, #f85a39);
-  background: linear-gradient(to right, #f9bc48 50%, #f85a39)
+  background: linear-gradient(to right, #f9bc48 50%, #f85a39);
 }
 
 .percentage--level5 .percentage__item:nth-of-type(5),
-.percentage--level6 .percentage__item:nth-of-type(5) {
-  background: #f85a39
+.percentage--level6 .percentage__item:nth-of-type(5){
+  background: #f85a39;
 }

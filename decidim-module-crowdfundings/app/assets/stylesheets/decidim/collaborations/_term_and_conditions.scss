@@ -1,13 +1,12 @@
-.conditions-row {
+.conditions-row{
   margin-bottom: 15pt;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: baseline;
   align-content: flex-start;
 
-  label {
+  label{
     display: inline-block;
     margin-right: 15pt;
   }

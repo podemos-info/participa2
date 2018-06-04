@@ -16,7 +16,7 @@ module Decidim
       end
 
       initializer "decidim_gravity_forms.assets" do |app|
-        app.config.assets.precompile += %w(decidim_gravity_forms_manifest.js decidim_gravity_forms_manifest.css)
+        app.config.assets.precompile += %w(decidim_gravity_forms_manifest.js)
       end
     end
   end

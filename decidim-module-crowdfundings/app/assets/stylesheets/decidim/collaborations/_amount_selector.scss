@@ -1,27 +1,27 @@
-.amount-selector {
+.amount-selector{
   display: inline-block;
   margin-bottom: 1em;
 
-  label {
+  label{
     cursor: pointer;
     float: left;
     display: inline-block;
     margin-right: 10pt;
-    margin-bottom: 0.5em;
+    margin-bottom: .5em;
     font-size: 22px;
 
-    input[type="radio"] {
+    input[type="radio"]{
       display: none;
     }
 
-    input[type="radio"]:checked+div {
+    input[type="radio"]:checked + div{
       background-color: transparent;
       color: $secondary;
       border: 1px solid $secondary;
       font-weight: bold;
     }
 
-    input[type="radio"]+div {
+    input[type="radio"] + div{
       padding: 4pt 11pt;
       background: $secondary;
       color: white;
@@ -32,9 +32,10 @@
     }
   }
 
-  .field {
+  .field{
     clear: left;
-    label {
+
+    label{
       width: 100%;
     }
   }
