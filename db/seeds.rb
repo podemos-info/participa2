@@ -1,30 +1,19 @@
 # frozen_string_literal: true
 
-def main_organization
-  @main_organization ||= Decidim::Organization.first
-end
-
 def localize(text)
   { ca: text, es: text, eu: text, gl: text } # TO-DO: load translations
 end
 
-# Faker needs to have the `:en` locale in order to work properly, so we
-# must enforce it during the seeds.
 original_locales = I18n.available_locales
-I18n.available_locales = original_locales + [:en] unless original_locales.include?(:en)
-
-if !Rails.env.production? || ENV["SEED"]
-  Decidim::Core::Engine.load_seed
-  Decidim::CensusConnector::Engine.load_seed
-end
-
-Decidim::System::CreateDefaultPages.call(main_organization)
 
 base_path = File.expand_path("seeds/", __dir__)
 
-main_organization.update!(
+main_organization = Decidim::Organization.find_or_initialize_by(
   name: "Participa Podemos",
-  host: ENV["DECIDIM_HOST"] || "localhost",
+  host: ENV["DECIDIM_HOST"] || "localhost"
+)
+
+main_organization.update!(
   twitter_handler: "ahorapodemos",
   facebook_handler: "ahorapodemos",
   instagram_handler: "ahorapodemos",
@@ -46,6 +35,17 @@ main_organization.update!(
   reference_prefix: "POD",
   available_authorizations: Decidim.authorization_workflows.map(&:name)
 )
+
+# Faker needs to have the `:en` locale in order to work properly, so we
+# must enforce it during the seeds.
+I18n.available_locales = original_locales + [:en] unless original_locales.include?(:en)
+
+if !Rails.env.production? || ENV["SEED"]
+  Decidim::Core::Engine.load_seed
+  Decidim::CensusConnector::Engine.load_seed
+end
+
+Decidim::System::CreateDefaultPages.call(main_organization)
 
 assembly = Decidim::Assembly.create!(
   title: localize("Podemos Estatal"),
