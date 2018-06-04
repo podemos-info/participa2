@@ -33,7 +33,7 @@ main_organization.update!(
   default_locale: Decidim.default_locale,
   available_locales: original_locales,
   reference_prefix: "POD",
-  available_authorizations: Decidim.authorization_workflows.map(&:name)
+  available_authorizations: ["census"]
 )
 
 # Faker needs to have the `:en` locale in order to work properly, so we
