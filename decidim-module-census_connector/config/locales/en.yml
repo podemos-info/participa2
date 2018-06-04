@@ -40,6 +40,7 @@ en:
           help:
           - People registered at Podemos census
       census:
+        explanation: Register at Podemos census to access the full functionality of Participa
         fields:
           age: Age
           document_type: Document type

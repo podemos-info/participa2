@@ -40,6 +40,7 @@ es:
           help:
           - Personas inscritas en el censo de Podemos
       census:
+        explanation: Regístrate en el censo de Podemos para acceder a toda la funcionalidad de Participa
         fields:
           age: Edad
           document_type: Tipo de documento
