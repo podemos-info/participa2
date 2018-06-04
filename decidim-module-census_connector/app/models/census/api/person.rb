@@ -67,6 +67,19 @@ module Census
         valid?(response)
       end
 
+      # PUBLIC retrieve pending procedures for the person.
+      def pending_procedures
+        response = send_request do
+          get("/api/v1/people/#{qualified_id}/procedures")
+        end
+
+        status = response.delete(:http_response_code)
+
+        return [] unless status == 200
+
+        response
+      end
+
       private
 
       def qualified_id
