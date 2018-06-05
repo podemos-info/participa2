@@ -34,6 +34,7 @@ group :development do
   gem "i18n-debug"
   gem "letter_opener_web", "~> 1.3.0"
   gem "listen", "~> 3.1.0"
+  gem "mdl"
   gem "pry"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"

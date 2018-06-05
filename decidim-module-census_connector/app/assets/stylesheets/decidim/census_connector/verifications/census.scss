@@ -1,14 +1,16 @@
 @import "decidim";
 
 .verification_information{
-  &:after{
+  &::after{
     clear: both;
     content: "";
     display: block;
   }
+
   .ql-video{
     height: 36vh;
   }
+
   @include breakpoint(medium){
     .ql-video{
       float: right;
@@ -17,26 +19,33 @@
       margin: 20px;
     }
   }
+
   & + *{
     clear: right;
   }
 }
+
 .document_uploader{
   img{
     cursor: pointer;
     width: 100%;
   }
+
   .upload{
-    input[type=file], label{
+    input[type=file],
+    label{
       display: none;
     }
   }
 }
-ul.membership_levels {
+
+ul.membership_levels{
   margin-left: inherit;
-  li {
+
+  li{
     list-style: none;
-    label {
+
+    label{
       font-size: 2rem;
     }
   }

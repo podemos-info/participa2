@@ -1,32 +1,31 @@
-.radio-selector {
+.radio-selector{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: baseline;
   align-content: flex-start;
   margin-bottom: 1em;
 
-  label {
+  label{
     cursor: pointer;
     display: inline-block;
     margin-right: 10pt;
     font-size: 22px;
-    margin-bottom: 0.5em;
+    margin-bottom: .5em;
     flex-grow: 1;
 
-    input[type="radio"] {
+    input[type="radio"]{
       display: none;
     }
 
-    input[type="radio"]:checked+div {
+    input[type="radio"]:checked + div{
       background-color: transparent;
       color: $secondary;
       border: 1px solid $secondary;
       font-weight: bold;
     }
 
-    input[type="radio"]+div {
+    input[type="radio"] + div{
       padding: 4pt 11pt;
       background: $secondary;
       color: white;

@@ -54,8 +54,15 @@ plugins:
   markdownlint:
     enabled: true
 
+  stylelint:
+    enabled: true
+
 exclude_patterns:
-  - development_app
-  - spec/decidim_dummy_app
+  - decidim-module-*/spec/decidim_dummy_app
+  - decidim-module-census_connector/db/seeds
+  - decidim-module-census_connector/spec/fixtures
+  - decidim-module-gravity_forms/spec/fixtures
   - coverage
-  - spec/fixtures/billy
+  - log
+  - node_modules
+  - tmp
