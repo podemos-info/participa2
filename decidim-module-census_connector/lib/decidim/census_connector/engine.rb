@@ -14,12 +14,6 @@ module Decidim
 
       config.autoload_paths += Dir["#{config.root}/app/consumers/**/"]
 
-      initializer "decidim_census_conector.inject_abilities_to_user" do
-        Decidim.configure do |config|
-          config.abilities += ["Decidim::CensusConnector::Verifications::Abilities::CurrentUserAbility"]
-        end
-      end
-
       initializer "decidim_census_connector.assets" do |app|
         app.config.assets.precompile += %w(decidim_census_connector_manifest.js decidim_census_connector_manifest.css)
       end

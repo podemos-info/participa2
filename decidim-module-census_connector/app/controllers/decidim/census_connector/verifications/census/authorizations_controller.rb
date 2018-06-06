@@ -8,9 +8,10 @@ module Decidim
         # Handles registration and verifications again the external census application
         #
         class AuthorizationsController < Decidim::CensusConnector::ApplicationController
+          skip_authorization_check
+
           helper Decidim::SanitizeHelper
 
-          before_action :authorize
           helper_method :current_form_path
 
           STEPS = %w(data verification membership_level).freeze
@@ -50,10 +51,6 @@ module Decidim
           private
 
           delegate :authorization, to: :person_proxy
-
-          def authorize
-            authorize! :manage, authorization
-          end
 
           def step?
             @step ||= request[:form].blank?
