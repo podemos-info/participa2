@@ -16,6 +16,10 @@ module Decidim
       "ES"
     end
 
+    config_accessor :census_non_local_code do
+      "XX"
+    end
+
     # Entry point for Census API
     config_accessor :census_api_base_uri do
       "https://census.example.org"
