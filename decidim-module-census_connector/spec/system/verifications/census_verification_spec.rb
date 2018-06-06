@@ -170,13 +170,13 @@ describe "Census verification", type: :system do
     end
 
     it "shows errors" do
-      expect(page).to have_content("Name can't be blank")
-      expect(page).to have_content("First surname can't be blank")
-      expect(page).to have_content("Document can't be blank")
-      expect(page).to have_content("Birth date can't be blank")
-      expect(page).to have_content("Address can't be blank")
-      expect(page).to have_content("Postal code can't be blank")
-      expect(page).to have_content("City Select a scope can't be blank")
+      expect(page).to have_content("Name\ncan't be blank")
+      expect(page).to have_content("First surname\ncan't be blank")
+      expect(page).to have_content("Document\ncan't be blank")
+      expect(page).to have_content("Birth date\ncan't be blank")
+      expect(page).to have_content("Address\ncan't be blank")
+      expect(page).to have_content("Postal code\ncan't be blank")
+      expect(page).to have_content("City\nSelect a scope\ncan't be blank")
     end
   end
 
