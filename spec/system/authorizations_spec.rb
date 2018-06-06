@@ -16,4 +16,10 @@ RSpec.describe "Census authorization", type: :system do
 
     expect(page).to have_current_path("/census_account")
   end
+
+  it "hides the authorizations tab" do
+    visit "/account"
+
+    expect(page).to have_no_link("Autorizaciones")
+  end
 end
