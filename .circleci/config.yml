@@ -38,11 +38,11 @@ jobs:
 
       - run:
           name: Run tests
-          command: bundle exec rspec
+          command: bin/rspec
 
       - run:
           name: Run rubocop
-          command: bundle exec rubocop
+          command: bin/rubocop
 
       - run:
           name: Run npm lints
