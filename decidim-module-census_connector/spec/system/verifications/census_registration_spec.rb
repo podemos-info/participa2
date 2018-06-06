@@ -9,8 +9,8 @@ describe "Census registration", type: :system do
   let(:user) { create(:user, :confirmed, organization: organization) }
 
   let!(:inner_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
-  let!(:exterior_scope) { create(:scope, code: "XX", organization: organization) }
-  let!(:other_organization_scope) { create(:scope) }
+  let!(:exterior_scope) { create(:scope, code: Decidim::CensusConnector.census_non_local_code, organization: organization) }
+  let!(:other_organization_scope) { create(:scope, parent: exterior_scope) }
 
   before do
     switch_to_host(organization.host)
@@ -33,6 +33,6 @@ describe "Census registration", type: :system do
   it "shows only organization scopes in the document scope selector" do
     select "Passport", from: "Document type"
 
-    expect(page).to have_select("Document country", options: [translated(inner_scope.name), translated(exterior_scope.name)])
+    expect(page).to have_select("Document country", options: [translated(inner_scope.name), translated(other_organization_scope.name)])
   end
 end
