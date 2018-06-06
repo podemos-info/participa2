@@ -49,6 +49,8 @@ module Decidim
 
           private
 
+          delegate :authorization, to: :person_proxy
+
           def authorize
             authorize! :manage, authorization
           end
