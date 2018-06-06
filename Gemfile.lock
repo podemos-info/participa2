@@ -806,7 +806,7 @@ DEPENDENCIES
   decidim!
   decidim-census_connector!
   decidim-collaborations!
-  decidim-dev (~> 0.11)
+  decidim-dev!
   decidim-gravity_forms!
   decidim-votings!
   dotenv-rails

@@ -21,7 +21,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug", platform: :mri
 
-  gem "decidim-dev", "~> 0.11"
+  gem "decidim-dev", git: "https://github.com/decidim/decidim", branch: "0.11-stable"
 end
 
 group :development do
