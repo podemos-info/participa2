@@ -37,6 +37,10 @@ jobs:
             - node_modules
 
       - run:
+          name: Create and migrate DB
+          command: bin/rails db:create db:migrate
+
+      - run:
           name: Run tests
           command: bin/rspec
 
