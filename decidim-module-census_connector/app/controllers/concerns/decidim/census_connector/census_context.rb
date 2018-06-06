@@ -58,7 +58,7 @@ module Decidim
           end.compact
         end
 
-        delegate :census_authorization, :person_id, :has_person?, :person, to: :person_proxy, allow_nil: true
+        delegate :authorization, :person_id, :has_person?, :person, to: :person_proxy, allow_nil: true
 
         def person_proxy
           @person_proxy ||= Decidim::CensusConnector::PersonProxy.for(current_user) if current_user

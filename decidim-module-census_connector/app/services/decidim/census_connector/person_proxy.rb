@@ -14,18 +14,18 @@ module Decidim
         new(census_authorization)
       end
 
-      def initialize(census_authorization)
-        @census_authorization = census_authorization
+      def initialize(authorization)
+        @authorization = authorization
       end
 
-      attr_reader :census_authorization
+      attr_reader :authorization
 
       def user
-        @user ||= census_authorization.user
+        @user ||= authorization.user
       end
 
       def person_id
-        @person_id ||= census_authorization.metadata["person_id"]
+        @person_id ||= authorization.metadata["person_id"]
       end
 
       def has_person?

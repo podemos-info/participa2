@@ -27,7 +27,7 @@ module Decidim
 
           def create
             @form = current_form_object.from_params(params).with_context(form_context)
-            current_command.call(person_proxy, census_authorization, @form) do
+            current_command.call(person_proxy, authorization, @form) do
               on(:ok) do
                 redirect_to next_path
               end
@@ -50,7 +50,7 @@ module Decidim
           private
 
           def authorize
-            authorize! :manage, census_authorization
+            authorize! :manage, authorization
           end
 
           def step?
