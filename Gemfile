@@ -12,6 +12,8 @@ gem "decidim-census_connector", path: "decidim-module-census_connector"
 gem "decidim-collaborations", path: "decidim-module-crowdfundings"
 gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
 gem "decidim-votings", path: "decidim-module-votings"
+
+gem "bootsnap", "~> 1.3"
 gem "faker", "~> 1.8.4"
 gem "faraday"
 gem "pry-rails"
