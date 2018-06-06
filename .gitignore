@@ -24,5 +24,5 @@ public/uploads
 .rspec-failures
 
 # rubocop cached remote config
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-11-stable--rubocop-yml
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-11-stable--rubocop-rails-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-rails-yml
