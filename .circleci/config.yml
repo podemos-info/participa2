@@ -6,6 +6,13 @@ jobs:
   main:
     docker:
       - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+        environment:
+          DATABASE_USERNAME: postgres
+          CENSUS_URL: http://mycensus:3001
+
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
 
     steps:
       - checkout
