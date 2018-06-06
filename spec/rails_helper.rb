@@ -61,4 +61,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.around do |example|
+    begin
+      original_locales = I18n.available_locales
+
+      I18n.available_locales = original_locales + [:en]
+
+      example.run
+    ensure
+      I18n.available_locales = original_locales
+    end
+  end
 end
