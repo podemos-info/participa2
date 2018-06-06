@@ -37,11 +37,11 @@ module Decidim::CensusConnector
         subject.call
 
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:files, "Is too short"])
+        expect(form.errors.first).to eq([:files, "is too short"])
       end
 
       it "broadcasts a global error message" do
-        expect { subject.call }.to broadcast(:invalid, "Files Is too short")
+        expect { subject.call }.to broadcast(:invalid, "Files is too short")
       end
     end
   end

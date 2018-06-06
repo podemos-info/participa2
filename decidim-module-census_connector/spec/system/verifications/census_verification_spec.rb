@@ -194,7 +194,7 @@ describe "Census verification", type: :system do
     end
 
     it "shows errors" do
-      expect(page).to have_content("Files Is too short")
+      expect(page).to have_content("Files is too short")
     end
   end
 
