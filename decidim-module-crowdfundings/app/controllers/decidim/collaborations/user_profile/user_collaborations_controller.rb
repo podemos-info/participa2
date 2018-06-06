@@ -13,11 +13,11 @@ module Decidim
         def edit
           session[return_back_session_key] = request.referer
 
-          authorize! :update, user_collaboration
+          enforce_permission_to :update, :user_collaboration, user_collaboration: user_collaboration
         end
 
         def update
-          authorize! :update, user_collaboration
+          enforce_permission_to :update, :user_collaboration, user_collaboration: user_collaboration
 
           UpdateUserCollaboration.call(form_from_params) do
             on(:ok) do
@@ -35,7 +35,7 @@ module Decidim
         end
 
         def pause
-          authorize! :update, user_collaboration
+          enforce_permission_to :update, :user_collaboration, user_collaboration: user_collaboration
 
           UpdateUserCollaborationState.call(user_collaboration, "paused") do
             on(:ok) do
@@ -49,7 +49,7 @@ module Decidim
         end
 
         def resume
-          authorize! :resume, user_collaboration
+          enforce_permission_to :resume, :user_collaboration, user_collaboration: user_collaboration
 
           UpdateUserCollaborationState.call(user_collaboration, "accepted") do
             on(:ok) do

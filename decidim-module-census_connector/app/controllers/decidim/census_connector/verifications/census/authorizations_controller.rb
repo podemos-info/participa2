@@ -8,8 +8,6 @@ module Decidim
         # Handles registration and verifications again the external census application
         #
         class AuthorizationsController < Decidim::CensusConnector::ApplicationController
-          skip_authorization_check
-
           helper Decidim::SanitizeHelper
 
           helper_method :current_form_path
