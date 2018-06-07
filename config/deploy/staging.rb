@@ -37,5 +37,3 @@ namespace :deploy do
     end
   end
 end
-
-after "deploy:finished", "deploy:db:reset"
