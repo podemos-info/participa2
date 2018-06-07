@@ -43,7 +43,9 @@ en:
         explanation: Register at Podemos census to access the full functionality of Participa
         fields:
           age: Age
+          allowed_document_types: Allowed document types
           document_type: Document type
+          minimum_age: Minimum age
         name: Census
     census_connector:
       account:

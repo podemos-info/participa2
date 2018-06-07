@@ -29,7 +29,7 @@ Decidim.register_component(:collaborations) do |component|
           "authorization_handler_name" => "census",
           "options" => {
             "minimum_age" => 18,
-            "allowed_document_types" => %w(dni nie)
+            "allowed_document_types" => "dni,nie"
           }
         }
       }
@@ -84,7 +84,7 @@ Decidim.register_component(:collaborations) do |component|
           "authorization_handler_name" => "census",
           "options" => {
             "minimum_age" => 18,
-            "allowed_document_types" => %w(dni nie)
+            "allowed_document_types" => "dni,nie"
           }
         }
       }

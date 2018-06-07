@@ -43,7 +43,9 @@ es:
         explanation: Regístrate en el censo de Podemos para acceder a toda la funcionalidad de Participa
         fields:
           age: Edad
+          allowed_document_types: Documentos permitidos
           document_type: Tipo de documento
+          minimum_age: Edad mínima
         name: Censo
     census_connector:
       account:
