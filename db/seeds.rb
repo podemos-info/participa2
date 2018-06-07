@@ -25,6 +25,7 @@ class ParticipaSeeder
     @original_locales = I18n.available_locales
     I18n.available_locales = @original_locales + [:en] unless @original_locales.include?(:en)
     yield
+  ensure
     I18n.available_locales = @original_locales
   end
 
