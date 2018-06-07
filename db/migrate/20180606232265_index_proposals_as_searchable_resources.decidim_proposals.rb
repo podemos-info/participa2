@@ -5,7 +5,9 @@
 class IndexProposalsAsSearchableResources < ActiveRecord::Migration[5.1]
   class Proposal < ApplicationRecord
     self.table_name = :decidim_proposals_proposals
+
     include Decidim::Searchable
+    include Decidim::HasComponent
 
     searchable_fields(
       scope_id: :decidim_scope_id,
@@ -17,7 +19,7 @@ class IndexProposalsAsSearchableResources < ActiveRecord::Migration[5.1]
   end
 
   def up
-    Proposal.find_each(&:add_to_index_as_search_rsrc)
+    Proposal.find_each(&:add_to_index_as_search_resource)
   end
 
   def down

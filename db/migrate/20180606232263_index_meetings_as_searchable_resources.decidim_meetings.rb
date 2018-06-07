@@ -5,7 +5,9 @@
 class IndexMeetingsAsSearchableResources < ActiveRecord::Migration[5.1]
   class Meeting < ApplicationRecord
     self.table_name = :decidim_meetings_meetings
+
     include Decidim::Searchable
+    include Decidim::HasComponent
 
     searchable_fields(
       scope_id: :decidim_scope_id,
