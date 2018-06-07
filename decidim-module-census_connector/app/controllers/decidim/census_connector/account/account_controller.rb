@@ -5,7 +5,6 @@ module Decidim
     module Account
       class AccountController < Decidim::CensusConnector::ApplicationController
         include Decidim::UserProfile
-        skip_authorization_check
 
         helper_method :person_presenter
         attr_reader :person_presenter
