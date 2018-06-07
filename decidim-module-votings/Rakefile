@@ -2,5 +2,12 @@
 
 require "decidim/dev/common_rake"
 
+load "tasks/decidim/votings_tasks.rake"
+
 desc "Generates a dummy app for testing"
-task test_app: "decidim:generate_external_test_app"
+task test_app: "decidim:generate_external_test_app" do
+  Dir.chdir("spec/decidim_dummy_app") do
+    sh("bin/rails decidim_votings:upgrade")
+    sh("RAILS_ENV=test bin/rails db:migrate")
+  end
+end
