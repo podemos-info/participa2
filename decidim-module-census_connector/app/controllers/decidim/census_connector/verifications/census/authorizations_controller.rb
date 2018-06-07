@@ -28,7 +28,7 @@ module Decidim
 
           def create
             @form = current_form_object.from_params(params).with_context(form_context)
-            current_command.call(person_proxy, authorization, @form) do
+            current_command.call(person_proxy, @form) do
               on(:ok) do
                 redirect_to next_path
               end
@@ -49,8 +49,6 @@ module Decidim
           end
 
           private
-
-          delegate :authorization, to: :person_proxy
 
           def step?
             @step ||= request[:form].blank?

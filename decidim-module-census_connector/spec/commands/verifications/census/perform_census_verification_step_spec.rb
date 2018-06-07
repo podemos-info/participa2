@@ -6,12 +6,10 @@ require "faker/spanish_document"
 
 module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusVerificationStep do
-    subject { described_class.new(person_proxy, authorization, form) }
+    subject { described_class.new(person_proxy, form) }
 
     let(:organization) { create(:organization) }
     let(:user) { create(:user, organization: organization) }
-
-    let!(:authorization) { create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 }) }
 
     let(:person_proxy) { PersonProxy.for(user) }
 
@@ -21,6 +19,10 @@ module Decidim::CensusConnector
 
     let(:form) do
       Verifications::Census::VerificationForm.new(document_file1: document_file1)
+    end
+
+    before do
+      create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 })
     end
 
     context "when no document files present" do
