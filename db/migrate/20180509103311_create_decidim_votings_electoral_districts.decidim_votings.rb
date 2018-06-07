@@ -1,5 +1,6 @@
-# This migration comes from decidim_votings (originally 20180301123833)
 # frozen_string_literal: true
+
+# This migration comes from decidim_votings (originally 20180301123833)
 
 class CreateDecidimVotingsElectoralDistricts < ActiveRecord::Migration[5.1]
   def change

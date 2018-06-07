@@ -1,5 +1,6 @@
-# This migration comes from decidim_admin (originally 20171219154507)
 # frozen_string_literal: true
+
+# This migration comes from decidim_admin (originally 20171219154507)
 
 class AddOfficializationToUsers < ActiveRecord::Migration[5.1]
   def change

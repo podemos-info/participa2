@@ -1,5 +1,6 @@
-# This migration comes from decidim_participatory_processes (originally 20170220110740)
 # frozen_string_literal: true
+
+# This migration comes from decidim_participatory_processes (originally 20170220110740)
 
 class RemoveStepsShortDescription < ActiveRecord::Migration[5.0]
   class ParticipatoryProcessStep < ApplicationRecord

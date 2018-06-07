@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20161110105712)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20161110105712)
 
 class CreateDecidimFeatures < ActiveRecord::Migration[5.0]
   def change

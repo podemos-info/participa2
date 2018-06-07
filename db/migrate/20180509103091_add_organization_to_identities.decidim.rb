@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170405094028)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170405094028)
 
 class AddOrganizationToIdentities < ActiveRecord::Migration[5.0]
   def change

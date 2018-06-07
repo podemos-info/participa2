@@ -1,5 +1,6 @@
-# This migration comes from decidim_comments (originally 20161130143508)
 # frozen_string_literal: true
+
+# This migration comes from decidim_comments (originally 20161130143508)
 
 class CreateComments < ActiveRecord::Migration[5.0]
   def change

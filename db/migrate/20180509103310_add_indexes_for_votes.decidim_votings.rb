@@ -1,5 +1,6 @@
-# This migration comes from decidim_votings (originally 20171211163536)
 # frozen_string_literal: true
+
+# This migration comes from decidim_votings (originally 20171211163536)
 
 class AddIndexesForVotes < ActiveRecord::Migration[5.1]
   def change

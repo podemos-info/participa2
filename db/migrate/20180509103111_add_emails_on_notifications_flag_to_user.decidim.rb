@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170912082054)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170912082054)
 
 class AddEmailsOnNotificationsFlagToUser < ActiveRecord::Migration[5.1]
   def change

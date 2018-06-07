@@ -1,5 +1,6 @@
-# This migration comes from decidim_collaborations (originally 20171116140837)
 # frozen_string_literal: true
+
+# This migration comes from decidim_collaborations (originally 20171116140837)
 
 class InitializeCollaborationAmounts < ActiveRecord::Migration[5.1]
   class Collaboration < ApplicationRecord

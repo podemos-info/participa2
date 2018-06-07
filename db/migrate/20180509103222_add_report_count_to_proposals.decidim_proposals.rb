@@ -1,5 +1,6 @@
-# This migration comes from decidim_proposals (originally 20170215131720)
 # frozen_string_literal: true
+
+# This migration comes from decidim_proposals (originally 20170215131720)
 
 class AddReportCountToProposals < ActiveRecord::Migration[5.0]
   def change

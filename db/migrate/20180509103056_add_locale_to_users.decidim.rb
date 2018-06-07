@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20161010131544)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20161010131544)
 
 class AddLocaleToUsers < ActiveRecord::Migration[5.0]
   def change

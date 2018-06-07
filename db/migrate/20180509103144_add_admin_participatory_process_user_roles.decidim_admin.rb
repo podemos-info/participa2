@@ -1,5 +1,6 @@
-# This migration comes from decidim_admin (originally 20161102144648)
 # frozen_string_literal: true
+
+# This migration comes from decidim_admin (originally 20161102144648)
 
 class AddAdminParticipatoryProcessUserRoles < ActiveRecord::Migration[5.0]
   def change

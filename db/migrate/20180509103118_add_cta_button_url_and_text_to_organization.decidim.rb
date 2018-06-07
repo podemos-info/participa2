@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20171017084546)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20171017084546)
 
 class AddCtaButtonUrlAndTextToOrganization < ActiveRecord::Migration[5.1]
   def change

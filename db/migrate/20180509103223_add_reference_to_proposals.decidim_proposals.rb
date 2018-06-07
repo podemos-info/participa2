@@ -1,5 +1,6 @@
-# This migration comes from decidim_proposals (originally 20170215132030)
 # frozen_string_literal: true
+
+# This migration comes from decidim_proposals (originally 20170215132030)
 
 class AddReferenceToProposals < ActiveRecord::Migration[5.0]
   class Proposal < ApplicationRecord

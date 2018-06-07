@@ -1,5 +1,6 @@
-# This migration comes from decidim_collaborations (originally 20171113173358)
 # frozen_string_literal: true
+
+# This migration comes from decidim_collaborations (originally 20171113173358)
 
 class CollaborationTotalCollectedDefaultsToZero < ActiveRecord::Migration[5.1]
   def change

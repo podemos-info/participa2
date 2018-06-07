@@ -1,5 +1,6 @@
-# This migration comes from decidim_proposals (originally 20170307085300)
 # frozen_string_literal: true
+
+# This migration comes from decidim_proposals (originally 20170307085300)
 
 class MigrateProposalReportsDataToReports < ActiveRecord::Migration[5.0]
   class Decidim::Proposals::ProposalReport < ApplicationRecord

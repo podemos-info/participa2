@@ -1,5 +1,6 @@
-# This migration comes from decidim_participatory_processes (originally 20161025125300)
 # frozen_string_literal: true
+
+# This migration comes from decidim_participatory_processes (originally 20161025125300)
 
 class AddPublishedAtToProcesses < ActiveRecord::Migration[5.0]
   def change

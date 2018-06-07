@@ -1,5 +1,6 @@
-# This migration comes from decidim_participatory_processes (originally 20170809084005)
 # frozen_string_literal: true
+
+# This migration comes from decidim_participatory_processes (originally 20170809084005)
 
 class AddScopesEnabledToParticipatoryProcesses < ActiveRecord::Migration[5.1]
   def change

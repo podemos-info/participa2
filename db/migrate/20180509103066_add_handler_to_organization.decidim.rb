@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170110153807)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170110153807)
 
 class AddHandlerToOrganization < ActiveRecord::Migration[5.0]
   def change

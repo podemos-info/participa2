@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20180226140756)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20180226140756)
 
 class AddVersionToActionLogs < ActiveRecord::Migration[5.1]
   class ActionLog < ApplicationRecord

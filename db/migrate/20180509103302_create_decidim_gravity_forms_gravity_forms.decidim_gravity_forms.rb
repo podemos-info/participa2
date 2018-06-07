@@ -1,5 +1,6 @@
-# This migration comes from decidim_gravity_forms (originally 20180208163550)
 # frozen_string_literal: true
+
+# This migration comes from decidim_gravity_forms (originally 20180208163550)
 
 class CreateDecidimGravityFormsGravityForms < ActiveRecord::Migration[5.1]
   def change

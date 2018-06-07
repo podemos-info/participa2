@@ -1,5 +1,6 @@
-# This migration comes from decidim_pages (originally 20180305133658)
 # frozen_string_literal: true
+
+# This migration comes from decidim_pages (originally 20180305133658)
 
 class RenameFeaturesToComponentsAtPages < ActiveRecord::Migration[5.1]
   def change

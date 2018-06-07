@@ -1,5 +1,6 @@
-# This migration comes from decidim_meetings (originally 20180326082611)
 # frozen_string_literal: true
+
+# This migration comes from decidim_meetings (originally 20180326082611)
 
 class AddFieldsForRegistrations < ActiveRecord::Migration[5.1]
   def change
