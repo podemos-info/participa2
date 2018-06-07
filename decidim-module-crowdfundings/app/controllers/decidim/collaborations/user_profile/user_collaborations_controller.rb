@@ -18,6 +18,7 @@ module Decidim
 
         def update
           authorize! :update, user_collaboration
+
           UpdateUserCollaboration.call(form_from_params) do
             on(:ok) do
               redirect_to(
