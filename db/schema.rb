@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509103311) do
+ActiveRecord::Schema.define(version: 20180608111921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_trgm"
   enable_extension "ltree"
+  enable_extension "pg_trgm"
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
     t.jsonb "title"
@@ -367,6 +367,7 @@ ActiveRecord::Schema.define(version: 20180509103311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hidden", default: false, null: false
+    t.index ["decidim_component_id", "slug"], name: "decidim_gravity_forms_gravity_forms_component_slug_unique", unique: true
     t.index ["decidim_component_id"], name: "index_decidim_gravity_forms_on_decidim_component_id"
   end
 
