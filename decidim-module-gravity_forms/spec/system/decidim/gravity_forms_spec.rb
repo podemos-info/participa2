@@ -176,7 +176,7 @@ describe "Gravity forms", type: :system do
 
     before do
       visit decidim_participatory_process_gravity_forms.gravity_form_path(
-        id: gravity_form.id,
+        slug: gravity_form.slug,
         participatory_process_slug: participatory_space.slug,
         component_id: component.id
       )
