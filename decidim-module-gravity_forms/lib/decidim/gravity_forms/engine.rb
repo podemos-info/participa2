@@ -10,7 +10,7 @@ module Decidim
       isolate_namespace Decidim::GravityForms
 
       routes do
-        resources :gravity_forms, only: [:index, :show]
+        resources :gravity_forms, only: [:index, :show], param: :slug, path: :forms
 
         root to: "gravity_forms#index"
       end

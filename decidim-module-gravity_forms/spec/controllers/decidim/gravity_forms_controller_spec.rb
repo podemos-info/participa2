@@ -11,7 +11,7 @@ module Decidim
 
       let(:params) do
         {
-          id: gravity_form.id,
+          slug: gravity_form.slug,
           component_id: component.id
         }
       end

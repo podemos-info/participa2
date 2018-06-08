@@ -5,6 +5,10 @@ module Decidim
     class GravityForm < ApplicationRecord
       include Decidim::Resourceable
       include Decidim::HasComponent
+
+      def to_param
+        slug
+      end
     end
   end
 end
