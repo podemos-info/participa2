@@ -4,7 +4,7 @@ es:
     attributes:
       gravity_form:
         description: Descripción
-        form_number: Número de formulario
+        form_number: ID en Gravity Forms
         hidden: Oculto
         require_login: Requiere login
         slug: Slug
@@ -18,6 +18,8 @@ es:
             domain: Dominio
     gravity_forms:
       actions:
+        confirm_destroy: "¿Está seguro de que quiere eliminar este formulario?"
+        destroy: Borrar
         edit: Editar
         new: Nuevo
         preview: Previsualizar
@@ -25,11 +27,13 @@ es:
       admin:
         gravity_forms:
           create:
-            invalid: Hubo un problema creando el formulario de Gravity.
-            success: Formulario de Gravity creado con éxito.
+            invalid: Hubo un problema creando el formulario.
+            success: Formulario creado con éxito.
+          destroy:
+            success: Formulario eliminado con éxito
           edit:
-            title: Editar Gravity Form
-            update: Actualizar Gravity Form
+            title: Editar formulario
+            update: Actualizar formulario
           form:
             form_number_help: Número de formulario en Gravity Forms
             hidden_help: Especifica si el formulario será incluído en listados o sólo será accesible directamente por URL
@@ -38,14 +42,14 @@ es:
           index:
             title: Formularios de Gravity Forms
           new:
-            create: Crear Gravity Form
-            title: Nuevo Gravity Form
+            create: Crear formulario
+            title: Nuevo formulario
           update:
-            invalid: Hubo un problema al actualizar el formulario de Gravity.
-            success: Formulario de Gravity actualizado con éxito.
+            invalid: Hubo un problema al actualizar el formulario.
+            success: Formulario actualizado con éxito.
         models:
           gravity_form:
-            name: Gravity Form
+            name: Formulario
       gravity_forms:
         gravity_form:
           fill_in: Completar

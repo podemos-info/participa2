@@ -51,6 +51,17 @@ module Decidim
           end
         end
 
+        def destroy
+          authorize! :destroy, gravity_form
+
+          DestroyGravityForm.call(gravity_form) do
+            on(:ok) do
+              flash[:notice] = I18n.t("gravity_forms.destroy.success", scope: "decidim.gravity_forms.admin")
+              redirect_to gravity_forms_path
+            end
+          end
+        end
+
         private
 
         def gravity_forms

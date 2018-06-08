@@ -81,6 +81,30 @@ shared_examples "manage gravity forms" do
     end
   end
 
+  describe "destroying a gravity form" do
+    let!(:gravity_form) do
+      create(:gravity_form, component: current_component)
+    end
+
+    before do
+      visit_component_admin
+
+      within find("tr", text: translated(gravity_form.title)) do
+        accept_confirm { page.find(".action-icon--remove").click }
+      end
+    end
+
+    it "shows a success message and the form is not longer listed" do
+      within ".callout-wrapper" do
+        expect(page).to have_content("successfully")
+      end
+
+      within "table" do
+        expect(page).not_to have_content(gravity_form.slug)
+      end
+    end
+  end
+
   describe "previewing gravity forms" do
     shared_examples_for "a gravity form preview" do
       it "allows the user to preview the gravity form" do
