@@ -24,7 +24,7 @@ module Decidim
       end
 
       def gravity_form
-        @gravity_form ||= gravity_forms.find(params[:id])
+        @gravity_form ||= gravity_forms.find_by(slug: params[:slug])
       end
 
       def accessible_form?(gravity_form)
