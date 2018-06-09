@@ -22,7 +22,7 @@ Decidim.register_component(:gravity_forms) do |component|
   #   # Add your settings per step
   # end
 
-  component.register_resource do |resource|
+  component.register_resource(:gravity_form) do |resource|
     resource.model_class_name = "Decidim::GravityForms::GravityForm"
   end
 

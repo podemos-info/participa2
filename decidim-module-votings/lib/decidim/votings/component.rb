@@ -9,7 +9,7 @@ Decidim.register_component(:votings) do |component|
     # Code executed before removing the component
   end
 
-  component.register_resource do |resource|
+  component.register_resource(:voting) do |resource|
     resource.model_class_name = "Decidim::Votings::Voting"
     resource.template = "decidim/votings/votings/linked_votings"
   end

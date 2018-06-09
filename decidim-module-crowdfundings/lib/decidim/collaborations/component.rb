@@ -13,7 +13,7 @@ Decidim.register_component(:collaborations) do |component|
     raise StandardError, "Can't remove this component" if Decidim::Collaboration.where(component: instance).any?
   end
 
-  component.register_resource do |resource|
+  component.register_resource(:collaboration) do |resource|
     resource.model_class_name = "Decidim::Collaborations::Collaboration"
     resource.template = "decidim/collaborations/collaborations/linked_collaborations"
     resource.card = "decidim/collaborations/collaboration"
