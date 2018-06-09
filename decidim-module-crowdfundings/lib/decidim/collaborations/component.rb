@@ -7,7 +7,6 @@ Decidim.register_component(:collaborations) do |component|
   component.admin_engine = Decidim::Collaborations::AdminEngine
   component.icon = "decidim/collaborations/icon.svg"
   component.stylesheet = "decidim/collaborations/collaborations"
-  component.card = "decidim/collaborations/collaboration"
   component.permissions_class_name = "Decidim::Collaborations::Permissions"
 
   component.on(:before_destroy) do |instance|
@@ -17,6 +16,7 @@ Decidim.register_component(:collaborations) do |component|
   component.register_resource do |resource|
     resource.model_class_name = "Decidim::Collaborations::Collaboration"
     resource.template = "decidim/collaborations/collaborations/linked_collaborations"
+    resource.card = "decidim/collaborations/collaboration"
   end
 
   # These actions permissions can be configured in the admin panel
