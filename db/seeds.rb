@@ -92,7 +92,7 @@ class ParticipaSeeder
     end
 
     # create exterior assembly
-    create_assembly(title: "Podemos Exterior", where: " en el exterior", scope: non_local_scope, promoted: true)
+    create_assembly(title: "Podemos Exterior", where: " en el exterior", scope: non_local_scope)
   end
 
   def create_towns_assemblies(scope:, parent_assembly:)
