@@ -8,7 +8,7 @@
         <div class="row column">
             <article>
               <section class="section row collapse">
-                <%= link_to decidim_assemblies.assembly_path(participatory_space), class: "card__title" do %>
+                <%= link_to Decidim::ResourceLocatorPresenter.new(participatory_space).path, class: "card__title" do %>
                   <h2><img src="<%= participatory_space.hero_image.url %>" width="50px" /> <%= translated_attribute participatory_space.title %></h2>
                 <% end %>
               </section>
