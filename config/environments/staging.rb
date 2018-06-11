@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "production"
+require_relative "production"
 
 # Override settings to be used in staging environments
 Rails.application.configure do
