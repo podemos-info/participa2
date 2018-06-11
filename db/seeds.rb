@@ -58,7 +58,7 @@ class ParticipaSeeder
     Decidim::ScopeType.delete_all
     Decidim::Assembly.delete_all
 
-    Decidim::Core::Engine.load_seed if !Rails.env.production? || ENV["SEED"]
+    Decidim::Core::Engine.load_seed unless Rails.env.production?
     Decidim::System::CreateDefaultPages.call(organization) if new_organization?
     Decidim::CensusConnector::Engine.load_seed
   end
@@ -92,7 +92,7 @@ class ParticipaSeeder
     end
 
     # create exterior assembly
-    create_assembly(title: "Podemos Exterior", where: " en el exterior", scope: non_local_scope, promoted: true)
+    create_assembly(title: "Podemos Exterior", where: " en el exterior", scope: non_local_scope)
   end
 
   def create_towns_assemblies(scope:, parent_assembly:)

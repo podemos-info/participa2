@@ -15,6 +15,7 @@ gem "decidim-votings", path: "decidim-module-votings"
 gem "faraday"
 
 gem "faker", "~> 1.8.4"
+gem "pry-rails"
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
 
@@ -32,10 +33,8 @@ group :development do
   gem "capistrano-rvm", require: false
   gem "capistrano3-puma", require: false
   gem "i18n-debug"
-  gem "letter_opener_web", "~> 1.3.0"
   gem "listen", "~> 3.1.0"
   gem "mdl"
-  gem "pry"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
@@ -46,4 +45,8 @@ group :test do
   gem "puffing-billy", "~> 1.1"
   gem "vcr", "~> 4.0"
   gem "xxhash"
+end
+
+group :development, :staging do
+  gem "letter_opener_web", "~> 1.3"
 end

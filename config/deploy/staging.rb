@@ -8,7 +8,7 @@
 server ENV["STAGING_SERVER_MASTER_HOST"], port: ENV["STAGING_SERVER_MASTER_PORT"], user: ENV["STAGING_USER"], roles: %w(master app db web)
 server ENV["STAGING_SERVER_SLAVE_HOST"], port: ENV["STAGING_SERVER_SLAVE_PORT"], user: ENV["STAGING_USER"], roles: %w(slave app web)
 
-set :rails_env, :production
+set :rails_env, :staging
 
 # Use RVM system installation
 set :rvm_type, :system
@@ -18,8 +18,7 @@ set :branch, ENV["BRANCH"] || "master"
 def db_tasks_environment
   {
     disable_database_environment_check: 1,
-    rails_env: :production,
-    seed: true
+    rails_env: :staging
   }
 end
 
