@@ -58,7 +58,7 @@ class ParticipaSeeder
     Decidim::ScopeType.delete_all
     Decidim::Assembly.delete_all
 
-    Decidim::Core::Engine.load_seed if !Rails.env.production? || ENV["SEED"]
+    Decidim::Core::Engine.load_seed unless Rails.env.production?
     Decidim::System::CreateDefaultPages.call(organization) if new_organization?
     Decidim::CensusConnector::Engine.load_seed
   end

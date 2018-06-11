@@ -1,7 +1,7 @@
-FROM ruby:2.4.1
+FROM ruby:2.5.1
 MAINTAINER ldiez@podemos.info
 
-ARG rails_env=production
+ARG rails_env=staging
 ARG secret_key_base=
 
 ENV APP_HOME /code
