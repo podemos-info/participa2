@@ -36,3 +36,8 @@ namespace :deploy do
     end
   end
 end
+
+# Restart hutch daemon
+on roles(:master) do
+  after "deploy:publishing", "systemd:hutch:restart"
+end
