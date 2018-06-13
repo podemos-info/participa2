@@ -1,0 +1,17 @@
+[Unit]
+Description = <%= fetch(:application) %>'s Hutch notifications background processor
+
+[Service]
+Environment = RAILS_ENV=<%= fetch(:rails_env) %>
+Environment = PWD=<%= current_path %>
+WorkingDirectory = <%= current_path %>
+PIDFile = <%= shared_path %>/tmp/pids/hutch.pid
+
+ExecStart = <%= SSHKit.config.command_map[:rvm] %> default do bundle exec hutch
+ExecStop = /bin/kill -SIGTERM $MAINPID
+User = <%= ENV["STAGING_USER"] %>
+Group = <%= ENV["STAGING_USER"] %>
+Restart = always
+
+[Install]
+WantedBy = multi-user.target

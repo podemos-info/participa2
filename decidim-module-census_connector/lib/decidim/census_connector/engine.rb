@@ -2,6 +2,7 @@
 
 require "rails"
 require "active_support/all"
+require "hutch"
 
 require "decidim/core"
 
@@ -10,6 +11,8 @@ module Decidim
     # Decidim's CensusConnector Rails Engine.
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::CensusConnector
+
+      config.autoload_paths += Dir["#{config.root}/app/consumers/**/"]
 
       initializer "decidim_census_conector.inject_abilities_to_user" do
         Decidim.configure do |config|

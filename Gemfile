@@ -30,6 +30,7 @@ group :development do
   gem "capistrano", "~> 3.11.0", require: false
   gem "capistrano-rails", "~> 1.3", require: false
   gem "capistrano-rvm", require: false
+  gem "capistrano-systemd-multiservice", require: false
   gem "capistrano3-puma", require: false
   gem "i18n-debug"
   gem "listen", "~> 3.1.0"
