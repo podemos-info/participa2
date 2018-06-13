@@ -8,6 +8,7 @@ Decidim::Dev.dummy_app_path = File.expand_path("spec/decidim_dummy_app")
 
 require "decidim/dev/test/base_spec_helper"
 
+require "support/hutch"
 require "support/vcr"
 
 RSpec.configure do |config|

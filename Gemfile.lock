@@ -170,6 +170,7 @@ PATH
       decidim-core (~> 0.11.a)
       decidim-verifications (~> 0.11.a)
       faraday
+      hutch
 
 PATH
   remote: decidim-module-crowdfundings
@@ -250,6 +251,7 @@ GEM
     airbrake-ruby (1.8.0)
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    amq-protocol (2.3.0)
     arel (8.0.0)
     ast (2.4.0)
     autoprefixer-rails (8.6.2)
@@ -279,6 +281,8 @@ GEM
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
+    bunny (2.9.2)
+      amq-protocol (~> 2.3.0)
     byebug (10.0.2)
     cancancan (2.2.0)
     capistrano (3.11.0)
@@ -310,6 +314,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrot-top (0.0.7)
+      json
     case_transform (0.2)
       activesupport
     cells (4.1.7)
@@ -443,6 +449,11 @@ GEM
     http_parser.rb (0.6.0)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
+    hutch (0.25.0)
+      activesupport (>= 4.2, < 6)
+      bunny (~> 2.9.0)
+      carrot-top (~> 0.0.7)
+      multi_json (~> 1.12)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     i18n-debug (1.1.1)
