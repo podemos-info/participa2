@@ -7,6 +7,7 @@ inherit_from:
 AllCops:
   Exclude:
     - db/schema.rb
+    - "**/spec/decidim_dummy_app/**/*"
 
 Naming/FileName:
   Exclude:
@@ -20,3 +21,7 @@ Naming/FileName:
 Rails/Output:
   Exclude:
     - decidim-module-census_connector/lib/decidim/census_connector/seeds/scopes.rb
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "**/spec/**/*"
