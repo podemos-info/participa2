@@ -13,6 +13,7 @@ Decidim.register_component(:votings) do |component|
   component.register_resource(:voting) do |resource|
     resource.model_class_name = "Decidim::Votings::Voting"
     resource.template = "decidim/votings/votings/linked_votings"
+    resource.card = "decidim/votings/voting"
   end
 
   # These actions permissions can be configured in the admin panel

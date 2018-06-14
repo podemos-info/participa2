@@ -32,6 +32,29 @@ module Decidim
       initializer "decidim_votings.assets" do |app|
         app.config.assets.precompile += %w(decidim_votings_manifest.js decidim_votings_manifest.css)
       end
+
+      initializer "decidim_votings.view_hooks" do
+        Decidim.view_hooks.register(:participatory_space_highlighted_elements, priority: Decidim::ViewHooks::HIGH_PRIORITY) do |view_context|
+          published_components = Decidim::Component.where(participatory_space: view_context.current_participatory_space).published
+          votings = Decidim::Votings::Voting.active
+                                            .where(component: published_components)
+                                            .limit(Decidim::Votings.config.participatory_space_highlighted_voting_limit)
+          next unless votings.any?
+
+          view_context.extend Decidim::Votings::VotingsHelper
+          view_context.render(
+            partial: "decidim/participatory_spaces/highlighted_votings",
+            locals: {
+              votings: votings
+            }
+          )
+        end
+      end
+
+      initializer "decidim_votings.add_cells" do
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Votings::Engine.root}/app/cells")
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Votings::Engine.root}/app/views") # for partials
+      end
     end
   end
 end
