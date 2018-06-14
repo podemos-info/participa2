@@ -86,8 +86,8 @@ describe "Gravity forms", type: :system do
           it "lists all visible forms and titles" do
             expect(page).to have_selector(".card--gravity_form", count: 2)
 
-            expect(page).to have_selector(".card--gravity_form", text: "My first form Fill this in to become super cool")
-            expect(page).to have_selector(".card--gravity_form", text: "My second form Fill this in to become even cooler")
+            expect(page).to have_selector(".card--gravity_form", text: "My first form\nFill this in to become super cool")
+            expect(page).to have_selector(".card--gravity_form", text: "My second form\nFill this in to become even cooler")
           end
         end
 
