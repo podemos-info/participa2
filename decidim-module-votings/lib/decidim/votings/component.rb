@@ -4,6 +4,7 @@ Decidim.register_component(:votings) do |component|
   component.engine = Decidim::Votings::Engine
   component.admin_engine = Decidim::Votings::AdminEngine
   component.icon = "decidim/votings/icon.svg"
+  component.permissions_class_name = "Decidim::Votings::Permissions"
 
   component.on(:before_destroy) do |instance|
     # Code executed before removing the component

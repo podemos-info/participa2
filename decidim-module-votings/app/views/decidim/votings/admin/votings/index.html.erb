@@ -3,7 +3,7 @@
     <h2 class="card-title">
       <%= t('.title') %>
       <%= link_to t('actions.new', scope: 'decidim.votings'),
-                  new_voting_path, class: 'button tiny button--title' if can? :manage, current_component %>
+                  new_voting_path, class: 'button tiny button--title' if allowed_to? :create, :voting %>
     </h2>
   </div>
 
@@ -61,7 +61,7 @@
                                  target: :blank,
                                  class: 'action-icon--preview' %>
 
-                <% if can? :update, current_component %>
+                <% if allowed_to? :update, :voting, voting: voting %>
                     <%= icon_link_to 'pencil',
                                      edit_voting_path(voting),
                                      t('actions.edit', scope: 'decidim.votings'),
@@ -74,7 +74,7 @@
                                  method: :get,
                                  class: 'action-icon--download' %>
 
-                <% if can? :destroy, current_component %>
+                <% if allowed_to? :destroy, :voting, voting: voting %>
                   <%= icon_link_to 'circle-x',
                                    voting_path(voting),
                                    t('actions.destroy', scope: 'decidim.votings'),
