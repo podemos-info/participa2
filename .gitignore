@@ -23,3 +23,5 @@ public/uploads
 # rubocop cached remote config
 .rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-yml
 .rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-rails-yml
+
+spec/decidim_dummy_app/
