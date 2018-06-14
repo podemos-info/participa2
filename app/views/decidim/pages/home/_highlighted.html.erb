@@ -1,0 +1,20 @@
+<section class="extended">
+  <div class="wrapper-home">
+    <div class="row">
+      <div class="columns small-centered large-10">
+        <% person_participatory_spaces.each do |participatory_space| %>
+          <% with_participatory_space(participatory_space) do %>
+            <section class="section row collapse">
+              <%= link_to Decidim::ResourceLocatorPresenter.new(participatory_space).path, class: "card__title" do %>
+                <h2><img src="<%= participatory_space.hero_image.url %>" width="50px" /> <%= translated_attribute participatory_space.title %></h2>
+              <% end %>
+              <div class="row small-up-1 medium-up-2 card-grid">
+                <%= render_hook(:participatory_space_highlighted_elements) %>
+              </div>
+            </section>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
