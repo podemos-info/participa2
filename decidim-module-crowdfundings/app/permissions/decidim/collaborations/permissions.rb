@@ -7,7 +7,7 @@ module Decidim
         return permission_action unless user
 
         # Delegate the admin permission checks to the admin permissions class
-        return Decidim::Proposals::Admin::Permissions.new(user, permission_action, context).permissions if permission_action.scope == :admin
+        return Decidim::Collaborations::Admin::Permissions.new(user, permission_action, context).permissions if permission_action.scope == :admin
 
         return permission_action if permission_action.scope != :public
 
