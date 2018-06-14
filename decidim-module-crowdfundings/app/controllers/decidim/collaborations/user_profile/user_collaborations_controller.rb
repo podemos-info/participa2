@@ -62,6 +62,13 @@ module Decidim
           end
         end
 
+        def permission_class_chain
+          [
+            Decidim::Collaborations::Permissions,
+            Decidim::Permissions
+          ]
+        end
+
         private
 
         def collaborations

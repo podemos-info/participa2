@@ -56,6 +56,10 @@ module Decidim
           frequency == "punctual"
         end
       end
+
+      def recurrent?
+        !punctual?
+      end
     end
   end
 end

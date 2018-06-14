@@ -8,12 +8,12 @@ module Decidim
         helper_method :gravity_forms
 
         def new
-          enforce_permission_to :create, :gravity_form, gravity_form: gravity_form
+          enforce_permission_to :create, :gravity_form
           @form = form(GravityFormForm).instance
         end
 
         def create
-          enforce_permission_to :create, :gravity_form, gravity_form: gravity_form
+          enforce_permission_to :create, :gravity_form
           @form = form(GravityFormForm).from_params(params, current_component: current_component)
 
           CreateGravityForm.call(@form) do

@@ -32,34 +32,40 @@ module Decidim
       end
 
       def allowed_collaboration_action?
-        return permission_action if permission_action.subject != :collaboration
+        return unless permission_action.subject == :collaboration
 
         case permission_action.action
         when :support
-          collaboration.accepts_supports? &&
+          toggle_allow(
+            collaboration.accepts_supports? &&
             current_settings.collaborations_allowed? &&
             under_collaboration_limit?
+          )
         when :support_recurrently
-          collaboration.recurrent_support_allowed? &&
+          toggle_allow(
+            collaboration.recurrent_support_allowed? &&
             collaboration.user_collaborations.recurrent.supported_by(user).none?
+          )
         end
-
-        permission_action
       end
 
       def allowed_user_collaboration_action?
-        return permission_action if permission_action.subject != :user_collaboration
+        return unless permission_action.subject == :user_collaboration
 
         case permission_action.action
         when :update
-          user_collaboration.user.id == user.id && user_collaboration.accepted?
-
-          can_support_collaboration?
+          toggle_allow(
+            user_collaboration.user.id == user.id &&
+            user_collaboration.recurrent? &&
+            user_collaboration.accepted?
+          )
         when :resume
-          user_collaboration.user.id == user.id && user_collaboration.paused?
+          toggle_allow(
+            user_collaboration.user.id == user.id &&
+            user_collaboration.recurrent? &&
+            user_collaboration.paused?
+          )
         end
-
-        permission_action
       end
 
       def under_collaboration_limit?
