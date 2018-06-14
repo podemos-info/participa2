@@ -3,7 +3,7 @@
     <h2 class="card-title">
       <%= t(".title") %>
 
-      <%= link_to t("actions.new", scope: "decidim.gravity_forms", name: t("models.gravity_form.name", scope: "decidim.gravity_forms.admin")), new_gravity_form_path, class: 'button tiny button--title' if can? :manage, current_component %>
+      <%= link_to t("actions.new", scope: "decidim.gravity_forms", name: t("models.gravity_form.name", scope: "decidim.gravity_forms.admin")), new_gravity_form_path, class: 'button tiny button--title' if allowed_to? :create, :gravity_form %>
     </h2>
   </div>
 
@@ -64,11 +64,11 @@
               <td class="table-list__actions">
                 <%= icon_link_to "eye", resource_locator(gravity_form).path, t("actions.preview", scope: "decidim.gravity_forms"), class: "action-icon--preview", target: :blank %>
 
-                <% if can? :update, gravity_form %>
+                <% if allowed_to? :update, :gravity_form, gravity_form: gravity_form %>
                   <%= icon_link_to "pencil", edit_gravity_form_path(gravity_form.id), t("actions.edit", scope: "decidim.gravity_forms"), class: "action-icon--edit" %>
                 <% end %>
 
-                <% if can? :destroy, gravity_form %>
+                <% if allowed_to? :destroy, :gravity_form, gravity_form: gravity_form %>
                   <%= icon_link_to "circle-x", gravity_form_path(gravity_form.id), t("actions.destroy", scope: "decidim.gravity_forms"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.gravity_forms") } %>
                 <% end %>
               </td>
