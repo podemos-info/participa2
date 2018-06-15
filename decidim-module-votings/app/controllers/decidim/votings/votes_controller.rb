@@ -12,7 +12,8 @@ module Decidim
         unless voting.started?
           raise ActionController::RoutingError, "Not Found" if params[:key] != voting.simulation_key
         end
-        authorize! :vote, voting
+
+        enforce_permission_to :vote, :voting, voting: voting
         render layout: "layouts/decidim/booth"
       end
 
@@ -21,7 +22,7 @@ module Decidim
           flash[:error] = I18n.t("decidim.votings.messages.finished")
           render(plain: destination_url(voting), status: :gone) && return
         end
-        authorize! :vote, voting
+        enforce_permission_to :vote, :voting, voting: voting
         attributes = { voting: voting, user: current_user }
         attributes[:simulated_code] = voting.simulated_code if voting.vote_class == Decidim::Votings::SimulatedVote
         vote = voting.vote_class.find_or_create_by(attributes)

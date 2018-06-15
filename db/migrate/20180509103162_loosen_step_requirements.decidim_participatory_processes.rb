@@ -1,5 +1,6 @@
-# This migration comes from decidim_participatory_processes (originally 20170116135237)
 # frozen_string_literal: true
+
+# This migration comes from decidim_participatory_processes (originally 20170116135237)
 
 class LoosenStepRequirements < ActiveRecord::Migration[5.0]
   def change

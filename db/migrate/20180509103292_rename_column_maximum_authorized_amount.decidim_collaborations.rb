@@ -1,5 +1,6 @@
-# This migration comes from decidim_collaborations (originally 20171110090236)
 # frozen_string_literal: true
+
+# This migration comes from decidim_collaborations (originally 20171110090236)
 
 class RenameColumnMaximumAuthorizedAmount < ActiveRecord::Migration[5.1]
   def change

@@ -6,12 +6,14 @@ ruby "2.5.1"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
-gem "airbrake", "~> 5.8"
-gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.11-stable"
+gem "airbrake", "~> 5.8", require: false
+gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.12-stable"
 gem "decidim-census_connector", path: "decidim-module-census_connector"
 gem "decidim-collaborations", path: "decidim-module-crowdfundings"
 gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
 gem "decidim-votings", path: "decidim-module-votings"
+
+gem "bootsnap", "~> 1.3"
 gem "faker", "~> 1.8.4"
 gem "faraday"
 gem "pry-rails"
@@ -21,7 +23,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug", platform: :mri
 
-  gem "decidim-dev", "~> 0.11"
+  gem "decidim-dev", git: "https://github.com/decidim/decidim", branch: "0.12-stable"
 end
 
 group :development do

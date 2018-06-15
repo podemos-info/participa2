@@ -10,7 +10,7 @@
 
       <% if user_signed_in? %>
         <%= render 'decidim/collaborations/collaborations/totals', user: current_user %>
-      <% elsif can?(:support, collaboration) %>
+      <% elsif allowed_to? :support, :collaboration, collaboration: collaboration %>
         <%= action_authorized_link_to :support, collaboration_path(collaboration),
                                       class: "card__button button expanded button--sc" do %>
           <%= t('.support') %>
@@ -42,7 +42,7 @@
             <% end %>
           </p>
         </div>
-      <% elsif can?(:support, collaboration) %>
+      <% elsif allowed_to? :support, :collaboration, collaboration: collaboration %>
         <div class="section">
           <% if current_user_authorized?(:support) %>
             <%= render 'decidim/collaborations/collaborations/support_form' %>

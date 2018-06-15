@@ -1,5 +1,6 @@
-# This migration comes from decidim_debates (originally 20180122090505)
 # frozen_string_literal: true
+
+# This migration comes from decidim_debates (originally 20180122090505)
 
 class AddUserGroupAuthorToDebates < ActiveRecord::Migration[5.1]
   def change

@@ -2,7 +2,7 @@
 
 module Decidim
   module Collaborations
-    # Custom helpers used in meetings views
+    # Custom helpers used in collaboration cells
     module CollaborationCellsHelper
       include ActionView::Helpers::NumberHelper
       include TranslatableAttributes

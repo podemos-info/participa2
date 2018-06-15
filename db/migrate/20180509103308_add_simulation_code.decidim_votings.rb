@@ -1,5 +1,6 @@
-# This migration comes from decidim_votings (originally 20171211143945)
 # frozen_string_literal: true
+
+# This migration comes from decidim_votings (originally 20171211143945)
 
 class AddSimulationCode < ActiveRecord::Migration[5.1]
   def change

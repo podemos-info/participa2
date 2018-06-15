@@ -1,5 +1,6 @@
-# This migration comes from decidim_accountability (originally 20170426104125)
 # frozen_string_literal: true
+
+# This migration comes from decidim_accountability (originally 20170426104125)
 
 class CreateAccountabilityResults < ActiveRecord::Migration[5.0]
   def change

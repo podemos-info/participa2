@@ -8,10 +8,12 @@ module Decidim
         helper_method :gravity_forms
 
         def new
+          enforce_permission_to :create, :gravity_form
           @form = form(GravityFormForm).instance
         end
 
         def create
+          enforce_permission_to :create, :gravity_form
           @form = form(GravityFormForm).from_params(params, current_component: current_component)
 
           CreateGravityForm.call(@form) do
@@ -28,13 +30,13 @@ module Decidim
         end
 
         def edit
-          authorize! :edit, gravity_form
+          enforce_permission_to :update, :gravity_form, gravity_form: gravity_form
 
           @form = form(GravityFormForm).from_model(gravity_form)
         end
 
         def update
-          authorize! :edit, gravity_form
+          enforce_permission_to :update, :gravity_form, gravity_form: gravity_form
 
           @form = form(GravityFormForm).from_params(params, current_component: current_component)
 
@@ -52,7 +54,7 @@ module Decidim
         end
 
         def destroy
-          authorize! :destroy, gravity_form
+          enforce_permission_to :destroy, :gravity_form, gravity_form: gravity_form
 
           DestroyGravityForm.call(gravity_form) do
             on(:ok) do

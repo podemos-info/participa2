@@ -1,5 +1,6 @@
-# This migration comes from decidim_collaborations (originally 20171128140711)
 # frozen_string_literal: true
+
+# This migration comes from decidim_collaborations (originally 20171128140711)
 
 class AddLastOrderRequestDateToDecidimCollaborationsUserCollaboration < ActiveRecord::Migration[5.1]
   class UserCollaboration < ApplicationRecord

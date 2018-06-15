@@ -1,5 +1,6 @@
-# This migration comes from decidim_accountability (originally 20170623144902)
 # frozen_string_literal: true
+
+# This migration comes from decidim_accountability (originally 20170623144902)
 
 class AddChildrenCounterCacheToResults < ActiveRecord::Migration[5.0]
   def change

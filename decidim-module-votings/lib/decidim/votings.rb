@@ -21,5 +21,11 @@ module Decidim
     config_accessor :scope_resolver do
       ->(_user) { nil }
     end
+
+    # Public Setting that defines how many votings will be shown in the
+    # participatory_space_highlighted_elements view hook
+    config_accessor :participatory_space_highlighted_votings_limit do
+      3
+    end
   end
 end

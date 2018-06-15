@@ -1,5 +1,6 @@
-# This migration comes from decidim_proposals (originally 20180115155220)
 # frozen_string_literal: true
+
+# This migration comes from decidim_proposals (originally 20180115155220)
 
 class AddIndexCreatedAtProposalNotes < ActiveRecord::Migration[5.1]
   def change

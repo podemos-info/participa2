@@ -24,7 +24,7 @@ module Decidim
       def results
         @results ||= Collaboration.transaction do
           Collaboration.connection.execute("SELECT setseed(#{Collaboration.connection.quote(random_seed)})")
-          super.reorder("RANDOM()").load
+          super.reorder(Arel.sql("RANDOM()")).load
         end
       end
 

@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170713131308)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170713131308)
 
 class MigrateUserRolesToParticipatoryProcessRoles < ActiveRecord::Migration[5.1]
   class ParticipatoryProcess < ApplicationRecord

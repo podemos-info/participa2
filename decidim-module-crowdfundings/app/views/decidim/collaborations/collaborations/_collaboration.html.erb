@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="card--list__data collaboration-list__data">
-    <% if can? :support, collaboration %>
+    <% if allowed_to? :support, :collaboration, collaboration: collaboration %>
       <%= link_to t('.support'), collaboration, class: 'button tiny hollow collaboration--list__action' %>
     <% end %>
     <span class="card--list__data__number collaboration-list__number">

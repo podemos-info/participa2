@@ -8,12 +8,10 @@ module Decidim
         class PerformCensusStep < Rectify::Command
           # Public: Initializes the command.
           #
-          # authorization - An Authorization object.
           # form - A Decidim::Form object.
           # person_proxy - A Decidim::CensusConnector::PersonProxy object
-          def initialize(person_proxy, authorization, form)
+          def initialize(person_proxy, form)
             @person_proxy = person_proxy
-            @authorization = authorization
             @form = form
           end
 
@@ -39,7 +37,9 @@ module Decidim
             !person_proxy.has_person?
           end
 
-          attr_reader :authorization, :form, :person_proxy
+          attr_reader :form, :person_proxy
+
+          delegate :authorization, to: :person_proxy
         end
       end
     end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "airbrake"
+
 Airbrake.configure do |config|
   config.environment = Rails.env
   config.ignore_environments = %w(test development)

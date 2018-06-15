@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170308091316)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170308091316)
 
 class CreateModerations < ActiveRecord::Migration[5.0]
   def change

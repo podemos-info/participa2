@@ -8,7 +8,7 @@
     <%= f.amount_selection :amount, collaboration.amounts, collaboration.minimum_custom_amount %>
   </div>
 
-  <% if can? :support_recurrently, collaboration %>
+  <% if allowed_to? :support_recurrently, :collaboration, collaboration: collaboration %>
     <h2 class=section-heading><%=t '.select_frequency' %></h2>
     <div class="radio-selector">
       <% frequency_options.each do |option| %>

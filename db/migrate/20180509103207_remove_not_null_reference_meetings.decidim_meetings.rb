@@ -1,5 +1,6 @@
-# This migration comes from decidim_meetings (originally 20170410074252)
 # frozen_string_literal: true
+
+# This migration comes from decidim_meetings (originally 20170410074252)
 
 class RemoveNotNullReferenceMeetings < ActiveRecord::Migration[5.0]
   def change

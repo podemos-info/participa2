@@ -39,7 +39,7 @@
                 <%= decidim_number_to_currency user_collaboration.amount %>
               </td>
               <td class="table-list__actions">
-                <% if can? :update, user_collaboration %>
+                <% if allowed_to? :update, :user_collaboration, user_collaboration: user_collaboration %>
                   <%= icon_link_to 'pencil',
                                    edit_user_collaboration_path(user_collaboration),
                                    t('actions.edit', scope: 'decidim.collaborations'),
@@ -52,7 +52,7 @@
 
                 <% end %>
 
-                <% if can? :resume, user_collaboration %>
+                <% if allowed_to? :resume, :user_collaboration, user_collaboration: user_collaboration %>
                   <%= icon_link_to 'media-play',
                                    resume_user_collaboration_path(user_collaboration),
                                    t('actions.resume', scope: 'decidim.collaborations'),

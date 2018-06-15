@@ -4,9 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -24,5 +21,7 @@ public/uploads
 .rspec-failures
 
 # rubocop cached remote config
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-11-stable--rubocop-yml
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-11-stable--rubocop-rails-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-12-stable--rubocop-rails-yml
+
+spec/decidim_dummy_app/

@@ -6,6 +6,7 @@ Decidim.register_component(:gravity_forms) do |component|
   component.engine = Decidim::GravityForms::Engine
   component.admin_engine = Decidim::GravityForms::AdminEngine
   component.icon = "decidim/gravity_forms/icon.svg"
+  component.permissions_class_name = "Decidim::GravityForms::Permissions"
 
   # component.on(:before_destroy) do |instance|
   #   # Code executed before removing the component
@@ -22,7 +23,7 @@ Decidim.register_component(:gravity_forms) do |component|
   #   # Add your settings per step
   # end
 
-  component.register_resource do |resource|
+  component.register_resource(:gravity_form) do |resource|
     resource.model_class_name = "Decidim::GravityForms::GravityForm"
   end
 

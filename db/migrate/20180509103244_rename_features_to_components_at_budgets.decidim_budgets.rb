@@ -1,5 +1,6 @@
-# This migration comes from decidim_budgets (originally 20180305133340)
 # frozen_string_literal: true
+
+# This migration comes from decidim_budgets (originally 20180305133340)
 
 class RenameFeaturesToComponentsAtBudgets < ActiveRecord::Migration[5.1]
   def change

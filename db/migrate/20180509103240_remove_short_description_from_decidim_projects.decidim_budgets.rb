@@ -1,5 +1,6 @@
-# This migration comes from decidim_budgets (originally 20170207101750)
 # frozen_string_literal: true
+
+# This migration comes from decidim_budgets (originally 20170207101750)
 
 class RemoveShortDescriptionFromDecidimProjects < ActiveRecord::Migration[5.0]
   def change

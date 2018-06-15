@@ -1,5 +1,6 @@
-# This migration comes from decidim_participatory_processes (originally 20171215141722)
 # frozen_string_literal: true
+
+# This migration comes from decidim_participatory_processes (originally 20171215141722)
 
 class AddAttachmentCollectionToAttachments < ActiveRecord::Migration[5.1]
   def change

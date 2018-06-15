@@ -1,5 +1,6 @@
-# This migration comes from decidim_meetings (originally 20180305133634)
 # frozen_string_literal: true
+
+# This migration comes from decidim_meetings (originally 20180305133634)
 
 class RenameFeaturesToComponentsAtMeetings < ActiveRecord::Migration[5.1]
   def change

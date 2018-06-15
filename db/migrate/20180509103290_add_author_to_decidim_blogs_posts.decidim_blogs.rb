@@ -1,5 +1,6 @@
-# This migration comes from decidim_blogs (originally 20171211084630)
 # frozen_string_literal: true
+
+# This migration comes from decidim_blogs (originally 20171211084630)
 
 class AddAuthorToDecidimBlogsPosts < ActiveRecord::Migration[5.1]
   def change

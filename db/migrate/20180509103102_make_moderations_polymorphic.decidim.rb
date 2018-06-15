@@ -1,5 +1,6 @@
-# This migration comes from decidim (originally 20170720120231)
 # frozen_string_literal: true
+
+# This migration comes from decidim (originally 20170720120231)
 
 class MakeModerationsPolymorphic < ActiveRecord::Migration[5.1]
   def change

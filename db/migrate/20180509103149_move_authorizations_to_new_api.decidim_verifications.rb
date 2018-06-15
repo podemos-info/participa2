@@ -1,5 +1,6 @@
-# This migration comes from decidim_verifications (originally 20171030133426)
 # frozen_string_literal: true
+
+# This migration comes from decidim_verifications (originally 20171030133426)
 
 #
 # Assumes to authorizations in the old format (as rectify form classes) will be

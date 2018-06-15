@@ -4,14 +4,16 @@ Decidim.register_component(:votings) do |component|
   component.engine = Decidim::Votings::Engine
   component.admin_engine = Decidim::Votings::AdminEngine
   component.icon = "decidim/votings/icon.svg"
+  component.permissions_class_name = "Decidim::Votings::Permissions"
 
   component.on(:before_destroy) do |instance|
     # Code executed before removing the component
   end
 
-  component.register_resource do |resource|
+  component.register_resource(:voting) do |resource|
     resource.model_class_name = "Decidim::Votings::Voting"
     resource.template = "decidim/votings/votings/linked_votings"
+    resource.card = "decidim/votings/voting"
   end
 
   # These actions permissions can be configured in the admin panel

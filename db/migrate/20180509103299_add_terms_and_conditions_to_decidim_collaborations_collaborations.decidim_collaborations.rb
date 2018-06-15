@@ -1,5 +1,6 @@
-# This migration comes from decidim_collaborations (originally 20171124111736)
 # frozen_string_literal: true
+
+# This migration comes from decidim_collaborations (originally 20171124111736)
 
 class AddTermsAndConditionsToDecidimCollaborationsCollaborations < ActiveRecord::Migration[5.1]
   def change

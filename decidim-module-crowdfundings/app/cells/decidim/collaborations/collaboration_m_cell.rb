@@ -5,12 +5,8 @@ require "cell/partial"
 module Decidim
   module Collaborations
     # This cell renders a collaboration with its M-size card.
-    class CollaborationMCell < CollaborationCell
+    class CollaborationMCell < Decidim::CardMCell
       include CollaborationCellsHelper
-
-      def show
-        render :show
-      end
 
       private
 
