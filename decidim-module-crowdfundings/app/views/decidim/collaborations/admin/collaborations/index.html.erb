@@ -56,6 +56,8 @@
                                      class: 'action-icon--edit' %>
                 <% end %>
 
+                <%= resource_permissions_link(collaboration) %>
+
                 <% if allowed_to? :destroy, :collaboration, collaboration: collaboration %>
                     <%= icon_link_to 'circle-x',
                                      collaboration_path(collaboration),
