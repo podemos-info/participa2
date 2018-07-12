@@ -6,8 +6,8 @@
 class DecidimController < ApplicationController
   include Decidim::CensusConnector::CensusContext
 
-  helper Decidim::Collaborations::CollaborationsHelper
-  helper Decidim::Collaborations::TotalsHelper
+  helper Decidim::Crowdfundings::CampaignsHelper
+  helper Decidim::Crowdfundings::TotalsHelper
 
   helper Decidim::ResourceReferenceHelper
   helper Decidim::ResourceHelper

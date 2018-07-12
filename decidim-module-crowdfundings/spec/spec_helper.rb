@@ -11,5 +11,5 @@ require "decidim/dev/test/base_spec_helper"
 RSpec.configure do |c|
   c.include ActionView::Helpers::SanitizeHelper
   c.include ActionView::Helpers::NumberHelper
-  c.include Decidim::Collaborations::Admin::CollaborationsHelper
+  c.include Decidim::Crowdfundings::Admin::CampaignsHelper
 end

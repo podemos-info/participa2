@@ -1,0 +1,6 @@
+<div class="card card--list campaign-list">
+  <% campaigns.each do |campaign| %>
+    <%= render partial: 'campaign', locals: { campaign: campaign } %>
+  <% end %>
+</div>
+<%= decidim_paginate campaigns, random_seed: random_seed %>

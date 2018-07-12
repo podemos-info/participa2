@@ -175,19 +175,19 @@ GIT
 PATH
   remote: decidim-module-census_connector
   specs:
-    decidim-census_connector (0.12.0.pre)
-      decidim-core (~> 0.12.a)
-      decidim-verifications (~> 0.12.a)
+    decidim-census_connector (0.14.0.pre)
+      decidim-core (~> 0.14.a)
+      decidim-verifications (~> 0.14.a)
       faraday
       hutch
 
 PATH
   remote: decidim-module-crowdfundings
   specs:
-    decidim-collaborations (0.12.0.pre)
-      decidim-admin (~> 0.12.a)
-      decidim-census_connector (~> 0.12.a)
-      decidim-core (~> 0.12.a)
+    decidim-crowdfundings (0.14.0.pre)
+      decidim-admin (~> 0.14.a)
+      decidim-census_connector (~> 0.14.a)
+      decidim-core (~> 0.14.a)
       httparty
       iban_bic
 
@@ -834,7 +834,7 @@ DEPENDENCIES
   capistrano3-puma
   decidim!
   decidim-census_connector!
-  decidim-collaborations!
+  decidim-crowdfundings!
   decidim-dev!
   decidim-gravity_forms!
   decidim-votings!

@@ -143,7 +143,7 @@ class ParticipaSeeder
     )
     create_votings(assembly)
     create_gravity_forms(assembly)
-    create_collaborations(assembly, title: title)
+    create_crowdfundings(assembly, title: title)
     assembly
   end
 
@@ -168,10 +168,10 @@ class ParticipaSeeder
     )
   end
 
-  def create_collaborations(assembly, title:)
+  def create_crowdfundings(assembly, title:)
     component = Decidim::Component.create!(
-      name: Decidim::Components::Namer.new(organization.available_locales, :collaborations).i18n_name,
-      manifest_name: :collaborations,
+      name: Decidim::Components::Namer.new(organization.available_locales, :crowdfundings).i18n_name,
+      manifest_name: :crowdfundings,
       published_at: Time.current,
       participatory_space: assembly
     )
@@ -188,14 +188,14 @@ class ParticipaSeeder
       }
     )
 
-    Decidim::Collaborations::Collaboration.create!(
+    Decidim::Crowdfundings::Campaign.create!(
       component: component,
       title: localize("Colabora con #{title}"),
       description: localize("<p>Colabora con Podemos de la manera más sencilla y personalizada. Elige cantidad, periodicidad y forma de pago.</p>"),
       terms_and_conditions: localize("<p>ToS</p>"),
       minimum_custom_amount: 10,
       default_amount: 100,
-      amounts: Decidim::Collaborations.selectable_amounts
+      amounts: Decidim::Crowdfundings.selectable_amounts
     )
   end
 
