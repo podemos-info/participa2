@@ -14,15 +14,15 @@ Decidim.register_component(:votings) do |component|
     resource.model_class_name = "Decidim::Votings::Voting"
     resource.template = "decidim/votings/votings/linked_votings"
     resource.card = "decidim/votings/voting"
+    resource.actions = %w(vote)
   end
 
   # These actions permissions can be configured in the admin panel
   component.actions = %w(vote)
 
   component.settings(:global) do |settings|
-    # Add your global settings
-    # Available types: :integer, :boolean
     settings.attribute :remote_authorization_url, type: :string, default: nil
+    settings.attribute :resources_permissions_enabled, type: :boolean, default: true
   end
 
   component.settings(:step) do |settings|

@@ -62,6 +62,10 @@ module Decidim
       def recurrent_support_allowed?
         component&.participatory_space_type == "Decidim::Assembly"
       end
+
+      def allow_resource_permissions?
+        component.settings.resources_permissions_enabled
+      end
     end
   end
 end

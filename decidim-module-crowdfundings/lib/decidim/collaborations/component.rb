@@ -17,6 +17,7 @@ Decidim.register_component(:collaborations) do |component|
     resource.model_class_name = "Decidim::Collaborations::Collaboration"
     resource.template = "decidim/collaborations/collaborations/linked_collaborations"
     resource.card = "decidim/collaborations/collaboration"
+    resource.actions = %w(support)
   end
 
   # These actions permissions can be configured in the admin panel
@@ -38,7 +39,8 @@ Decidim.register_component(:collaborations) do |component|
   end
 
   # Ensure any authorization follow general rules
-  component.on(:permission_update) do |instance|
+  component.on(:permission_update) do |instances|
+    instance = instances[:resource] || instances[:component]
     permissions = instance.permissions["support"]
 
     handler_name = permissions["authorization_handler_name"]
@@ -55,7 +57,8 @@ Decidim.register_component(:collaborations) do |component|
     raise "Allowed documents need to include DNI and NIE" unless allowed_document_types.include?("dni") && allowed_document_types.include?("nie")
   end
 
-  component.settings(:global) do |_settings|
+  component.settings(:global) do |settings|
+    settings.attribute :resources_permissions_enabled, type: :boolean, default: true
   end
 
   component.settings(:step) do |settings|
