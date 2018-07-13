@@ -194,16 +194,16 @@ PATH
 PATH
   remote: decidim-module-gravity_forms
   specs:
-    decidim-gravity_forms (0.12.0.pre)
-      decidim-core (~> 0.12.a)
+    decidim-gravity_forms (0.14.0.pre)
+      decidim-core (~> 0.14.a)
 
 PATH
   remote: decidim-module-votings
   specs:
-    decidim-votings (0.12.0.pre)
+    decidim-votings (0.14.0.pre)
       active_model_serializers
-      decidim-admin (~> 0.12.a)
-      decidim-core (~> 0.12.a)
+      decidim-admin (~> 0.14.a)
+      decidim-core (~> 0.14.a)
 
 GEM
   remote: https://rubygems.org/
