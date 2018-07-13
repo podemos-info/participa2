@@ -1,0 +1,60 @@
+<% add_decidim_meta_tags(
+       title: translated_attribute(campaign.title),
+       description: translated_attribute(campaign.description)
+   ) %>
+
+<div class="row">
+  <% if campaign.target_amount.present? %>
+    <div id="campaign" class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+      <%= render 'decidim/crowdfundings/campaigns/totals', user: nil %>
+
+      <% if user_signed_in? %>
+        <%= render 'decidim/crowdfundings/campaigns/totals', user: current_user %>
+      <% elsif allowed_to? :support, :campaign, campaign: campaign %>
+        <%= action_authorized_link_to :support, campaign_path(campaign), resource: campaign,
+                                      class: "card__button button expanded button--sc" do %>
+          <%= t('.support') %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="columns<% if campaign.target_amount.present? %> mediumlarge-8 mediumlarge-pull-4<% end %>">
+    <div class="row column view-header">
+      <h2 class="heading2"><%= translated_attribute campaign.title %></h2>
+    </div>
+    <div class="section">
+      <%= sanitize translated_attribute campaign.description %>
+    </div>
+
+    <% if error_message %>
+      <div class="callout alert">
+        <%= t "labels.support_status.#{error_message}", scope: "decidim.crowdfundings" %>
+      </div>
+    <% elsif recurrent_contribution %>
+      <div id="contribution-info">
+        <p>
+          <%= t(".current_#{recurrent_contribution.state}_recurrent_support",
+                amount: decidim_number_to_currency(recurrent_contribution.amount),
+                periodicity: recurrent_contribution.frequency) %>
+        </p>
+
+        <p>
+          <%= link_to decidim_crowdfundings_user_profile.edit_contribution_path(recurrent_contribution),
+                      class: "card__button button button--sc" do %>
+            <%= t(".change_#{recurrent_contribution.state}_contribution") %>
+          <% end %>
+        </p>
+      </div>
+    <% elsif allowed_to? :support, :campaign, campaign: campaign %>
+      <div class="section">
+        <%= render 'decidim/crowdfundings/campaigns/support_form' %>
+      </div>
+    <% else %>
+      <%= action_authorized_link_to :support, campaign_path(campaign), resource: campaign,
+                                    class: "card__button button button--sc" do %>
+        <%= t('.support') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

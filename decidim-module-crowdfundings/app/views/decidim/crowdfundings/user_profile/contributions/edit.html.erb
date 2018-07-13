@@ -1,0 +1,31 @@
+<h1><%= translated_attribute(campaign.title) %></h1>
+<%= decidim_form_for(contribution_form,
+                     url: contribution_path(contribution),
+                     html: { class: 'form edit_contribution' }) do |f| %>
+
+
+  <h2 class=section-heading><%=t '.select_amount' %></h2>
+  <div class="amount-selector">
+    <%= f.amount_selection :amount, campaign.amounts, campaign.minimum_custom_amount %>
+  </div>
+
+  <h2 class=section-heading><%=t '.select_frequency' %></h2>
+  <div class="radio-selector">
+    <% recurrent_frequency_options.each do |option| %>
+      <%= f.label :frequency, '', value: option[1] do %>
+        <%= f.radio_button :frequency, option[1], label: false %>
+        <div><%= option[0] %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if f.object.errors.key? :frequency %>
+    <small class="form-error is-visible"><%= f.object.errors[:frequency].join(', ') %></small>
+  <% end %>
+
+  <div class="form-general-submit">
+    <%= f.submit t('.update'), class: 'button secondary support' %>
+  </div>
+<% end %>
+
+<%= javascript_include_tag 'decidim/crowdfundings/contributions' %>

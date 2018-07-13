@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title"><%=t '.title' %></h2>
+  </div>
+  <div class="card-section">
+    <% if contributions.any? %>
+      <div class="table-scroll">
+        <table class="table-list">
+          <thead>
+          <tr>
+            <th>
+              <%=t 'models.campaign.fields.title', scope: 'decidim.crowdfundings' %>
+            </th>
+            <th class="center">
+              <%=t 'models.contribution.fields.state', scope: 'decidim.crowdfundings' %>
+            </th>
+            <th class="center">
+              <%=t 'models.contribution.fields.frequency', scope: 'decidim.crowdfundings' %>
+            </th>
+            <th class="right">
+              <%=t 'models.contribution.fields.amount', scope: 'decidim.crowdfundings' %>
+            </th>
+            <th class="actions"><%=t 'actions.title', scope: 'decidim.crowdfundings' %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% contributions.each do |contribution| %>
+            <tr>
+              <td>
+                <%= translated_attribute(contribution.campaign.title) %>
+              </td>
+              <td class="center">
+                <%= state_label contribution.state %>
+              </td>
+              <td class="center">
+                <%= frequency_label contribution.frequency %>
+              </td>
+              <td class="right">
+                <%= decidim_number_to_currency contribution.amount %>
+              </td>
+              <td class="table-list__actions">
+                <% if allowed_to? :update, :contribution, contribution: contribution %>
+                  <%= icon_link_to 'pencil',
+                                   edit_contribution_path(contribution),
+                                   t('actions.edit', scope: 'decidim.crowdfundings'),
+                                   class: 'action-icon--edit' %>
+
+                  <%= icon_link_to 'media-pause',
+                                   pause_contribution_path(contribution),
+                                   t('actions.pause', scope: 'decidim.crowdfundings'),
+                                   class: 'action-icon--media-pause' %>
+
+                <% end %>
+
+                <% if allowed_to? :resume, :contribution, contribution: contribution %>
+                  <%= icon_link_to 'media-play',
+                                   resume_contribution_path(contribution),
+                                   t('actions.resume', scope: 'decidim.crowdfundings'),
+                                   class: 'action-icon--media-resume' %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <%=t '.no_records_found' %>
+    <% end %>
+  </div>
+</div>

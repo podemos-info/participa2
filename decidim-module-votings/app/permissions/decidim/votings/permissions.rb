@@ -23,10 +23,7 @@ module Decidim
       private
 
       def can_vote?
-        !voting.finished? && (
-          component_settings.remote_authorization_url.blank? ||
-          Decidim::Votings::RemoteAuthorizer.new(component_settings.remote_authorization_url).authorized?(user, voting)
-        )
+        !voting.finished? && authorized?(:vote, resource: voting)
       end
 
       def voting

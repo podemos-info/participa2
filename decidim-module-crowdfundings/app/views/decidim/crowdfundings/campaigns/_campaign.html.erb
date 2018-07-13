@@ -1,0 +1,19 @@
+<div id="campaign-<%= campaign.id %>-item" class="card--list__item">
+  <div class="card--list__text">
+    <div>
+      <%= link_to campaign, class: 'card__link' do %>
+        <h5 class="card__title campaign-list__title">
+          <%= translated_attribute campaign.title %>
+        </h5>
+      <% end %>
+    </div>
+  </div>
+  <div class="card--list__data campaign-list__data">
+    <% if allowed_to? :support, :campaign, campaign: campaign %>
+      <%= link_to t('.support'), campaign, class: 'button tiny hollow campaign--list__action' %>
+    <% end %>
+    <span class="card--list__data__number campaign-list__number">
+      <%= total_collected_to_currency(campaign.total_collected) %>
+    </span>
+  </div>
+</div>

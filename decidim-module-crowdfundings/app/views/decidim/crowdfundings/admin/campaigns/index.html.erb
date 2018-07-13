@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t('.title') %>
+      <%= link_to t('actions.new', scope: 'decidim.crowdfundings'),
+                  new_campaign_path, class: 'button tiny button--title' if allowed_to? :create, :campaign %>
+    </h2>
+  </div>
+
+  <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+        <tr>
+          <th>
+            <%=t 'models.campaign.fields.title', scope: 'decidim.crowdfundings'  %>
+          </th>
+          <th class="right">
+            <%=t 'models.campaign.fields.target_amount', scope: 'decidim.crowdfundings' %>
+          </th>
+          <th class="right">
+            <%=t 'models.campaign.fields.total_collected', scope: 'decidim.crowdfundings' %>
+          </th>
+          <th class="center">
+            <%=t 'models.campaign.fields.active_until', scope: 'decidim.crowdfundings' %>
+          </th>
+          <th class="actions"><%=t 'actions.title', scope: 'decidim.crowdfundings' %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% campaigns.each do |campaign| %>
+            <tr data-id="<%= campaign.id %>">
+              <td>
+                <%= translated_attribute(campaign.title) %>
+              </td>
+              <td class="right">
+                <%= campaign.target_amount.blank? ? "-" : decidim_number_to_currency(campaign.target_amount) %>
+              </td>
+              <td class="right">
+                <%= total_collected_to_currency campaign.total_collected %>
+              </td>
+              <td class="center">
+                <%=l campaign.active_until unless campaign.active_until.nil? %>
+              </td>
+              <td class="table-list__actions">
+                <%= icon_link_to 'eye',
+                                 resource_locator(campaign).path,
+                                 t('actions.preview', scope: 'decidim.crowdfundings'),
+                                 target: :blank,
+                                 class: 'action-icon--preview' %>
+
+                <% if allowed_to? :update, :campaign, campaign: campaign %>
+                    <%= icon_link_to 'pencil',
+                                     edit_campaign_path(campaign),
+                                     t('actions.edit', scope: 'decidim.crowdfundings'),
+                                     class: 'action-icon--edit' %>
+                <% end %>
+
+                <%= resource_permissions_link(campaign) %>
+
+                <% if allowed_to? :destroy, :campaign, campaign: campaign %>
+                    <%= icon_link_to 'circle-x',
+                                     campaign_path(campaign),
+                                     t('actions.destroy', scope: 'decidim.crowdfundings'),
+                                     method: :delete,
+                                     class: 'action-icon--remove',
+                                     data: { confirm: t('actions.confirm_destroy', scope: 'decidim.crowdfundings') } %>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= paginate campaigns, theme: 'decidim' %>
+    </div>
+  </div>
+</div>

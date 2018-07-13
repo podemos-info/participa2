@@ -1,0 +1,17 @@
+<div class="card extra" id="<%= totals_block_id(user) %>">
+  <div class="card__content">
+    <div class="card__header">
+      <h5 class="card__title"><%= totals_title(user) %></h5>
+    </div>
+
+    <div class="card__support__data">
+      <span class="extra__suport-number">
+        <%= total_collected(campaign, user) %>
+      </span>
+      <span class="extra__suport-text">
+        <%=t '.overall_percentage' %>: <%= percentage campaign, user %>
+      </span>
+      <%= percentage_tag campaign, user %>
+    </div>
+  </div>
+</div>

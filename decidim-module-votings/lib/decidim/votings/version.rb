@@ -4,7 +4,7 @@ module Decidim
   # This holds the decidim-votings version.
   module Votings
     def self.version
-      "0.12.0.pre"
+      "0.14.0.pre"
     end
   end
 end

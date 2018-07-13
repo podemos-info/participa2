@@ -1,4 +1,4 @@
-# Decidim::Collaborations
+# Decidim::Crowdfundings
 
 This rails engine implements a Decidim component that allows to the administrators
 to configure crowfunding campaigns for a participatory space.
@@ -20,16 +20,16 @@ This plugin provides:
 Add the following lines to your application's Gemfile:
 
 ```ruby
-gem 'decidim-collaborations'
+gem 'decidim-crowdfundings'
 ```
 
 And then execute:
 
 ```bash
 bundle
-bundle exec rails decidim_collaborations:install:migrations
+bundle exec rails decidim_crowdfundings:install:migrations
 bundle exec rails db:migrate
-bundle exec rails generate decidim:collaborations:install
+bundle exec rails generate decidim:crowdfundings:install
 ```
 
 Then you'll need to configure the environment variable CENSUS_URL to point to
@@ -61,7 +61,7 @@ default: &default
   password: <%= ENV.fetch("DATABASE_PASSWORD") { "admin" } %>
 ```
 
-If you desire to use different settingsyou need to check the Docker compose
+If you desire to use different settings you need to check the Docker compose
 settings and adjust the setup of the PostgreSQL image.
 
 Finally remember that the Docker file do not includes any command relative to
@@ -80,18 +80,18 @@ bundle exec rails db:seed
 
 This engine provides the following rake tasks:
 
-### decidim_collaborations:recurrent_collaborations
+### decidim_crowdfundings:recurrent_contributions
 
-This task collects all recurrent collaborations that need to be renewed. Ideally
+This task collects all recurrent contributions that need to be renewed. Ideally
 it should be automatically executed at least once per month.
 
-### decidim_collaborations:update_status
+### decidim_crowdfundings:update_status
 
-This task collects all user collaborations in pending status. Then proceeds querying
+This task collects all contributions in pending status. Then proceeds querying
 Census about the payment method status. According to Census response the
-collaboration will be accepted or rejected. This process should be executed
+contribution payment will be accepted or rejected. This process should be executed
 several times per month, ideally on periods of low load. It should be executed
-at least once before the *decidim_collaborations:recurrent_collaborations* is
+at least once before the *decidim_crowdfundings:recurrent_contributions* is
 executed.
 
 ## License

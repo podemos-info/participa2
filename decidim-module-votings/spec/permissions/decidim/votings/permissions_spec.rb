@@ -55,29 +55,5 @@ describe Decidim::Votings::Permissions do
 
       it { is_expected.to eq false }
     end
-
-    context "with remote authorization enabled" do
-      context "when server returns 201" do
-        before do
-          stub_request(:post, "http://example.org/authorizations").to_return(status: 201, body: "", headers: {})
-        end
-
-        it { is_expected.to eq true }
-      end
-
-      context "when server returns 401" do
-        before do
-          stub_request(:post, "http://example.org/authorizations").to_return(status: 401, body: "", headers: {})
-        end
-
-        it { is_expected.to eq false }
-      end
-    end
-
-    context "with remote authorization disabled" do
-      let(:remote_authorization_url) { "" }
-
-      it { is_expected.to eq true }
-    end
   end
 end

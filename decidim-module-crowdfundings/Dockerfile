@@ -31,7 +31,7 @@ RUN curl -L -O https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTO
 
 
 # Define where our application will live inside the image
-ENV RAILS_ROOT /decidim-collaborations
+ENV RAILS_ROOT /decidim-crowdfundings
 RUN mkdir -p $RAILS_ROOT
 
 ENV BUNDLE_PATH /gems

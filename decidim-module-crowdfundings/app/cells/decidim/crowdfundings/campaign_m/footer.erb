@@ -1,0 +1,10 @@
+<div class="card__footer">
+  <div class="card__support">
+    <div class="card__support__data">
+      <% if has_amount? %>
+        <%= percentage_tag model, nil %>
+      <% end %>
+    </div>
+    <%= link_to t('decidim.components.crowdfundings.actions.support'), resource_path, class: 'card__button button--sc light button small secondary' %>
+  </div>
+</div>

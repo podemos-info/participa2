@@ -61,6 +61,10 @@ module Decidim
         simulated_votes.empty? && votes.empty?
       end
 
+      def allow_resource_permissions?
+        component.settings.resources_permissions_enabled
+      end
+
       def voting_identifier_for(scope)
         scope.part_of.each do |scope_id|
           return voting_identifier if decidim_scope_id == scope_id

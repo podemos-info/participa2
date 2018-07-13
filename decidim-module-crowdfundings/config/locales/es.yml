@@ -2,7 +2,7 @@
 es:
   activemodel:
     attributes:
-      collaboration:
+      campaign:
         active_until: Activa hasta
         amounts: Importes
         default_amount: Monto por defecto
@@ -12,10 +12,10 @@ es:
         terms_and_conditions: Términos y condiciones
         title: Título
         total_collected: Total recaudado
-      user_collaboration:
+      contribution:
         accept_terms_and_conditions: Acepto los términos y condiciones
         amount: Importe
-        collaboration: Campaña de colaboración
+        campaign: Campaña de crowdfunding
         frequency: Frecuencia
         iban: IBAN
         over_18: Soy mayor de 18 años
@@ -25,13 +25,13 @@ es:
         user: Usuario
     errors:
       models:
-        collaboration:
+        campaign:
           attributes:
             active_until:
               outside_process_range: La fecha esta fuera del intervalo de tiempo del proceso participativo.
             amounts:
               invalid_format: Formáto inválido.
-        user_collaboration:
+        contribution:
           attributes:
             amount:
               annual_limit_exceeded: El importe seleccionado supera el máximo anual permitido.
@@ -44,7 +44,17 @@ es:
             payment_method_type:
               blank: Debes elegir una forma de pago.
   decidim:
-    collaborations:
+    components:
+      crowdfundings:
+        actions:
+          support: Apoyar
+        name: Crowdfundings
+        settings:
+          global:
+            resources_permissions_enabled: Permitir definir permisos diferentes para cada campaña
+          step:
+            contributions_allowed: Aportaciones permitidas
+    crowdfundings:
       actions:
         confirm_destroy: "¿Estás seguro?"
         destroy: Borrar
@@ -55,14 +65,14 @@ es:
         resume: Reanudar
         title: Acciones
       admin:
-        collaborations:
+        campaigns:
           create:
-            invalid: No se pudo crear la campaña de colaboración. Comprueba los datos y corrige los errores.
-            success: La campaña de colaboración ha sido correctamente creada.
+            invalid: No se pudo crear la campaña de crowdfunding. Comprueba los datos y corrige los errores.
+            success: La campaña de crowdfunding ha sido correctamente creada.
           destroy:
-            success: La campaña de colaboración ha sido correctamente borrada.
+            success: La campaña de crowdfunding ha sido correctamente borrada.
           edit:
-            title: Editar campaña de colaboración
+            title: Editar campaña de crowdfunding
             update: Actualizar
           form:
             active_until_help: Esta fecha debe estar dentro de las fases del proceso participativo. En caso de que una fase no acepte donaciones se ignorará y por tanto no será aplicada.
@@ -71,26 +81,26 @@ es:
             title: Aportaciones
           new:
             create: Crear
-            title: Nueva campaña de colaboración
+            title: Nueva campaña de crowdfunding
           update:
-            invalid: No se pudo actualizar la campaña de colaboración. Comprueba los datos y corrige los errores.
-            success: La campaña de colaboración ha sido correctamente actualizada.
+            invalid: No se pudo actualizar la campaña de crowdfunding. Comprueba los datos y corrige los errores.
+            success: La campaña de crowdfunding ha sido correctamente actualizada.
         models:
-          collaboration:
+          campaign:
             name:
-              one: Aportación
-              other: Aportaciones
-          user_collaboration:
+              one: Campaña de crowdfunding
+              other: Campañas de crowdfunding
+          contribution:
             name:
               one: Aportación de usuario
               other: Aportaciones de usuario
-      collaborations:
-        collaboration:
+      campaigns:
+        campaign:
           support: Apoyar
         count:
-          collaborations_count:
-            one: 1 campaña de colaboración
-            other: "%{count} campañas de colaboración"
+          campaigns_count:
+            one: 1 campaña de crowdfunding
+            other: "%{count} campañas de crowdfunding"
         filters:
           search: Buscar
         filters_small_view:
@@ -99,14 +109,14 @@ es:
           filter_by: Filtrar por
           unfold: Desplegar
         show:
-          change_accepted_collaboration: cambiar aportación
-          change_paused_collaboration: reactivar aportación
-          change_pending_collaboration: cambiar aportación
-          change_rejected_collaboration: arreglar solicitud
+          change_accepted_contribution: cambiar aportación
+          change_paused_contribution: reactivar aportación
+          change_pending_contribution: cambiar aportación
+          change_rejected_contribution: arreglar solicitud
           current_accepted_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}.
           current_paused_recurrent_support: Actualmente aportas %{amount} con periodicidad %{periodicity}, pero tu aportación está detenida.
-          current_pending_recurrent_support: Iniciaste una colaboración de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
-          current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la colaboración fue rechazada.
+          current_pending_recurrent_support: Iniciaste una aportación de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
+          current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la aportación fue rechazada.
           support: Apoyar
         support_form:
           select_amount: Seleccciona la cantidad
@@ -118,7 +128,25 @@ es:
           overall_totals: Acumulado
           target_amount: 'Objetivo: %{amount}'
           user_totals: Usuario
+      contributions:
+        confirm_form:
+          are_you_sure: "¿Estás seguro?"
+          confirm: Confirmar
+          contribution_resume: Resumen de la aportación
+          fill_required_data: Completa los siguientes campos
+        create:
+          invalid: Falló la operación.
+          success: Has apoyado la campaña de crowdfunding.
+        validate:
+          invalid: La operación ha sido denegada.
+          success: Has apoyado la campaña de crowdfunding.
       labels:
+        contribution:
+          states:
+            accepted: Aceptada
+            paused: Suspendida
+            pending: Pendiente
+            rejected: Rechazada
         frequencies:
           annual: Anual
           monthly: Mensual
@@ -130,72 +158,44 @@ es:
           direct_debit: Débito directo
           existing_payment_method: Método de pago existente
         support_status:
-          collaboration_not_allowed: La colaboración no está permitida en estos momentos.
-          maximum_annual_exceeded: No puedes realizar mas colaboraciones. Has alcanzado el máximo anual permitido.
-          support_period_finished: El periodo para realizar colaboraciones ha concluido.
-        user_collaboration:
-          states:
-            accepted: Aceptada
-            paused: Suspendida
-            pending: Pendiente
-            rejected: Rechazada
+          contribution_not_allowed: La aportación no está permitida en estos momentos.
+          maximum_annual_exceeded: No puedes realizar mas aportaciones. Has alcanzado el máximo anual permitido.
+          support_period_finished: El periodo para realizar aportaciones ha concluido.
       models:
-        collaboration:
+        campaign:
           fields:
             active_until: Activa hasta
             target_amount: Monto objetivo
             title: Título
             total_collected: Total recaudado
-        user_collaboration:
+        contribution:
           fields:
             amount: Importe
-            collaboration: Campaña de colaboración
+            campaign: Campaña de crowdfunding
             frequency: Frecuencia
             last_order_request_date: Última petición
             state: Estado
             user: Usuario
-      user_collaborations:
-        confirm_form:
-          are_you_sure: "¿Estás seguro?"
-          collaboration_resume: Resumen de la colaboración
-          confirm: Confirmar
-          fill_required_data: Completa los siguientes campos
-        create:
-          invalid: Falló la operación.
-          success: Has apoyado la campaña de colaboración.
-        validate:
-          invalid: La operación ha sido denegada.
-          success: Has apoyado la campaña de colaboración.
       user_profile:
-        user_collaborations:
+        contributions:
           edit:
             select_amount: Seleccciona la cantidad
             select_frequency: Seleccciona la frecuencia
             update: Actualiza
           index:
-            no_records_found: No se han encontrado colaboraciones.
-            title: Tus colaboraciones periódicas
+            no_records_found: No se han encontrado aportaciones.
+            title: Tus aportaciones periódicas
           pause:
-            fail: No se ha podido suspender tu colaboración.
-            success: Tu colaboración ha sido suspendida satisfactoriamente.
+            fail: No se ha podido suspender tu aportación.
+            success: Tu aportación ha sido suspendida satisfactoriamente.
           resume:
-            fail: No se ha podido reanudar tu colaboración.
-            success: Tu colaboración ha sido reanudada satisfactoriamente.
+            fail: No se ha podido reanudar tu aportación.
+            success: Tu aportación ha sido reanudada satisfactoriamente.
           update:
-            fail: No se ha podido actualizar tu colaboración.
-            success: Tu colaboración ha sido actualizada satisfactoriamente.
-    components:
-      collaborations:
-        actions:
-          support: Apoyar
-        name: Aportaciones
-        settings:
-          global:
-            maximum_annual_collaboration: Monto máximo anual por persona
-          step:
-            collaborations_allowed: Aportaciones permitidas
+            fail: No se ha podido actualizar tu aportación.
+            success: Tu aportación ha sido actualizada satisfactoriamente.
     form_builder:
       support_tag:
         other: Otros
     menu:
-      collaborations: Colaboraciones
+      crowdfundings: Crowdfundings

@@ -74,6 +74,8 @@
                                  method: :get,
                                  class: 'action-icon--download' %>
 
+                <%= resource_permissions_link(voting) %>
+
                 <% if allowed_to? :destroy, :voting, voting: voting %>
                   <%= icon_link_to 'circle-x',
                                    voting_path(voting),

@@ -2,7 +2,7 @@
 ca:
   activemodel:
     attributes:
-      collaboration:
+      campaign:
         active_until: Activa fins
         amounts: Imports
         default_amount: Import per defecte
@@ -12,10 +12,10 @@ ca:
         terms_and_conditions: Termes i condicions
         title: Títol
         total_collected: Total recaudat
-      user_collaboration:
+      contribution:
         accept_terms_and_conditions: Accepte els termes i condicions
         amount: Quantitat
-        collaboration: Campanya de col·laboració
+        campaign: Campanya de crowdfunding
         frequency: Freqüència
         iban: IBAN
         over_18: Soc major de 18 anys
@@ -25,13 +25,13 @@ ca:
         user: Usuari
     errors:
       models:
-        collaboration:
+        campaign:
           attributes:
             active_until:
               outside_process_range: La data està fora del rango del proceso participativo.
             amounts:
               invalid_format: Format invàlid.
-        user_collaboration:
+        contribution:
           attributes:
             amount:
               annual_limit_exceeded: L'import sel·leccionat supera el màxim anual permes.
@@ -44,7 +44,13 @@ ca:
             payment_method_type:
               blank: Deus sel·leccionar una forma de pagament.
   decidim:
-    collaborations:
+    components:
+      crowdfundings:
+        name: Crowdfundings
+        settings:
+          step:
+            contribution_allowed: Aportacions permeses
+    crowdfundings:
       actions:
         confirm_destroy: "¿Estas segur?"
         destroy: Esborrar
@@ -55,14 +61,14 @@ ca:
         resume: Rependre
         title: Acciones
       admin:
-        collaborations:
+        campaigns:
           create:
-            invalid: No s'hi ha pogut crear la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
-            success: La campanya de col·laboració s'ha creat correctament.
+            invalid: No s'hi ha pogut crear la campanya de crowdfunding. Comprova les dades inserides i corregeix els errors.
+            success: La campanya de crowdfunding s'ha creat correctament.
           destroy:
-            success: La campanya de col·laboració s'ha esborrat correctament.
+            success: La campanya de crowdfunding s'ha esborrat correctament.
           edit:
-            title: Editar campanya de col·laboració
+            title: Editar campanya de crowdfunding
             update: Actualitzar
           form:
             active_until_help: Aquesta data ha d'estar dins de les fases del procés participatiu. En cas que una fase no accepti donacions, s'ignorarà i, per tant, no s'aplicarà.
@@ -71,26 +77,26 @@ ca:
             title: Aportacions
           new:
             create: Crea
-            title: Nova campanya de col·laboració
+            title: Nova campanya de crowdfunding
           update:
-            invalid: No s'hi ha pogut actualitzar la campanya de col·laboració. Comprova les dades inserides i corregeix els errors.
-            success: La campanya de col·laboració s'ha actualitzar correctament.
+            invalid: No s'hi ha pogut actualitzar la campanya de crowdfunding. Comprova les dades inserides i corregeix els errors.
+            success: La campanya de crowdfunding s'ha actualitzar correctament.
         models:
-          collaboration:
+          campaign:
             name:
-              one: Aportació
-              other: Aportacions
-          user_collaboration:
+              one: Campanya de crowdfunding
+              other: Campanyes de crowdfunding
+          contribution:
             name:
               one: Aportació d'usuari
               other: Aportacions d'usuaris
-      collaborations:
-        collaboration:
+      campaigns:
+        campaign:
           support: Donar suport
         count:
-          collaborations_count:
-            one: 1 campanya de col·laboració
-            other: "%{count} campanyes de col·laboració"
+          campaigns_count:
+            one: 1 campanya de crowdfunding
+            other: "%{count} campanyes de crowdfunding"
         filters:
           search: Cerca
         filters_small_view:
@@ -110,7 +116,25 @@ ca:
           overall_totals: Acumulat
           target_amount: 'Objetiu: %{amount}'
           user_totals: Usuari
+      contributions:
+        confirm_form:
+          are_you_sure: "¿Estas segur?"
+          confirm: Confirmar
+          contribution_resume: Resum de la col·laboració
+          fill_required_data: Completa els següents camps
+        create:
+          invalid: L'operació ha fallat.
+          success: Has donat suport a la campanya de col·laboració.
+        validate:
+          invalid: L'operació ha estat denegada.
+          success: Has donat suport a la campanya de col·laboració.
       labels:
+        contribution:
+          states:
+            accepted: Acceptadd
+            paused: Suspesa
+            pending: Pendent
+            rejected: Rebutjada
         frequencies:
           annual: Anual
           monthly: Mensual
@@ -122,44 +146,26 @@ ca:
           direct_debit: Dèbit directe
           existing_payment_method: Forma de pagament existent
         support_status:
-          collaboration_not_allowed: La col·laboració no está permesa en estos moments.
-          maximum_annual_exceeded: No pots realitzar mes col·laboracions. Has arribat al màxim anual permés.
+          contribution_not_allowed: La col·laboració no está permesa en estos moments.
+          maximum_annual_exceeded: No pots realitzar mes aportacions. Has arribat al màxim anual permés.
           support_period_finished: El periode per a realitzar colaboracions ha finalitzat.
-        user_collaboration:
-          states:
-            accepted: Acceptadd
-            paused: Suspesa
-            pending: Pendent
-            rejected: Rebutjada
       models:
-        collaboration:
+        campaign:
           fields:
             active_until: Activa fins
             target_amount: Quantitat objectiu
             title: Títol
             total_collected: Total recaudat
-          user_collaboration:
-            fields:
-              amount: Quantitat
-              collaboration: Campanya de col·laboració
-              frequency: Freqüència
-              last_order_request_date: Última petició
-              state: Estat
-              user: Usuari
-      user_collaborations:
-        confirm_form:
-          are_you_sure: "¿Estas segur?"
-          collaboration_resume: Resum de la col·laboració
-          confirm: Confirmar
-          fill_required_data: Completa els següents camps
-        create:
-          invalid: L'operació ha fallat.
-          success: Has donat suport a la campanya de col·laboració.
-        validate:
-          invalid: L'operació ha estat denegada.
-          success: Has donat suport a la campanya de col·laboració.
+        contribution:
+          fields:
+            amount: Quantitat
+            campaign: Campanya de crowdfunding
+            frequency: Freqüència
+            last_order_request_date: Última petició
+            state: Estat
+            user: Usuari
       user_profile:
-        user_collaborations:
+        contributions:
           edit:
             select_amount: Sel·lecciona la quantitat
             select_frequency: Sel·lecciona la frequència
@@ -176,16 +182,8 @@ ca:
           update:
             fail: No s'ha pogut actualitzar la col·laboració.
             success: La teva col·laboració s'ha actualitzat satisfactoriament.
-    components:
-      collaborations:
-        name: Aportacions
-        settings:
-          global:
-            maximum_annual_collaboration: Import màxim anual per persona
-          step:
-            collaborations_allowed: Aportacions permeses
     form_builder:
       support_tag:
         other: Altres
     menu:
-      collaborations: Col·laboracions
+      crowdfundings: Crowdfundings
