@@ -44,7 +44,15 @@ module Decidim
       private
 
       def census_person
-        @census_person ||= census_person_api.find(version_at: @version_at)
+        @census_person ||= census_person_api.find(**census_person_params)
+      end
+
+      def census_person_params
+        @census_person_params ||= if @version_at
+                                    { version_at: @version_at }
+                                  else
+                                    {}
+                                  end
       end
     end
   end

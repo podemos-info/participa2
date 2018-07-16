@@ -69,6 +69,7 @@ ignore_unused:
   - activemodel.errors.models.contribution.attributes.*
   - decidim.authorization_handlers.admin.census.help
   - decidim.authorization_handlers.census.*
+  - decidim.authorization_modals.show.*
   - decidim.components.crowdfundings.*
   - decidim.components.gravity_forms.*
   - decidim.components.votings.*

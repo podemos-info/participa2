@@ -94,11 +94,9 @@ describe "Census verification", type: :system do
 
       let(:cassette) { "child_verification" }
 
-      it "shows popup to require verification" do
+      it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
-          "You need to be a least 18 years old and be registered with dni and nie."
-        ).and have_content(
-          "Age value (#{age}) isn't valid."
+          "You need to be a least 18 years old."
         )
       end
     end
@@ -108,11 +106,9 @@ describe "Census verification", type: :system do
 
       let(:cassette) { "verification_with_passport" }
 
-      it "shows popup to require verification" do
+      it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
-          "You need to be a least 18 years old and be registered with dni and nie."
-        ).and have_content(
-          "Document type value (#{document_type}) isn't valid."
+          "You need to be registered with DNI or NIE."
         )
       end
     end
@@ -124,13 +120,9 @@ describe "Census verification", type: :system do
 
       let(:cassette) { "child_verification_with_passport" }
 
-      it "shows popup to require verification" do
+      it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
-          "You need to be a least 18 years old and be registered with dni and nie."
-        ).and have_content(
-          "Document type value (#{document_type}) isn't valid."
-        ).and have_content(
-          "Age value (#{age}) isn't valid."
+          "You need to be a least 18 years old."
         )
       end
     end
@@ -143,17 +135,9 @@ describe "Census verification", type: :system do
       let(:cassette) { "verification_with_issues" }
 
       it "shows popup to require verification and shows it as pending" do
-        expect(page).to have_no_content(
-          "You need to be a least 18 years old and be registered with dni and nie."
-        ).and have_content(
-          'In order to perform this action, you need to be authorized with "Census", but your authorization is still in progress'
+        expect(page).to have_content(
+          "Your registration with Podemos is pending of approval."
         )
-
-        VCR.use_cassette(cassette) do
-          click_link 'Check your "Census" authorization progress'
-
-          expect(page).to have_content("Your registration with Podemos census is being validated")
-        end
       end
     end
   end

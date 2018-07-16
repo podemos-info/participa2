@@ -6,7 +6,10 @@ Decidim::Verifications.register_workflow(:census) do |workflow|
   workflow.action_authorizer = "Decidim::CensusConnector::Verifications::Census::ActionAuthorizer"
 
   workflow.options do |options|
-    options.attribute :allowed_document_types, type: :string, default: "dni,nie"
-    options.attribute :minimum_age, type: :integer, default: 18
+    options.attribute :allowed_document_types, type: :string, default: nil, required: false
+    options.attribute :allowed_verification_levels, type: :string, default: nil, required: false
+    options.attribute :census_closure, type: :string, default: nil, required: false
+    options.attribute :enforce_scope, type: :boolean, default: true
+    options.attribute :minimum_age, type: :integer, default: 14
   end
 end
