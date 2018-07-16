@@ -12,14 +12,14 @@ module Decidim
             if result
               broadcast :ok
             else
-              broadcast :invalid, census_person.global_error
+              broadcast :invalid, census_person_api.global_error
             end
           end
 
           private
 
           def update_membership_level
-            census_person.create_membership_level(membership_level_params)
+            census_person_api.create_membership_level(membership_level_params)
           end
 
           def membership_level_params

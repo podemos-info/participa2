@@ -12,7 +12,7 @@ module Decidim
             if result
               broadcast :ok
             else
-              add_errors_to_form if census_person.errors
+              add_errors_to_form if census_person_api.errors
 
               broadcast :invalid, formatted_error
             end
@@ -21,19 +21,19 @@ module Decidim
           private
 
           def add_errors_to_form
-            ErrorConverter.new(form, census_person.errors).run
+            ErrorConverter.new(form, census_person_api.errors).run
           end
 
           def formatted_error
-            if census_person.errors
+            if census_person_api.errors
               form.errors.full_messages.join(", ")
             else
-              census_person.global_error
+              census_person_api.global_error
             end
           end
 
           def create_verification
-            census_person.create_verification(verification_params)
+            census_person_api.create_verification(verification_params)
           end
 
           def verification_params

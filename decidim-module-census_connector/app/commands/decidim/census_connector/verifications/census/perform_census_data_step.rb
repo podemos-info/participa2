@@ -16,30 +16,32 @@ module Decidim
             if result
               broadcast :ok
             else
-              add_errors_to_form if census_person.errors
+              add_errors_to_form if census_person_api.errors
 
-              broadcast :invalid, census_person.global_error
+              broadcast :invalid, census_person_api.global_error
             end
           end
 
           private
 
           def create_person
-            result = census_person.create(person_params.merge(origin_qualified_id: origin_qualified_id))
+            person_id = census_person_api.create(person_params.merge(origin_qualified_id: origin_qualified_id))
 
-            authorization.update!(metadata: { "person_id" => census_person.person_id }) if result
+            return false if person_id.blank?
 
-            result
+            authorization.update!(metadata: { "person_id" => person_id })
+
+            true
           end
 
           def update_person
-            census_person.update(person_params)
+            census_person_api.update(person_params)
           end
 
           def add_errors_to_form
             ErrorConverter.new(
               form,
-              census_person.errors,
+              census_person_api.errors,
               document_scope: :document_scope_id,
               address_scope: :address_scope_id,
               scope: :scope_id

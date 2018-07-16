@@ -29,17 +29,13 @@ module Decidim
 
           private
 
-          def census_person
-            person_proxy.census_person_api_connection
-          end
-
           def has_no_person?
             !person_proxy.has_person?
           end
 
           attr_reader :form, :person_proxy
 
-          delegate :authorization, to: :person_proxy
+          delegate :authorization, :census_person_api, to: :person_proxy
         end
       end
     end
