@@ -16,9 +16,9 @@ module Census
       end
 
       # PUBLIC retrieve the available information for the given person.
-      def find
+      def find(**params)
         send_request do
-          get("/api/v1/people/#{qualified_id}")
+          get("/api/v1/people/#{qualified_id}", params.slice(:version_at))
         end
       end
 

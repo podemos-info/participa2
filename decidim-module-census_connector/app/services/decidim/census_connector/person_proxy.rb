@@ -3,7 +3,7 @@
 module Decidim
   module CensusConnector
     class PersonProxy
-      def self.for(user)
+      def self.for(user, version_at: nil)
         census_authorization = Decidim::Authorization.find_or_initialize_by(
           user: user,
           name: "census"
@@ -11,11 +11,12 @@ module Decidim
           authorization.metadata = {}
         end
 
-        new(census_authorization)
+        new(census_authorization, version_at: version_at)
       end
 
-      def initialize(authorization)
+      def initialize(authorization, version_at: nil)
         @authorization = authorization
+        @version_at = version_at
       end
 
       attr_reader :authorization
@@ -43,7 +44,7 @@ module Decidim
       private
 
       def census_person
-        @census_person ||= census_person_api.find
+        @census_person ||= census_person_api.find(version_at: @version_at)
       end
     end
   end
