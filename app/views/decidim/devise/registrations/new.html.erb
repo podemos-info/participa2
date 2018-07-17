@@ -1,5 +1,9 @@
 <% add_decidim_page_title(t(".sign_up")) %>
 
+<% content_for :devise_links do %>
+  <%= render "decidim/devise/shared/links" %>
+<% end %>
+
 <main class="wrapper">
 <div class="row collapse">
   <div class="row collapse">
@@ -17,12 +21,12 @@
 
   <div class="row">
     <div class="columns large-6 medium-10 medium-centered">
-      <div class="card">
-        <div class="card__content">
-          <%= decidim_form_for(@form, as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user" }) do |f| %>
-            <%= invisible_captcha %>
-            <%= f.hidden_field :sign_up_as, value: "user" %>
 
+      <%= decidim_form_for(@form, as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user", id: "register-form" }) do |f| %>
+        <%= invisible_captcha %>
+        <div class="card">
+          <div class="card__content">
+            <%= f.hidden_field :sign_up_as, value: "user" %>
             <div class="user-person">
               <div class="field">
                 <%= f.text_field :name, help_text: t(".username_help") %>
@@ -40,36 +44,54 @@
             </div>
 
             <div class="field">
-              <%= f.password_field :password, autocomplete: "off" %>
+              <%= f.password_field :password, autocomplete: "nope" %>
             </div>
 
             <div class="field">
               <%= f.password_field :password_confirmation %>
             </div>
+          </div>
+        </div>
 
-            <div class="lopd-text">
-              <%= raw translated_attribute(terms_and_conditions_page.content) %>
+        <div class="card" id="card__tos">
+          <div class="card__content">
+            <legend><%= t(".tos_title") %></legend>
+
+            <p class="tos-text">
+              <%= strip_tags(translated_attribute(terms_and_conditions_page.content)) %>
+            </p>
+
+            <div class="field">
+              <%= f.check_box :tos_agreement, label: t(".tos_agreement", link: link_to(t(".terms"), page_path("terms-and-conditions"))) %>
             </div>
+          </div>
+        </div>
+
+        <div class="card" id="card__newsletter">
+          <div class="card__content">
+            <legend><%= t(".newsletter_title") %></legend>
 
             <fieldset>
               <div class="field">
-                <%= f.check_box :newsletter, label: t(".newsletter"), checked: true %>
-              </div>
-
-              <div class="field">
-                <%= f.check_box :tos_agreement, label: t(".tos_agreement", link: link_to(t(".terms"), page_path("terms-and-conditions"))) %>
+                <%= f.check_box :newsletter, label: t(".newsletter"), checked: @form.newsletter %>
               </div>
             </fieldset>
+          </div>
+        </div>
 
+        <div class="card">
+          <div class="card__content">
             <div class="actions">
               <%= f.submit t("devise.registrations.new.sign_up"), class: "button expanded" %>
             </div>
-          <% end %>
-          <%= render "decidim/devise/shared/links" %>
+            <%= yield :devise_links %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
+
   <%= render "decidim/devise/shared/omniauth_buttons" %>
 </div>
 </main>
+<%= render "decidim/devise/shared/newsletter_modal" %>
