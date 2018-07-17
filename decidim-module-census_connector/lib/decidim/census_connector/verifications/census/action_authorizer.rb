@@ -5,21 +5,16 @@ module Decidim
     module Verifications
       module Census
         class ActionAuthorizer < Decidim::Verifications::DefaultActionAuthorizer
+          def self.describe_options(options)
+            ActionAuthorizerOptions.new(options).descriptions
+          end
+
           def authorize
-            @allowed_document_types = options.delete("allowed_document_types")
-            @minimum_age = options.delete("minimum_age")
+            return [:missing, action: :authorize] unless authorization
 
-            @status_code, @data = *super
-
-            return [@status_code, @data] if @status_code == :missing
-
-            authorize_age
-
-            authorize_document_type
-
-            authorize_state
-
-            add_extra_explanation unless [:ok, :pending].include?(@status_code)
+            @status_code = :ok
+            @data = {}
+            authorize_state && authorize_age && authorize_document_type && authorize_census_closure && authorize_scope && authorize_verification
 
             [@status_code, @data]
           end
@@ -27,115 +22,119 @@ module Decidim
           def redirect_params
             params = {}
             params[:minimum_age] = minimum_age if authorizing_by_age?
-            params[:allowed_documents] = humanized_allowed_documents if authorizing_by_document_type?
+            params[:allowed_document_types] = allowed_document_types if authorizing_by_document_type?
+            params[:allowed_scope] = component_scope.code if authorizing_by_scope?
+            params[:census_closure] = census_closure if authorizing_by_census_closure?
+            params[:allowed_verifications] = allowed_verification_levels if authorizing_by_verification?
+
+            params[:step] = if @status_code == :not_verified
+                              "verification"
+                            else
+                              "data"
+                            end
             params
           end
 
           private
 
-          def authorizing_by_age?
-            minimum_age.present?
-          end
+          delegate :authorizing_by_age?, :minimum_age, to: :census_options
+          delegate :authorizing_by_document_type?, :allowed_document_types, :humanized_allowed_document_types, to: :census_options
+          delegate :authorizing_by_census_closure?, :humanized_census_closure, :census_closure, to: :census_options
+          delegate :authorizing_by_verification?, :allowed_verification_levels, :minimum_verification_level, to: :census_options
 
-          def authorizing_by_document_type?
-            allowed_document_types.present?
-          end
-
-          def authorizing_by_age_and_document_type?
-            authorizing_by_age? && authorizing_by_document_type?
-          end
-
-          def authorizing_by_age_or_document_type?
-            authorizing_by_age? || authorizing_by_document_type?
-          end
-
-          def authorize_age
-            return unless authorizing_by_age? && age < minimum_age
-
-            add_authorization_error("age", age)
-          end
-
-          def authorize_document_type
-            return unless authorizing_by_document_type? && !allowed_document_types.include?(document_type)
-
-            add_authorization_error("document_type", document_type_label)
+          def census_options
+            @census_options ||= ActionAuthorizerOptions.new(options)
           end
 
           def authorize_state
-            if @status_code == :unauthorized
-              # Due to current authorizations implementation details, pending
-              # authorizations are not "granted in DB", whereas unauthorized ones
-              # are. So we need to force the authorization to be granted in order
-              # for decidim UI to properly display authorization errors instead of
-              # a "pending authorization" modal. This is a hacky-not-good-enough
-              # solution we should iterate over
-              authorization.grant!
-            elsif person.enabled?
-              @status_code = :ok
-
-              authorization.grant!
-            else
-              authorization.update!(granted_at: nil)
-            end
+            return not_enabled(:state, state: humanized_state) unless person.enabled?
+            true
           end
 
-          def add_authorization_error(field, error)
+          def humanized_state
+            I18n.t("state.#{person.state}", scope: "census.api.person").downcase
+          end
+
+          def authorize_age
+            return unauthorized(:age, minimum_age: minimum_age) if authorizing_by_age? && person.age < minimum_age
+            true
+          end
+
+          def authorize_document_type
+            return unauthorized(:document_type, allowed_document_types: humanized_allowed_document_types) if authorizing_by_document_type? &&
+                                                                                                             !allowed_document_types.include?(person.document_type)
+            true
+          end
+
+          def authorize_scope
+            return unauthorized(:closed_scope) if authorizing_by_scope? && authorizing_by_census_closure? && current_scope &&
+                                                  current_scope.ancestor_of?(census_closure_person&.scope)
+            return incomplete(:scope) if authorizing_by_scope? && current_scope && current_scope.ancestor_of?(person&.scope)
+            true
+          end
+
+          def authorize_census_closure
+            return unauthorized(:census_closure, census_closure: humanized_census_closure) if authorizing_by_census_closure? && !census_closure_person&.enabled?
+            true
+          end
+
+          def authorize_verification
+            return not_verified(minimum_verification_level) if authorizing_by_verification? && !allowed_verification_levels.include?(person.verification)
+            true
+          end
+
+          def authorizing_by_scope?
+            census_options.authorizing_by_scope? && current_scope
+          end
+
+          def unauthorized(explanation_key, explanation_params = {})
             @status_code = :unauthorized
-
-            add_unmatched_field(field => error)
+            add_explanation(explanation_key, explanation_params)
+            false
           end
 
-          def add_extra_explanation
-            return unless authorizing_by_age_or_document_type?
-
-            @data[:extra_explanation] = {
-              key: extra_explanation_key,
-              params: extra_explanation_params
-            }
+          def not_enabled(explanation_key, explanation_params = {})
+            @status_code = :not_enabled
+            add_explanation(explanation_key, explanation_params)
+            false
           end
 
-          def extra_explanation_key
-            if authorizing_by_age_and_document_type?
-              "extra_explanation_age_and_document_type"
-            elsif authorizing_by_age?
-              "extra_explanation_age"
-            else
-              "extra_explanation_document_type"
-            end
+          def incomplete(explanation_key, explanation_params = {})
+            @status_code = :incomplete
+            @data[:action] = :complete
+            @data[:cancel] = true
+            add_explanation(explanation_key, explanation_params)
+            false
           end
 
-          def extra_explanation_params
-            redirect_params.merge(scope: "decidim.census_connector.verifications.census")
+          def not_verified(explanation_key, explanation_params = {})
+            @status_code = :not_verified
+            @data[:action] = :verify
+            @data[:cancel] = true
+            add_explanation(explanation_key, explanation_params)
+            false
           end
 
-          def humanized_allowed_documents
-            allowed_document_types.to_sentence(
-              words_connector: " #{I18n.t("or", scope: "decidim.census_connector.verifications.census")} "
-            )
+          def add_explanation(explanation_key, explanation_params)
+            @data[:extra_explanation] = { key: "decidim.authorization_handlers.census.extra_explanation.#{explanation_key}", params: explanation_params }
           end
 
-          def add_unmatched_field(field)
-            @data[:fields] ||= {}
-
-            @data[:fields].merge!(field)
+          def current_scope
+            @current_scope ||= resource&.try(:scope) ||
+                               component.try(:scope) ||
+                               component.participatory_space.try(:scope)
           end
-
-          def document_type_label
-            I18n.t(document_type, scope: "census.api.person.document_type")
-          end
-
-          def allowed_document_types
-            @allowed_document_types.split(",").map(&:strip)
-          end
-
-          def minimum_age
-            @minimum_age&.to_i
-          end
-
-          delegate :age, :document_type, to: :person
 
           def person
             @person ||= Decidim::CensusConnector::PersonProxy.new(authorization)&.person if authorization
+          end
+
+          def census_closure_person
+            @census_closure_person ||= if authorizing_by_census_closure?
+                                         Decidim::CensusConnector::PersonProxy.new(authorization, version_at: census_closure)&.person if authorization
+                                       else
+                                         person
+                                       end
           end
         end
       end

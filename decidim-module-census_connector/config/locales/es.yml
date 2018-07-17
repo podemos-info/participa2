@@ -33,6 +33,10 @@ es:
         membership_level:
           follower: Simpatizante
           member: Afiliado/a
+        state:
+          cancelled: Dado de baja
+          pending: Pendiente de validación
+          trashed: Anulado
   decidim:
     authorization_handlers:
       admin:
@@ -41,12 +45,37 @@ es:
           - Personas inscritas en el censo de Podemos
       census:
         explanation: Regístrate en el censo de Podemos para acceder a toda la funcionalidad de Participa
+        extra_explanation:
+          age: Necesitas tener al menos %{minimum_age} años.
+          census_closure: Debes haberte inscrito antes del %{census_closure}.
+          document_type: Necesitas haberte inscrito con %{allowed_document_types}.
+          scope: Debes estar inscrito en el territorio de la actividad.
+          state: Tu registro en podemos está %{state}.
+          verification: Debes completar la verificación de tu identidad.
+          verification_received: Debes verificar tu identidad.
         fields:
-          age: Edad
           allowed_document_types: Documentos permitidos
-          document_type: Tipo de documento
+          allowed_verification_levels: Niveles de verificación permitidos
+          census_closure: Fecha de cierre del censo
+          enforce_scope: Restringir la participación a las personas inscritas en el ámbito territorial de la actividad
           minimum_age: Edad mínima
         name: Censo
+    authorization_modals:
+      show:
+        incomplete:
+          cancel: Cancelar
+          complete: Modificar los datos personales
+          explanation: Tus datos personales no coinciden con los necesarios para participar.
+          title: Por favor, modifica tus datos
+        not_enabled:
+          explanation: No estás registrado en el censo de Podemos.
+          ok: Cerrar
+          title: No estás registrado en el censo de Podemos.
+        not_verified:
+          cancel: Cancelar
+          explanation: Aún no has verificado tu identidad.
+          title: Por favor, verifícate para continuar
+          verify: Verificarse
     census_connector:
       account:
         account:
@@ -83,11 +112,13 @@ es:
                 nie: 'Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional'
                 passport: Página adicional del pasaporte (opcional)
               title: Verifica tu identidad
+          descriptions:
+            census_closure: Pueden participar personas inscritas en el territorio antes del %{census_closure}
+            document_type: Pueden participar personas inscritas con %{allowed_document_types}
+            minimum_age: Debes tener más de %{minimum_age} años para poder participar
+            verification: Debes verificarte para participar
           errors:
             create: Se ha producido un error al guardar tus datos personales.
-          extra_explanation_age: Necesitas tener al menos %{minimum_age} años.
-          extra_explanation_age_and_document_type: Necesitas tener al menos %{minimum_age} años y estar registrada usando %{allowed_documents}.
-          extra_explanation_document_type: Necesitas estar registrada usando %{allowed_documents}.
           or: o
     verifications:
       authorizations:

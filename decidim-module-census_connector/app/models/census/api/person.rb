@@ -6,29 +6,19 @@ module Census
     class Person
       include CensusAPI
 
-      attr_reader :person_id, :errors, :global_error
-
-      def initialize(person_id)
-        @person_id = person_id
-      end
-
       # PUBLIC creates a person with the given params.
       def create(params)
         response = send_request do
           post("/api/v1/people", params)
         end
 
-        result = valid?(response)
-
-        @person_id = response[:person_id]
-
-        result
+        @person_id = response[:person_id] if valid?(response)
       end
 
       # PUBLIC retrieve the available information for the given person.
-      def find
+      def find(**params)
         send_request do
-          get("/api/v1/people/#{qualified_id}")
+          get("/api/v1/people/#{qualified_id}", params.slice(:version_at))
         end
       end
 
@@ -65,28 +55,6 @@ module Census
         end
 
         valid?(response)
-      end
-
-      private
-
-      def qualified_id
-        "#{person_id}@census"
-      end
-
-      def valid?(response)
-        http_response_code = response.delete(:http_response_code)
-
-        if [202, 204].include?(http_response_code)
-          true
-        elsif http_response_code == 422
-          @errors = response
-
-          false
-        else
-          @global_error = I18n.t("census.api.global_error")
-
-          false
-        end
       end
     end
   end

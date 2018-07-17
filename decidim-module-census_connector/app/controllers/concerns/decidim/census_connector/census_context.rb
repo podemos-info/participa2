@@ -55,7 +55,7 @@ module Decidim
             participatory_space_model = participatory_space_manifest.model_class_name.constantize
             next unless participatory_space_model.columns_hash["decidim_scope_id"]
             participatory_space_model.published.where(decidim_scope_id: person_scopes)
-          end.compact
+          end.compact.sort_by(&:id)
         end
 
         delegate :person_id, :has_person?, :person, to: :person_proxy, allow_nil: true

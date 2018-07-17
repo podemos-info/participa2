@@ -33,6 +33,10 @@ en:
         membership_level:
           follower: Follower
           member: Member
+        state:
+          cancelled: Cancelled
+          pending: Pending of approval
+          trashed: Annulled
   decidim:
     authorization_handlers:
       admin:
@@ -41,12 +45,37 @@ en:
           - People registered at Podemos census
       census:
         explanation: Register at Podemos census to access the full functionality of Participa
+        extra_explanation:
+          age: You need to be a least %{minimum_age} years old.
+          census_closure: You need to be registered before %{census_closure}.
+          document_type: You need to be registered with %{allowed_document_types}.
+          scope: You need to be registered in the activity scope.
+          state: Your registration with Podemos is %{state}.
+          verification: You need to complete your verification.
+          verification_received: You need to begin your verification.
         fields:
-          age: Age
           allowed_document_types: Allowed document types
-          document_type: Document type
+          allowed_verification_levels: Allowed verification levels
+          census_closure: Census closure date
+          enforce_scope: Limit participation to people in the activity scope
           minimum_age: Minimum age
         name: Census
+    authorization_modals:
+      show:
+        incomplete:
+          cancel: Cancel
+          complete: Complete your personal data
+          explanation: Your personal data does not match the needed to participate
+          title: Please, modify your personal data
+        not_enabled:
+          explanation: You're not registered with Podemos' census.
+          ok: OK
+          title: You're not registered with Podemos' census.
+        not_verified:
+          cancel: Cancel
+          explanation: You have not verified your identity yet.
+          title: Please, verify your identity to continue
+          verify: Verify
     census_connector:
       account:
         account:
@@ -83,11 +112,13 @@ en:
                 nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
                 passport: Additional passport page (optional)
               title: Identity verification
+          descriptions:
+            census_closure: You need to be registered before %{census_closure}
+            document_type: You need to be registered with %{allowed_document_types}
+            minimum_age: You need to be a least %{minimum_age} years old
+            verification: You need to be verified
           errors:
             create: Error when saving
-          extra_explanation_age: You need to be a least %{minimum_age} years old.
-          extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
-          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
           or: or
     verifications:
       authorizations:
