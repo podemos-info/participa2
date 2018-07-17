@@ -34,3 +34,11 @@ user.save!
 1. Fill the rest of the form and submit it.
 
 You're good to go!
+
+## Deploy
+
+```
+bundle exec cap staging systemd:hutch:setup
+bundle exec cap staging systemd:puma:setup
+bundle exec cap staging deploy
+```

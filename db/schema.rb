@@ -293,36 +293,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_104110) do
     t.index ["decidim_user_group_id"], name: "index_user_group_on_coauthorsihp"
   end
 
-  create_table "decidim_crowdfundings_campaigns", force: :cascade do |t|
-    t.jsonb "title"
-    t.jsonb "description"
-    t.integer "default_amount"
-    t.integer "minimum_custom_amount"
-    t.integer "target_amount"
-    t.date "active_until"
-    t.bigint "decidim_component_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "amounts"
-    t.jsonb "terms_and_conditions"
-    t.index ["decidim_component_id"], name: "decidim_crowdfundings_component_index"
-  end
-
-  create_table "decidim_crowdfundings_contributions", force: :cascade do |t|
-    t.bigint "decidim_user_id"
-    t.bigint "decidim_crowdfundings_campaign_id"
-    t.decimal "amount", precision: 11, scale: 2, null: false
-    t.integer "state", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "frequency", default: 0, null: false
-    t.integer "payment_method_id"
-    t.date "last_order_request_date"
-    t.index ["decidim_crowdfundings_campaign_id"], name: "contribution_campaign_idx"
-    t.index ["decidim_user_id"], name: "contribution_user_idx"
-    t.index ["state"], name: "index_decidim_crowdfundings_contributions_on_state"
-  end
-
   create_table "decidim_comments_comment_votes", id: :serial, force: :cascade do |t|
     t.integer "weight", null: false
     t.integer "decidim_comment_id", null: false
@@ -362,6 +332,36 @@ ActiveRecord::Schema.define(version: 2018_07_11_104110) do
     t.datetime "published_at"
     t.string "participatory_space_type", null: false
     t.index ["participatory_space_id", "participatory_space_type"], name: "index_decidim_components_on_decidim_participatory_space"
+  end
+
+  create_table "decidim_crowdfundings_campaigns", force: :cascade do |t|
+    t.jsonb "title"
+    t.jsonb "description"
+    t.integer "default_amount"
+    t.integer "minimum_custom_amount"
+    t.integer "target_amount"
+    t.date "active_until"
+    t.bigint "decidim_component_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "amounts"
+    t.jsonb "terms_and_conditions"
+    t.index ["decidim_component_id"], name: "decidim_crowdfundings_component_index"
+  end
+
+  create_table "decidim_crowdfundings_contributions", force: :cascade do |t|
+    t.bigint "decidim_user_id"
+    t.bigint "decidim_crowdfundings_campaign_id"
+    t.decimal "amount", precision: 11, scale: 2, null: false
+    t.integer "state", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "frequency", default: 0, null: false
+    t.integer "payment_method_id"
+    t.date "last_order_request_date"
+    t.index ["decidim_crowdfundings_campaign_id"], name: "contribution_campaign_idx"
+    t.index ["decidim_user_id"], name: "contribution_user_idx"
+    t.index ["state"], name: "index_decidim_crowdfundings_contributions_on_state"
   end
 
   create_table "decidim_debates_debates", id: :serial, force: :cascade do |t|
