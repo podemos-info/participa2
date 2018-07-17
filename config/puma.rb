@@ -13,7 +13,8 @@ threads threads_count, threads_count
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+current_environment = ENV.fetch("RAILS_ENV") { "development" }
+environment current_environment
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -40,13 +41,16 @@ tag ""
 
 pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
 state_path "#{APP_ROOT}/tmp/pids/puma.state"
-stdout_redirect "#{APP_ROOT}/log/puma_access.log", "#{APP_ROOT}/log/puma_error.log", true
 
-bind "unix://#{APP_ROOT}/tmp/sockets/puma.sock"
+if current_environment == "development"
+  port 3000
+else
+  bind "unix://#{APP_ROOT}/tmp/sockets/puma.sock"
+  stdout_redirect "#{APP_ROOT}/log/puma_access.log", "#{APP_ROOT}/log/puma_error.log", true
+end
 
 prune_bundler
 
 on_restart do
-  puts "Refreshing Gemfile"
   ENV["BUNDLE_GEMFILE"] = ""
 end
