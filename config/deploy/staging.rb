@@ -41,3 +41,4 @@ end
 on roles(:master) do
   after "deploy:publishing", "systemd:hutch:restart"
 end
+after "deploy:publishing", "systemd:puma:restart"
