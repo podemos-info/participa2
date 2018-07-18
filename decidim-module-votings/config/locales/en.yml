@@ -34,8 +34,7 @@ en:
         name: Votings
         settings:
           global:
-            remote_authorization: Remote authorization?
-            remote_authorization_url: URL
+            resources_permissions_enabled: Actions permissions can be set for each campaign
     votings:
       actions:
         confirm_destroy: "¿Are you sure?"

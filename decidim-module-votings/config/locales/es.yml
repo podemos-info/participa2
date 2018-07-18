@@ -34,8 +34,7 @@ es:
         name: Votaciones
         settings:
           global:
-            remote_authorization: Autorización remota?
-            remote_authorization_url: URL
+            resources_permissions_enabled: Permitir definir permisos diferentes para cada votación
     votings:
       actions:
         confirm_destroy: "¿Estás seguro?"
@@ -84,6 +83,7 @@ es:
       models:
         voting:
           fields:
+            census_date_limit: Fecha de cierre del censo
             confirmed_votes: Votos confirmados
             end_date: Fin
             pending_votes: Votos emitidos
@@ -91,16 +91,24 @@ es:
             status: Estado
             title: Título
           voting_system:
-            nvotes_html: La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
+            nvotes_html: La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>
       votes:
+        next_date:
+          active: Hasta
+          closed: Ha finalizado
+          upcoming: Comienza
         nvotes:
           loading_cabin: Cargando cabina de votación...
+        status:
+          not_voted: Aún no has votado
+          voted: Has votado
       votings:
         index:
           no_votings_warning: En este momento no hay ninguna votación activa.
           title: Votaciones
         show:
+          change_vote: Cambiar voto
           simulate_vote: Simular voto
-          vote: Vota
+          vote: Votar
         votings:
           no_votings: En estos momentos no hay votaciones activas. Te avisaremos cuando se produzcan.

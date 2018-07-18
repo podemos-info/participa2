@@ -21,7 +21,6 @@ Decidim.register_component(:votings) do |component|
   component.actions = %w(vote)
 
   component.settings(:global) do |settings|
-    settings.attribute :remote_authorization_url, type: :string, default: nil
     settings.attribute :resources_permissions_enabled, type: :boolean, default: true
   end
 
