@@ -3,7 +3,6 @@ es:
   activemodel:
     attributes:
       voting:
-        census_date_limit: Fecha límite de incorporación al censo
         decidim_scope: Ámbito de participación
         decidim_scope_id: Ámbito de participación
         description: Descripción
@@ -65,7 +64,6 @@ es:
             remove: Eliminar
           form:
             add_electoral_district: Añadir información de distrito electoral
-            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
             electoral_districts: Distritos electorales
             end_date_help: Fecha de fin
             start_date_help: Fecha de inicio

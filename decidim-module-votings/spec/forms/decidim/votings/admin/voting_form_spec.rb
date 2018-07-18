@@ -31,7 +31,6 @@ module Decidim
         let(:scope) { create :scope, organization: organization }
         let(:scope_id) { scope.id }
         let(:importance) { ::Faker::Number.number(2).to_i }
-        let(:census_date_limit) { Time.zone.today.strftime("%Y-%m-%dT%H:%M%S") }
         let(:simulation_code) { ::Faker::Number.number(2).to_i }
         let(:voting_system) { "nVotes" }
         let(:voting_domain_name) { "test.org" }
@@ -47,7 +46,6 @@ module Decidim
             end_date: end_date,
             decidim_scope_id: scope_id,
             importance: importance,
-            census_date_limit: census_date_limit,
             simulation_code: simulation_code,
             voting_system: voting_system,
             voting_domain_name: voting_domain_name,

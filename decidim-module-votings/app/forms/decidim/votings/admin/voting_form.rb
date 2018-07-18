@@ -17,7 +17,6 @@ module Decidim
         attribute :image, String
         attribute :decidim_scope_id, Integer
         attribute :importance, Integer
-        attribute :census_date_limit, Decidim::Attributes::TimeWithZone
         attribute :voting_system, String
         attribute :voting_domain_name, String
         attribute :voting_identifier, String

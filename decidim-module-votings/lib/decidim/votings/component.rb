@@ -56,7 +56,6 @@ Decidim.register_component(:votings) do |component|
         simulation_code: 0,
         start_date: 2.days.ago,
         end_date: 2.days.from_now,
-        census_date_limit: 2.days.from_now,
         voting_system: "nVotes",
         voting_domain_name: "example.org",
         voting_identifier: 666,

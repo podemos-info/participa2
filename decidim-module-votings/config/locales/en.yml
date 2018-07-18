@@ -3,7 +3,6 @@ en:
   activemodel:
     attributes:
       voting:
-        census_date_limit: Limit date for incorporating to census
         decidim_scope: Scope
         decidim_scope_id: Scope
         description: Description
@@ -65,7 +64,6 @@ en:
             remove: Remove
           form:
             add_electoral_district: Add electoral district information
-            census_date_limit_help: Census closing date.
             electoral_districts: Electoral districts
             end_date_help: End date
             start_date_help: Start date

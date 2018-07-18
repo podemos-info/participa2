@@ -31,7 +31,6 @@ module Decidim
         let(:scope) { create(:scope, organization: organization) }
         let(:scope_id) { scope.id }
         let(:importance) { ::Faker::Number.number(2).to_i }
-        let(:census_date_limit) { Time.zone.today.strftime("%Y-%m-%d") }
         let(:simulation_code) { ::Faker::Number.number(1).to_i }
         let(:voting_system) { "nVotes" }
         let(:voting_domain_name) { "test.org" }
@@ -50,7 +49,6 @@ module Decidim
             end_date: end_date,
             scope: scope,
             importance: importance,
-            census_date_limit: census_date_limit,
             simulation_code: simulation_code,
             voting_system: voting_system,
             voting_domain_name: voting_domain_name,
@@ -82,7 +80,6 @@ module Decidim
             expect(updated_voting.end_date.strftime("%Y-%m-%d")).to eq end_date
             expect(updated_voting.decidim_scope_id).to eq scope_id
             expect(updated_voting.importance).to eq importance
-            expect(updated_voting.census_date_limit.strftime("%Y-%m-%d")).to eq census_date_limit
             expect(updated_voting.simulation_code).to eq simulation_code
             expect(updated_voting.voting_system).to eq voting_system
             expect(updated_voting.voting_domain_name).to eq voting_domain_name
@@ -184,7 +181,6 @@ module Decidim
             expect(updated_voting.end_date.strftime("%Y-%m-%d")).to eq end_date
             expect(updated_voting.decidim_scope_id).to eq scope_id
             expect(updated_voting.importance).to eq importance
-            expect(updated_voting.census_date_limit.strftime("%Y-%m-%d")).to eq census_date_limit
             expect(updated_voting.simulation_code).to eq simulation_code
             expect(updated_voting.voting_system).to eq voting_system
             expect(updated_voting.voting_domain_name).to eq voting_domain_name
