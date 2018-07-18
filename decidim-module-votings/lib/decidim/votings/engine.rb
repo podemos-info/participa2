@@ -11,13 +11,6 @@ module Decidim
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::Votings
 
-      # TODO: Repace this by global routes feature that will be released in decidim 0.8.1
-      initializer "decidim_votings_confirmations.mount_routes" do |_app|
-        Decidim::Core::Engine.routes do
-          mount Decidim::Votings::VoteConfirmationEngine => "/confirmations"
-        end
-      end
-
       routes do
         resources :votings, only: [:index, :show] do
           get :token

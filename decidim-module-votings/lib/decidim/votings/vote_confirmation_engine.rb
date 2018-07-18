@@ -18,3 +18,5 @@ module Decidim
     end
   end
 end
+
+Decidim.register_global_engine(:decidim_votings_vote_confirmations, Decidim::Votings::VoteConfirmationEngine, at: "/decidim-votings")
