@@ -66,14 +66,16 @@ module Decidim
       end
 
       def voting_identifier_for(scope)
-        scope.part_of.each do |scope_id|
-          return voting_identifier if decidim_scope_id == scope_id
+        district_voting_identifier = ordered_electoral_districts(scope.part_of).map(&:voting_identifier).first if scope
+        district_voting_identifier || voting_identifier
+      end
 
-          electoral_district = electoral_districts.find_by(decidim_scope_id: scope_id)
-          return electoral_district.voting_identifier if electoral_district
+      private
+
+      def ordered_electoral_districts(scope_ids)
+        electoral_districts.where(decidim_scope_id: scope_ids).sort do |district1, district2|
+          scope_ids.index(district2.id) <=> scope_ids.index(district1.id)
         end
-
-        nil
       end
     end
   end

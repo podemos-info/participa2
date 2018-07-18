@@ -18,6 +18,7 @@ Naming/FileName:
     - decidim-module-census_connector/lib/generators/decidim/census_connector/install/templates/config/initializers/decidim-census_connector.rb
     - config/initializers/decidim-census_connector.rb
     - config/initializers/decidim-crowdfundings.rb
+    - config/initializers/decidim-votings.rb
     - Capfile
     - Gemfile
     - Rakefile

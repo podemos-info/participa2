@@ -4,7 +4,7 @@ module Decidim
   module Votings
     # Exposes votings to users.
     class VotesController < Decidim::Votings::ApplicationController
-      helper_method :voting
+      helper_method :voting, :voting_identifier
 
       helper VotingsHelper
 
@@ -38,6 +38,14 @@ module Decidim
 
       def destination_url(voting)
         voting.started? ? voting_url(voting.id) : voting_url(voting.id, key: voting.simulation_key)
+      end
+
+      def voting_identifier
+        @voting_identifier ||= voting.voting_identifier_for(user_scope)
+      end
+
+      def user_scope
+        @user_scope ||= Decidim::Votings.scope_resolver.call(current_user, voting)
       end
     end
   end
