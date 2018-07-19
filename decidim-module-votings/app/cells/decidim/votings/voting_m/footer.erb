@@ -1,0 +1,13 @@
+<div class="card__footer">
+  <div class="card__support">
+    <%= action_authorized_button_to(
+      :vote,
+      t("decidim.votings.votings.show.#{vote_action}"),
+      vote_path,
+      resource: voting,
+      method: :get,
+      class: "card__button button expanded button--sc",
+      id: "vote_button"
+    ) %>
+  </div>
+</div>

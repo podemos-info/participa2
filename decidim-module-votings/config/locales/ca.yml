@@ -3,7 +3,6 @@ ca:
   activemodel:
     attributes:
       voting:
-        census_date_limit: Data límit d'incorporació al cens
         decidim_scope: Àmbit
         decidim_scope_id: Ámbit
         description: Descripció
@@ -32,10 +31,6 @@ ca:
         actions:
           vote: Votar
         name: Votaciones
-        settings:
-          global:
-            remote_authorization: Autorització remota?
-            remote_authorization_url: URL
     votings:
       actions:
         confirm_destroy: "¿Estàs segur?"
@@ -58,11 +53,9 @@ ca:
           destroy:
             success: La votación ha sido correctamente borrada.
           edit:
-            simulation_address: Enllaç per simulació
             title: Editar votación
             update: Actualizar
           form:
-            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
             end_date_help: Fecha de fin
             start_date_help: Fecha de inicio
           index:

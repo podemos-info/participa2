@@ -3,7 +3,7 @@ en:
   activemodel:
     attributes:
       voting:
-        census_date_limit: Limit date for incorporating to census
+        change_shared_key: Change shared key
         decidim_scope: Scope
         decidim_scope_id: Scope
         description: Description
@@ -34,8 +34,7 @@ en:
         name: Votings
         settings:
           global:
-            remote_authorization: Remote authorization?
-            remote_authorization_url: URL
+            resources_permissions_enabled: Actions permissions can be set for each campaign
     votings:
       actions:
         confirm_destroy: "¿Are you sure?"
@@ -43,6 +42,7 @@ en:
         edit: Edit
         new: New
         preview: Previsualize
+        simulate_vote: Simulate vote
         title: Actions
         voters: Download voters identifiers
       admin:
@@ -58,7 +58,6 @@ en:
           destroy:
             success: Voting has been successfully erased.
           edit:
-            simulation_address: Simulation link
             title: Edit voting
             update: Update
           electoral_district_fields:
@@ -66,10 +65,10 @@ en:
             remove: Remove
           form:
             add_electoral_district: Add electoral district information
-            census_date_limit_help: Census closing date.
             electoral_districts: Electoral districts
             end_date_help: End date
             start_date_help: Start date
+            system_configuration: Voting system configuration
           index:
             title: Votings
           new:
@@ -93,13 +92,21 @@ en:
           voting_system:
             nvotes_html: Voting uses secure system of <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
       votes:
+        next_date:
+          active: Until
+          closed: Has finished
+          upcoming: Starts
         nvotes:
-          loading_cabin: Loading voting cabin...
+          loading_cabin: Loading voting booth...
+        status:
+          not_voted: You haven't voted yet
+          voted: You've voted
       votings:
         index:
           no_votings_warning: There is no active voting at this time
           title: Votings
         show:
+          change_vote: Cambiar voto
           simulate_vote: Simulate vote
           vote: Vote
         votings:

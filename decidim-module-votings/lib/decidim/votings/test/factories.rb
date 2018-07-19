@@ -23,7 +23,6 @@ FactoryBot.define do
     component { create(:voting_component) }
     start_date { DateTime.current - 2.days }
     end_date { DateTime.current + 2.days }
-    census_date_limit { DateTime.current + 2.days }
 
     trait :n_votes do
       voting_system { "nVotes" }

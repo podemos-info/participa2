@@ -112,7 +112,7 @@ describe Decidim::Votings::Voting do
       let(:resolved_identifier) { voting.voting_identifier_for(parent) }
 
       it "returns nil" do
-        expect(resolved_identifier).to be_nil
+        expect { resolved_identifier }.to raise_error("Invalid user scope for this voting")
       end
     end
   end

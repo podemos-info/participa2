@@ -27,12 +27,20 @@ module Decidim
       scope :active, -> { where("? BETWEEN start_date AND end_date", Time.zone.now) }
       scope :order_by_importance, -> { order(:importance) }
 
+      def active?
+        started? && !finished?
+      end
+
       def started?
         start_date < Time.zone.now
       end
 
       def finished?
         end_date < Time.zone.now
+      end
+
+      def simulating?
+        !started?
       end
 
       def vote_class
@@ -65,15 +73,19 @@ module Decidim
         component.settings.resources_permissions_enabled
       end
 
-      def voting_identifier_for(scope)
-        scope.part_of.each do |scope_id|
-          return voting_identifier if decidim_scope_id == scope_id
+      def voting_identifier_for(user_scope)
+        raise "Invalid user scope for this voting" if scope && user_scope && !scope.ancestor_of?(user_scope)
 
-          electoral_district = electoral_districts.find_by(decidim_scope_id: scope_id)
-          return electoral_district.voting_identifier if electoral_district
+        district_voting_identifier = ordered_electoral_districts(user_scope.part_of).map(&:voting_identifier).first if user_scope
+        district_voting_identifier || voting_identifier
+      end
+
+      private
+
+      def ordered_electoral_districts(scope_ids)
+        electoral_districts.where(decidim_scope_id: scope_ids).sort do |district1, district2|
+          scope_ids.index(district2.id) <=> scope_ids.index(district1.id)
         end
-
-        nil
       end
     end
   end

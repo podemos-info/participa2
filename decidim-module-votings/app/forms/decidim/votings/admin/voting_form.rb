@@ -17,7 +17,6 @@ module Decidim
         attribute :image, String
         attribute :decidim_scope_id, Integer
         attribute :importance, Integer
-        attribute :census_date_limit, Decidim::Attributes::TimeWithZone
         attribute :voting_system, String
         attribute :voting_domain_name, String
         attribute :voting_identifier, String
@@ -59,6 +58,14 @@ module Decidim
         # Returns the scope identifier related to the proposal
         def decidim_scope_id
           @decidim_scope_id || scope&.id
+        end
+
+        def simulation_code
+          @simulation_code || 0
+        end
+
+        def importance
+          @importance || 0
         end
 
         def voting_system

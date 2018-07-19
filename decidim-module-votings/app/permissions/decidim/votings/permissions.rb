@@ -15,6 +15,8 @@ module Decidim
         case permission_action.action
         when :vote
           toggle_allow(can_vote?)
+        when :simulate_vote
+          toggle_allow(can_simulate_vote?)
         end
 
         permission_action
@@ -24,6 +26,10 @@ module Decidim
 
       def can_vote?
         !voting.finished? && authorized?(:vote, resource: voting)
+      end
+
+      def can_simulate_vote?
+        !voting.started?
       end
 
       def voting

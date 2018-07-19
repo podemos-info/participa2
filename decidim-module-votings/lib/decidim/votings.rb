@@ -17,9 +17,9 @@ module Decidim
     end
 
     # A proc or a class implementing  a `call` method to return the scope for a
-    # given user
+    # given user in a given voting
     config_accessor :scope_resolver do
-      ->(_user) { nil }
+      ->(_user, _voting) { nil }
     end
 
     # Public Setting that defines how many votings will be shown in the

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_104110) do
+ActiveRecord::Schema.define(version: 2018_07_18_122757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1096,7 +1096,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_104110) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "decidim_scope_id"
-    t.datetime "census_date_limit"
     t.integer "importance"
     t.string "voting_system"
     t.jsonb "system_configuration"

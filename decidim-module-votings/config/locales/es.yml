@@ -3,7 +3,7 @@ es:
   activemodel:
     attributes:
       voting:
-        census_date_limit: Fecha límite de incorporación al censo
+        change_shared_key: Cambiar clave compartida
         decidim_scope: Ámbito de participación
         decidim_scope_id: Ámbito de participación
         description: Descripción
@@ -34,8 +34,7 @@ es:
         name: Votaciones
         settings:
           global:
-            remote_authorization: Autorización remota?
-            remote_authorization_url: URL
+            resources_permissions_enabled: Permitir definir permisos diferentes para cada votación
     votings:
       actions:
         confirm_destroy: "¿Estás seguro?"
@@ -43,6 +42,7 @@ es:
         edit: Editar
         new: Nueva
         preview: Previsualizar
+        simulate_vote: Simular voto
         title: Acciones
         voters: Descargar identificadores de votantes
       admin:
@@ -58,7 +58,6 @@ es:
           destroy:
             success: La votación ha sido correctamente borrada.
           edit:
-            simulation_address: Enlace para simulación
             title: Editar votación
             update: Actualizar
           electoral_district_fields:
@@ -66,10 +65,10 @@ es:
             remove: Eliminar
           form:
             add_electoral_district: Añadir información de distrito electoral
-            census_date_limit_help: Fecha de cierre del censo, la cual fijará el censo de votantes a todos los inscritos en el ámbito territorial de la votación en ese momento.
             electoral_districts: Distritos electorales
             end_date_help: Fecha de fin
             start_date_help: Fecha de inicio
+            system_configuration: Configuración del sistema de votaciones
           index:
             title: Votaciones
           new:
@@ -91,16 +90,24 @@ es:
             status: Estado
             title: Título
           voting_system:
-            nvotes_html: La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>.
+            nvotes_html: La votación utiliza el sistema seguro de <a href="http://agoravoting.org" target="_blank"><b>Agora Voting</b></a>
       votes:
+        next_date:
+          active: Hasta
+          closed: Ha finalizado
+          upcoming: Comienza
         nvotes:
           loading_cabin: Cargando cabina de votación...
+        status:
+          not_voted: Aún no has votado
+          voted: Has votado
       votings:
         index:
           no_votings_warning: En este momento no hay ninguna votación activa.
           title: Votaciones
         show:
+          change_vote: Cambiar voto
           simulate_vote: Simular voto
-          vote: Vota
+          vote: Votar
         votings:
           no_votings: En estos momentos no hay votaciones activas. Te avisaremos cuando se produzcan.

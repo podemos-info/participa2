@@ -56,10 +56,20 @@
               </td>
               <td class="table-list__actions">
                 <%= icon_link_to 'eye',
-                                 resource_locator(voting).path(key: voting.simulation_key),
+                                 resource_locator(voting).path,
                                  t('actions.preview', scope: 'decidim.votings'),
                                  target: :blank,
                                  class: 'action-icon--preview' %>
+
+                <% if voting.started? %>
+                  <%= icon "lock-unlocked", class: "action-icon action-icon--disabled" %>
+                <% else %>
+                  <%= icon_link_to 'lock-locked',
+                                   resource_locator(voting).path(key: voting.simulation_key),
+                                   t('actions.simulate_vote', scope: 'decidim.votings'),
+                                   target: :blank,
+                                   class: 'action-icon--simulate_vote' %>
+                <% end %>
 
                 <% if allowed_to? :update, :voting, voting: voting %>
                     <%= icon_link_to 'pencil',

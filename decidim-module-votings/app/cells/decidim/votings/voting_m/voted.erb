@@ -1,0 +1,9 @@
+<div class="secondary text-uppercase">
+<% if has_voted? %>
+  <%= icon "check", class: "icon--small" %>
+  <span><%= t 'decidim.votings.votes.status.voted' %></span>
+<% else %>
+  <%= icon "x", class: "icon--small" %>
+  <span><%= t 'decidim.votings.votes.status.not_voted' %></span>
+<% end %>
+</div>
