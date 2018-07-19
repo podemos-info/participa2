@@ -27,12 +27,20 @@ module Decidim
       scope :active, -> { where("? BETWEEN start_date AND end_date", Time.zone.now) }
       scope :order_by_importance, -> { order(:importance) }
 
+      def active?
+        started? && !finished?
+      end
+
       def started?
         start_date < Time.zone.now
       end
 
       def finished?
         end_date < Time.zone.now
+      end
+
+      def simulating?
+        !started?
       end
 
       def vote_class
