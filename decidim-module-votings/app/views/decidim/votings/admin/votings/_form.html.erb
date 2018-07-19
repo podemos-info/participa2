@@ -13,20 +13,16 @@
     </div>
 
     <div class="row column">
-      <%= form.number_field :simulation_code %>
-    </div>
-
-    <div class="row column">
-      <%= form.upload :image, optional: false %>
+      <%= form.upload :image %>
     </div>
 
     <div class="row">
-      <div class="columns xlarge-6">
+      <div class="columns mediumlarge-6">
         <%= form.datetime_field :start_date %>
         <p class="help-text"><%= t '.start_date_help' %></p>
       </div>
 
-      <div class="columns xlarge-6">
+      <div class="columns mediumlarge-6">
         <%= form.datetime_field :end_date %>
         <p class="help-text"><%= t '.end_date_help' %></p>
       </div>
@@ -34,7 +30,7 @@
 
     <% if current_participatory_space.has_subscopes? %>
       <div class="row">
-        <div class="columns xlarge-8">
+        <div class="column xlarge-8">
           <%= scopes_picker_field form, :decidim_scope_id %>
         </div>
       </div>
@@ -43,29 +39,40 @@
     <div class="row column">
       <%= form.number_field :importance %>
     </div>
+  </div>
+</div>
+
+<div class="card voting-system">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t(".system_configuration") %>
+    </h2>
+  </div>
+
+  <div class="card-section">
     <div class="row">
-      <div class="columns xlarge-6">
+      <div class="column xlarge-6">
         <%= form.text_field :voting_system, value: 'nVotes', disabled: true %>
       </div>
 
-      <div class="columns xlarge-6">
+      <div class="column xlarge-6">
         <%= form.text_field :voting_domain_name %>
       </div>
     </div>
 
     <div class="row">
-      <div class="columns xlarge-6">
+      <div class="column xlarge-6">
         <%= form.text_field :voting_identifier %>
       </div>
 
       <% unless params[:id].present? %>
-        <div class="columns xlarge-6">
+        <div class="column xlarge-6">
           <%= form.password_field :shared_key %>
         </div>
       <% else %>
         <% if form.object.can_change_shared_key %>
           <div class="row">
-            <div class="columns xlarge-6">
+            <div class="column xlarge-6">
               <%= form.check_box :change_shared_key, data: { toggle: :shared_key_div } %>
             </div>
             <div id="shared_key_div" class="columns xlarge-6 hide" data-toggler=".hide">
@@ -75,29 +82,27 @@
         <% end %>
       <% end %>
     </div>
+
+    <div class="row column">
+      <%= form.number_field :simulation_code %>
+    </div>
+
+    <% if current_participatory_space.has_subscopes? %>
+      <div class="row column">
+        <label><%= t(".electoral_districts") %></label>
+
+        <% form.object.electoral_districts.each do |electoral_district| %>
+          <%= render "electoral_district_fields",
+                     electoral_district: electoral_district,
+                     nested_form_id: "electoral-district-fields-#{electoral_district.id}"
+          %>
+        <% end %>
+
+        <%= link_to_add_electoral_district t(".add_electoral_district") %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<% if current_participatory_space.has_subscopes? %>
-  <div class="card electoral-districts">
-    <div class="card-divider">
-      <h2 class="card-title">
-        <%= t(".electoral_districts") %>
-      </h2>
-    </div>
-
-    <div class="card-section">
-      <% form.object.electoral_districts.each do |electoral_district| %>
-        <%= render "electoral_district_fields",
-                   electoral_district: electoral_district,
-                   nested_form_id: "electoral-district-fields-#{electoral_district.id}"
-        %>
-      <% end %>
-
-      <%= link_to_add_electoral_district t(".add_electoral_district") %>
-    </div>
-  </div>
-<% end %>
 
 <%= javascript_include_tag 'decidim/votings/admin/votings' %>
 <%= stylesheet_link_tag 'decidim/votings/votings' %>

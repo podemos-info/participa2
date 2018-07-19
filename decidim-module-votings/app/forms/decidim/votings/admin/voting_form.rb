@@ -60,6 +60,14 @@ module Decidim
           @decidim_scope_id || scope&.id
         end
 
+        def simulation_code
+          @simulation_code || 0
+        end
+
+        def importance
+          @importance || 0
+        end
+
         def voting_system
           "nVotes"
         end

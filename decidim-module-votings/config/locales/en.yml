@@ -41,6 +41,7 @@ en:
         edit: Edit
         new: New
         preview: Previsualize
+        simulate_vote: Simulate vote
         title: Actions
         voters: Download voters identifiers
       admin:
@@ -56,7 +57,6 @@ en:
           destroy:
             success: Voting has been successfully erased.
           edit:
-            simulation_address: Simulation link
             title: Edit voting
             update: Update
           electoral_district_fields:
@@ -66,7 +66,9 @@ en:
             add_electoral_district: Add electoral district information
             electoral_districts: Electoral districts
             end_date_help: End date
+            simulation_address: Simulation link
             start_date_help: Start date
+            system_configuration: Voting system configuration
           index:
             title: Votings
           new:

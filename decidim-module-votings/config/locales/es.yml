@@ -41,6 +41,7 @@ es:
         edit: Editar
         new: Nueva
         preview: Previsualizar
+        simulate_vote: Simular voto
         title: Acciones
         voters: Descargar identificadores de votantes
       admin:
@@ -56,7 +57,6 @@ es:
           destroy:
             success: La votación ha sido correctamente borrada.
           edit:
-            simulation_address: Enlace para simulación
             title: Editar votación
             update: Actualizar
           electoral_district_fields:
@@ -66,7 +66,9 @@ es:
             add_electoral_district: Añadir información de distrito electoral
             electoral_districts: Distritos electorales
             end_date_help: Fecha de fin
+            simulation_address: Enlace para simulación
             start_date_help: Fecha de inicio
+            system_configuration: Configuración del sistema de votaciones
           index:
             title: Votaciones
           new:
