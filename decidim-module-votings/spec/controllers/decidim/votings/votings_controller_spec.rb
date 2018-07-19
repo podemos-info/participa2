@@ -63,6 +63,7 @@ module Decidim
           end
         end
       end
+
       context "when calling show" do
         context "when voting is started" do
           let!(:voting) { create(:voting, component: component) }
@@ -73,6 +74,7 @@ module Decidim
               expect(response).to have_http_status(:ok)
             end
           end
+
           context "with invalid key" do
             it "shows voting info" do
               get :show, params: params.merge(id: voting.id, key: "fakekey")
@@ -80,6 +82,7 @@ module Decidim
             end
           end
         end
+
         context "when voting is not started" do
           let!(:voting) { create(:voting, :not_started, component: component) }
 
@@ -89,11 +92,11 @@ module Decidim
               expect(response).to have_http_status(:ok)
             end
           end
+
           context "with invalid key" do
             it "shows voting info" do
-              expect do
-                get :show, params: params.merge(id: voting.id, key: "fakekey")
-              end.to raise_error(ActionController::RoutingError)
+              get :show, params: params.merge(id: voting.id, key: "fakekey")
+              expect(response).to have_http_status(:ok)
             end
           end
         end

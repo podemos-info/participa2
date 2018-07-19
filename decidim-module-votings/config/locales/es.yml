@@ -3,6 +3,7 @@ es:
   activemodel:
     attributes:
       voting:
+        change_shared_key: Cambiar clave compartida
         decidim_scope: Ámbito de participación
         decidim_scope_id: Ámbito de participación
         description: Descripción
@@ -66,7 +67,6 @@ es:
             add_electoral_district: Añadir información de distrito electoral
             electoral_districts: Distritos electorales
             end_date_help: Fecha de fin
-            simulation_address: Enlace para simulación
             start_date_help: Fecha de inicio
             system_configuration: Configuración del sistema de votaciones
           index:
@@ -83,7 +83,6 @@ es:
       models:
         voting:
           fields:
-            census_date_limit: Fecha de cierre del censo
             confirmed_votes: Votos confirmados
             end_date: Fin
             pending_votes: Votos emitidos

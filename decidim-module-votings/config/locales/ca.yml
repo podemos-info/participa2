@@ -31,8 +31,6 @@ ca:
         actions:
           vote: Votar
         name: Votaciones
-        settings:
-          global:
     votings:
       actions:
         confirm_destroy: "¿Estàs segur?"
@@ -55,7 +53,6 @@ ca:
           destroy:
             success: La votación ha sido correctamente borrada.
           edit:
-            simulation_address: Enllaç per simulació
             title: Editar votación
             update: Actualizar
           form:

@@ -73,8 +73,10 @@ module Decidim
         component.settings.resources_permissions_enabled
       end
 
-      def voting_identifier_for(scope)
-        district_voting_identifier = ordered_electoral_districts(scope.part_of).map(&:voting_identifier).first if scope
+      def voting_identifier_for(user_scope)
+        raise "Invalid user scope for this voting" if scope && user_scope && !scope.ancestor_of?(user_scope)
+
+        district_voting_identifier = ordered_electoral_districts(user_scope.part_of).map(&:voting_identifier).first if user_scope
         district_voting_identifier || voting_identifier
       end
 
