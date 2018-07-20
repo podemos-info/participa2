@@ -10,11 +10,11 @@ module Decidim
       helper Decidim::PaginateHelper
       helper Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper
 
-      def show; end
-
       def index
         @votings = Voting.for_component(current_component).active.order_by_importance
       end
+
+      def show; end
 
       private
 
