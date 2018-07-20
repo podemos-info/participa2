@@ -13,8 +13,10 @@ module Decidim
           case permission_action.action
           when :create
             permission_action.allow!
-          when :update, :destroy
+          when :update
             permission_action.allow! if voting.present?
+          when :destroy
+            permission_action.allow! unless voting.started?
           end
 
           permission_action
