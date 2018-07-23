@@ -79,7 +79,8 @@ en:
             success: Voting updated successfully.
       messages:
         already_voted: You have already voted on this voting. However, you can change your vote while the voting is still open
-        finished: Ha llegado la fecha límite para votar. La votación está cerrada.
+        finished: The voting has finished.
+        not_started: The voting doesn't started yet.
       models:
         voting:
           fields:
