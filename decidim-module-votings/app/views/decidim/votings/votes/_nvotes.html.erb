@@ -1,6 +1,6 @@
 <script>
   function getHMAC(auth_data, callback) {
-    $.ajax("<%= token_voting_vote_path(voting.id) %>")
+    $.ajax("<%= action_token_path %>")
       .done(function(data) {
         callback("khmac:///sha-256;"+data);
       })

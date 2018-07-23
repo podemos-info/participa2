@@ -35,6 +35,7 @@ module Decidim
                 expect(Decidim::Votings::Vote.last.status).to eq "confirmed"
               end
             end
+
             context "when election_id does'nt match" do
               it "does'nt confirm the vote" do
                 get :confirm, params: { election_id: "1111", voter_id: voter_id }
