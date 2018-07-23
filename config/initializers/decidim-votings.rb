@@ -3,6 +3,8 @@
 Decidim::Votings.configure do |config|
   config.scope_resolver = lambda do |user, voting|
     authorizer_options = action_authorizer_options(voting)
+    return nil unless authorizer_options
+
     version_at = authorizer_options.census_closure if authorizer_options.authorizing_by_census_closure?
     enforce_scope = authorizer_options.authorizing_by_scope?
 
@@ -16,13 +18,11 @@ Decidim::Votings.configure do |config|
 end
 
 def action_authorizer_options(voting)
-  vote_permissions = voting&.permissions&.fetch("vote") || voting.component.permissions&.fetch("vote")
+  vote_permissions = voting&.permissions&.fetch("vote", nil) || voting.component.permissions&.fetch("vote", nil)
 
-  Decidim::CensusConnector::Verifications::Census::ActionAuthorizerOptions.new(
-    if vote_permissions&.fetch("authorization_handler_name") == "census"
-      vote_permissions["options"]
-    else
-      {}
-    end
-  )
+  if vote_permissions&.fetch("authorization_handler_name") == "census"
+    Decidim::CensusConnector::Verifications::Census::ActionAuthorizerOptions.new(
+      vote_permissions["options"] || {}
+    )
+  end
 end
