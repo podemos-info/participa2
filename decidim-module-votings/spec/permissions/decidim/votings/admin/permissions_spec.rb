@@ -64,6 +64,12 @@ describe Decidim::Votings::Admin::Permissions do
       { scope: :admin, action: :destroy, subject: :voting }
     end
 
-    it { is_expected.to eq true }
+    it { is_expected.to eq false }
+
+    context "when voting didn't start yet" do
+      let(:voting) { create(:voting, :not_started) }
+
+      it { is_expected.to eq true }
+    end
   end
 end

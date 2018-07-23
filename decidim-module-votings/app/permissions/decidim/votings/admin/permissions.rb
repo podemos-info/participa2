@@ -13,8 +13,10 @@ module Decidim
           case permission_action.action
           when :create
             permission_action.allow!
-          when :update, :destroy
-            permission_action.allow! if voting.present?
+          when :update
+            toggle_allow(voting.present?)
+          when :destroy
+            toggle_allow(can_destroy_voting?)
           end
 
           permission_action
@@ -24,6 +26,10 @@ module Decidim
 
         def voting
           @voting ||= context.fetch(:voting, nil)
+        end
+
+        def can_destroy_voting?
+          voting.present? && !voting.started?
         end
       end
     end

@@ -50,6 +50,7 @@ module Decidim
         end
 
         def destroy
+          enforce_permission_to :destroy, :voting, voting: voting
           voting.destroy!
           flash[:notice] = I18n.t("votings.destroy.success", scope: "decidim.votings.admin")
           redirect_to votings_path

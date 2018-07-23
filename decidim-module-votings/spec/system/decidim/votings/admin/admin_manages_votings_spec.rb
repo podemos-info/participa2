@@ -185,7 +185,7 @@ describe "Admin manages votings", type: :system, serves_map: true do
   end
 
   context "when deleting a voting" do
-    let!(:voting2) { create(:voting, component: current_component) }
+    let!(:voting2) { create(:voting, :not_started, component: current_component) }
 
     before do
       visit current_path
@@ -202,6 +202,16 @@ describe "Admin manages votings", type: :system, serves_map: true do
 
       within "table" do
         expect(page).to have_no_content(translated(voting2.title))
+      end
+    end
+
+    context "when the voting has started" do
+      let!(:voting2) { create(:voting, component: current_component) }
+
+      it "can't delete the voting" do
+        within find("tr", text: translated(voting2.title)) do
+          expect(page).to have_no_content("tr a.action-icon--remove")
+        end
       end
     end
   end

@@ -7,7 +7,7 @@
       <%= t "#{voting.voting_system.downcase}_html", scope: 'decidim.votings.models.voting.voting_system' %>
     </li>
   </ul>
-  <% vote_permission_descriptions.each do |icon_name, description| %>
+  <% vote_permission_descriptions&.each do |icon_name, description| %>
   <ul class="card-data">
     <li class="card-data__item">
       <%= icon icon_name, class: "icon--big secondary" %>

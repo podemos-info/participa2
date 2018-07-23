@@ -80,6 +80,7 @@ es:
       messages:
         already_voted: Ya has votado en esta votación. No obstante, puedes cambiar tu voto mientras la votación continúe abierta
         finished: Ha llegado la fecha límite para votar. La votación está cerrada.
+        not_started: El período de votación aún no ha comenzado.
       models:
         voting:
           fields:

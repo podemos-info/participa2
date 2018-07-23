@@ -14,9 +14,14 @@ module Decidim
       let(:params) do
         {
           component_id: component.id,
-          participatory_process_slug: component.participatory_space.slug
+          participatory_process_slug: component.participatory_space.slug,
+          voting_id: voting.id,
+          **extra_params
         }
       end
+
+      let(:extra_params) { {} }
+      let(:voting) { create(:voting, :n_votes, component: component) }
 
       before do
         request.env["decidim.current_organization"] = component.organization
@@ -25,41 +30,77 @@ module Decidim
         sign_in user
       end
 
-      context "when calling show" do
-        context "when voting is started" do
-          let!(:voting) { create(:voting, component: component) }
+      describe "show page" do
+        subject { get :show, params: params }
+
+        it "shows voting info" do
+          is_expected.to have_http_status(:ok)
+          is_expected.to render_template(layout: "layouts/decidim/booth")
+        end
+
+        context "when voting has not started yet" do
+          let(:voting) { create(:voting, :n_votes, :not_started, component: component) }
+
+          it "shows an error message" do
+            is_expected.to have_http_status(:found)
+            expect(flash[:error]).to eq("The voting doesn't started yet.")
+          end
 
           context "with valid key" do
+            let(:extra_params) { { key: voting.simulation_key } }
+
             it "shows voting info" do
-              get :show, params: params.merge(voting_id: voting.id, key: voting.simulation_key)
-              expect(response).to have_http_status(:ok)
-              expect(response).to render_template(layout: "layouts/decidim/booth")
-            end
-          end
-          context "with invalid key" do
-            it "shows voting info" do
-              get :show, params: params.merge(voting_id: voting.id, key: "fakekey")
-              expect(response).to have_http_status(:ok)
-              expect(response).to render_template(layout: "layouts/decidim/booth")
+              is_expected.to have_http_status(:ok)
+              is_expected.to render_template(layout: "layouts/decidim/booth")
             end
           end
         end
-        context "when voting is not started" do
-          let!(:voting) { create(:voting, :not_started, component: component) }
+
+        context "when voting has finished" do
+          let(:voting) { create(:voting, :finished, component: component) }
+
+          it "shows an error message" do
+            is_expected.to have_http_status(:found)
+            expect(flash[:error]).to eq("The voting has finished.")
+          end
+        end
+      end
+
+      describe "token request" do
+        subject { post :token, params: params }
+
+        let(:voter_id) { voting.votes.find_by(user: user).token }
+
+        it "returns voter_id" do
+          is_expected.to have_http_status(:ok)
+          expect(response.body).to eq(voter_id)
+        end
+
+        context "when voting has not started yet" do
+          let(:voting) { create(:voting, :n_votes, :not_started, component: component) }
+
+          it "shows an error message" do
+            is_expected.to have_http_status(:gone)
+            expect(flash[:error]).to eq("The voting doesn't started yet.")
+          end
 
           context "with valid key" do
-            it "shows voting info" do
-              get :show, params: params.merge(voting_id: voting.id, key: voting.simulation_key)
-              expect(response).to have_http_status(:ok)
-              expect(response).to render_template(layout: "layouts/decidim/booth")
+            let(:extra_params) { { key: voting.simulation_key } }
+            let(:voter_id) { voting.simulated_votes.find_by(user: user).token }
+
+            it "returns voter_id" do
+              is_expected.to have_http_status(:ok)
+              expect(response.body).to eq(voter_id)
             end
           end
-          context "with invalid key" do
-            it "shows voting info" do
-              expect do
-                get :show, params: params.merge(voting_id: voting.id, key: "fakekey")
-              end.to raise_error(ActionController::RoutingError)
-            end
+        end
+
+        context "when voting has finished" do
+          let(:voting) { create(:voting, :n_votes, :finished, component: component) }
+
+          it "shows an error message" do
+            is_expected.to have_http_status(:gone)
+            expect(flash[:error]).to eq("The voting has finished.")
           end
         end
       end

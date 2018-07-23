@@ -35,19 +35,20 @@ module Decidim
                 expect(Decidim::Votings::Vote.last.status).to eq "confirmed"
               end
             end
-            context "when election_id does'nt match" do
-              it "does'nt confirm the vote" do
+
+            context "when election_id doesn't match" do
+              it "doesn't confirm the vote" do
                 get :confirm, params: { election_id: "1111", voter_id: voter_id }
-                expect(JSON.parse(response.body)["result"]).to eq "ok"
+                expect(JSON.parse(response.body)["result"]).to eq "error"
                 expect(Decidim::Votings::Vote.last.status).not_to eq "confirmed"
               end
             end
           end
 
-          context "when vote does'nt exist" do
+          context "when vote doesn't exist" do
             it "returns ok" do
               get :confirm, params: { election_id: election_id, voter_id: voter_id }
-              expect(JSON.parse(response.body)["result"]).to eq "ok"
+              expect(JSON.parse(response.body)["result"]).to eq "error"
             end
           end
 
