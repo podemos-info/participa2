@@ -84,11 +84,11 @@ ignore_unused:
   - decidim.votings.admin.models.*
 
 ignore_missing:
-  - decidim.participatory_processes.scopes.global
   - decidim.authorization_handlers.census.fields.*
-  - decidim.scopes.prompt
+  - decidim.core.actions.*
   - decidim.devise.*
+  - decidim.participatory_processes.scopes.global
+  - decidim.scopes.prompt
   - decidim.verifications.authorizations.new.authorize
-  - decidim.authorization_handlers.census.fields.*
   - devise.registrations.new.sign_up
   - errors.messages.uppercase_only_letters_numbers
