@@ -19,7 +19,7 @@ module Decidim
       end
 
       def description
-        translated_attribute model.description
+        html_truncate(translated_attribute(model.description), max_length: 200)
       end
 
       def has_image?
