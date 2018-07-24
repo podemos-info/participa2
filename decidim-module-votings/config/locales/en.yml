@@ -39,8 +39,8 @@ en:
       actions:
         confirm_destroy: "¿Are you sure?"
         destroy: Destroy
-        download_voter_ids: Download voters identifiers
         download_simulated_voter_ids: Download voters identifiers for simulation %{simulation_code}
+        download_voter_ids: Download voters identifiers
         edit: Edit
         new: New
         preview: Previsualize

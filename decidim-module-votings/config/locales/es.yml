@@ -39,8 +39,8 @@ es:
       actions:
         confirm_destroy: "¿Estás seguro?"
         destroy: Borrar
-        download_voter_ids: Descargar identificadores de votantes
         download_simulated_voter_ids: Descargar identificadores de votantes para el simulacro %{simulation_code}
+        download_voter_ids: Descargar identificadores de votantes
         edit: Editar
         new: Nueva
         preview: Previsualizar

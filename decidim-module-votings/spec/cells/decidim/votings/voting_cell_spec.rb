@@ -26,8 +26,8 @@ describe Decidim::Votings::VotingCell, type: :cell do
       end
     end
 
-    context "when voting has not started yet" do
-      let(:voting) { create(:voting, :n_votes, :not_started) }
+    context "when voting is upcoming" do
+      let(:voting) { create(:voting, :n_votes, :upcoming) }
 
       it "doesn't allows to vote" do
         within ".card__footer .card__support .card__button" do
