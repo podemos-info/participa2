@@ -9,18 +9,20 @@
   </h2>
 </div>
 
-<div class="row">
-  <div class="columns section mediumlarge-8">
-    <iframe id="js-iframe"
-            src="//<%= current_component.settings[:domain] %>/gfembed/?f=<%= gravity_form.form_number %>"
-            width="100%"
-            height="500"
-            frameBorder="0"
-            class="gfiframe">
-    </iframe>
+<div class="row column">
+<% if can_fill_in_form? %>
+  <iframe id="js-iframe"
+          src="//<%= current_component.settings[:domain] %>/gfembed/?f=<%= gravity_form.form_number %>"
+          width="100%"
+          height="500"
+          frameBorder="0"
+          class="gfiframe">
+  </iframe>
 
-    <script src="//<%= current_component.settings[:domain] %>/wp-content/plugins/gravity-forms-iframe/assets/scripts/gfembed.min.js"
-            type="text/javascript">
-    </script>
-  </div>
+  <script src="//<%= current_component.settings[:domain] %>/wp-content/plugins/gravity-forms-iframe/assets/scripts/gfembed.min.js"
+          type="text/javascript">
+  </script>
+<% else %>
+  <%= action_authorized_link_to :fill_in, t("gravity_forms.gravity_form.fill_in", scope: "decidim.gravity_forms"), gravity_form, resource: gravity_form, class: "card__button button button--sc" %>
+<% end %>
 </div>
