@@ -6,7 +6,7 @@ module Decidim
     class VotingsController < Decidim::Votings::ApplicationController
       include FilterResource
 
-      helper_method :voting
+      helper_method :voting, :has_voted?
       helper Decidim::PaginateHelper
       helper Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper
 
@@ -20,6 +20,10 @@ module Decidim
 
       def voting
         @voting ||= Voting.find(params[:id])
+      end
+
+      def has_voted?
+        @has_voted ||= voting.has_voted?(current_user)
       end
     end
   end

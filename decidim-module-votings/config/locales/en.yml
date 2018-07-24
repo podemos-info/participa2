@@ -39,12 +39,13 @@ en:
       actions:
         confirm_destroy: "¿Are you sure?"
         destroy: Destroy
+        download_voter_ids: Download voters identifiers
+        download_simulated_voter_ids: Download voters identifiers for simulation %{simulation_code}
         edit: Edit
         new: New
         preview: Previsualize
         simulate_vote: Simulate vote
         title: Actions
-        voters: Download voters identifiers
       admin:
         models:
           voting:
@@ -66,8 +67,8 @@ en:
           form:
             add_electoral_district: Add electoral district information
             electoral_districts: Electoral districts
-            end_date_help: End date
-            start_date_help: Start date
+            importance_help: Votings will be sorted decreasingly by importance.
+            simulation_code_help: Voting will store simulated votes for each simulation code.
             system_configuration: Voting system configuration
           index:
             title: Votings
@@ -78,7 +79,7 @@ en:
             invalid: Voting can't be updated. Check the form data and correct the errors.
             success: Voting updated successfully.
       messages:
-        already_voted: You have already voted on this voting. However, you can change your vote while the voting is still open
+        already_voted: You have participated on this voting.
         finished: The voting has finished.
         not_started: The voting doesn't started yet.
       models:
@@ -107,7 +108,7 @@ en:
           no_votings_warning: There is no active voting at this time
           title: Votings
         show:
-          change_vote: Cambiar voto
+          change_vote: Change my vote
           simulate_vote: Simulate vote
           vote: Vote
         votings:

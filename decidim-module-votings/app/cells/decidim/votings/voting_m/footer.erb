@@ -1,13 +1,9 @@
 <div class="card__footer">
   <div class="card__support">
-    <%= action_authorized_button_to(
-      :vote,
-      t("decidim.votings.votings.show.#{vote_action}"),
-      vote_path,
-      resource: voting,
-      method: :get,
-      class: "card__button button expanded button--sc",
-      id: "vote_button"
-    ) %>
+    <% if voting.active? %>
+      <%= action_authorized_link_to :vote, t("decidim.votings.votings.show.#{vote_action}"), vote_path, resource: voting, class: "card__button button button--sc", method: :get %>
+    <% else %>
+      <span class="card__button button disabled button--sc hollow"><%= voting_status(voting) %></span>
+    <% end %>
   </div>
 </div>
