@@ -9,6 +9,10 @@ module Decidim
       def to_param
         slug
       end
+
+      def allow_resource_permissions?
+        component.settings.resources_permissions_enabled
+      end
     end
   end
 end

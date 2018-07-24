@@ -68,6 +68,8 @@
                   <%= icon_link_to "pencil", edit_gravity_form_path(gravity_form.id), t("actions.edit", scope: "decidim.gravity_forms"), class: "action-icon--edit" %>
                 <% end %>
 
+                <%= resource_permissions_link(gravity_form) %>
+
                 <% if allowed_to? :destroy, :gravity_form, gravity_form: gravity_form %>
                   <%= icon_link_to "circle-x", gravity_form_path(gravity_form.id), t("actions.destroy", scope: "decidim.gravity_forms"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.gravity_forms") } %>
                 <% end %>
