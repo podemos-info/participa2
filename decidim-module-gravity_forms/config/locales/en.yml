@@ -12,10 +12,13 @@ en:
   decidim:
     components:
       gravity_forms:
+        actions:
+          fill_in: Fill in
         name: Forms
         settings:
           global:
             domain: Domain
+            resources_permissions_enabled: Actions permissions can be set for each form
     gravity_forms:
       actions:
         confirm_destroy: Are you sure you want to delete this form?

@@ -15,7 +15,11 @@
     <div class="card__footer">
       <div class="card__support">
         <div class="card__support__data">
-          <%= authenticated_link_to t(".fill_in"), gravity_form, class: "card__button button small secondary" %>
+          <% if gravity_form.public? %>
+            <%= link_to t(".fill_in"), gravity_form, class: "card__button button button--sc" %>
+          <% else %>
+            <%= action_authorized_link_to :fill_in, t(".fill_in"), gravity_form, resource: gravity_form, class: "card__button button button--sc" %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -13,10 +13,11 @@ Decidim.register_component(:gravity_forms) do |component|
   # end
 
   # These actions permissions can be configured in the admin panel
-  # component.actions = %w()
+  component.actions = %w(fill_in)
 
   component.settings(:global) do |settings|
     settings.attribute :domain, type: :string
+    settings.attribute :resources_permissions_enabled, type: :boolean, default: true
   end
 
   # component.settings(:step) do |settings|
@@ -25,6 +26,7 @@ Decidim.register_component(:gravity_forms) do |component|
 
   component.register_resource(:gravity_form) do |resource|
     resource.model_class_name = "Decidim::GravityForms::GravityForm"
+    resource.actions = %w(fill_in)
   end
 
   # component.register_stat :some_stat do |context, start_at, end_at|

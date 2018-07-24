@@ -12,10 +12,13 @@ es:
   decidim:
     components:
       gravity_forms:
+        actions:
+          fill_in: Completar
         name: Formularios
         settings:
           global:
             domain: Dominio
+            resources_permissions_enabled: Permitir definir permisos diferentes para cada formulario
     gravity_forms:
       actions:
         confirm_destroy: "¿Está seguro de que quiere eliminar este formulario?"
