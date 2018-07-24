@@ -5,7 +5,7 @@ module Decidim
     class GravityFormsController < Decidim::GravityForms::ApplicationController
       helper_method :gravity_form, :visible_gravity_forms, :can_fill_in_form?
 
-      before_action :authenticate_user!, only: :show, if: -> { gravity_form.require_login }
+      before_action :authenticate_user!, only: :show, unless: -> { gravity_form.public? }
 
       def index
         redirect_to(gravity_form) if visible_gravity_forms.one? && can_fill_in_form?
@@ -32,7 +32,7 @@ module Decidim
       end
 
       def can_fill_in_form?
-        @can_fill_in_form ||= (!gravity_form.require_login || user_signed_in?) && allowed_to?(:fill_in, :gravity_form, gravity_form: gravity_form)
+        @can_fill_in_form ||= gravity_form.public? || allowed_to?(:fill_in, :gravity_form, gravity_form: gravity_form)
       end
     end
   end

@@ -4,10 +4,9 @@ module Decidim
   module GravityForms
     class Permissions < Decidim::DefaultPermissions
       def permissions
-        return permission_action unless user
-
         # Delegate the admin permission checks to the admin permissions class
         return Decidim::GravityForms::Admin::Permissions.new(user, permission_action, context).permissions if permission_action.scope == :admin
+
         return permission_action if permission_action.scope != :public
 
         return permission_action if permission_action.subject != :gravity_form
