@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_122757) do
+ActiveRecord::Schema.define(version: 2018_07_24_100629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -516,6 +516,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_122757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.datetime "validated_at"
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_registrations_on_decidim_meeting_id"
     t.index ["decidim_user_id", "decidim_meeting_id"], name: "decidim_meetings_registrations_user_meeting_unique", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_meetings_registrations_on_decidim_user_id"
