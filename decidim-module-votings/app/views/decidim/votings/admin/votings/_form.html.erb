@@ -19,23 +19,22 @@
     <div class="grid-x grid-margin-x">
       <div class="cell medium-6">
         <%= form.datetime_field :start_date %>
-        <p class="help-text"><%= t '.start_date_help' %></p>
       </div>
 
       <div class="cell medium-6">
         <%= form.datetime_field :end_date %>
-        <p class="help-text"><%= t '.end_date_help' %></p>
       </div>
     </div>
 
     <div class="grid-x grid-margin-x">
       <% if current_participatory_space.has_subscopes? %>
-        <div class="cell large-8">
+        <div class="cell large-6">
           <%= scopes_picker_field form, :decidim_scope_id %>
         </div>
       <% end %>
       <div class="cell large-auto">
         <%= form.number_field :importance %>
+        <p class="help-text"><%= t '.importance_help' %></p>
       </div>
     </div>
   </div>
@@ -80,6 +79,7 @@
 
     <div>
       <%= form.number_field :simulation_code %>
+      <p class="help-text"><%= t '.simulation_code_help' %></p>
     </div>
 
     <% if current_participatory_space.has_subscopes? %>
