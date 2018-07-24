@@ -32,11 +32,11 @@ FactoryBot.define do
     end
 
     trait :not_started do
-      start_date { DateTime.current + 1.day }
+      start_date { DateTime.current + 6.hours }
     end
 
     trait :finished do
-      end_date { DateTime.current - 1.day }
+      end_date { DateTime.current - 6.hours }
     end
   end
 
