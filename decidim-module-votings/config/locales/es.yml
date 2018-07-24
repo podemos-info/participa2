@@ -39,12 +39,13 @@ es:
       actions:
         confirm_destroy: "¿Estás seguro?"
         destroy: Borrar
+        download_simulated_voter_ids: Descargar identificadores de votantes para el simulacro %{simulation_code}
+        download_voter_ids: Descargar identificadores de votantes
         edit: Editar
         new: Nueva
         preview: Previsualizar
         simulate_vote: Simular voto
         title: Acciones
-        voters: Descargar identificadores de votantes
       admin:
         models:
           voting:
@@ -66,8 +67,8 @@ es:
           form:
             add_electoral_district: Añadir información de distrito electoral
             electoral_districts: Distritos electorales
-            end_date_help: Fecha de fin
-            start_date_help: Fecha de inicio
+            importance_help: La votaciones se ordenarán de forma decreciente por importancia.
+            simulation_code_help: Los votos de simulacro se almacenarán separados por cada código de simulacro.
             system_configuration: Configuración del sistema de votaciones
           index:
             title: Votaciones
@@ -78,7 +79,7 @@ es:
             invalid: No se pudo actualizar la votación. Comprueba los datos y corrige los errores.
             success: La votación ha sido correctamente actualizada.
       messages:
-        already_voted: Ya has votado en esta votación. No obstante, puedes cambiar tu voto mientras la votación continúe abierta
+        already_voted: Has participado en esta votación.
         finished: Ha llegado la fecha límite para votar. La votación está cerrada.
         not_started: El período de votación aún no ha comenzado.
       models:
@@ -107,7 +108,7 @@ es:
           no_votings_warning: En este momento no hay ninguna votación activa.
           title: Votaciones
         show:
-          change_vote: Cambiar voto
+          change_vote: Cambiar mi voto
           simulate_vote: Simular voto
           vote: Votar
         votings:

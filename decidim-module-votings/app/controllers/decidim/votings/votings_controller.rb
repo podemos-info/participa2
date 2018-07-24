@@ -6,12 +6,12 @@ module Decidim
     class VotingsController < Decidim::Votings::ApplicationController
       include FilterResource
 
-      helper_method :voting
+      helper_method :voting, :has_voted?
       helper Decidim::PaginateHelper
       helper Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper
 
       def index
-        @votings = Voting.for_component(current_component).active.order_by_importance
+        @votings = Voting.for_component(current_component).topical.order_by_importance
       end
 
       def show; end
@@ -20,6 +20,10 @@ module Decidim
 
       def voting
         @voting ||= Voting.find(params[:id])
+      end
+
+      def has_voted?
+        @has_voted ||= voting.has_voted?(current_user)
       end
     end
   end

@@ -63,9 +63,7 @@ module Decidim
       end
 
       def vote_action
-        if !voting.started?
-          :simulate_vote
-        elsif has_voted?
+        if has_voted?
           :change_vote
         else
           :vote

@@ -17,27 +17,25 @@
     <%= image_tag voting.image.url if voting.image.present? %>
     <%= sanitize translated_attribute voting.description %>
   </div>
-  <% unless voting.finished? %>
-    <div class="columns section view-side mediumlarge-4 large-3 ">
-      <div class="card extra">
+  <div class="columns section view-side mediumlarge-4 large-3 ">
+    <div class="card extra">
+      <div class="card__content">
+        <%= t "#{voting.voting_system.downcase}_html", scope: 'decidim.votings.models.voting.voting_system' %>
+      </div>
+      <% if has_voted? %>
         <div class="card__content">
-          <%= t "#{voting.voting_system.downcase}_html", scope: 'decidim.votings.models.voting.voting_system' %>
+          <%= t 'decidim.votings.messages.already_voted' %>
         </div>
-        <% if !voting.finished? && voting.has_voted?(current_user) %>
-          <div class="card__content">
-            <%= t 'decidim.votings.messages.already_voted' %>
-          </div>
+      <% end %>
+      <div class="card__content">
+        <% if voting.active? %>
+          <%= action_authorized_link_to :vote, t(has_voted? ? ".change_vote" : ".vote"), voting_vote_path(voting.id), resource: voting, class: "card__button button expanded button--sc", method: :get %>
+        <% elsif voting.simulating? && params[:key] %>
+          <%= action_authorized_link_to :simulate_vote, t('.simulate_vote'), voting_vote_path(voting.id, key: params[:key]), resource: voting, class: "card__button button expanded button--sc hollow", method: :get %>
+        <% else %>
+          <span class="card__button button disabled button--sc hollow"><%= voting_status(voting) %></span>
         <% end %>
-        <div class="card__content">
-          <% if voting.active? %>
-            <%= action_authorized_link_to :vote, t('.vote'), voting_vote_path(voting.id), resource: voting, class: "card__button button expanded button--sc", method: :get %>
-          <% elsif voting.simulating? && params[:key] %>
-            <%= action_authorized_link_to :simulate_vote, t('.simulate_vote'), voting_vote_path(voting.id, key: params[:key]), resource: voting, class: "card__button button expanded button--sc hollow", method: :get %>
-          <% else %>
-            <span class="card__button button expanded button--sc hollow"><%= voting_status(voting) %></span>
-          <% end %>
-        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

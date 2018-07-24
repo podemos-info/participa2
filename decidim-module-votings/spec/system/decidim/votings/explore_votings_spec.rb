@@ -75,7 +75,7 @@ describe "Explore votings", type: :system do
 
       it "shows a message informing" do
         click_link translated(voting.title)
-        expect(page).to have_content("already voted")
+        expect(page).to have_content("participated on this voting")
       end
     end
 
@@ -129,8 +129,8 @@ describe "Explore votings", type: :system do
       end
     end
 
-    context "when the voting has not started yet" do
-      let(:voting) { create(:voting, :n_votes, :not_started, component: component, voting_identifier: "MAIN") }
+    context "when the voting is upcoming" do
+      let(:voting) { create(:voting, :n_votes, :upcoming, component: component, voting_identifier: "MAIN") }
       let(:voting_link) { resource_locator(voting).path }
 
       before do

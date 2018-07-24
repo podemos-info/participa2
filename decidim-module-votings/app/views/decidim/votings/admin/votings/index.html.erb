@@ -78,7 +78,11 @@
 
                 <%= icon_link_to 'data-transfer-download',
                                  voting_votes_path(voting, format: 'txt'),
-                                 t('actions.voters', scope: 'decidim.votings'),
+                                 if voting.simulating?
+                                   t('actions.download_simulated_voter_ids', scope: 'decidim.votings', simulation_code: voting.simulation_code)
+                                 else
+                                   t('actions.download_voter_ids', scope: 'decidim.votings')
+                                 end,
                                  method: :get,
                                  class: 'action-icon--download' %>
 

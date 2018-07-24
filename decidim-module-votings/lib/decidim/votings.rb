@@ -16,6 +16,16 @@ module Decidim
       15
     end
 
+    # Number of hours to show a voting before it starts
+    config_accessor :upcoming_hours do
+      24
+    end
+
+    # Number of hours to show a voting after it ended
+    config_accessor :closed_hours do
+      12
+    end
+
     # A proc or a class implementing  a `call` method to return the scope for a
     # given user in a given voting
     config_accessor :scope_resolver do
