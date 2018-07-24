@@ -29,9 +29,9 @@
       <% end %>
       <div class="card__content">
         <% if voting.active? %>
-          <%= action_authorized_link_to :vote, t(has_voted? ? ".change_vote" : ".vote"), voting_vote_path(voting.id), resource: voting, class: "card__button button expanded button--sc", method: :get %>
+          <%= action_authorized_link_to :vote, t(has_voted? ? ".change_vote" : ".vote"), voting_vote_path(voting.id), resource: voting, class: "card__button button expanded button--sc" %>
         <% elsif voting.simulating? && params[:key] %>
-          <%= action_authorized_link_to :simulate_vote, t('.simulate_vote'), voting_vote_path(voting.id, key: params[:key]), resource: voting, class: "card__button button expanded button--sc hollow", method: :get %>
+          <%= action_authorized_link_to :simulate_vote, t('.simulate_vote'), voting_vote_path(voting.id, key: params[:key]), resource: voting, class: "card__button button expanded button--sc hollow" %>
         <% else %>
           <span class="card__button button disabled button--sc hollow"><%= voting_status(voting) %></span>
         <% end %>
