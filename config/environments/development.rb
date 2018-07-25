@@ -61,7 +61,6 @@ Rails.application.configure do
   end
 
   # Census Authorization Handler descendants preloading on development environment
-  config.eager_load_paths += Dir["app/services/*.rb"]
   ActiveSupport::Reloader.to_prepare do
     Dir["app/services/*.rb"].each { |file| require_dependency file }
   end

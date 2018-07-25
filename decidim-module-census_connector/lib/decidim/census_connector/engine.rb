@@ -12,7 +12,14 @@ module Decidim
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::CensusConnector
 
-      config.autoload_paths += Dir["#{config.root}/app/consumers/**/"]
+      config.eager_load_paths << File.expand_path("app/consumers/**", __dir__)
+
+      initializer "decidim_census_connector.consumers_paths" do
+        consumers_paths = "#{config.root}/app/consumers/**/*.rb"
+        ActiveSupport::Reloader.to_prepare do
+          Dir[consumers_paths].each { |file| require_dependency file }
+        end
+      end
 
       initializer "decidim_census_connector.assets" do |app|
         app.config.assets.precompile += %w(decidim_census_connector_manifest.js decidim_census_connector_manifest.css)
