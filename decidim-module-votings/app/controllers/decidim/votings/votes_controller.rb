@@ -55,7 +55,7 @@ module Decidim
       end
 
       def action_token_path
-        @token_path ||= token_voting_vote_path(voting.id, **simulation_params)
+        @action_token_path ||= token_voting_vote_path(voting.id, **simulation_params)
       end
 
       def user_scope
