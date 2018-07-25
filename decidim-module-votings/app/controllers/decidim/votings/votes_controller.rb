@@ -19,7 +19,7 @@ module Decidim
       def token
         render(plain: action_voting_url, status: :gone) && return if flash[:error]
 
-        attributes = { voting: voting, user: current_user }
+        attributes = { voting: voting, user: current_user, voting_identifier: voting_identifier }
         attributes[:simulation_code] = voting.simulation_code if voting.simulating?
         vote = voting.vote_class.find_or_create_by(attributes)
 
