@@ -77,7 +77,7 @@
                 <% end %>
 
                 <%= icon_link_to 'data-transfer-download',
-                                 voting_votes_path(voting, format: 'txt'),
+                                 voting_votes_path(voting, format: 'tsv'),
                                  if voting.simulating?
                                    t('actions.download_simulated_voter_ids', scope: 'decidim.votings', simulation_code: voting.simulation_code)
                                  else
