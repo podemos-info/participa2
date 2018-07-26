@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency "active_record_upsert"
   s.add_dependency "decidim-admin", compatible_constraint
   s.add_dependency "decidim-core", compatible_constraint
+  s.add_dependency "timecop"
 end
