@@ -7,14 +7,14 @@ module Decidim
         skip_before_action :verify_authenticity_token
 
         def confirm
-          voter_id = params[:voter_id]
-          vote = Vote.find_by(voter_identifier: voter_id) || SimulatedVote.find_by(voter_identifier: voter_id)
-          if vote && vote.voting&.voting_identifier == params[:election_id]
-            vote.confirm!
-            render json: { result: "ok" }
-            return
+          Decidim::Votings::ConfirmVote.call(voting_identifier: params[:voting_identifier], voter_identifier: params[:voter_identifier]) do
+            on(:ok) do
+              render json: { result: "ok" }
+            end
+            on(:invalid) do
+              render json: { result: "error" }
+            end
           end
-          render json: { result: "error" }
         end
       end
     end

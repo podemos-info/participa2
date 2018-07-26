@@ -13,7 +13,7 @@ module Decidim
       paths["db/migrate"] = nil
 
       routes do
-        post "confirm/:election_id/:voter_id", action: :confirm, controller: "confirmations"
+        post "confirm/:voting_identifier/:voter_identifier", action: :confirm, controller: "confirmations"
       end
     end
   end

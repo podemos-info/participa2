@@ -11,7 +11,7 @@ module Decidim
       helper Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper
 
       def index
-        @votings = Voting.for_component(current_component).topical.order_by_importance
+        @votings = Voting.for_component(current_component).active_range(Decidim::Votings.upcoming_hours.hours, Decidim::Votings.closed_hours.hours).order_by_importance
       end
 
       def show; end

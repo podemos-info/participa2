@@ -12,7 +12,7 @@ module Decidim
 
       routes do
         resources :votings do
-          resources :votes, only: [:index], constraints: { format: "txt" }
+          resources :votes, only: [:index], constraints: { format: "tsv" }
         end
 
         root to: "votings#index"

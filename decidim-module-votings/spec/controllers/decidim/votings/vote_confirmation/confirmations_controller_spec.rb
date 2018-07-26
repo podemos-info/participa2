@@ -8,15 +8,14 @@ module Decidim
       describe ConfirmationsController, type: :controller do
         routes { Decidim::Votings::VoteConfirmationEngine.routes }
 
-        let(:user) { create(:user, :confirmed, organization: component.organization) }
+        let(:vote) { create(:vote, voting: voting, user: user) }
 
+        let(:user) { create(:user, :confirmed, organization: component.organization) }
         let(:component) { create :voting_component, :participatory_process }
 
-        let(:election_id) { "6666" }
-
-        let(:voter_id) { "6036dfb5fb227d22f8728317d572d972f67304c188281cd72319a581502a7ef2" }
-
-        let(:voting) { create(:voting, component: component, voting_identifier: election_id) }
+        let(:voting_identifier) { voting.voting_identifier }
+        let(:voter_identifier) { vote.voter_identifier }
+        let(:voting) { create(:voting, component: component, voting_identifier: "6666") }
 
         before do
           request.env["decidim.current_organization"] = component.organization
@@ -24,41 +23,55 @@ module Decidim
           sign_in user
         end
 
-        context "when confirming existing vote" do
+        describe "#index" do
+          subject { get :confirm, params: { voting_identifier: voting_identifier, voter_identifier: voter_identifier } }
+
           context "when vote exists" do
-            let!(:vote) { create(:vote, voting: voting, voter_identifier: voter_id, user: user) }
-
-            context "when election_id matches" do
-              it "confirms the vote" do
-                get :confirm, params: { election_id: election_id, voter_id: voter_id }
-                expect(JSON.parse(response.body)["result"]).to eq "ok"
-                expect(Decidim::Votings::Vote.last.status).to eq "confirmed"
-              end
+            it "confirms the vote" do
+              is_expected.to have_http_status(:ok)
+              expect(JSON.parse(response.body)["result"]).to eq "ok"
+              expect(vote.reload.status).to eq "confirmed"
             end
 
-            context "when election_id doesn't match" do
+            context "when voting_identifier doesn't match" do
+              let(:voting_identifier) { "1111" }
+
               it "doesn't confirm the vote" do
-                get :confirm, params: { election_id: "1111", voter_id: voter_id }
+                is_expected.to have_http_status(:ok)
                 expect(JSON.parse(response.body)["result"]).to eq "error"
-                expect(Decidim::Votings::Vote.last.status).not_to eq "confirmed"
+                expect(vote.reload.status).not_to eq "confirmed"
               end
             end
-          end
 
-          context "when vote doesn't exist" do
-            it "returns ok" do
-              get :confirm, params: { election_id: election_id, voter_id: voter_id }
-              expect(JSON.parse(response.body)["result"]).to eq "error"
+            context "when voter_identifier doesn't match" do
+              let(:voter_identifier) { "jajaja" }
+
+              it "doesn't confirm the vote" do
+                is_expected.to have_http_status(:ok)
+                expect(JSON.parse(response.body)["result"]).to eq "error"
+                expect(vote.reload.status).not_to eq "confirmed"
+              end
             end
           end
 
           context "when simulated vote exists" do
-            let!(:simulated_vote) { create(:simulated_vote, voting: voting, voter_identifier: voter_id, user: user) }
+            let(:vote) { create(:simulated_vote, voting: voting, user: user) }
 
             it "confirms the vote" do
-              get :confirm, params: { election_id: election_id, voter_id: voter_id }
+              is_expected.to have_http_status(:ok)
               expect(JSON.parse(response.body)["result"]).to eq "ok"
-              expect(Decidim::Votings::SimulatedVote.last.status).to eq "confirmed"
+              expect(vote.reload.status).to eq "confirmed"
+            end
+          end
+
+          context "when both votes exists" do
+            let(:simulated_vote) { create(:simulated_vote, voting: voting, user: user) }
+
+            it "confirms the vote" do
+              is_expected.to have_http_status(:ok)
+              expect(JSON.parse(response.body)["result"]).to eq "ok"
+              expect(vote.reload.status).to eq "confirmed"
+              expect(simulated_vote.reload.status).not_to eq "confirmed"
             end
           end
         end

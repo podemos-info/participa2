@@ -21,8 +21,8 @@ FactoryBot.define do
     description { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     simulation_code 0
     component { create(:voting_component) }
-    start_date { DateTime.current - 2.days }
-    end_date { DateTime.current + 2.days }
+    start_date { Time.zone.now - 2.days }
+    end_date { Time.zone.now + 2.days }
 
     trait :n_votes do
       voting_system { "nVotes" }
@@ -32,15 +32,15 @@ FactoryBot.define do
     end
 
     trait :not_started do
-      start_date { DateTime.current + 1.month }
+      start_date { Time.zone.now + 1.month }
     end
 
     trait :upcoming do
-      start_date { DateTime.current + 6.hours }
+      start_date { Time.zone.now + 6.hours }
     end
 
     trait :finished do
-      end_date { DateTime.current - 6.hours }
+      end_date { Time.zone.now - 6.hours }
     end
   end
 
@@ -52,19 +52,23 @@ FactoryBot.define do
   end
 
   factory :vote, class: "Decidim::Votings::Vote" do
-    voting { create(:voting) }
+    voting { create(:voting, :n_votes) }
     user { create(:user) }
     status { "pending" }
+    voting_identifier { voting.voting_identifier }
+
     trait :confirmed do
       status { :confirmed }
     end
   end
 
   factory :simulated_vote, class: "Decidim::Votings::SimulatedVote" do
-    voting { create(:voting) }
+    voting { create(:voting, :n_votes) }
     user { create(:user) }
-    simulation_code { 666 }
+    simulation_code { voting.simulation_code }
     status { "pending" }
+    voting_identifier { voting.voting_identifier }
+
     trait :confirmed do
       status { :confirmed }
     end

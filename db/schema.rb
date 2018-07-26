@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_100629) do
+ActiveRecord::Schema.define(version: 2018_07_25_162753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1073,6 +1073,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_100629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "simulation_code", default: 0, null: false
+    t.string "voting_identifier"
     t.index ["decidim_user_id"], name: "index_decidim_votings_simulated_votes_on_decidim_user_id"
     t.index ["decidim_votings_voting_id", "decidim_user_id", "simulation_code"], name: "idx_simulated_votes_voting_user_code", unique: true
     t.index ["decidim_votings_voting_id"], name: "index_simulated_votes_on_voting"
@@ -1085,6 +1086,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_100629) do
     t.string "voter_identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "voting_identifier"
     t.index ["decidim_user_id"], name: "index_decidim_votings_votes_on_decidim_user_id"
     t.index ["decidim_votings_voting_id", "decidim_user_id"], name: "idx_votes_voting_user", unique: true
     t.index ["decidim_votings_voting_id"], name: "index_decidim_votings_votes_on_decidim_votings_voting_id"
