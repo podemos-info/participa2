@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   compatible_constraint = "#{Gem::Version.new(s.version).approximate_recommendation}.a"
 
   s.add_dependency "active_model_serializers"
+  s.add_dependency "active_record_upsert"
   s.add_dependency "decidim-admin", compatible_constraint
   s.add_dependency "decidim-core", compatible_constraint
 end

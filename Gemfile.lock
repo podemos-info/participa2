@@ -202,6 +202,7 @@ PATH
   specs:
     decidim-votings (0.14.0.pre)
       active_model_serializers
+      active_record_upsert
       decidim-admin (~> 0.14.a)
       decidim-core (~> 0.14.a)
 
@@ -239,6 +240,10 @@ GEM
       activemodel (>= 4.1, < 6)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
+    active_record_upsert (0.9.1)
+      activerecord (>= 5.0, < 6.0)
+      arel (> 7.0, < 10.0)
+      pg (>= 0.18, < 2.0)
     activejob (5.2.0)
       activesupport (= 5.2.0)
       globalid (>= 0.3.6)

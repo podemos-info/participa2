@@ -3,6 +3,8 @@
 module Decidim
   module Votings
     class Vote < Decidim::Votings::ApplicationRecord
+      upsert_keys [:decidim_user_id, :decidim_votings_voting_id]
+
       belongs_to :voting, class_name: "Decidim::Votings::Voting", foreign_key: "decidim_votings_voting_id", inverse_of: :votes
 
       belongs_to :user, class_name: "Decidim::User", foreign_key: "decidim_user_id", inverse_of: false
@@ -19,8 +21,10 @@ module Decidim
         "#{message_hash}/#{message}"
       end
 
-      def confirm!
-        update(status: "confirmed")
+      protected
+
+      def voter_identifier_key
+        "#{Rails.application.secrets.secret_key_base}:#{user.id}:#{voting.id}"
       end
 
       private
@@ -34,7 +38,7 @@ module Decidim
       end
 
       def generate_voter_identifier
-        self.voter_identifier = Digest::SHA256.hexdigest("#{Rails.application.secrets.secret_key_base}:#{user.id}:#{voting_identifier}")
+        self.voter_identifier = Digest::SHA256.hexdigest(voter_identifier_key)
       end
     end
   end

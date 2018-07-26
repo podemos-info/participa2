@@ -6,6 +6,7 @@ require "decidim/votings/engine"
 require "decidim/votings/vote_confirmation"
 require "decidim/votings/vote_confirmation_engine"
 require "decidim/votings/component"
+require "active_record_upsert"
 
 module Decidim
   module Votings
