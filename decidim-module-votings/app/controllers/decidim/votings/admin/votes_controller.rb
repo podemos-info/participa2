@@ -16,9 +16,8 @@ module Decidim
 
         def uniq_voter_ids
           @uniq_voter_ids ||= voting.target_votes
-                                    .pluck(:voter_identifier, :decidim_user_id, :created_at)
-                                    .group_by(&:second).values
-                                    .map { |user_votes| user_votes.min_by(&:last)[0..1].join("\t") }
+                                    .pluck(:voter_identifier, :voting_identifier, :decidim_user_id)
+                                    .map { |vote| vote.join("\t") }
         end
       end
     end
