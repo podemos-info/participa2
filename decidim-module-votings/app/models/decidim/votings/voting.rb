@@ -28,27 +28,23 @@ module Decidim
       scope :order_by_importance, -> { order(:importance) }
 
       def active?
-        started? && !finished?
+        @active ||= started? && !finished?
       end
 
       def started?
-        start_date < Time.zone.now
+        @started ||= start_date < Time.zone.now
       end
 
       def finished?
-        end_date < Time.zone.now
+        @finished ||= end_date < Time.zone.now
       end
 
       def simulating?
-        !started?
-      end
-
-      def vote_class
-        started? ? Vote : SimulatedVote
+        @simulating ||= !started?
       end
 
       def target_votes
-        started? ? votes : simulated_votes.by_simulation_code(simulation_code)
+        simulating? ? simulated_votes.by_simulation_code(simulation_code) : votes
       end
 
       def simulation_key
