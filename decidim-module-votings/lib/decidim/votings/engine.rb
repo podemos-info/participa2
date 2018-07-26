@@ -29,7 +29,7 @@ module Decidim
       initializer "decidim_votings.view_hooks" do
         Decidim.view_hooks.register(:participatory_space_highlighted_elements, priority: Decidim::ViewHooks::HIGH_PRIORITY) do |view_context|
           published_components = Decidim::Component.where(participatory_space: view_context.current_participatory_space).published
-          votings = Decidim::Votings::Voting.topical
+          votings = Decidim::Votings::Voting.active_range(Decidim::Votings.upcoming_hours.hours, Decidim::Votings.closed_hours.hours)
                                             .for_component(published_components)
                                             .limit(Decidim::Votings.config.participatory_space_highlighted_voting_limit)
           next unless votings.any?

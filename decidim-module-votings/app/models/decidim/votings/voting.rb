@@ -24,7 +24,7 @@ module Decidim
       has_many :electoral_districts, foreign_key: "decidim_votings_voting_id", inverse_of: :voting, dependent: :destroy
 
       scope :for_component, ->(component) { where(component: component) }
-      scope :topical, -> { where("start_date <= ? AND ? <= end_date", Decidim::Votings.upcoming_hours.hours.from_now, Decidim::Votings.closed_hours.hours.ago) }
+      scope :active_range, ->(before_start, after_end) { where("start_date <= ? AND ? <= end_date", before_start.from_now, after_end.ago) }
       scope :order_by_importance, -> { order(:importance) }
 
       def active?
