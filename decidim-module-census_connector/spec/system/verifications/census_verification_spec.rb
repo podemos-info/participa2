@@ -8,7 +8,7 @@ require "faker/spanish_document"
 
 describe "Census verification", type: :system do
   let!(:organization) do
-    create(:organization, available_authorizations: ["census"])
+    create(:organization, available_authorizations: %w(census))
   end
 
   let!(:scope) { create(:scope, code: "ES", organization: organization) }
