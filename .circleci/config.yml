@@ -31,6 +31,8 @@ jobs:
     working_directory: /app
 
     steps:
+      - checkout
+
       - attach_workspace:
           at: /app/tmp
 
