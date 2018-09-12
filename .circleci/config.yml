@@ -310,7 +310,7 @@ workflows:
 
   test_and_deploy:
     jobs:
-      - coverage_setup
+      - coverage-setup
 
       - census_connector:
           requires:
