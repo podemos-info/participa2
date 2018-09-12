@@ -348,11 +348,12 @@ workflows:
 
       - main:
           requires:
+            - coverage-setup
+
+      - coverage-upload:
+          requires:
             - census_connector
             - crowdfundings
             - gravity_forms
             - votings
-
-      - coverage-upload:
-          requires:
             - main
