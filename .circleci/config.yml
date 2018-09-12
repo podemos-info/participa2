@@ -28,6 +28,8 @@ jobs:
         environment:
           CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
 
+    working_directory: /app
+
     steps:
       - attach_workspace:
           at: /app/tmp
