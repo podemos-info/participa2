@@ -41,6 +41,7 @@ jobs:
           command: |
             tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json --parts 5 --output tmp/codeclimate.total.json
             tmp/cc-test-reporter upload-coverage --input tmp/codeclimate.total.json
+
   main:
     docker:
       - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
