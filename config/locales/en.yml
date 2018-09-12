@@ -1,3 +1,4 @@
+---
 en:
   content_blocks:
     highlighted:
@@ -7,14 +8,14 @@ en:
     content_blocks:
       hero:
         no_person:
-          title: Sign up in Podemos
           button: Sign up
+          title: Sign up in Podemos
         no_verified:
-          title: Verify your identity
           button: Verify
+          title: Verify your identity
         verified:
-          title: Discover new ways of participate in Podemos
           button: Get involved
+          title: Discover new ways of participate in Podemos
       how_to_participate:
         crowdfundings: Crowdfundings
         crowdfundings_explanation: Your contribution will allow Podemos to keep being independent of banks

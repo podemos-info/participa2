@@ -1,3 +1,4 @@
+---
 es:
   content_blocks:
     highlighted:
@@ -7,14 +8,14 @@ es:
     content_blocks:
       hero:
         no_person:
-          title: Inscríbete en Podemos
           button: Afiliarse
+          title: Inscríbete en Podemos
         no_verified:
-          title: Verifica tu identidad
           button: Verificarse
+          title: Verifica tu identidad
         verified:
-          title: Descubre nuevas formas de participar en Podemos
           button: Apuntarse
+          title: Descubre nuevas formas de participar en Podemos
       how_to_participate:
         crowdfundings: Financiación colectiva
         crowdfundings_explanation: Aporta tu granito de arena para que Podemos siga siendo independiente de los bancos
