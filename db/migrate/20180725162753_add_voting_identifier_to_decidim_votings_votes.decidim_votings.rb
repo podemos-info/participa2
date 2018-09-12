@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_votings (originally 20180725101350)
 
 class AddVotingIdentifierToDecidimVotingsVotes < ActiveRecord::Migration[5.2]

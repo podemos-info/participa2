@@ -5,8 +5,8 @@ inherit_mode:
     - Exclude
 
 inherit_from:
-  - https://raw.githubusercontent.com/decidim/decidim/0.12-stable/.rubocop.yml
-  - https://raw.githubusercontent.com/decidim/decidim/0.12-stable/.rubocop_rails.yml
+  - https://raw.githubusercontent.com/decidim/decidim/0.14-stable/.rubocop.yml
+  - https://raw.githubusercontent.com/decidim/decidim/0.14-stable/.rubocop_rails.yml
 
 AllCops:
   Exclude:
@@ -30,3 +30,10 @@ Rails/Output:
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - "**/spec/**/*"
+
+Rails/BulkChangeTable:
+  Exclude:
+    - "db/migrate/*"
+
+RSpec/ImplicitSubject:
+  Enabled: false
