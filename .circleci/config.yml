@@ -153,7 +153,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-census_connector && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
@@ -204,7 +204,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-crowdfundings && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
@@ -268,7 +268,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-gravity_forms && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
@@ -318,7 +318,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-votings && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
