@@ -49,7 +49,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: bin/rspec
+          command: SIMPLECOV=true bin/rspec
 
       - run:
           name: Run rubocop
@@ -105,7 +105,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-census_connector && bundle exec rspec
+          command: cd decidim-module-census_connector && SIMPLECOV=true bundle exec rspec
 
       - store_artifacts:
           path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
@@ -149,7 +149,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-crowdfundings && bundle exec rspec
+          command: cd decidim-module-crowdfundings && SIMPLECOV=true bundle exec rspec
 
       - store_artifacts:
           path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
@@ -206,7 +206,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-gravity_forms && bundle exec rspec
+          command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec
 
       - store_artifacts:
           path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
@@ -249,7 +249,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-votings && bundle exec rspec
+          command: cd decidim-module-votings && SIMPLECOV=true bundle exec rspec
 
       - store_artifacts:
           path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
