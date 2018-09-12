@@ -3,6 +3,37 @@
 version: 2
 
 jobs:
+  coverage-setup:
+    docker:
+      - image: circleci/ruby:2.5
+
+    steps:
+      - run:
+          name: Download Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > /usr/local/bin/cc-test-reporter
+            chmod +x /usr/local/bin/cc-test-reporter
+
+      - persist_to_workspace:
+          root: /usr/local/bin
+          paths:
+            - cc-test-reporter
+
+  coverage-upload:
+    docker:
+      - image: circleci/ruby:2.5
+        environment:
+          CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
+
+    steps:
+      - attach_workspace:
+          at: /usr/local/bin
+
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            cc-test-reporter sum-coverage /app/tmp/codeclimate.*.json --parts 5 --output /app/tmp/codeclimate.total.json
+            cc-test-reporter upload-coverage --input /app/tmp/codeclimate.total.json
   main:
     docker:
       - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
@@ -50,6 +81,10 @@ jobs:
       - run:
           name: Run tests
           command: SIMPLECOV=true bin/rspec
+
+      - run:
+          name: Generate code coverage report
+          command: cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
 
       - run:
           name: Run rubocop
@@ -107,6 +142,10 @@ jobs:
           name: Run RSpec tests
           command: cd decidim-module-census_connector && SIMPLECOV=true bundle exec rspec
 
+      - run:
+          name: Generate code coverage report
+          command: cd decidim-module-census_connector && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+
       - store_artifacts:
           path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
 
@@ -150,6 +189,10 @@ jobs:
       - run:
           name: Run RSpec tests
           command: cd decidim-module-crowdfundings && SIMPLECOV=true bundle exec rspec
+
+      - run:
+          name: Generate code coverage report
+          command: cd decidim-module-crowdfundings && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
@@ -208,6 +251,10 @@ jobs:
           name: Run RSpec tests
           command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec
 
+      - run:
+          name: Generate code coverage report
+          command: cd decidim-module-gravity_forms && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+
       - store_artifacts:
           path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
 
@@ -251,6 +298,10 @@ jobs:
           name: Run RSpec tests
           command: cd decidim-module-votings && SIMPLECOV=true bundle exec rspec
 
+      - run:
+          name: Generate code coverage report
+          command: cd decidim-module-votings && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+
       - store_artifacts:
           path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
 
@@ -259,10 +310,23 @@ workflows:
 
   test_and_deploy:
     jobs:
-      - census_connector
-      - crowdfundings
-      - gravity_forms
-      - votings
+      - coverage_setup
+
+      - census_connector:
+          requires:
+            - coverage-setup
+
+      - crowdfundings:
+          requires:
+            - coverage-setup
+
+      - gravity_forms:
+          requires:
+            - coverage-setup
+
+      - votings:
+          requires:
+            - coverage-setup
 
       - main:
           requires:
@@ -270,3 +334,7 @@ workflows:
             - crowdfundings
             - gravity_forms
             - votings
+
+      - coverage-upload:
+          requires:
+            - main
