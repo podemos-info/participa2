@@ -51,6 +51,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: /app/tmp
+
       - restore_cache:
           keys:
             - bundler-dependencies-{{ checksum "Gemfile.lock" }}
@@ -120,6 +123,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: /app/tmp
+
       - restore_cache:
           keys:
             - bundler-dependencies-{{ checksum "Gemfile.lock" }}
@@ -168,6 +174,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: /app/tmp
+
       - restore_cache:
           keys:
             - bundler-dependencies-{{ checksum "Gemfile.lock" }}
@@ -214,6 +223,9 @@ jobs:
 
     steps:
       - checkout
+
+      - attach_workspace:
+          at: /app/tmp
 
       - restore_cache:
           keys:
@@ -275,6 +287,9 @@ jobs:
 
     steps:
       - checkout
+
+      - attach_workspace:
+          at: /app/tmp
 
       - restore_cache:
           keys:
