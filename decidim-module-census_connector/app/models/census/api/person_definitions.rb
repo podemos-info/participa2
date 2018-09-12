@@ -4,9 +4,15 @@ require "active_support/concern"
 
 module Census
   module API
-    # Container module for Census API constants
-    module Definitions
+    # Container module for Census API person constants
+    module PersonDefinitions
       extend ActiveSupport::Concern
+
+      PERSON_ATTRIBUTES = %w(first_name last_name1 last_name2
+                             gender born_at
+                             document_type document_id document_scope_code
+                             scope_code address address_scope_code postal_code
+                             membership_level state verification).freeze
 
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze

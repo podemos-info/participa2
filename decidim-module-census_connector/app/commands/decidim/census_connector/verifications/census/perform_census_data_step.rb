@@ -5,47 +5,53 @@ module Decidim
     module Verifications
       module Census
         # A command to create a partial authorization for a user.
-        class PerformCensusDataStep < PerformCensusStep
-          def perform
-            result = if has_no_person?
-                       create_person
-                     else
-                       update_person
-                     end
+        class PerformCensusDataStep < Rectify::Command
+          # Public: Initializes the command.
+          #
+          # form - A Decidim::Form object.
+          # person_proxy - A Decidim::CensusConnector::PersonProxy object
+          def initialize(person_proxy, form)
+            @person_proxy = person_proxy
+            @form = form
+          end
 
-            if result
-              broadcast :ok
-            else
-              add_errors_to_form if census_person_api.errors
+          # Executes the command. Broadcasts these events:
+          #
+          # - :ok when everything is valid.
+          # - :invalid if the form wasn't valid and we couldn't proceed.
+          # - :error when there were errors.
+          #
+          # Returns nothing.
+          def call
+            return broadcast(:invalid) if form.invalid?
 
-              broadcast :invalid, census_person_api.global_error
-            end
+            save_person
+            add_errors_to_form
+            broadcast(result)
           end
 
           private
 
-          def create_person
-            person_id = census_person_api.create(person_params.merge(origin_qualified_id: origin_qualified_id))
+          attr_reader :form, :person_proxy, :result, :info
 
-            return false if person_id.blank?
-
-            authorization.update!(metadata: { "person_id" => person_id })
-
-            true
-          end
-
-          def update_person
-            census_person_api.update(person_params)
+          def save_person
+            @result, @info = if person_proxy.has_person?
+                               person_proxy.update(person_params)
+                             else
+                               person_proxy.create(person_params.merge(origin_qualified_id: origin_qualified_id))
+                             end
           end
 
           def add_errors_to_form
-            ErrorConverter.new(
-              form,
-              census_person_api.errors,
+            ErrorConverter.new(form, info[:errors], attribute_form_field_mappings).run if result == :invalid
+          end
+
+          def attribute_form_field_mappings
+            {
               document_scope: :document_scope_id,
               address_scope: :address_scope_id,
               scope: :scope_id
-            ).run
+            }
           end
 
           def person_params
@@ -73,7 +79,7 @@ module Decidim
             "#{user.id}@decidim"
           end
 
-          delegate :user, to: :authorization
+          delegate :user, to: :person_proxy
           delegate :local_scope, to: :form
           delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, :born_at, :gender, :address, :postal_code, to: :form
 
