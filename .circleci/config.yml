@@ -11,11 +11,11 @@ jobs:
       - run:
           name: Download Code Climate test-reporter
           command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > /usr/local/bin/cc-test-reporter
-            chmod +x /usr/local/bin/cc-test-reporter
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > tmp/cc-test-reporter
+            chmod +x tmp/cc-test-reporter
 
       - persist_to_workspace:
-          root: /usr/local/bin
+          root: tmp
           paths:
             - cc-test-reporter
 
@@ -27,13 +27,13 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: /usr/local/bin
+          at: /app/tmp
 
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            cc-test-reporter sum-coverage /app/tmp/codeclimate.*.json --parts 5 --output /app/tmp/codeclimate.total.json
-            cc-test-reporter upload-coverage --input /app/tmp/codeclimate.total.json
+            tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json --parts 5 --output tmp/codeclimate.total.json
+            tmp/cc-test-reporter upload-coverage --input tmp/codeclimate.total.json
   main:
     docker:
       - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
@@ -84,7 +84,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - run:
           name: Run rubocop
@@ -144,7 +144,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-census_connector && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+          command: cd decidim-module-census_connector && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
@@ -192,7 +192,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-crowdfundings && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+          command: cd decidim-module-crowdfundings && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
@@ -253,7 +253,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-gravity_forms && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+          command: cd decidim-module-gravity_forms && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
@@ -300,7 +300,7 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: cd decidim-module-votings && cc-test-reporter format-coverage --output /app/tmp/codeclimate.$CIRCLE_JOB.json
+          command: cd decidim-module-votings && tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
       - store_artifacts:
           path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
