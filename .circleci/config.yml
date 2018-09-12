@@ -24,7 +24,7 @@ jobs:
 
   coverage-upload:
     docker:
-      - image: circleci/ruby:2.5
+      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
         environment:
           CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
 
