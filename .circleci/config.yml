@@ -11,8 +11,6 @@ jobs:
       - run:
           name: Download Code Climate test-reporter
           command: |
-            ls -la .
-            ls -la /usr/local
             mkdir tmp
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > tmp/cc-test-reporter
             chmod +x tmp/cc-test-reporter
