@@ -11,34 +11,29 @@ jobs:
       - run:
           name: Download Code Climate test-reporter
           command: |
-            mkdir tmp
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > tmp/cc-test-reporter
-            chmod +x tmp/cc-test-reporter
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64 > /tmp/cc-test-reporter
+            chmod +x /tmp/cc-test-reporter
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - cc-test-reporter
 
   coverage-upload:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: circleci/ruby:2.5
         environment:
           CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
 
-    working_directory: /app
-
     steps:
-      - checkout
-
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json --parts 5 --output tmp/codeclimate.total.json
-            tmp/cc-test-reporter upload-coverage --input tmp/codeclimate.total.json
+            /tmp/cc-test-reporter sum-coverage /tmp/codeclimate.*.json --parts 5 --output /tmp/codeclimate.total.json
+            /tmp/cc-test-reporter upload-coverage --input /tmp/codeclimate.total.json
 
   main:
     docker:
@@ -57,7 +52,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - restore_cache:
           keys:
@@ -95,10 +90,10 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: /tmp/cc-test-reporter format-coverage --output /tmp/codeclimate.$CIRCLE_JOB.json
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - codeclimate.*.json
 
@@ -134,7 +129,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - restore_cache:
           keys:
@@ -163,10 +158,10 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: /tmp/cc-test-reporter format-coverage --output /tmp/codeclimate.$CIRCLE_JOB.json
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - codeclimate.*.json
 
@@ -190,7 +185,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - restore_cache:
           keys:
@@ -219,10 +214,10 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: /tmp/cc-test-reporter format-coverage --output /tmp/codeclimate.$CIRCLE_JOB.json
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - codeclimate.*.json
 
@@ -245,7 +240,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - restore_cache:
           keys:
@@ -288,10 +283,10 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: /tmp/cc-test-reporter format-coverage --output /tmp/codeclimate.$CIRCLE_JOB.json
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - codeclimate.*.json
 
@@ -314,7 +309,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: /app/tmp
+          at: /tmp
 
       - restore_cache:
           keys:
@@ -343,10 +338,10 @@ jobs:
 
       - run:
           name: Generate code coverage report
-          command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+          command: /tmp/cc-test-reporter format-coverage --output /tmp/codeclimate.$CIRCLE_JOB.json
 
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - codeclimate.*.json
 
