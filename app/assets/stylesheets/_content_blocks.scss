@@ -1,0 +1,8 @@
+.highlighted.extended.hero{
+  &::after{
+    background: linear-gradient(rgba(26, 24, 29, .3), rgb(250,250,250) 95%);
+  }
+  .heading1{
+    margin-bottom: 2rem;
+  }
+}

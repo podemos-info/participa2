@@ -1,0 +1,22 @@
+es:
+  content_blocks:
+    highlighted:
+      name: Actividad destacada
+      visit_space: Visitar el espacio
+  decidim:
+    content_blocks:
+      hero:
+        no_person:
+          title: Inscríbete en Podemos
+          button: Afiliarse
+        no_verified:
+          title: Verifica tu identidad
+          button: Verificarse
+        verified:
+          title: Descubre nuevas formas de participar en Podemos
+          button: Apuntarse
+      how_to_participate:
+        crowdfundings: Financiación colectiva
+        crowdfundings_explanation: Aporta tu granito de arena para que Podemos siga siendo independiente de los bancos
+        votings: Votaciones
+        votings_explanation: Decide con tu voto el rumbo que quieres que tome Podemos.
