@@ -48,6 +48,8 @@ jobs:
         environment:
           POSTGRES_USER: postgres
 
+    working_directory: /app
+
     steps:
       - checkout
 
