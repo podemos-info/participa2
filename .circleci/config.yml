@@ -99,6 +99,11 @@ jobs:
           name: Generate code coverage report
           command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.*.json
+
       - run:
           name: Run rubocop
           command: bin/rubocop
@@ -162,6 +167,11 @@ jobs:
           name: Generate code coverage report
           command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.*.json
+
       - store_artifacts:
           path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
 
@@ -212,6 +222,11 @@ jobs:
       - run:
           name: Generate code coverage report
           command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.*.json
 
       - store_artifacts:
           path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
@@ -277,6 +292,11 @@ jobs:
           name: Generate code coverage report
           command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
 
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.*.json
+
       - store_artifacts:
           path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
 
@@ -326,6 +346,11 @@ jobs:
       - run:
           name: Generate code coverage report
           command: tmp/cc-test-reporter format-coverage --output tmp/codeclimate.$CIRCLE_JOB.json
+
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.*.json
 
       - store_artifacts:
           path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
