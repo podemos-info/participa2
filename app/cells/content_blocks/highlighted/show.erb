@@ -1,0 +1,27 @@
+<% person_participatory_spaces.each do |participatory_space| %>
+  <% with_participatory_space(participatory_space) do %>
+    <section>
+      <div class="highlighted extended hero" style="background-image:url(<%= participatory_space.banner_image.url %>)">
+        <div class="hero__container">
+          <div class="columns small-centered large-10">
+            <div class="row">
+              <h2 class="text-highlight heading1">
+                <%= translated_attribute participatory_space.title %>
+              </h2>
+            </div>
+            <div class="row">
+              <%= link_to t("content_blocks.highlighted.visit_space"), Decidim::ResourceLocatorPresenter.new(participatory_space).path, class: "button large secondary button--sc " %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns small-centered large-10">
+          <div class="row small-up-1 medium-up-2 card-grid">
+            <%= render_hook :participatory_space_highlighted_elements %>
+          </div>
+        </div>
+      </div>
+    </section>
+  <% end %>
+<% end %>

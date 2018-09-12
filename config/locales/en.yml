@@ -1,0 +1,23 @@
+---
+en:
+  content_blocks:
+    highlighted:
+      name: Highlighted activity
+      visit_space: Visit the space
+  decidim:
+    content_blocks:
+      hero:
+        no_person:
+          button: Sign up
+          title: Sign up in Podemos
+        no_verified:
+          button: Verify
+          title: Verify your identity
+        verified:
+          button: Get involved
+          title: Discover new ways of participate in Podemos
+      how_to_participate:
+        crowdfundings: Crowdfundings
+        crowdfundings_explanation: Your contribution will allow Podemos to keep being independent of banks
+        votings: Votings
+        votings_explanation: Decide with your vote the direction that Podemos will take

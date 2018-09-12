@@ -33,6 +33,7 @@ workers 0
 # preload_app!
 
 APP_ROOT = ENV["PWD"]
+SHARED_ROOT = File.expand_path("../shared", APP_ROOT)
 
 directory APP_ROOT
 rackup "#{APP_ROOT}/config.ru"
@@ -45,7 +46,7 @@ state_path "#{APP_ROOT}/tmp/pids/puma.state"
 if current_environment == "development"
   port 3000
 else
-  bind "unix://#{APP_ROOT}/tmp/sockets/puma.sock"
+  bind "unix://#{SHARED_ROOT}/tmp/sockets/puma.sock"
   stdout_redirect "#{APP_ROOT}/log/puma_access.log", "#{APP_ROOT}/log/puma_error.log", true
 end
 

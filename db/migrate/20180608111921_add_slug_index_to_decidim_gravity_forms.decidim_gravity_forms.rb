@@ -1,4 +1,5 @@
 # This migration comes from decidim_gravity_forms (originally 20180608105449)
+
 # frozen_string_literal: true
 
 class AddSlugIndexToDecidimGravityForms < ActiveRecord::Migration[5.1]

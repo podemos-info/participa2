@@ -11,6 +11,7 @@ data:
       line_width: -1
 
   read:
+    - config/locales/%{locale}.yml
     - decidim-*/config/locales/%{locale}.yml
 
   write:
@@ -67,26 +68,28 @@ search:
 ignore_unused:
   - activemodel.attributes.*
   - activemodel.errors.models.contribution.attributes.*
+  - content_blocks.*.name
   - decidim.authorization_handlers.admin.census.help
   - decidim.authorization_handlers.census.*
   - decidim.authorization_modals.show.*
+  - decidim.census_connector.verifications.census.extra_explanation*
   - decidim.components.crowdfundings.*
   - decidim.components.gravity_forms.*
   - decidim.components.votings.*
-  - decidim.form_builder.support_tag.other
-  - decidim.census_connector.verifications.census.extra_explanation*
-  - decidim.verifications.authorizations.first_login.*
+  - decidim.crowdfundings.admin.models.*
   - decidim.crowdfundings.campaigns.show.change_*_contribution
   - decidim.crowdfundings.campaigns.show.current_*_recurrent_support
   - decidim.crowdfundings.models.*
-  - decidim.crowdfundings.admin.models.*
-  - decidim.votings.models.*
+  - decidim.form_builder.support_tag.other
+  - decidim.verifications.authorizations.first_login.*
   - decidim.votings.admin.models.*
+  - decidim.votings.models.*
 
 ignore_missing:
   - decidim.authorization_handlers.census.fields.*
   - decidim.core.actions.*
   - decidim.devise.*
+  - decidim.pages.home.*
   - decidim.participatory_processes.scopes.global
   - decidim.scopes.prompt
   - decidim.verifications.authorizations.new.authorize

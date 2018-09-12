@@ -30,3 +30,8 @@ end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
 Rails.application.config.i18n.default_locale = Decidim.default_locale
+
+Decidim.content_blocks.register(:homepage, :highlighted) do |content_block|
+  content_block.cell = "content_blocks/highlighted"
+  content_block.public_name_key = "content_blocks.highlighted.name"
+end

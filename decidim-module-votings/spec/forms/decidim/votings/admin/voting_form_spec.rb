@@ -26,8 +26,8 @@ module Decidim
         let(:title) { Decidim::Faker::Localized.sentence(3) }
         let(:description) { Decidim::Faker::Localized.sentence(3) }
         let(:image) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
-        let(:start_date) { (DateTime.current + 1.day) }
-        let(:end_date) { (DateTime.current + 2.days) }
+        let(:start_date) { (Time.current + 1.day) }
+        let(:end_date) { (Time.current + 2.days) }
         let(:scope) { create :scope, organization: organization }
         let(:scope_id) { scope.id }
         let(:importance) { ::Faker::Number.number(2).to_i }

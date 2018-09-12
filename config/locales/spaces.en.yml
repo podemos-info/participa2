@@ -1,8 +1,5 @@
-es:
-  pages:
-    home:
-      statistics:
-        assemblies_count: Spaces
+---
+en:
   decidim:
     admin:
       assemblies:
@@ -90,3 +87,7 @@ es:
             other: "%{count} spaces"
       assembly_header:
         assembly_menu_item: The space
+  pages:
+    home:
+      statistics:
+        assemblies_count: Spaces

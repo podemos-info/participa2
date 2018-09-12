@@ -6,7 +6,7 @@ require "decidim/dev"
 FactoryBot.define do
   factory :voting_component, parent: :component do
     name { Decidim::Components::Namer.new(participatory_space.organization.available_locales, :votings).i18n_name }
-    manifest_name :votings
+    manifest_name { :votings }
     participatory_space { create(:participatory_process, :with_steps, organization: organization) }
 
     trait :participatory_process do
@@ -19,7 +19,7 @@ FactoryBot.define do
   factory :voting, class: "Decidim::Votings::Voting" do
     title { Decidim::Faker::Localized.sentence(3) }
     description { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
-    simulation_code 0
+    simulation_code { 0 }
     component { create(:voting_component) }
     start_date { Time.zone.now - 2.days }
     end_date { Time.zone.now + 2.days }
@@ -48,7 +48,7 @@ FactoryBot.define do
     scope
     voting
 
-    voting_identifier 999
+    voting_identifier { 999 }
   end
 
   factory :vote, class: "Decidim::Votings::Vote" do

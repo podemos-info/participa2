@@ -1,8 +1,5 @@
+---
 es:
-  pages:
-    home:
-      statistics:
-        assemblies_count: Espacios
   decidim:
     admin:
       assemblies:
@@ -74,7 +71,7 @@ es:
       show:
         assembly_type: Tipo de espacio
         children: Espacios
-        target: '¿A quién va dirigido?'
+        target: "¿A quién va dirigido?"
       statistics:
         assemblies_count: Espacios
     menu:
@@ -90,3 +87,7 @@ es:
             other: "%{count} espacios"
       assembly_header:
         assembly_menu_item: El espacio
+  pages:
+    home:
+      statistics:
+        assemblies_count: Espacios

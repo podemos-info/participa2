@@ -37,11 +37,11 @@ module Decidim
         }
       end
 
-      it { is_expected.to be_valid }
-
       before do
         stub_totals_request(0)
       end
+
+      it { is_expected.to be_valid }
 
       describe "direct_debit" do
         let(:payment_method_type) { "direct_debit" }

@@ -9,7 +9,7 @@ FactoryBot.define do
 
   factory :gravity_forms_component, parent: :component do
     name { Decidim::Components::Namer.new(participatory_space.organization.available_locales, :gravity_forms).i18n_name }
-    manifest_name :gravity_forms
+    manifest_name { :gravity_forms }
     participatory_space { create(:participatory_process, :with_steps) }
   end
 
@@ -17,8 +17,8 @@ FactoryBot.define do
     title { Decidim::Faker::Localized.sentence }
     description { Decidim::Faker::Localized.sentence(3) }
     slug { generate(:gravity_form_slug) }
-    form_number 1
-    require_login false
+    form_number { 1 }
+    require_login { false }
     component { create(:gravity_forms_component) }
   end
 end
