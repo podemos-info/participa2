@@ -11,7 +11,7 @@ FactoryBot.define do
         :crowdfundings
       ).i18n_name
     end
-    manifest_name :crowdfundings
+    manifest_name { :crowdfundings }
 
     trait :participatory_process do
       participatory_space do
@@ -36,9 +36,9 @@ FactoryBot.define do
         Decidim::Faker::Localized.paragraph(5)
       end
     end
-    default_amount 50
-    minimum_custom_amount 500
-    target_amount 10_000
+    default_amount { Decidim::Crowdfundings.selectable_amounts.first }
+    minimum_custom_amount { 5 }
+    target_amount { 1_000 }
     amounts { Decidim::Crowdfundings.selectable_amounts }
     component { create(:crowdfundings_component, :participatory_process) }
 
@@ -51,39 +51,39 @@ FactoryBot.define do
           class: Decidim::Crowdfundings::Contribution do
     campaign { create(:campaign) }
     user { create(:user, organization: campaign.component.organization) }
-    amount 50
+    amount { 50 }
     last_order_request_date { Time.zone.today.beginning_of_month }
 
     trait :punctual do
-      frequency "punctual"
+      frequency { "punctual" }
     end
 
     trait :monthly do
-      frequency "monthly"
+      frequency { "monthly" }
     end
 
     trait :quarterly do
-      frequency "quarterly"
+      frequency { "quarterly" }
     end
 
     trait :annual do
-      frequency "annual"
+      frequency { "annual" }
     end
 
     trait :pending do
-      state "pending"
+      state { "pending" }
     end
 
     trait :accepted do
-      state "accepted"
+      state { "accepted" }
     end
 
     trait :rejected do
-      state "rejected"
+      state { "rejected" }
     end
 
     trait :paused do
-      state "paused"
+      state { "paused" }
     end
   end
 end

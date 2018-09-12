@@ -167,9 +167,6 @@ describe "Gravity forms", type: :system do
       create(
         :gravity_form,
         component: component,
-        title: "My cuki form",
-        description: "Fill this in to become super cool",
-        slug: "cuki-form",
         form_number: 1
       )
     end
@@ -184,10 +181,6 @@ describe "Gravity forms", type: :system do
 
     it "shows gravity form title" do
       expect(page).to have_i18n_content(gravity_form.title)
-    end
-
-    it "shows grativy form description" do
-      expect(page).to have_i18n_content(gravity_form.description)
     end
 
     it "shows gravity form content" do
