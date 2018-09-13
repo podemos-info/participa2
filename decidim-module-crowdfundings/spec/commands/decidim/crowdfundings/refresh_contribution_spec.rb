@@ -5,19 +5,22 @@ require "spec_helper"
 module Decidim
   module Crowdfundings
     describe RefreshContribution do
-      subject { described_class.new(contribution) }
+      subject { described_class.new(payments_proxy, contribution) }
 
-      let!(:contribution) do
+      let(:payments_proxy) { create(:payments_proxy, organization: contribution.campaign.organization) }
+      let(:payment_method) { create(:payment_method) }
+      let(:contribution) do
         create(
           :contribution,
           :punctual,
-          :pending
+          :pending,
+          payment_method_id: payment_method.id
         )
       end
 
       context "when census service is down" do
         before do
-          stub_payment_method_service_down
+          stub_payments_service_down(payments_proxy)
         end
 
         it "do not updates the contribution" do
@@ -32,41 +35,28 @@ module Decidim
       end
 
       context "when everything is ok" do
-        let(:payment_method) do
-          {
-            id: 1,
-            name: "Existing payment method",
-            type: "PaymentMethods::DirectDebit",
-            status: status
-          }
-        end
-
         before do
           stub_payment_method(payment_method)
           subject.call
           contribution.reload
         end
 
-        context "when active" do
-          let(:status) { "active" }
-
-          it "Order status is accepted" do
-            expect(contribution).to be_accepted
-          end
+        it "sets contribution as accepted" do
+          expect(contribution).to be_accepted
         end
 
         context "when inactive" do
-          let(:status) { "inactive" }
+          let(:payment_method) { create(:payment_method, :inactive) }
 
-          it "Order status is rejected" do
+          it "sets contribution as inactive" do
             expect(contribution).to be_rejected
           end
         end
 
-        context "when pending" do
-          let(:status) { "pending" }
+        context "when incomplete" do
+          let(:payment_method) { create(:payment_method, :incomplete) }
 
-          it "Order status keeps unchanged" do
+          it "lets contribution as pending" do
             expect(contribution).to be_pending
           end
         end

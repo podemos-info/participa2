@@ -45,14 +45,19 @@ FactoryBot.define do
     trait :assembly do
       component { create(:crowdfundings_component, :assembly) }
     end
+
+    trait :allow_recurrent do
+      target_amount { nil }
+    end
   end
 
   factory :contribution,
           class: Decidim::Crowdfundings::Contribution do
     campaign { create(:campaign) }
-    user { create(:user, organization: campaign.component.organization) }
+    user { create(:user, :with_person, organization: campaign.component.organization) }
     amount { 50 }
     last_order_request_date { Time.zone.today.beginning_of_month }
+    payment_method_id { 1 }
 
     trait :punctual do
       frequency { "punctual" }
@@ -84,6 +89,53 @@ FactoryBot.define do
 
     trait :paused do
       state { "paused" }
+    end
+  end
+
+  sequence(:payment_method_id)
+
+  factory :payment_method, class: OpenStruct do
+    skip_create
+
+    id { generate(:payment_method_id) }
+    name { Faker::Lorem.sentence(1, true, 4) }
+    type { %w(PaymentMethods::DirectDebit PaymentMethods::CreditCard).sample }
+    status { "active" }
+    verified? { false }
+
+    trait :inactive do
+      status { "inactive" }
+    end
+
+    trait :incomplete do
+      status { "incomplete" }
+    end
+
+    trait :verified do
+      verified? { true }
+    end
+
+    trait :direct_debit do
+      type { "direct_debit" }
+    end
+
+    trait :credit_card do
+      type { "credit_card_external" }
+    end
+  end
+
+  factory :payments_proxy, class: "Decidim::Crowdfundings::PaymentsProxy" do
+    skip_create
+
+    transient do
+      organization { create(:organization) }
+      person_proxy { create(:person_proxy, organization: organization) }
+    end
+
+    initialize_with { new(person_proxy) }
+
+    trait :without_person do
+      person_proxy { nil }
     end
   end
 end

@@ -53,7 +53,7 @@ module Decidim
           end
 
           before do
-            stub_totals_request(0)
+            stub_orders_total(0)
           end
 
           it "Calls renew command for all pending contributions" do
@@ -74,7 +74,7 @@ module Decidim
           end
 
           before do
-            stub_totals_request(0)
+            stub_orders_total(0)
           end
 
           it "Calls renew command for all pending contributions" do
@@ -95,7 +95,7 @@ module Decidim
           end
 
           before do
-            stub_totals_request(0)
+            stub_orders_total(0)
           end
 
           it "Calls renew command for all pending contributions" do

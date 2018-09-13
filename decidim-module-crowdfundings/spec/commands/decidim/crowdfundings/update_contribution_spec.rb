@@ -8,6 +8,7 @@ module Decidim
       subject { described_class.new(form) }
 
       let(:organization) { create(:organization) }
+      let(:payments_proxy) { create(:payments_proxy, organization: organization) }
       let(:participatory_process) { create :participatory_process, organization: organization }
       let(:current_component) { create :crowdfundings_component, participatory_space: participatory_process }
       let(:campaign) { create(:campaign, component: current_component) }
@@ -26,7 +27,8 @@ module Decidim
           current_component: current_component,
           campaign: campaign,
           contribution: contribution,
-          current_user: user
+          current_user: user,
+          payments_proxy: payments_proxy
         }
       end
 
@@ -42,22 +44,12 @@ module Decidim
       end
 
       before do
-        stub_totals_request(0)
+        stub_orders_total(0)
       end
 
       context "when the form is not valid" do
         before do
-          allow(form).to receive(:invalid?).and_return(true)
-        end
-
-        it "is not valid" do
-          expect { subject.call }.to broadcast(:invalid)
-        end
-      end
-
-      context "when census service is down" do
-        before do
-          stub_totals_service_down
+          allow(form).to receive(:valid?).and_return(false)
         end
 
         it "is not valid" do
@@ -67,7 +59,7 @@ module Decidim
 
       context "when everything is ok" do
         before do
-          stub_totals_request(0)
+          stub_orders_total(0)
         end
 
         it "broadcasts ok" do

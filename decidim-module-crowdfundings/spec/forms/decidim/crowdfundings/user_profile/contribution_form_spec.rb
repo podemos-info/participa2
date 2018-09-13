@@ -8,8 +8,9 @@ describe Decidim::Crowdfundings::UserProfile::ContributionForm do
   end
 
   let(:campaign) { create(:campaign) }
-
-  let(:current_user) { create(:user, organization: campaign.organization) }
+  let(:organization) { campaign.organization }
+  let(:payments_proxy) { create(:payments_proxy, organization: organization) }
+  let(:current_user) { create(:user, organization: organization) }
   let(:amount) { ::Faker::Number.number(4) }
   let(:frequency) { "punctual" }
   let(:user_annual_accumulated) { 0 }
@@ -22,15 +23,16 @@ describe Decidim::Crowdfundings::UserProfile::ContributionForm do
 
   let(:context) do
     {
-      current_organization: campaign.organization,
+      current_organization: organization,
       current_component: campaign.component,
       current_user: current_user,
-      campaign: campaign
+      campaign: campaign,
+      payments_proxy: payments_proxy
     }
   end
 
   before do
-    stub_totals_request(user_annual_accumulated)
+    stub_orders_total(user_annual_accumulated)
   end
 
   it { is_expected.to be_valid }

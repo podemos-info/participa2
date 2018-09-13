@@ -12,18 +12,12 @@ module Decidim
           :contribution,
           count,
           :punctual,
-          :pending
+          :pending,
+          payment_method_id: payment_method.id
         )
       end
 
-      let(:payment_method) do
-        {
-          id: 1,
-          name: "Existing payment method",
-          type: "PaymentMethods::DirectDebit",
-          status: "active"
-        }
-      end
+      let(:payment_method) { create(:payment_method) }
 
       before do
         stub_payment_method(payment_method)

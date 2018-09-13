@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Explore contributions", type: :system do
   let(:campaign) { create(:campaign) }
   let(:organization) { campaign.organization }
-  let(:user) { create :user, :confirmed, organization: organization }
+  let(:user) { create :user, :with_person, :confirmed, organization: organization }
 
   before do
     switch_to_host(organization.host)
