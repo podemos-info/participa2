@@ -20,7 +20,7 @@ module Decidim
         def update
           enforce_permission_to :update, :contribution, contribution: contribution
 
-          UpdateContribution.call(form_from_params) do
+          UpdateContribution.call(contribution_form) do
             on(:ok) do
               redirect_to(
                 session.delete(return_back_session_key) || contribution_path,
@@ -28,9 +28,9 @@ module Decidim
               )
             end
 
-            on(:invalid) do |form|
+            on(:invalid) do
               flash.now.alert = I18n.t("decidim.crowdfundings.user_profile.contributions.update.fail")
-              render action: :edit, locals: { contribution_form: form }
+              render :edit
             end
           end
         end
@@ -85,17 +85,19 @@ module Decidim
         end
 
         def contribution_form
-          form(Decidim::Crowdfundings::UserProfile::ContributionForm).from_model(
-            contribution,
-            campaign: contribution.campaign
-          )
+          @contribution_form ||= if params.include?(:contribution)
+                                   form(Decidim::Crowdfundings::UserProfile::ContributionForm).from_params(params, **form_context)
+                                 else
+                                   form(Decidim::Crowdfundings::UserProfile::ContributionForm).from_model(contribution, **form_context)
+                                 end
         end
 
-        def form_from_params
-          form(Decidim::Crowdfundings::UserProfile::ContributionForm)
-            .from_params(params,
-                         campaign: campaign,
-                         contribution: contribution)
+        def form_context
+          {
+            campaign: campaign,
+            contribution: contribution,
+            payments_proxy: payments_proxy
+          }
         end
 
         def return_back_session_key

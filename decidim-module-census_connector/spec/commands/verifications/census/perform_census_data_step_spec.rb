@@ -77,6 +77,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors.first).to eq([:document_id, "can't be blank"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when document id invalid" do
@@ -93,6 +97,10 @@ module Decidim::CensusConnector
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
         expect(form.errors.first).to eq([:document_id, "is invalid"])
+      end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
 
@@ -111,6 +119,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors.first).to eq([:first_name, "can't be blank"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when first last name not present" do
@@ -127,6 +139,10 @@ module Decidim::CensusConnector
       it "adds the API error to the form" do
         expect(form.errors.count).to eq(1)
         expect(form.errors.first).to eq([:last_name1, "can't be blank"])
+      end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
 
@@ -145,6 +161,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors[:born_at]).to eq(["can't be blank"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when gender not present" do
@@ -161,6 +181,10 @@ module Decidim::CensusConnector
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
         expect(form.errors[:gender]).to eq(["can't be blank"])
+      end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
 
@@ -179,6 +203,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors[:gender]).to eq(["is not included in the list"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when address not present" do
@@ -195,6 +223,10 @@ module Decidim::CensusConnector
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
         expect(form.errors[:address]).to eq(["can't be blank"])
+      end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
 
@@ -213,6 +245,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors[:postal_code]).to eq(["can't be blank"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when address_scope_id not present" do
@@ -229,6 +265,10 @@ module Decidim::CensusConnector
       it "adds the API errors to the form" do
         expect(form.errors.count).to eq(1)
         expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
+      end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
 
@@ -247,6 +287,10 @@ module Decidim::CensusConnector
         expect(form.errors.count).to eq(1)
         expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
       end
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
     end
 
     context "when document_scope_id not present" do
@@ -262,7 +306,7 @@ module Decidim::CensusConnector
             body: hash_including(document_scope_code: address_scope.code)
           ).to_return(status: 202, body: "{}")
 
-          subject.call
+          expect { subject.call }.to broadcast(:ok)
 
           expect(stub).to have_been_requested
         end
@@ -278,7 +322,7 @@ module Decidim::CensusConnector
             body: hash_including(document_scope_code: local_scope.code)
           ).to_return(status: 202, body: "{}")
 
-          subject.call
+          expect { subject.call }.to broadcast(:ok)
 
           expect(stub).to have_been_requested
         end
@@ -298,7 +342,7 @@ module Decidim::CensusConnector
             body: hash_including(document_scope_code: address_scope.code)
           ).to_return(status: 202, body: "{}")
 
-          subject.call
+          expect { subject.call }.to broadcast(:ok)
 
           expect(stub).to have_been_requested
         end
@@ -319,6 +363,10 @@ module Decidim::CensusConnector
           expect(form.errors.count).to eq(1)
           expect(form.errors[:document_scope_id]).to eq(["can't be blank"])
         end
+
+        it "broadcasts :invalid" do
+          expect { subject.call }.to broadcast(:invalid)
+        end
       end
     end
 
@@ -338,6 +386,10 @@ module Decidim::CensusConnector
           expect(form.errors.count).to eq(1)
           expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
         end
+
+        it "broadcasts :invalid" do
+          expect { subject.call }.to broadcast(:invalid)
+        end
       end
 
       context "and address_scope_id present" do
@@ -351,7 +403,7 @@ module Decidim::CensusConnector
               body: hash_including(scope_code: local_scope.code)
             ).to_return(status: 202, body: "{}")
 
-            subject.call
+            expect { subject.call }.to broadcast(:ok)
 
             expect(stub).to have_been_requested
           end
@@ -371,6 +423,10 @@ module Decidim::CensusConnector
           it "adds the API errors to the form" do
             expect(form.errors.count).to eq(1)
             expect(form.errors[:scope_id]).to eq(["can't be blank"])
+          end
+
+          it "broadcasts :invalid" do
+            expect { subject.call }.to broadcast(:invalid)
           end
         end
       end

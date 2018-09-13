@@ -10,11 +10,13 @@ module Decidim
           end
 
           def authorize
-            return [:missing, action: :authorize] unless authorization
+            return [:missing, action: :authorize] unless authorization && person
 
             @status_code = :ok
             @data = {}
             authorize_state && authorize_age && authorize_document_type && authorize_census_closure && authorize_scope && authorize_verification
+
+            check_service_status
 
             [@status_code, @data]
           end
@@ -87,15 +89,23 @@ module Decidim
             census_options.authorizing_by_scope? && current_scope
           end
 
+          def check_service_status
+            return true unless person_proxy&.service_status == false
+            @status_code = :unauthorized
+            @data.except! :action, :cancel
+            set_explanation(context: "census.api.messages", key: "error")
+            false
+          end
+
           def unauthorized(explanation_key, explanation_params = {})
             @status_code = :unauthorized
-            add_explanation(explanation_key, explanation_params)
+            set_explanation(key: explanation_key, params: explanation_params)
             false
           end
 
           def not_enabled(explanation_key, explanation_params = {})
             @status_code = :not_enabled
-            add_explanation(explanation_key, explanation_params)
+            set_explanation(key: explanation_key, params: explanation_params)
             false
           end
 
@@ -103,7 +113,7 @@ module Decidim
             @status_code = :incomplete
             @data[:action] = :complete
             @data[:cancel] = true
-            add_explanation(explanation_key, explanation_params)
+            set_explanation(key: explanation_key, params: explanation_params)
             false
           end
 
@@ -111,12 +121,12 @@ module Decidim
             @status_code = :not_verified
             @data[:action] = :verify
             @data[:cancel] = true
-            add_explanation(explanation_key, explanation_params)
+            set_explanation(key: explanation_key, params: explanation_params)
             false
           end
 
-          def add_explanation(explanation_key, explanation_params)
-            @data[:extra_explanation] = { key: "decidim.authorization_handlers.census.extra_explanation.#{explanation_key}", params: explanation_params }
+          def set_explanation(key:, params: {}, context: "decidim.authorization_handlers.census.extra_explanation")
+            @data[:extra_explanation] = { key: "#{context}.#{key}", params: params }
           end
 
           def current_scope
@@ -126,12 +136,16 @@ module Decidim
           end
 
           def person
-            @person ||= Decidim::CensusConnector::PersonProxy.new(authorization)&.person if authorization
+            @person ||= person_proxy&.person
+          end
+
+          def person_proxy
+            @person_proxy || Decidim::CensusConnector::PersonProxy.new(authorization) if authorization
           end
 
           def census_closure_person
             @census_closure_person ||= if authorizing_by_census_closure?
-                                         Decidim::CensusConnector::PersonProxy.new(authorization, version_at: census_closure)&.person if authorization
+                                         Decidim::CensusConnector::PersonProxy.new(authorization, version_at: census_closure).person if authorization
                                        else
                                          person
                                        end

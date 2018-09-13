@@ -6,12 +6,14 @@
 
     <div class="card__support__data">
       <span class="extra__suport-number">
-        <%= total_collected(campaign, user) %>
+        <%= total_collected(campaign) %>
       </span>
-      <span class="extra__suport-text">
-        <%=t '.overall_percentage' %>: <%= percentage campaign, user %>
-      </span>
-      <%= percentage_tag campaign, user %>
+      <% if campaign.target_amount.present? %>
+        <span class="extra__suport-text">
+          <%=t '.overall_percentage' %>: <%= percentage campaign, user %>
+        </span>
+        <%= percentage_tag campaign, user %>
+      <% end %>
     </div>
   </div>
 </div>

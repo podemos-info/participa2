@@ -9,6 +9,7 @@ module Decidim
       # Note that it inherits from `Decidim::ApplicationController`, which
       # override its layout and provide all kinds of useful methods.
       class ApplicationController < Decidim::ApplicationController
+        include CensusPaymentsContext
         include Decidim::UserProfile
         include FormFactory
 

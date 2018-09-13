@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Resume contribution", type: :system do
   let(:campaign) { create(:campaign) }
   let(:organization) { campaign.organization }
-  let(:user) { create :user, :confirmed, organization: organization }
+  let(:user) { create :user, :with_person, :confirmed, organization: organization }
 
   let!(:contribution) do
     create(:contribution,

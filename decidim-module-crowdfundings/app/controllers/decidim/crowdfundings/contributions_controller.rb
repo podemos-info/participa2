@@ -5,22 +5,20 @@ module Decidim
     # Controller responsible of managing contributions
     class ContributionsController < Decidim::Crowdfundings::ApplicationController
       include NeedsCampaign
-      include CensusAPI
 
+      helper_method :contribution_form, :confirm_form
       helper Decidim::Crowdfundings::ContributionsHelper
 
       def create
-        enforce_permission_to :support, :campaign, campaign: campaign
+        enforce_permission_to :support, :campaign, campaign: campaign, payments_proxy: payments_proxy
 
-        @form = confirm_contribution_form
-                .from_params(params, campaign: campaign)
-        CreateContribution.call(@form) do
+        CreateContribution.call(payments_proxy, confirm_form) do
           on(:ok) do
             successful_creation
           end
 
-          on(:credit_card) do |census|
-            credit_card_creation(census[:form])
+          on(:credit_card) do |credit_card_external_form|
+            credit_card_creation(credit_card_external_form)
           end
 
           on(:invalid) do
@@ -57,14 +55,8 @@ module Decidim
       end
 
       def confirm
-        @form = contribution_form
-                .from_params(params, campaign: campaign)
-
-        if @form.valid?
-          @form = confirm_contribution_form
-                  .from_params(params, campaign: campaign)
-          @form.correct_payment_method
-        else
+        if contribution_form.invalid?
+          flash[:error] = campaign_errors.first if campaign_errors.any?
           render "/decidim/crowdfundings/campaigns/show"
         end
       end
@@ -91,7 +83,7 @@ module Decidim
 
       def credit_card_creation(form_data)
         @census = form_data
-        render "/decidim/crowdfundings/contributions/census_credit_card"
+        render "/decidim/crowdfundings/contributions/census_credit_card", layout: false
       end
 
       def contribution
@@ -99,11 +91,21 @@ module Decidim
       end
 
       def contribution_form
-        form(Decidim::Crowdfundings::ContributionForm)
+        @contribution_form ||= form(Decidim::Crowdfundings::ContributionForm)
+                               .from_params(params, campaign: campaign, payments_proxy: payments_proxy)
       end
 
-      def confirm_contribution_form
-        form(Decidim::Crowdfundings::ConfirmContributionForm)
+      def confirm_form
+        @confirm_form ||= form(Decidim::Crowdfundings::ConfirmContributionForm)
+                          .from_params(params, campaign: campaign, payments_proxy: payments_proxy)
+                          .tap do |form|
+                            form.fix_payment_method
+                            form.external_credit_card_return_url = validate_contribution_url(campaign, result: "__RESULT__") if form.credit_card_external?
+                          end
+      end
+
+      def campaign_errors
+        @campaign_errors ||= contribution_form.errors[:campaign]
       end
     end
   end

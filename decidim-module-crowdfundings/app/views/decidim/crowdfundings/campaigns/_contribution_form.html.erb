@@ -1,0 +1,52 @@
+<%= decidim_form_for(contribution_form,
+                     url: confirm_campaign_contributions_path(campaign),
+                     html: { class: 'form contribution-form', id: "new_contribution" }) do |f| %>
+<legend><%=t '.select_amount' %></legend>
+<div class="amount-selector">
+  <%= f.amount_selector :amount, amounts: campaign.amounts, minimum: campaign.minimum_custom_amount %>
+</div>
+
+<% if allowed_to? :support_recurrently, :campaign, campaign: campaign, payments_proxy: payments_proxy %>
+  <legend><%=t '.select_frequency' %></legend>
+  <div class="radio-selector">
+    <% frequency_options.each do |option| %>
+      <%= f.label :frequency, '', value: option[1] do %>
+        <%= f.radio_button :frequency, option[1], label: false %>
+        <div><%= option[0] %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if contribution_form.errors.key? :frequency %>
+    <small class="form-error is-visible"><%= contribution_form.errors[:frequency].join(', ') %></small>
+  <% end %>
+<% else %>
+  <%= f.hidden_field :frequency %>
+<% end %>
+
+<legend><%=t '.select_payment_method' %></legend>
+<div class="radio-selector">
+  <% payment_method_options(except: "existing_payment_method").each do |payment_method| %>
+    <%= f.label :payment_method_type, '', value: payment_method[1] do %>
+      <%= f.radio_button :payment_method_type,  payment_method[1], label: false %>
+      <div><%= payment_method[0] %></div>
+    <% end %>
+  <% end %>
+
+  <% payment_methods.select(&:active?).each do |payment_method| %>
+    <%= f.label :payment_method_type, '', value: payment_method.id do %>
+      <%= f.radio_button :payment_method_type,  payment_method.id, label: false %>
+      <div><%= payment_method.name %></div>
+    <% end %>
+  <% end %>
+</div>
+<% if contribution_form.errors.key? :payment_method_type %>
+  <small class="form-error is-visible"><%= contribution_form.errors[:payment_method_type].join(', ') %></small>
+<% end %>
+
+<div class="form-general-submit">
+  <%= f.submit t('.support'), class: 'button primary expanded support' %>
+</div>
+<% end %>
+
+<%= javascript_include_tag 'decidim/crowdfundings/contributions' %>

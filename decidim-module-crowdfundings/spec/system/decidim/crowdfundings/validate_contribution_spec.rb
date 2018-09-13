@@ -8,7 +8,7 @@ describe "Validate contribution", type: :system do
   let(:campaign) { create(:campaign, component: component) }
 
   let(:user) do
-    create(:user, :confirmed, organization: campaign.organization)
+    create(:user, :confirmed, :with_person, organization: campaign.organization)
   end
 
   let!(:contribution) do
@@ -25,16 +25,11 @@ describe "Validate contribution", type: :system do
                            .validate_contribution_url(contribution, result: result)
   end
 
-  let(:payment_methods) do
-    [
-      { id: 1, name: "Payment method 1" },
-      { id: 2, name: "Payment method 2" }
-    ]
-  end
+  let(:payment_methods) { create_list(:payment_method, 2) }
 
   before do
     stub_payment_methods(payment_methods)
-    stub_totals_request(0)
+    stub_orders_total(0)
 
     login_as(user, scope: :user)
   end

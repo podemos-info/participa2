@@ -8,7 +8,8 @@ module Decidim
       subject { described_class.from_params(attributes).with_context(context) }
 
       let(:campaign) { create(:campaign) }
-      let(:current_user) { create(:user, organization: campaign.organization) }
+      let(:payments_proxy) { create(:payments_proxy, organization: campaign.organization) }
+      let(:current_user) { payments_proxy.user }
 
       let(:amount) { ::Faker::Number.number(4) }
       let(:frequency) { "punctual" }
@@ -24,6 +25,7 @@ module Decidim
           payment_method_type: payment_method_type,
           payment_method_id: payment_method_id,
           iban: iban,
+          external_credit_card_return_url: "https://example.org/validate/__RESULT__",
           accept_terms_and_conditions: true
         }
       end
@@ -33,15 +35,19 @@ module Decidim
           current_organization: campaign.organization,
           current_component: campaign.component,
           campaign: campaign,
-          current_user: current_user
+          current_user: current_user,
+          payments_proxy: payments_proxy
         }
       end
 
       before do
-        stub_totals_request(0)
+        stub_orders_total(0)
       end
 
       it { is_expected.to be_valid }
+      it { is_expected.to be_credit_card_external }
+      it { is_expected.not_to be_existing_payment_method }
+      it { is_expected.not_to be_direct_debit }
 
       describe "direct_debit" do
         let(:payment_method_type) { "direct_debit" }
@@ -78,14 +84,6 @@ module Decidim
         it { is_expected.not_to be_direct_debit }
 
         it { is_expected.not_to be_valid }
-      end
-
-      describe "Credit card external" do
-        let(:payment_method_type) { "credit_card_external" }
-
-        it { is_expected.to be_credit_card_external }
-        it { is_expected.not_to be_existing_payment_method }
-        it { is_expected.not_to be_direct_debit }
       end
     end
   end

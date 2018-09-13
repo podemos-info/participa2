@@ -13,8 +13,10 @@ module Decidim
           case permission_action.action
           when :create
             permission_action.allow!
-          when :update, :destroy
+          when :update
             permission_action.allow! if campaign.present?
+          when :destroy
+            toggle_allow(campaign.contributions.none?)
           end
 
           permission_action

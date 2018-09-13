@@ -1,6 +1,24 @@
-.support{
-  color: white !important;
-  text-transform: uppercase;
-  font-weight: bold;
-  min-width: 90pt;
+.contribution-form,
+.confirm-form{
+  legend{
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  label > [type='checkbox']{
+    margin-bottom: 1rem;
+  }
+
+  .tos-text{
+    padding: .5rem;
+    border: 1px solid #e8e8e8;
+    margin: 1rem 0;
+    max-height: 10rem;
+    overflow: auto;
+    font-size: .8rem;
+    font-style: italic;
+  }
 }

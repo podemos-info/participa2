@@ -10,16 +10,26 @@ module Decidim
 
       private
 
+      alias campaign model
+
       def title
-        translated_attribute model.title
+        translated_attribute campaign.title
       end
 
       def description
-        translated_attribute model.description
+        translated_attribute campaign.description
       end
 
       def has_amount?
-        model.target_amount.present?
+        campaign.target_amount.present?
+      end
+
+      def current_component
+        campaign.component
+      end
+
+      def payments_proxy
+        context[:payments_proxy]
       end
     end
   end

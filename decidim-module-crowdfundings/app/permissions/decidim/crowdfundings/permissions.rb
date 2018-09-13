@@ -31,20 +31,26 @@ module Decidim
         @current_settings ||= context.fetch(:current_settings, nil)
       end
 
+      def payments_proxy
+        @payments_proxy ||= context.fetch(:payments_proxy, nil)
+      end
+
       def allowed_campaign_action?
         return unless permission_action.subject == :campaign
 
         case permission_action.action
         when :support
           toggle_allow(
-            campaign.accepts_supports? &&
+            campaign.accepts_contributions? &&
             current_settings.contribution_allowed? &&
-            campaign.under_annual_limit?(user)
+            authorized?(:support, resource: campaign) &&
+            payments_proxy.has_person? && payments_proxy.under_annual_limit?
           )
         when :support_recurrently
           toggle_allow(
             campaign.recurrent_support_allowed? &&
-            campaign.contributions.recurrent.supported_by(user).none?
+            campaign.contributions.recurrent.supported_by(user).none? &&
+            authorized?(:support, resource: campaign)
           )
         end
       end
@@ -56,8 +62,7 @@ module Decidim
         when :update
           toggle_allow(
             contribution.user.id == user.id &&
-            contribution.recurrent? &&
-            contribution.accepted?
+            contribution.recurrent?
           )
         when :resume
           toggle_allow(
