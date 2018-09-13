@@ -35,7 +35,7 @@ module Decidim
       end
 
       def person
-        @person ||= Person.new(authorization.metadata) { census_person } if has_person?
+        @person ||= Person.new(valid_metadata) { census_person } if has_person?
       end
 
       # PUBLIC creates a person with the given params.
@@ -67,10 +67,20 @@ module Decidim
 
       private
 
+      attr_reader :version_at
+
       def qualified_id
         raise "Person ID not available" unless person_id
 
         "#{person_id}@census"
+      end
+
+      def valid_metadata
+        @valid_metadata = if version_at
+                            authorization.metadata.slice("person_id")
+                          else
+                            authorization.metadata
+                          end
       end
 
       def census_person_api
@@ -82,8 +92,8 @@ module Decidim
       end
 
       def census_person_params
-        @census_person_params ||= if @version_at
-                                    { version_at: @version_at }
+        @census_person_params ||= if version_at
+                                    { version_at: version_at }
                                   else
                                     {}
                                   end
