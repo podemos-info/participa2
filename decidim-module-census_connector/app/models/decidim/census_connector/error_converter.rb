@@ -21,6 +21,7 @@ module Decidim
       def run
         errors.each do |attribute, errors|
           errored_attribute = attribute_mapping[attribute] || attribute
+          next unless errored_attribute
 
           errors.each do |error_hash|
             error_type = error_hash.delete(:error)
