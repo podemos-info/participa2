@@ -4,20 +4,14 @@ require "spec_helper"
 
 describe "Campaign view", type: :system do
   let(:manifest_name) { "crowdfundings" }
-  let(:confirmed_user) { create(:user, :confirmed, organization: organization) }
-
-  let(:payment_methods) do
-    [
-      { id: 1, name: "Payment method 1" },
-      { id: 2, name: "Payment method 2" }
-    ]
-  end
-
-  let(:amount) { 500 }
+  let(:confirmed_user) { create(:user, :confirmed, :with_person, organization: organization) }
+  let(:payment_methods) { create_list(:payment_method, 2) }
+  let(:amount) { 15 }
+  let(:current_total) { 10 }
 
   before do
     stub_payment_methods(payment_methods)
-    stub_totals_request(500)
+    stub_orders_total(current_total)
   end
 
   context "with a participatory process" do
@@ -44,8 +38,8 @@ describe "Campaign view", type: :system do
 
     it "Contains totals" do
       within "#overall-totals-block" do
-        expect(page).to have_content(decidim_number_to_currency(campaign.total_collected))
-        expect(page).to have_content("OVERALL PERCENTAGE: #{number_to_percentage(campaign.percentage, precision: 0)}")
+        expect(page).to have_content(decidim_number_to_currency(current_total))
+        expect(page).to have_content("OVERALL PERCENTAGE: #{number_to_percentage(100.0 * current_total / campaign.target_amount, precision: 0)}")
         expect(page).to have_content(decidim_number_to_currency(campaign.target_amount))
       end
     end
@@ -66,14 +60,25 @@ describe "Campaign view", type: :system do
     include_context "with assembly component"
 
     let!(:campaign) do
-      create(:campaign, component: component, target_amount: 10_000)
+      create(:campaign, :assembly, :allow_recurrent, component: component)
     end
 
     before do
       login_as(confirmed_user, scope: :user)
+      visit_component
     end
 
-    context "when the user has a recurrent contribution" do
+    it "Frequency is monthly by default" do
+      amount = find(
+        :radio_button,
+        "contribution[frequency]",
+        checked: true,
+        visible: false
+      )
+      expect(amount.value).to eq("monthly")
+    end
+
+    context "when the user already has a recurrent contribution" do
       let!(:contribution) do
         create(:contribution,
                :accepted,
@@ -88,8 +93,7 @@ describe "Campaign view", type: :system do
       end
 
       it "allows the user to change the recurrent contribution" do
-        expect(page).to have_content("You are currently giving 500.00 € with monthly periodicity")
-
+        expect(page).to have_content("You are currently giving 15.00 € with monthly periodicity")
         expect(page).to have_content("CHANGE CONTRIBUTION")
 
         within find("#contribution-info") do
@@ -99,23 +103,7 @@ describe "Campaign view", type: :system do
         find("label[for=contribution_frequency_quarterly]").click
         click_button "Update"
 
-        expect(page).to have_content("You are currently giving 500.00 € with quarterly periodicity")
-      end
-    end
-
-    context "when the user does not have a recurrent contribution" do
-      before do
-        visit_component
-      end
-
-      it "Frequency is monthly by default" do
-        amount = find(
-          :radio_button,
-          "contribution[frequency]",
-          checked: true,
-          visible: false
-        )
-        expect(amount.value).to eq("monthly")
+        expect(page).to have_content("You are currently giving 15.00 € with quarterly periodicity")
       end
     end
   end

@@ -3,24 +3,29 @@
        description: translated_attribute(campaign.description)
    ) %>
 
+
 <div class="row">
-  <% if campaign.target_amount.present? %>
-  <div id="campaign" class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
-    <%= render 'decidim/crowdfundings/campaigns/totals', user: nil %>
-    <% if user_signed_in? %>
-      <%= render 'decidim/crowdfundings/campaigns/totals', user: current_user %>
-    <% end %>
+  <div class="columns text-center">
+    <h2 class="heading2"><%= translated_attribute campaign.title %></h2>
   </div>
+
+  <% if campaign.target_amount.present? %>
+    <div class="columns section view-side mediumlarge-4 mediumlarge-push-8">
+      <%= render 'decidim/crowdfundings/campaigns/totals', user: nil %>
+
+      <% if has_person? %>
+        <%= render 'decidim/crowdfundings/campaigns/totals', user: current_user %>
+      <% end %>
+    </div>
   <% end %>
-  <div class="columns<% if campaign.target_amount.present? %> mediumlarge-8 mediumlarge-pull-4<% end %>">
-    <div class="row column view-header">
-      <h2 class="heading2"><%= translated_attribute campaign.title %></h2>
-    </div>
-    <div class="section">
-      <%= sanitize translated_attribute campaign.description %>
-    </div>
-    <div class="section">
-      <%= render 'confirm_form' %>
+
+  <div class="columns mediumlarge-8 <%= campaign.target_amount.present? ? "mediumlarge-pull-4" : "mediumlarge-centered" %>">
+    <div class="card">
+      <div class="card__content">
+        <%= sanitize translated_attribute campaign.description %>
+
+        <%= render 'confirm_form' %>
+      </div>
     </div>
   </div>
 </div>

@@ -2,86 +2,65 @@
 
 # Helper methods for stubbing Census API calls
 module CensusTestHelpers
-  def stub_totals_request(amount)
-    stub_request(:get, %r{/api/v1/payments/orders/total})
-      .to_return(
-        status: 200,
-        body: { amount: amount }.to_json,
-        headers: {}
-      )
-  end
-
-  def stub_totals_request_error
-    stub_request(:get, %r{/api/v1/payments/orders/total})
-      .to_return(
-        status: 422,
-        body: { error: 422, errorMessage: "Error message" }.to_json,
-        headers: {}
-      )
-  end
-
-  def stub_totals_service_down
-    stub_request(:get, %r{/api/v1/payments/orders/total})
-      .to_raise(service_unavailable_exception)
-  end
-
-  def stub_payment_methods(payment_methods)
-    stub_request(:get, %r{/api/v1/payments/payment_methods})
-      .to_return(
-        status: 200,
-        body: payment_methods.to_json,
-        headers: {}
-      )
-  end
-
-  def stub_payment_methods_error
-    stub_request(:get, %r{/api/v1/payments/payment_methods})
-      .to_return(
-        status: 422,
-        body: "Error message",
-        headers: {}
-      )
-  end
-
-  def stub_payment_methods_service_down
-    allow(::Census::API::PaymentMethod).to receive(:get)
-      .with("/api/v1/payments/payment_methods", anything)
-      .and_raise(service_unavailable_exception)
-  end
-
-  def stub_payment_method_service_down
-    allow(::Census::API::PaymentMethod).to receive(:get)
-      .with("/api/v1/payments/payment_method", anything)
-      .and_raise(service_unavailable_exception)
-  end
-
-  def stub_payment_method(payment_method)
-    stub_request(:get, %r{/api/v1/payments/payment_method})
-      .to_return(
-        status: 200,
-        body: payment_method.to_json,
-        headers: {}
-      )
-  end
-
-  def stub_orders(http_response_code, json)
+  def stub_create_order(order_info, http_status: 201)
     stub_request(:post, %r{/api/v1/payments/orders})
       .to_return(
-        status: http_response_code,
-        body: json.to_json,
+        status: http_status,
+        body: order_info.to_json,
         headers: {}
       )
   end
 
-  def stub_orders_service_down
-    allow(::Census::API::Order).to receive(:post)
-      .with("/api/v1/payments/orders", anything)
-      .and_raise(service_unavailable_exception)
+  def stub_payment_methods(payment_methods, http_status: 200)
+    stub_request(:get, %r{/api/v1/payments/payment_methods})
+      .to_return(
+        status: http_status,
+        body: status_response(http_status, payment_methods.map(&:to_h)),
+        headers: {}
+      )
   end
 
-  def service_unavailable_exception
-    response = Net::HTTPServiceUnavailable.new("1.1", 503, "Service Unavailable")
-    Net::HTTPFatalError.new("503 Service Unavailable", response)
+  def stub_payment_method(payment_method, payment_method_id: payment_method.id, http_status: 200)
+    stub_request(:get, %r{/api/v1/payments/payment_methods/#{payment_method_id}})
+      .to_return(
+        status: http_status,
+        body: status_response(http_status, payment_method.to_h),
+        headers: {}
+      )
+  end
+
+  def stub_orders_total(amount, http_status: 200)
+    stub_request(:get, %r{/api/v1/payments/orders/total})
+      .to_return(
+        status: http_status,
+        body: status_response(http_status, amount: amount * 100),
+        headers: {}
+      )
+  end
+
+  def stub_payments_service_down(instance = nil)
+    instance = instance.send(:census_payments_api) if instance && !instance.is_a?(Census::API::Payments)
+    %w(get patch post).each do |verb|
+      if instance
+        allow(instance).to receive(verb).and_raise(Faraday::Error::ConnectionFailed.new(Errno::ECONNREFUSED))
+      else
+        # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(Census::API::Payments).to receive(verb).and_raise(Faraday::Error::ConnectionFailed.new(Errno::ECONNREFUSED))
+        # rubocop:enable RSpec/AnyInstance
+      end
+    end
+  end
+
+  private
+
+  def status_response(status, response)
+    if status == 204
+      ""
+    elsif status > 299
+      {}
+    else
+      response
+    end.to_json
   end
 end
 

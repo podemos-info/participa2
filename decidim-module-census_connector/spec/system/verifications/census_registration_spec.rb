@@ -16,7 +16,7 @@ describe "Census registration", type: :system do
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit decidim_census_account.root_path
-    click_link "Census"
+    click_link "Registration in Podemos"
     click_link "Sign up to take part in votings"
   end
 

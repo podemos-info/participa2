@@ -15,7 +15,6 @@ $(document).ready(function () {
         } else {
           amountInput.parent().show();
           amountInput.focus();
-          amountInput.val('');
         }
       }
     });

@@ -53,7 +53,7 @@ es:
           global:
             resources_permissions_enabled: Permitir definir permisos diferentes para cada campaña
           step:
-            contributions_allowed: Aportaciones permitidas
+            contribution_allowed: Aportaciones permitidas
     crowdfundings:
       actions:
         confirm_destroy: "¿Estás seguro?"
@@ -97,6 +97,11 @@ es:
       campaigns:
         campaign:
           support: Apoyar
+        contribution_form:
+          select_amount: Seleccciona la cantidad
+          select_frequency: Seleccciona la frecuencia
+          select_payment_method: Selecciona la forma de pago
+          support: Apoyar
         count:
           campaigns_count:
             one: 1 campaña de crowdfunding
@@ -118,11 +123,6 @@ es:
           current_pending_recurrent_support: Iniciaste una aportación de %{amount} con periodicidad %{periodicity}. Tu solicitud está siendo revisada.
           current_rejected_recurrent_support: Intentaste aportar  %{amount} con periodicidad %{periodicity}, pero la aportación fue rechazada.
           support: Apoyar
-        support_form:
-          select_amount: Seleccciona la cantidad
-          select_frequency: Seleccciona la frecuencia
-          select_payment_method: Selecciona la forma de pago
-          support: Apoyar
         totals:
           overall_percentage: Porcentaje total
           overall_totals: Acumulado
@@ -130,7 +130,6 @@ es:
           user_totals: Usuario
       contributions:
         confirm_form:
-          are_you_sure: "¿Estás seguro?"
           confirm: Confirmar
           contribution_resume: Resumen de la aportación
           fill_required_data: Completa los siguientes campos
@@ -157,10 +156,6 @@ es:
           credit_card_external: Tarjeta de crédito
           direct_debit: Débito directo
           existing_payment_method: Método de pago existente
-        support_status:
-          contribution_not_allowed: La aportación no está permitida en estos momentos.
-          maximum_annual_exceeded: No puedes realizar mas aportaciones. Has alcanzado el máximo anual permitido.
-          support_period_finished: El periodo para realizar aportaciones ha concluido.
       models:
         campaign:
           fields:
@@ -176,11 +171,15 @@ es:
             last_order_request_date: Última petición
             state: Estado
             user: Usuario
+      support_status:
+        maximum_annual_exceeded: No puedes realizar mas aportaciones. Has alcanzado el máximo anual permitido.
+        service_unavailable: Lo sentimos, el sistema de gestión de cobros no está funcionando en estos momentos.
+        support_period_finished: Lo sentimos, el periodo para realizar aportaciones ha concluido.
       user_profile:
         contributions:
           edit:
-            select_amount: Seleccciona la cantidad
-            select_frequency: Seleccciona la frecuencia
+            select_amount: Selecciona la cantidad
+            select_frequency: Selecciona la frecuencia
             update: Actualiza
           index:
             no_records_found: No se han encontrado aportaciones.
@@ -196,6 +195,6 @@ es:
             success: Tu aportación ha sido actualizada satisfactoriamente.
     form_builder:
       support_tag:
-        other: Otros
+        other: Otra
     menu:
       crowdfundings: Crowdfundings

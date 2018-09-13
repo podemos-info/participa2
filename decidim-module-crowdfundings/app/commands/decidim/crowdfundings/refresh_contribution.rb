@@ -4,9 +4,10 @@ module Decidim
   module Crowdfundings
     # Rectify command that refresh a pending contribution
     class RefreshContribution < Rectify::Command
-      attr_reader :contribution
-
-      def initialize(contribution)
+      # payments_proxy - A proxy object to access the census payments API
+      # contribution - A contribution to check
+      def initialize(payments_proxy, contribution)
+        @payments_proxy = payments_proxy
         @contribution = contribution
       end
 
@@ -14,30 +15,24 @@ module Decidim
       #
       # Broadcasts :ok if successful, :invalid otherwise.
       def call
-        census_result = retrieve_payment_method_data
-        case census_result[:http_response_code]
-        when 200
-          refresh_contribution_status(census_result)
-          broadcast(:ok)
-        else
-          broadcast(:invalid)
-        end
+        return broadcast(:invalid) unless payment_method
+
+        refresh_contribution_status
+        broadcast(:ok)
       end
 
       private
 
-      def retrieve_payment_method_data
-        Census::API::PaymentMethod.payment_method(
-          contribution.payment_method_id
-        )
+      attr_reader :contribution, :payments_proxy
+
+      def refresh_contribution_status
+        return if payment_method.incomplete?
+
+        contribution.update!(state: payment_method.active? ? :accepted : :rejected)
       end
 
-      def refresh_contribution_status(census_result)
-        return if census_result[:status] == "pending"
-
-        contribution.update(state: "accepted") if census_result[:status] == "active"
-
-        contribution.update(state: "rejected") if census_result[:status] == "inactive"
+      def payment_method
+        @payment_method ||= payments_proxy.payment_method(contribution.payment_method_id)
       end
     end
   end

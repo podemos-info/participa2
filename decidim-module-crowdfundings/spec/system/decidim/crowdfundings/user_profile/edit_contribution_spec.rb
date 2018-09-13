@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Edit contribution", type: :system do
   let(:campaign) { create(:campaign) }
   let(:organization) { campaign.organization }
-  let(:user) { create :user, :confirmed, organization: organization }
+  let(:user) { create :user, :with_person, :confirmed, organization: organization }
 
   let!(:contribution) do
     create(:contribution,
@@ -28,9 +28,9 @@ describe "Edit contribution", type: :system do
     end
 
     it "Navigates to update form" do
-      expect(page).to have_content("SELECT THE AMOUNT")
-      expect(page).to have_content("SELECT THE FREQUENCY")
-      expect(page).to have_content("UPDATE")
+      expect(page).to have_content("Select the amount")
+      expect(page).to have_content("Select the frequency")
+      expect(page).to have_content("Update")
     end
 
     it "does not allow changing the contribution to punctual" do
@@ -44,7 +44,7 @@ describe "Edit contribution", type: :system do
     end
 
     before do
-      stub_totals_request(0)
+      stub_orders_total(0)
     end
 
     context "without changes" do

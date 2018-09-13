@@ -8,8 +8,9 @@ module Decidim
       subject { described_class.from_params(attributes).with_context(context) }
 
       let(:campaign) { create(:campaign) }
+      let(:payments_proxy) { create(:payments_proxy, organization: campaign.organization) }
+      let(:current_user) { payments_proxy.user }
 
-      let(:current_user) { create(:user, organization: campaign.organization) }
       let(:amount) { ::Faker::Number.number(4) }
       let(:frequency) { "punctual" }
       let(:payment_method_type) { "existing_payment_method" }
@@ -19,8 +20,7 @@ module Decidim
         {
           amount: amount,
           frequency: frequency,
-          payment_method_type: payment_method_type,
-          accept_terms_and_conditions: accept_terms_and_conditions
+          payment_method_type: payment_method_type
         }
       end
 
@@ -29,12 +29,13 @@ module Decidim
           current_organization: campaign.organization,
           current_component: campaign.component,
           current_user: current_user,
-          campaign: campaign
+          campaign: campaign,
+          payments_proxy: payments_proxy
         }
       end
 
       before do
-        stub_totals_request(user_annual_accumulated)
+        stub_orders_total(user_annual_accumulated)
       end
 
       it { is_expected.to be_valid }
@@ -71,7 +72,7 @@ module Decidim
         end
 
         context "when over the maximum" do
-          let(:user_annual_accumulated) { Decidim::Crowdfundings.maximum_annual_contribution_amount }
+          let(:user_annual_accumulated) { Decidim::Crowdfundings.maximum_annual_contribution_amount + 1 }
 
           it { is_expected.not_to be_valid }
         end
@@ -91,12 +92,6 @@ module Decidim
 
       context "when payment method is missing" do
         let(:payment_method_type) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-
-      context "when accept_terms_and_conditions is missing" do
-        let(:accept_terms_and_conditions) { nil }
 
         it { is_expected.not_to be_valid }
       end

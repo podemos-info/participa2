@@ -6,41 +6,37 @@ describe "Create contribution 2", type: :system do
   include_context "with a component"
   let(:manifest_name) { "crowdfundings" }
   let!(:campaign) { create(:campaign, component: component) }
-  let(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) { create(:user, :with_person, :confirmed, organization: organization) }
   let(:amount) { ::Faker::Number.number(4) }
 
-  let(:existing_payment_methods) do
-    [
-      { id: 1, name: "Existing payment method" }
-    ]
-  end
+  let(:payment_methods) { create_list(:payment_method, 2) }
 
   before do
-    stub_payment_methods(existing_payment_methods)
-    stub_totals_request(0)
+    stub_payment_methods(payment_methods)
+    stub_payment_method(payment_methods.first)
+    stub_orders_total(0)
 
     login_as(user, scope: :user)
 
     visit_component
 
-    within ".new_contribution" do
+    within "#new_contribution" do
       find("label[for=amount_selector_other]").click
       fill_in :contribution_amount, with: amount
-      find(:css, "#contribution_accept_terms_and_conditions[value='1']").set(true)
     end
   end
 
   describe "filling campaign form" do
     context "with existing payment method" do
       before do
-        within ".new_contribution" do
-          find("label[for=contribution_payment_method_type_1]").click
+        within "#new_contribution" do
+          find("label[for=contribution_payment_method_type_#{payment_methods.first.id}]").click
           find("*[type=submit]").click
         end
       end
 
       it "navigates to confirm page" do
-        expect(page).to have_content("CONTRIBUTION RESUME")
+        expect(page).to have_content("Contribution resume")
       end
 
       it "Shows the amount" do
@@ -51,25 +47,25 @@ describe "Create contribution 2", type: :system do
         expect(page).to have_content("PUNCTUAL")
       end
 
-      it "Shows the payment method" do
-        expect(page).to have_content("EXISTING PAYMENT METHOD")
+      it "Shows the payment method name" do
+        expect(page).to have_content(payment_methods.first.name.upcase)
       end
 
       it "No extra fields are needed" do
-        expect(page).not_to have_content("FILL THE FOLLOWING FIELDS")
+        expect(page).not_to have_content("Fill the following fields")
       end
     end
 
     context "with direct debit" do
       before do
-        within ".new_contribution" do
+        within "#new_contribution" do
           find("label[for=contribution_payment_method_type_direct_debit]").click
           find("*[type=submit]").click
         end
       end
 
       it "navigates to confirm page" do
-        expect(page).to have_content("CONTRIBUTION RESUME")
+        expect(page).to have_content("Contribution resume")
       end
 
       it "Shows the amount" do
@@ -85,21 +81,21 @@ describe "Create contribution 2", type: :system do
       end
 
       it "IBAN needed" do
-        expect(page).to have_content("FILL THE FOLLOWING FIELDS")
+        expect(page).to have_content("Fill the following fields")
         expect(page).to have_field("IBAN")
       end
     end
 
     context "with credit card" do
       before do
-        within ".new_contribution" do
+        within "#new_contribution" do
           find("label[for=contribution_payment_method_type_credit_card_external]").click
           find("*[type=submit]").click
         end
       end
 
       it "navigates to confirm page" do
-        expect(page).to have_content("CONTRIBUTION RESUME")
+        expect(page).to have_content("Contribution resume")
       end
 
       it "Shows the amount" do
@@ -115,19 +111,19 @@ describe "Create contribution 2", type: :system do
       end
 
       it "No extra fields are needed" do
-        expect(page).not_to have_content("FILL THE FOLLOWING FIELDS")
+        expect(page).not_to have_content("Fill the following fields")
       end
     end
 
     context "when no payment method selected" do
       before do
-        within ".new_contribution" do
+        within "#new_contribution" do
           find("*[type=submit]").click
         end
       end
 
       it "renders the form again" do
-        expect(page).to have_content("SELECT THE PAYMENT METHOD")
+        expect(page).to have_content("Select the payment method")
       end
 
       it "shows an error message" do

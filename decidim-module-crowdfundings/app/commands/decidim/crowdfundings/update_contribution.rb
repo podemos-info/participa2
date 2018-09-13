@@ -14,13 +14,19 @@ module Decidim
       #
       # Broadcasts :ok if successful, :invalid otherwise.
       def call
-        return broadcast(:invalid, form) if form.invalid?
+        return broadcast(:invalid) unless form.valid? && update_contribution
+        broadcast(:ok)
+      end
 
-        if form.context.contribution.update(form.attributes)
-          broadcast(:ok)
-        else
-          broadcast(:invalid)
-        end
+      private
+
+      delegate :contribution, to: :form
+
+      def update_contribution
+        contribution.update(
+          frequency: form.frequency,
+          amount: form.amount
+        )
       end
     end
   end

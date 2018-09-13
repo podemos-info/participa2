@@ -1,46 +1,55 @@
-<%= decidim_form_for(@form,
+<%= decidim_form_for(confirm_form,
                      url: campaign_contributions_path(campaign),
-                     html: { class: 'form confirm_contribution', id: 'confirm_contribution' }) do |f| %>
+                     html: { class: 'form confirm-form', id: 'confirm_contribution' }) do |f| %>
     <%= f.hidden_field :amount %>
     <%= f.hidden_field :frequency %>
     <%= f.hidden_field :payment_method_type %>
     <%= f.hidden_field :payment_method_id %>
     <%= f.hidden_field :accept_terms_and_conditions %>
 
-    <h2 class="section-heading"><%=t '.contribution_resume' %></h2>
-    <div class="row contribution--resume">
-      <div class="card card--list">
-        <div class="card--list__item">
-          <div class="card--list__text"><%= f.object.class.human_attribute_name(:amount) %></div>
-          <div class="card--list__data"><%= decidim_number_to_currency f.object.amount %></div>
-        </div>
-        <div class="card--list__item">
-          <div class="card--list__text"><%= f.object.class.human_attribute_name(:frequency) %></div>
-          <div class="card--list__data"><%= frequency_label f.object.frequency %></div>
-        </div>
-        <div class="card--list__item">
-          <div class="card--list__text"><%= f.object.class.human_attribute_name(:payment_method_type) %></div>
-          <div class="card--list__data">
-            <% if existing_payment_method?(@form) %>
-              <%= user_payment_method(f.object.payment_method_id) %>
-            <% else %>
-              <%= payment_method_label f.object.payment_method_type %>
-            <% end %>
-          </div>
-        </div>
+<legend><%=t '.contribution_resume' %></legend>
+<div class="row columns contribution--resume">
+  <div class="card card--list">
+    <div class="card--list__item">
+      <div class="card--list__text"><%= confirm_form.class.human_attribute_name(:amount) %></div>
+      <div class="card--list__data"><%= decidim_number_to_currency confirm_form.amount %></div>
+    </div>
+    <div class="card--list__item">
+      <div class="card--list__text"><%= confirm_form.class.human_attribute_name(:frequency) %></div>
+      <div class="card--list__data"><%= frequency_label confirm_form.frequency %></div>
+    </div>
+    <div class="card--list__item">
+      <div class="card--list__text"><%= confirm_form.class.human_attribute_name(:payment_method_type) %></div>
+      <div class="card--list__data">
+        <% if confirm_form.existing_payment_method? %>
+          <%= confirm_form.payment_method.name %>
+        <% else %>
+          <%= payment_method_label confirm_form.payment_method_type %>
+        <% end %>
       </div>
     </div>
+  </div>
+</div>
 
-    <% if iban_field?(@form) %>
-      <h2 class="section-heading"><%=t '.fill_required_data' %></h2>
-      <div class="row">
-        <div class="field">
-          <%= f.text_field :iban %>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="form-general-submit button--double">
-      <%= f.submit t('.confirm'), data: { confirm: t('.are_you_sure')} %>
+<% if confirm_form.direct_debit? %>
+  <legend><%=t '.fill_required_data' %></legend>
+  <div class="row">
+    <div class="field">
+      <%= f.text_field :iban %>
     </div>
+  </div>
+<% end %>
+
+<legend><%=t 'activemodel.attributes.campaign.terms_and_conditions' %></legend>
+<div class="tos-text">
+  <%= sanitize translated_attribute campaign.terms_and_conditions %>
+</div>
+
+<div class="conditions-row">
+  <%= f.check_box :accept_terms_and_conditions, required: true %>
+</div>
+
+<div class="form-general-submit button--double text-center">
+  <%= f.submit t('.confirm') %>
+</div>
 <% end %>

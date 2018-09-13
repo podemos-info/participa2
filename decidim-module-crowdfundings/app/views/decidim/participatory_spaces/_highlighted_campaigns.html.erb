@@ -1,3 +1,9 @@
 <% if campaigns.any? %>
-  <%= render partial: "decidim/participatory_spaces/campaign", collection: campaigns %>
+  <%= cell(
+    "decidim/collapsible_list",
+    campaigns,
+    cell_options: { context: { current_user: current_user } },
+    list_class: "column",
+    size: campaigns.count
+    ) %>
 <% end %>

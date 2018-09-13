@@ -3,39 +3,23 @@
 module Decidim
   module CensusConnector
     class Person
-      include Census::API::Definitions
-
-      delegate :first_name, :last_name1, :last_name2, to: :person_data
-      delegate :document_type, :document_id, to: :person_data
-      delegate :address, :postal_code, to: :person_data
-      delegate :membership_level, :gender, to: :person_data
-      delegate :state, :verification, to: :person_data
+      include Census::API::PersonDefinitions
       delegate :id, to: :scope, prefix: true
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
 
-      def initialize(person_data)
-        @person_data = OpenStruct.new(person_data)
+      def initialize(person_data, &block)
+        @person_data = person_data
+        @defer_person_data = block if block_given?
       end
 
-      def scope
-        @scope ||= Decidim::Scope.find_by(code: person_data.scope_code)
-      end
+      PERSON_ATTRIBUTES.each do |attribute|
+        method_name = attribute == "born_at" ? "_#{attribute}" : attribute
 
-      def address_scope
-        @address_scope ||= Decidim::Scope.find_by(code: person_data.address_scope_code)
-      end
-
-      def document_scope
-        @document_scope ||= Decidim::Scope.find_by(code: person_data.document_scope_code)
-      end
-
-      def born_at
-        @born_at ||= Date.parse(person_data.born_at)
-      end
-
-      def age
-        @age ||= calculate_age
+        define_method method_name do
+          load_deferred_person_data unless person_data.has_key?(attribute)
+          person_data[attribute]
+        end
       end
 
       {
@@ -45,12 +29,46 @@ module Decidim
       }.each do |attribute, values|
         values.each do |value|
           define_method "#{value}?" do
-            @person_data[attribute] == value
+            send(attribute) == value
           end
         end
       end
 
+      def born_at
+        @born_at ||= Date.parse(_born_at) if _born_at.present?
+      end
+
+      def scope
+        @scope ||= Decidim::Scope.find_by(code: scope_code)
+      end
+
+      def address_scope
+        @address_scope ||= Decidim::Scope.find_by(code: address_scope_code)
+      end
+
+      def document_scope
+        @document_scope ||= Decidim::Scope.find_by(code: document_scope_code)
+      end
+
+      def age
+        @age ||= born_at ? calculate_age : 0
+      end
+
+      def load_deferred_person_data
+        @person_data = deferred_person_data if deferred_person_data
+      end
+
       private
+
+      attr_reader :person_data, :defer_person_data
+
+      def deferred_person_data
+        return @deferred_person_data if defined?(@deferred_person_data)
+
+        defer_data = defer_person_data.call unless defer_person_data.nil?
+        @defer_person_data = nil
+        @deferred_person_data = defer_data&.stringify_keys
+      end
 
       def calculate_age
         now = Time.zone.now.to_date
@@ -68,8 +86,6 @@ module Decidim
 
         this_year - birth_year - (month_of_birth_passed || month_of_birth_current_but_day_passed ? 0 : 1)
       end
-
-      attr_reader :person_data
     end
   end
 end
