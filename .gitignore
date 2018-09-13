@@ -20,6 +20,9 @@ public/uploads
 # rspec failure tracking
 .rspec-failures
 
+# coverage reports
+/coverage/*
+
 # rubocop cached remote config
 .rubocop-https---raw-githubusercontent-com-decidim-decidim-0-14-stable--rubocop-yml
 .rubocop-https---raw-githubusercontent-com-decidim-decidim-0-14-stable--rubocop-rails-yml
