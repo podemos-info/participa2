@@ -64,7 +64,10 @@ module Decidim
 
       def deferred_person_data
         return @deferred_person_data if defined?(@deferred_person_data)
-        @deferred_person_data = defer_person_data.call.stringify_keys.tap { @defer_person_data = nil } unless defer_person_data.nil?
+
+        defer_data = defer_person_data.call unless defer_person_data.nil?
+        @defer_person_data = nil
+        @deferred_person_data = defer_data&.stringify_keys
       end
 
       def calculate_age
