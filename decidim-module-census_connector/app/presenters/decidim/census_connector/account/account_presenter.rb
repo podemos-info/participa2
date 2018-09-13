@@ -39,6 +39,28 @@ module Decidim
           I18n.t(person.membership_level, scope: "census.api.person.membership_level")
         end
 
+        def verification_icon_params
+          case person.verification
+          when "not_verified"
+            ["x", class: "muted"]
+          when "verification_requested"
+            ["x", class: "muted"]
+          when "verification_received"
+            ["timer", class: "warning"]
+          when "verified"
+            ["check", class: "success"]
+          end
+        end
+
+        def membership_level_icon_params
+          case person.membership_level
+          when "follower"
+            ["x", class: "muted"]
+          when "member"
+            ["check", class: "success"]
+          end
+        end
+
         private
 
         attr_reader :person
