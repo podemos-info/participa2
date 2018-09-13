@@ -19,7 +19,9 @@ es:
         membership_level: Nivel de compromiso
   census:
     api:
-      global_error: El censo de Podemos no está disponible en este momento. Por favor inténtalo de nuevo más tarde o contactanos en verificaciones@soporte.podemos.info si el problema persiste
+      messages:
+        error: El servicio de gestión del censo no se encuentra disponible en estos momentos. Por favor, inténtalo de nuevo más tarde o contactanos si el problema persiste.
+        invalid: Se han encontrado errores en los datos enviado. Por favor, corrígelos y vuelve a enviar el formulario.
       person:
         document_type:
           dni: DNI
@@ -87,7 +89,7 @@ es:
             scope_heading: Ubicación
             sign_up_to_vote: Apúntate para participar en las votaciones.
         menu:
-          census: Censo
+          census: Inscripción en Podemos
       verifications:
         census:
           authorizations:
@@ -118,7 +120,7 @@ es:
             minimum_age: Debes tener más de %{minimum_age} años para poder participar
             verification: Debes verificarte para participar
           errors:
-            create: Se ha producido un error al guardar tus datos personales.
+            saving: Se ha producido un error al guardar tus datos personales.
           or: o
     verifications:
       authorizations:
