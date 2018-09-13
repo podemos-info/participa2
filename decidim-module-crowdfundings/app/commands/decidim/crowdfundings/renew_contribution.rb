@@ -6,63 +6,53 @@ module Decidim
     class RenewContribution < Rectify::Command
       include Decidim::TranslationsHelper
 
-      attr_reader :contribution
-
-      def initialize(contribution)
+      # payments_proxy - A proxy object to access the census payments API
+      # contribution - A contribution to renew
+      def initialize(payments_proxy, contribution)
+        @payments_proxy = payments_proxy
         @contribution = contribution
       end
 
-      # Creates the contribution if valid.
+      # Renews the contribution if valid.
       #
       # Broadcasts :ok if successful, :invalid otherwise.
       def call
         return broadcast(:invalid) unless valid?
-        census_result = renew_contribution
-        case census_result[:http_response_code]
-        when 201
-          broadcast(:ok)
-        else
-          broadcast(:invalid)
-        end
+
+        create_order && renew_contribution
+
+        broadcast(result, order_info)
       end
 
       private
 
+      attr_reader :contribution, :payments_proxy, :result, :order_info
+
+      delegate :campaign, to: :contribution
+
       def valid?
-        return false unless contribution.campaign.accepts_supports?
-        return false unless contribution.campaign.under_annual_limit?(contribution.user)
-
-        true
+        campaign.accepts_contributions? && payments_proxy.under_annual_limit?(add_amount: contribution.amount)
       end
 
-      def renew_contribution
-        result = register_on_census
-        if result[:http_response_code] == 201
-          contribution.update(
-            last_order_request_date: Time.zone.today.beginning_of_month
-          )
-        end
-
-        result
+      def create_order
+        @result, @order_info = payments_proxy.create_order(order_parameters)
+        result == :ok
       end
 
-      def register_on_census
-        Census::API::Order.create(census_parameters)
-      end
-
-      def census_parameters
+      def order_parameters
         {
-          person_id: contribution.user.id,
-          description: contribution_description,
-          amount: contribution.amount * 100,
-          campaign_code: contribution.campaign.id,
+          description: campaign.title[Decidim.default_locale],
+          amount: contribution.amount,
+          campaign_code: campaign.reference,
           payment_method_type: "existing_payment_method",
           payment_method_id: contribution.payment_method_id
         }
       end
 
-      def contribution_description
-        translated_attribute(contribution.campaign.title)
+      def renew_contribution
+        contribution.update(
+          last_order_request_date: Time.zone.today.beginning_of_month
+        )
       end
     end
   end

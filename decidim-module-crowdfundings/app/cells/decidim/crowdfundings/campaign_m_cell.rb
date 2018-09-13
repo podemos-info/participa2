@@ -20,6 +20,9 @@ module Decidim
 
       def has_amount?
         model.target_amount.present?
+
+      def payments_proxy
+        context[:payments_proxy]
       end
     end
   end
