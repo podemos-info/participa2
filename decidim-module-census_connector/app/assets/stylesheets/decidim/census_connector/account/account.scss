@@ -1,31 +1,38 @@
-.card--list.card--account {
-  .card--list__item {
-    &.card--list__subitem {
-      .card--list__heading {
-        &:before { content: ' — '; }
+.card--list.card--account{
+  .card--list__item{
+    &.card--list__subitem{
+      .card--list__heading{
+        &::before{ content: ' — '; }
+
         text-transform: none;
         font-weight: normal;
       }
     }
-    .card--list__data {
-      padding: 0.5rem;
-      .card--list__data__icon {
-        margin: 0.5rem 0;
+
+    .card--list__data{
+      padding: .5rem;
+
+      .card--list__data__icon{
+        margin: .5rem 0;
         color: currentColor;
       }
     }
-    .card--list__status {
+
+    .card--list__status{
       background: none;
       width: 10rem;
 
-      .icon, &:hover .icon {
+      .icon,
+      &:hover .icon{
         fill: currentColor;
       }
-      .icon.muted {
-        opacity: 0.4;
+
+      .icon.muted{
+        opacity: .4;
       }
     }
-    .card--list__actions {
+
+    .card--list__actions{
       width: 8rem;
     }
   }
