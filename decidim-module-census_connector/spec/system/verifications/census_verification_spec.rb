@@ -2,7 +2,6 @@
 
 require "spec_helper"
 
-require "decidim/core/test/factories"
 require "faker"
 require "faker/spanish_document"
 
@@ -178,7 +177,7 @@ describe "Census verification", type: :system do
     end
 
     it "shows errors" do
-      expect(page).to have_content("Files is too short")
+      expect(page).to have_content("can't be empty")
     end
   end
 
