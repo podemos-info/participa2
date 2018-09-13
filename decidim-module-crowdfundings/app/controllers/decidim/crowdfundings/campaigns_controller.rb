@@ -6,7 +6,8 @@ module Decidim
     class CampaignsController < Decidim::Crowdfundings::ApplicationController
       include FilterResource
 
-      helper_method :campaigns, :random_seed
+      helper_method :contribution_form, :campaigns, :random_seed
+
       helper Decidim::PaginateHelper
       helper Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper
 
@@ -19,21 +20,9 @@ module Decidim
                                 .campaign_path(component_campaigns.first)
       end
 
-      def show
-        @form = contribution_form.instance(campaign: campaign)
-        initialize_form_defaults
-      end
+      def show; end
 
       private
-
-      def initialize_form_defaults
-        @form.amount = campaign.default_amount
-        @form.frequency = if campaign.recurrent_support_allowed?
-                            Decidim::Crowdfundings.default_frequency
-                          else
-                            "punctual"
-                          end
-      end
 
       def campaigns
         @campaigns ||= search.results
@@ -65,7 +54,16 @@ module Decidim
       end
 
       def contribution_form
-        form(Decidim::Crowdfundings::ContributionForm)
+        @contribution_form ||= begin
+          form(Decidim::Crowdfundings::ContributionForm).instance(campaign: campaign).tap do |f|
+            f.amount = campaign.default_amount
+            f.frequency = if campaign.recurrent_support_allowed?
+                            Decidim::Crowdfundings.default_frequency
+                          else
+                            "punctual"
+                          end
+          end
+        end
       end
     end
   end
