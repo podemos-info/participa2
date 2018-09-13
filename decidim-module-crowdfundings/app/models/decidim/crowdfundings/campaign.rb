@@ -7,6 +7,7 @@ module Decidim
     class Campaign < Decidim::Crowdfundings::ApplicationRecord
       include Decidim::Resourceable
       include Decidim::HasComponent
+      include Decidim::HasReference
       include Decidim::Followable
 
       component_manifest_name "crowdfundings"
