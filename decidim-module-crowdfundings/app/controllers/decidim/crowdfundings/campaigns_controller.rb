@@ -5,7 +5,6 @@ module Decidim
     # Exposes crowdfundings campaigns to users.
     class CampaignsController < Decidim::Crowdfundings::ApplicationController
       include FilterResource
-      include CensusAPI
 
       helper_method :campaigns, :random_seed
       helper Decidim::PaginateHelper
