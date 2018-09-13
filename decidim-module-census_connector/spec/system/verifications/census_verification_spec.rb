@@ -54,6 +54,12 @@ describe "Census verification", type: :system do
   let(:age) { 18 }
   let(:document_type) { "DNI" }
 
+  let(:cassette) { "require_verification" }
+
+  around do |example|
+    VCR.use_cassette(cassette, {}, &example)
+  end
+
   before do |example|
     Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
 
@@ -73,11 +79,9 @@ describe "Census verification", type: :system do
     before do
       click_link 'Authorize with "Census"'
 
-      VCR.use_cassette(cassette) do
-        register_with_census
+      register_with_census
 
-        click_link "Foo"
-      end
+      click_link "Foo"
     end
 
     context "and everything alright" do
@@ -147,9 +151,7 @@ describe "Census verification", type: :system do
     before do
       click_link 'Authorize with "Census"'
 
-      VCR.use_cassette(cassette) do
-        click_button "Send"
-      end
+      click_button "Send"
     end
 
     it "shows errors" do
@@ -169,11 +171,9 @@ describe "Census verification", type: :system do
     before do
       click_link 'Authorize with "Census"'
 
-      VCR.use_cassette(cassette) do
-        complete_data_step
+      complete_data_step
 
-        click_button "Send"
-      end
+      click_button "Send"
     end
 
     it "shows errors" do
