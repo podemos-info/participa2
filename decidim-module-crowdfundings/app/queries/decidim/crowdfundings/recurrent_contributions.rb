@@ -21,7 +21,7 @@ module Decidim
         Contribution
           .includes(:campaign, :user)
           .supported_by(user)
-          .where.not(frequency: "punctual")
+          .recurrent
           .order(created_at: :desc)
       end
     end
