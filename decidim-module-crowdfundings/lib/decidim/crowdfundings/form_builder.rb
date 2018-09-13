@@ -7,16 +7,16 @@ module Decidim
       include ::ActionView::Helpers::FormTagHelper
       include ::ActionView::Helpers::NumberHelper
 
-      def amount_selection(name, amounts, minimum)
+      def amount_selector(name, html_options)
         output = "".html_safe
+        amounts = html_options.delete(:amounts)
 
         amounts.each do |amount|
           output.concat(input_amount_for(name, amount))
         end
-
         output.concat(input_other_amounts(name, amounts))
-        output.concat(amount_input_tag(name, minimum))
-
+        output.concat(amount_input_tag(name, html_options))
+        output.concat(error_and_help_text(name))
         output
       end
 
@@ -54,9 +54,18 @@ module Decidim
         end
       end
 
-      def amount_input_tag(name, minimum)
+      def amount_input_tag(name, html_options)
+        minimum = html_options.delete(:minimum)
+        label = options.delete(:label)
+        label_options = options.delete(:label_options)
         content_tag :div, class: "field" do
-          number_field name, min: minimum, step: 5
+          custom_label(name, label, label_options) do
+            @template.number_field(
+              @object_name,
+              name,
+              html_options.merge(min: minimum, step: 5)
+            )
+          end
         end
       end
     end

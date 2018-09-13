@@ -2,9 +2,9 @@
   <div class="card__support">
     <div class="card__support__data">
       <% if has_amount? %>
-        <%= percentage_tag model, nil %>
+        <%= percentage_tag campaign %>
       <% end %>
     </div>
-    <%= link_to t('decidim.components.crowdfundings.actions.support'), resource_path, class: 'card__button button--sc light button small secondary' %>
+    <%= action_authorized_link_to :support, t('decidim.components.crowdfundings.actions.support'), resource_path, resource: campaign, class: "card__button button button--sc" %>
   </div>
 </div>

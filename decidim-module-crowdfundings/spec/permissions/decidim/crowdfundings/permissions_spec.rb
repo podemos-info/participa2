@@ -5,21 +5,25 @@ require "spec_helper"
 describe Decidim::Crowdfundings::Permissions do
   subject { described_class.new(user, permission_action, context).permissions.allowed? }
 
-  before { stub_totals_request(user_annual_accumulated) }
+  before { stub_orders_total(user_annual_accumulated) }
 
-  let(:user) { create(:user, organization: component.organization) }
   let(:user_annual_accumulated) { 0 }
   let(:permission_action) { Decidim::PermissionAction.new(action) }
-  let(:campaign) { create(:campaign, component: component) }
+  let(:campaign) { create(:campaign, component: component, target_amount: target_amount) }
+  let(:target_amount) { nil }
   let(:contribution_allowed) { true }
   let(:component) { create(:crowdfundings_component, :assembly) }
   let(:component_settings) { {} }
   let(:current_settings) { double(contribution_allowed?: contribution_allowed) }
+  let(:payments_proxy) { create(:payments_proxy, organization: component.organization) }
+  let(:user) { payments_proxy.user }
+
   let(:context) do
     {
       current_component: component,
       current_settings: current_settings,
       component_settings: component_settings,
+      payments_proxy: payments_proxy,
       **extra_context
     }
   end
@@ -97,6 +101,12 @@ describe Decidim::Crowdfundings::Permissions do
 
       it { is_expected.to eq false }
     end
+
+    context "when campaign has a target amount" do
+      let(:target_amount) { 1000 }
+
+      it { is_expected.to eq false }
+    end
   end
 
   describe "contribution" do
@@ -120,12 +130,6 @@ describe Decidim::Crowdfundings::Permissions do
 
       context "when is not recurrent" do
         let(:frequency) { :punctual }
-
-        it { is_expected.to eq false }
-      end
-
-      context "when state is not accepted" do
-        let(:state) { :paused }
 
         it { is_expected.to eq false }
       end

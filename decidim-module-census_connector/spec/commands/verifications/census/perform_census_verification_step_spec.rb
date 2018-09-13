@@ -30,18 +30,18 @@ module Decidim::CensusConnector
 
       before do
         stub_request(:post, "http://mycensus:3001/api/v1/people/1@census/document_verifications")
-          .to_return(status: 422, body: '{"files":[{"error":"too_short"}]}')
+          .to_return(status: 422, body: '{"files":[{"error":"too_short","count":1}]}')
       end
 
       it "adds the API error to the form" do
         subject.call
 
         expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:files, "is too short"])
+        expect(form.errors.first).to eq([:document_file1, "can't be empty"])
       end
 
-      it "broadcasts a global error message" do
-        expect { subject.call }.to broadcast(:invalid, "Files is too short")
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
     end
   end

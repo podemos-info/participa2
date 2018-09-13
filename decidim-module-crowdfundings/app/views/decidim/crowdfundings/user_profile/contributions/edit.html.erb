@@ -1,15 +1,15 @@
 <h1><%= translated_attribute(campaign.title) %></h1>
 <%= decidim_form_for(contribution_form,
                      url: contribution_path(contribution),
-                     html: { class: 'form edit_contribution' }) do |f| %>
+                     html: { class: 'form contribution-form' }) do |f| %>
 
 
-  <h2 class=section-heading><%=t '.select_amount' %></h2>
+  <legend><%=t '.select_amount' %></legend>
   <div class="amount-selector">
-    <%= f.amount_selection :amount, campaign.amounts, campaign.minimum_custom_amount %>
+    <%= f.amount_selector :amount, amounts: campaign.amounts, minimum: campaign.minimum_custom_amount %>
   </div>
 
-  <h2 class=section-heading><%=t '.select_frequency' %></h2>
+  <legend><%=t '.select_frequency' %></legend>
   <div class="radio-selector">
     <% recurrent_frequency_options.each do |option| %>
       <%= f.label :frequency, '', value: option[1] do %>

@@ -9,11 +9,11 @@
     </div>
   </div>
   <div class="card--list__data campaign-list__data">
-    <% if allowed_to? :support, :campaign, campaign: campaign %>
+    <% if allowed_to? :support, :campaign, campaign: campaign, payments_proxy: payments_proxy %>
       <%= link_to t('.support'), campaign, class: 'button tiny hollow campaign--list__action' %>
     <% end %>
     <span class="card--list__data__number campaign-list__number">
-      <%= total_collected_to_currency(campaign.total_collected) %>
+      <%= total_collected(campaign) %>
     </span>
   </div>
 </div>

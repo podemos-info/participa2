@@ -9,7 +9,7 @@ module Decidim
       # Note that it inherits from `Decidim::Components::BaseController`, which
       # override its layout and provide all kinds of useful methods.
       class ApplicationController < Decidim::Admin::Components::BaseController
-        helper_method :campaigns, :campaign
+        helper_method :campaigns, :campaign, :payments_proxy
         helper Decidim::Crowdfundings::CampaignsHelper
 
         def campaigns
@@ -20,6 +20,10 @@ module Decidim
 
         def campaign
           @campaign ||= campaigns.find(params[:id])
+        end
+
+        def payments_proxy
+          @payments_proxy ||= Decidim::Crowdfundings::PaymentsProxy.new
         end
       end
     end

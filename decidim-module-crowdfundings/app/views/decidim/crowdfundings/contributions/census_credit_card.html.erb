@@ -1,11 +1,20 @@
-<%= form_tag @census[:action], method: :post, id: 'census-form' do %>
-  <% @census[:fields].each do |key, value| %>
-    <%= hidden_field_tag key, value %>
-  <% end %>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <%= form_tag @census[:action], method: :post, id: 'census-form' do %>
+      <% @census[:fields].each do |key, value| %>
+        <%= hidden_field_tag key, value %>
+      <% end %>
+    <% end %>
 
-<%= javascript_tag do %>
-  $(document).ready(function () {
-    $('#census-form').submit();
-  });
-<% end %>
+    <%= javascript_tag do %>
+      if (window.location.hash == '#sent') {
+        window.history.go(-1);
+      } else {
+        window.history.replaceState( {} , '', '#sent' );
+        document.getElementById('census-form').submit();
+      }
+    <% end %>
+  </body>
+</html>

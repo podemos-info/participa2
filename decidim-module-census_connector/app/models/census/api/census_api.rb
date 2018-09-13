@@ -7,33 +7,49 @@ module Census
     module CensusAPI
       extend ActiveSupport::Concern
 
+      class << self
+        attr_accessor :service_status
+      end
+
       included do
-        attr_reader :person_id, :errors, :global_error
+        delegate :get, :patch, :post, to: :connection
       end
 
-      def initialize(person_id = nil)
-        @person_id = person_id
+      def send_request
+        response = yield
+        update_service_status true
+        [response.status, response.body]
+      rescue Faraday::Error::ConnectionFailed => e
+        update_service_status false
+        [500, e.message]
       end
 
-      def qualified_id
-        raise "Person ID not available" unless person_id
-
-        "#{person_id}@census"
+      def process_response(request_result)
+        status, body = request_result
+        if [200, 201, 202, 204].include?(status)
+          info = status == 204 ? {} : JSON.parse(body, symbolize_names: true)
+          info = yield(info) if block_given?
+          [:ok, info]
+        elsif status == 422
+          [:invalid, errors: JSON.parse(body, symbolize_names: true)]
+        else
+          Rails.logger.warn body
+          [:error, {}]
+        end
       end
 
-      delegate :get, :patch, :post, to: :connection
-
-      def ensure_person(params = {})
-        raise "Person ID not available" unless person_id || params[:person_id]
-
-        params[:person_id] = person_id
-        params
+      def if_valid(result)
+        result[1] if result[0] == :ok
       end
 
-      def proxy
-        return if Decidim::CensusConnector.census_api_proxy_address.blank?
+      def service_status
+        Census::API::CensusAPI.service_status
+      end
 
-        "#{Decidim::CensusConnector.census_api_proxy_address}:#{Decidim::CensusConnector.census_api_proxy_port}"
+      private
+
+      def update_service_status(status)
+        Census::API::CensusAPI.service_status = status
       end
 
       def connection
@@ -47,42 +63,10 @@ module Census
         end
       end
 
-      def send_request
-        begin
-          response = yield
+      def proxy
+        return if Decidim::CensusConnector.census_api_proxy_address.blank?
 
-          http_response_code = response.status
-          http_response_body = response.body
-        rescue Errno::ECONNREFUSED
-          http_response_code = 500
-          http_response_body = "\n****** Census is down! ******\n"
-        end
-
-        if [200, 202, 422].include?(http_response_code)
-          json_response = JSON.parse(http_response_body, symbolize_names: true)
-          json_response[:http_response_code] = http_response_code
-          json_response
-        else
-          Rails.logger.warn http_response_body
-
-          { http_response_code: http_response_code }
-        end
-      end
-
-      def valid?(response)
-        http_response_code = response.delete(:http_response_code)
-
-        if [202, 204].include?(http_response_code)
-          true
-        elsif http_response_code == 422
-          @errors = response
-
-          false
-        else
-          @global_error = I18n.t("census.api.global_error")
-
-          false
-        end
+        "#{Decidim::CensusConnector.census_api_proxy_address}:#{Decidim::CensusConnector.census_api_proxy_port}"
       end
     end
   end

@@ -5,7 +5,7 @@ require "spec_helper"
 describe Decidim::Crowdfundings::Admin::Permissions do
   subject { described_class.new(user, permission_action, context).permissions.allowed? }
 
-  before { stub_totals_request(user_annual_accumulated) }
+  before { stub_orders_total(user_annual_accumulated) }
 
   let(:user) { create(:user, organization: component.organization) }
   let(:user_annual_accumulated) { 0 }

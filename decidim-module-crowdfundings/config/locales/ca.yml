@@ -93,6 +93,11 @@ ca:
       campaigns:
         campaign:
           support: Donar suport
+        contribution_form:
+          select_amount: Sel·lecciona la quantitat
+          select_frequency: Sel·lecciona la frequència
+          select_payment_method: Sel·lecciona la forma de pagament
+          support: Donar suport
         count:
           campaigns_count:
             one: 1 campanya de crowdfunding
@@ -106,11 +111,6 @@ ca:
           unfold: Desplegar
         show:
           support: Donar suport
-        support_form:
-          select_amount: Sel·lecciona la quantitat
-          select_frequency: Sel·lecciona la frequència
-          select_payment_method: Sel·lecciona la forma de pagament
-          support: Donar suport
         totals:
           overall_percentage: Percentatge total
           overall_totals: Acumulat
@@ -118,7 +118,6 @@ ca:
           user_totals: Usuari
       contributions:
         confirm_form:
-          are_you_sure: "¿Estas segur?"
           confirm: Confirmar
           contribution_resume: Resum de la col·laboració
           fill_required_data: Completa els següents camps
@@ -145,10 +144,6 @@ ca:
           credit_card_external: Targeta de crèdit
           direct_debit: Dèbit directe
           existing_payment_method: Forma de pagament existent
-        support_status:
-          contribution_not_allowed: La col·laboració no está permesa en estos moments.
-          maximum_annual_exceeded: No pots realitzar mes aportacions. Has arribat al màxim anual permés.
-          support_period_finished: El periode per a realitzar colaboracions ha finalitzat.
       models:
         campaign:
           fields:
@@ -164,6 +159,9 @@ ca:
             last_order_request_date: Última petició
             state: Estat
             user: Usuari
+      support_status:
+        maximum_annual_exceeded: No pots realitzar mes aportacions. Has arribat al màxim anual permés.
+        support_period_finished: El periode per a realitzar colaboracions ha finalitzat.
       user_profile:
         contributions:
           edit:
@@ -184,6 +182,6 @@ ca:
             success: La teva col·laboració s'ha actualitzat satisfactoriament.
     form_builder:
       support_tag:
-        other: Altres
+        other: Altre
     menu:
       crowdfundings: Crowdfundings

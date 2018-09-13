@@ -31,8 +31,8 @@ module Decidim
 
       # PUBLIC returns a list of payment method options that can
       # be used in a select input tag.
-      def payment_method_options(except = nil)
-        types = Census::API::PaymentMethod::PAYMENT_METHOD_TYPES - [except]
+      def payment_method_options(except: nil)
+        types = Census::API::PaymentMethodDefinitions::TYPES - [except]
         types.map do |type|
           [payment_method_label(type), type]
         end

@@ -19,7 +19,9 @@ en:
         membership_level: Engagement level
   census:
     api:
-      global_error: Podemos census is not available at this time. Please, try again later or contact us at verificaciones@soporte.podemos.info if the problem persists
+      messages:
+        error: The census service is not available at this time. Please, try again later or contact us if the problem persists.
+        invalid: There are errors in your data submitted. Please, fix the wrong fields and try again.
       person:
         document_type:
           dni: DNI
@@ -81,13 +83,12 @@ en:
         account:
           index:
             data_heading: Personal data
-            membership_heading: Membership level
             not_yet_registered: You're not yet registered with Podemos' census.
             pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
             scope_heading: Location
             sign_up_to_vote: Sign up to take part in votings.
         menu:
-          census: Census
+          census: Registration in Podemos
       verifications:
         census:
           authorizations:
@@ -117,8 +118,6 @@ en:
             document_type: You need to be registered with %{allowed_document_types}
             minimum_age: You need to be a least %{minimum_age} years old
             verification: You need to be verified
-          errors:
-            create: Error when saving
           or: or
     verifications:
       authorizations:

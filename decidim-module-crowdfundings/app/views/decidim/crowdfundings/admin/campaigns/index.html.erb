@@ -37,7 +37,7 @@
                 <%= campaign.target_amount.blank? ? "-" : decidim_number_to_currency(campaign.target_amount) %>
               </td>
               <td class="right">
-                <%= total_collected_to_currency campaign.total_collected %>
+                <%= total_collected(campaign) %>
               </td>
               <td class="center">
                 <%=l campaign.active_until unless campaign.active_until.nil? %>

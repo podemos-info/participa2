@@ -8,31 +8,29 @@ module Census
 
       # PUBLIC creates a person with the given params.
       def create(params)
-        response = send_request do
-          post("/api/v1/people", params)
+        process_response(
+          send_request { post("/api/v1/people", params) }
+        ) do |response|
+          response[:person_id]
         end
-
-        @person_id = response[:person_id] if valid?(response)
       end
 
       # PUBLIC retrieve the available information for the given person.
-      def find(**params)
-        send_request do
-          get("/api/v1/people/#{qualified_id}", params.slice(:version_at))
-        end
+      def find(qualified_id, **params)
+        process_response(
+          send_request { get("/api/v1/people/#{qualified_id}", params.slice(:version_at)) }
+        )
       end
 
       # PUBLIC update the person with the given params.
-      def update(params)
-        response = send_request do
-          patch("/api/v1/people/#{qualified_id}", params)
-        end
-
-        valid?(response)
+      def update(qualified_id, **params)
+        process_response(
+          send_request { patch("/api/v1/people/#{qualified_id}", params) }
+        )
       end
 
       # PUBLIC add a verification process for the person.
-      def create_verification(params)
+      def create_verification(qualified_id, **params)
         files = params[:files].map do |file|
           {
             filename: file.original_filename,
@@ -41,20 +39,16 @@ module Census
           }
         end
 
-        response = send_request do
-          post("/api/v1/people/#{qualified_id}/document_verifications", files: files)
-        end
-
-        valid?(response)
+        process_response(
+          send_request { post("/api/v1/people/#{qualified_id}/document_verifications", files: files) }
+        )
       end
 
       # PUBLIC associate a membership level for the person.
-      def create_membership_level(params)
-        response = send_request do
-          post("/api/v1/people/#{qualified_id}/membership_levels", params)
-        end
-
-        valid?(response)
+      def create_membership_level(qualified_id, **params)
+        process_response(
+          send_request { post("/api/v1/people/#{qualified_id}/membership_levels", params) }
+        )
       end
     end
   end

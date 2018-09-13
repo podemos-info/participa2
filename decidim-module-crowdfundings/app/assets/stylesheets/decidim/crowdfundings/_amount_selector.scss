@@ -1,14 +1,17 @@
 .amount-selector{
-  display: inline-block;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: flex-start;
   margin-bottom: 1em;
 
   label{
     cursor: pointer;
-    float: left;
     display: inline-block;
-    margin-right: 10pt;
-    margin-bottom: .5em;
-    font-size: 22px;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+    flex-grow: 1;
 
     input[type="radio"]{
       display: none;
@@ -25,15 +28,23 @@
       padding: 4pt 11pt;
       background: $secondary;
       color: white;
-      border-radius: 5pt;
-      width: 80pt;
+      border-radius: $global-radius;
+      min-width: 2rem;
       text-align: center;
       border: 1px solid transparent;
     }
+
+    & + label{
+      margin-left: .5rem;
+    }
+  }
+
+  .form-error{
+    width: 100%;
   }
 
   .field{
-    clear: left;
+    width: 100%;
 
     label{
       width: 100%;

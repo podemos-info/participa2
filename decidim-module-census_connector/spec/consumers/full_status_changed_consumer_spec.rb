@@ -19,7 +19,7 @@ module Decidim::CensusConnector
         state: state,
         membership_level: membership_level,
         verification: verification,
-        scope: scope_code
+        scope_code: scope_code
       }
     end
 
@@ -47,7 +47,7 @@ module Decidim::CensusConnector
     end
 
     it "updates person state scope" do
-      expect { subject } .to change { authorization.reload.metadata["scope"] } .from(nil).to(scope_code)
+      expect { subject } .to change { authorization.reload.metadata["scope_code"] } .from(nil).to(scope_code)
     end
 
     context "when person is discarded" do

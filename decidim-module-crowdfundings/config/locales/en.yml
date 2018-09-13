@@ -53,7 +53,7 @@ en:
           global:
             resources_permissions_enabled: Actions permissions can be set for each campaign
           step:
-            contributions_allowed: Contributions allowed
+            contribution_allowed: Contributions allowed
     crowdfundings:
       actions:
         confirm_destroy: Are you sure?
@@ -97,6 +97,11 @@ en:
       campaigns:
         campaign:
           support: Support
+        contribution_form:
+          select_amount: Select the amount
+          select_frequency: Select the frequency
+          select_payment_method: Select the payment method
+          support: Support
         count:
           campaigns_count:
             one: 1 crowdfunding campaign
@@ -118,11 +123,6 @@ en:
           current_pending_recurrent_support: You applied to give %{amount} with %{periodicity} periodicity to this campaign, your contribution is being reviewed.
           current_rejected_recurrent_support: You tried to give %{amount} with %{periodicity} periodicity, but the contribution was rejected.
           support: Support
-        support_form:
-          select_amount: Select the amount
-          select_frequency: Select the frequency
-          select_payment_method: Select the payment method
-          support: Support
         totals:
           overall_percentage: Overall percentage
           overall_totals: Overall totals
@@ -130,7 +130,6 @@ en:
           user_totals: User totals
       contributions:
         confirm_form:
-          are_you_sure: Are you sure?
           confirm: Confirm
           contribution_resume: Contribution resume
           fill_required_data: Fill the following fields
@@ -157,10 +156,6 @@ en:
           credit_card_external: Credit card
           direct_debit: Direct debit
           existing_payment_method: Existing payment method
-        support_status:
-          contribution_not_allowed: Contribution is not allowed at this moment.
-          maximum_annual_exceeded: You can not create more contributions. You have reached the maximum yearly allowed.
-          support_period_finished: The period for accepting contributions has expired.
       models:
         campaign:
           fields:
@@ -176,6 +171,10 @@ en:
             last_order_request_date: Last request
             state: State
             user: User
+      support_status:
+        maximum_annual_exceeded: You can not create more contributions. You have reached the maximum yearly allowed.
+        service_unavailable: We are sorry, the payments system is not working at this moment.
+        support_period_finished: The period for accepting contributions has expired.
       user_profile:
         contributions:
           edit:

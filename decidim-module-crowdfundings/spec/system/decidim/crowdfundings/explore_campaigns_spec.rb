@@ -12,7 +12,7 @@ describe "Explore campaigns", type: :system do
   end
 
   before do
-    stub_totals_request(0)
+    stub_orders_total(0)
   end
 
   describe "index" do
