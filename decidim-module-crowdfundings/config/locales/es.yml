@@ -130,7 +130,6 @@ es:
           user_totals: Usuario
       contributions:
         confirm_form:
-          are_you_sure: "¿Estás seguro?"
           confirm: Confirmar
           contribution_resume: Resumen de la aportación
           fill_required_data: Completa los siguientes campos

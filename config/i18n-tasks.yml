@@ -81,6 +81,7 @@ ignore_unused:
   - decidim.crowdfundings.campaigns.show.current_*_recurrent_support
   - decidim.crowdfundings.models.*
   - decidim.form_builder.support_tag.other
+  - decidim.menu.*
   - decidim.verifications.authorizations.first_login.*
   - decidim.votings.admin.models.*
   - decidim.votings.models.*

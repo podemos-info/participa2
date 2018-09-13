@@ -130,7 +130,6 @@ en:
           user_totals: User totals
       contributions:
         confirm_form:
-          are_you_sure: Are you sure?
           confirm: Confirm
           contribution_resume: Contribution resume
           fill_required_data: Fill the following fields

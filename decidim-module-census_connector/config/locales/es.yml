@@ -118,8 +118,6 @@ es:
             document_type: Pueden participar personas inscritas con %{allowed_document_types}
             minimum_age: Debes tener más de %{minimum_age} años para poder participar
             verification: Debes verificarte para participar
-          errors:
-            saving: Se ha producido un error al guardar tus datos personales.
           or: o
     verifications:
       authorizations:
