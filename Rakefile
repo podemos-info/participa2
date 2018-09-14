@@ -9,9 +9,6 @@ Rails.application.load_tasks
 
 return if Rails.env.production?
 
-require "rspec/core/rake_task"
-RSpec::Core::RakeTask.new(:spec)
-
 desc "Cleanup temporary spec files"
 task :clean do
   [:census_connector, :crowdfundings, :gravity_forms, :votings].each do |component|
@@ -21,6 +18,11 @@ end
 
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+desc "Runs all tests in the main application"
+task :spec do
+  system!("SIMPLECOV=true bundle exec rspec")
 end
 
 namespace :spec do
@@ -35,7 +37,7 @@ namespace :spec do
 
           system!("bundle exec rake test_app") unless Dir.exist?("spec/decidim_dummy_app")
 
-          system!("bundle exec rspec")
+          system!("SIMPLECOV=true bundle exec rspec")
         end
       end
     end
