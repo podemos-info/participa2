@@ -12,6 +12,13 @@ return if Rails.env.production?
 require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
+desc "Cleanup temporary spec files"
+task :clean do
+  [:census_connector, :crowdfundings, :gravity_forms, :votings].each do |component|
+    rm_r "decidim-module-#{component}/spec/decidim_dummy_app"
+  end
+end
+
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
@@ -37,4 +44,10 @@ namespace :spec do
   task components: [:census_connector, :crowdfundings, :gravity_forms, :votings]
 end
 
-task default: [:spec, :"spec:components"]
+desc "Runs all specs, using existing test apps"
+task all_specs: [:spec, :"spec:components"]
+
+desc "Runs all specs, fully resetting all test apps"
+task full_specs: [:clean, :all_specs]
+
+task default: :all_specs
