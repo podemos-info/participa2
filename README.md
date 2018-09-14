@@ -2,7 +2,7 @@
 
 Citizen Participation and Open Government application.
 
-This is the open-source repository for participa2, based on [Decidim](https://github.com/decidim/decidim).
+This is the open-source repository for participa2, based on [Decidim].
 
 ## Setting up the application
 
@@ -38,3 +38,5 @@ bundle exec cap staging systemd:hutch:setup
 bundle exec cap staging systemd:puma:setup
 bundle exec cap staging deploy
 ```
+
+[Decidim]: https://github.com/decidim/decidim
