@@ -55,7 +55,7 @@ You're good to go!
 
 ## Deploy
 
-```
+```console
 bundle exec cap staging systemd:hutch:setup
 bundle exec cap staging systemd:puma:setup
 bundle exec cap staging deploy
