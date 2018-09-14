@@ -1,5 +1,14 @@
 # participa2
 
+[![Build][build]][build_url]
+[![Coverage][coverage]][coverage_url]
+
+[build]: https://circleci.com/gh/podemos-info/participa2/tree/master.svg?style=svg
+[build_url]: https://circleci.com/gh/podemos-info/participa2/tree/master
+
+[coverage]: https://api.codeclimate.com/v1/badges/716e86b42a45d73a13ab/test_coverage
+[coverage_url]: https://codeclimate.com/github/podemos-info/participa2/test_coverage
+
 Citizen Participation and Open Government application.
 
 This is the open-source repository for participa2, a web application based on
