@@ -12,8 +12,10 @@ class AddCoreContentBlocks < ActiveRecord::Migration[5.2]
   end
 
   def change
+    default_blocks = [:hero, :sub_hero, :highlighted_content_banner, :how_to_participate, :stats, :footer_sub_hero]
+
     Organization.pluck(:id).each do |organization_id|
-      Decidim::System::CreateDefaultContentBlocks::DEFAULT_CONTENT_BLOCKS.each_with_index do |manifest_name, index|
+      default_blocks.each_with_index do |manifest_name, index|
         weight = (index + 1) * 10
         ContentBlock.create(
           decidim_organization_id: organization_id,
