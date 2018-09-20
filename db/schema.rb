@@ -376,7 +376,7 @@ ActiveRecord::Schema.define(version: 2018_09_03_101134) do
     t.integer "payment_method_id"
     t.date "last_order_request_date"
     t.index ["decidim_crowdfundings_campaign_id"], name: "contribution_campaign_idx"
-    t.index ["decidim_user_id"], name: "contribution_user_idx"
+    t.index ["decidim_user_id"], name: "contributions_user_idx"
     t.index ["state"], name: "index_decidim_crowdfundings_contributions_on_state"
   end
 
