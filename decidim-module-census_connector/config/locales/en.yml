@@ -13,6 +13,8 @@ en:
         gender: Gender
         last_name1: First surname
         last_name2: Second surname
+        phone_country: Country
+        phone_number: Number
         postal_code: Postal code
         scope_id: Participation place
       membership_level:
@@ -85,6 +87,7 @@ en:
             data_heading: Personal data
             not_yet_registered: You're not yet registered with Podemos' census.
             pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+            phone_heading: Mobile phone
             scope_heading: Location
             sign_up_to_vote: Sign up to take part in votings.
         menu:
@@ -93,7 +96,9 @@ en:
         census:
           authorizations:
             data:
-              title: Personal data
+              go_back: Go back
+              other_phone_country: Other country
+              title: Complete your data
             membership_level:
               directions: Choose your membership level
               follower:

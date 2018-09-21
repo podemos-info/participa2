@@ -21,6 +21,7 @@ $secondary2: #00727b;
 $secondary3: #a7e6d9;
 
 @import "content_blocks";
+@import "census_form";
 
 .title-bar{
   background: $primary;
@@ -58,26 +59,6 @@ $secondary3: #a7e6d9;
 
 .process-header__container{
   min-height: 14rem;
-}
-
-.radio-options{
-  display: flex;
-  flex-wrap: wrap;
-
-  label{
-    height: 1.5rem;
-    flex-grow: 1;
-  }
-
-  input{
-    height: 1.5rem;
-  }
-}
-
-.field{
-  .data-picker{
-    margin-bottom: 1rem;
-  }
 }
 
 a[href="/authorizations"]{

@@ -13,6 +13,7 @@ $(() => {
         }
       }
       toggleDocumentScope();
+      $documentScope.removeClass("hide");
       $documentType.on('change', toggleDocumentScope);
     }
 
@@ -37,6 +38,7 @@ $(() => {
       }
 
       toggleScope(addressScopeId);
+      $scope.removeClass("hide");
       $addressScope.on("change", "input[type=hidden]", (event) => toggleScope($(event.target).val()));
     }
 

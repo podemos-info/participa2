@@ -1,0 +1,27 @@
+.census-form{
+  legend{
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .radio-options{
+    display: flex;
+    flex-wrap: wrap;
+
+    label{
+      height: 1.5rem;
+      flex-grow: 1;
+    }
+
+    input{
+      height: 1.5rem;
+    }
+  }
+
+  .field{
+    .data-picker{
+      margin-bottom: 1rem;
+    }
+  }
+}

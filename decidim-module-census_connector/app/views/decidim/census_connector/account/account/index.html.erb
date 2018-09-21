@@ -30,7 +30,7 @@
           <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/>Cancelar verificación</a>
         <% elsif !person.verified? %>
           <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/>Verificar</a>
-          <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%></br>Modificar</a>
+          <a href="<%= decidim_census.root_path(form: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br>Modificar</a>
         <% end %>
       </div>
     </div>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="card--list__data card--list__actions">
-        <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+        <a href="<%= decidim_census.root_path(form: :data, part: :location) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
       </div>
     </div>
 
@@ -54,9 +54,9 @@
       <div class="card--list__text">
         <div>
           <h3 class="card--list__heading heading6">
-            Teléfono móvil
+            <%= t(".phone_heading") %>
           </h3>
-          <span class="text-small">(+34) 999 999 999</span>
+          <span class="text-small"><%= person_presenter.pretty_phone %></span>
         </div>
       </div>
       <div class="card--list__data card--list__status">
@@ -64,7 +64,7 @@
       </div>
       <div class="card--list__data card--list__actions">
           <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/>Verificar</a>
-        <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+        <a href="<%= decidim_census.root_path(form: :data, part: :phone) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
       </div>
     </div>
   </div>

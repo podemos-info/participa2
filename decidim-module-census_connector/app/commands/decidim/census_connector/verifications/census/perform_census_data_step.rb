@@ -55,22 +55,31 @@ module Decidim
           end
 
           def person_params
-            base = {
-              email: user.email,
-              first_name: first_name,
-              last_name1: last_name1,
-              last_name2: last_name2,
-              document_type: document_type,
-              document_id: document_id,
-              born_at: born_at,
-              gender: gender,
-              address: address,
-              postal_code: postal_code,
-              document_scope_code: document_scope_code,
-              address_scope_code: address_scope_code
-            }
+            base = { email: user.email }
 
-            base[:scope_code] = scope_code if address_scope.present?
+            if personal_data?
+              base.merge!(
+                first_name: first_name,
+                last_name1: last_name1,
+                last_name2: last_name2,
+                document_type: document_type,
+                document_id: document_id,
+                born_at: born_at,
+                gender: gender
+              )
+            end
+
+            if location_data?
+              base.merge!(
+                address: address,
+                postal_code: postal_code,
+                document_scope_code: document_scope_code,
+                address_scope_code: address_scope_code
+              )
+              base[:scope_code] = scope_code if address_scope.present?
+            end
+
+            base[:phone] = phone if phone_data?
 
             base
           end
@@ -80,8 +89,9 @@ module Decidim
           end
 
           delegate :user, to: :person_proxy
-          delegate :local_scope, to: :form
-          delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, :born_at, :gender, :address, :postal_code, to: :form
+          delegate :personal_data?, :location_data?, :phone_data?, :local_scope, to: :form
+          delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, to: :form
+          delegate :born_at, :gender, :address, :postal_code, :phone, to: :form
 
           delegate :code, to: :document_scope, allow_nil: true, prefix: true
           delegate :code, to: :scope, allow_nil: true, prefix: true
