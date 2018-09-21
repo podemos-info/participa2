@@ -26,6 +26,8 @@ require "rspec/rails"
 
 require "decidim/dev/test/rspec_support/capybara"
 require "decidim/dev/test/rspec_support/factory_bot"
+require "decidim/dev/test/rspec_support/route_helpers"
+require "decidim/dev/test/rspec_support/translation_helpers"
 require "decidim/dev/test/rspec_support/warden"
 
 require "decidim/core/test/factories"
@@ -74,4 +76,6 @@ RSpec.configure do |config|
       I18n.available_locales = original_locales
     end
   end
+
+  config.include TranslationHelpers
 end
