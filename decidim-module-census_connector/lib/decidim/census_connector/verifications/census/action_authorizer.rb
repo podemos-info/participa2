@@ -25,7 +25,7 @@ module Decidim
             params = {}
             params[:minimum_age] = minimum_age if authorizing_by_age?
             params[:allowed_document_types] = allowed_document_types if authorizing_by_document_type?
-            params[:allowed_scope] = component_scope.code if authorizing_by_scope?
+            params[:allowed_scope] = current_scope.code if authorizing_by_scope?
             params[:census_closure] = census_closure if authorizing_by_census_closure?
             params[:allowed_verifications] = allowed_verification_levels if authorizing_by_verification?
 
