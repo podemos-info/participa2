@@ -25,7 +25,6 @@ require "rspec/rails"
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 
 require "decidim/dev/test/rspec_support/capybara"
-require "factory_bot_rails" # can be removed when required by decidim
 require "decidim/dev/test/rspec_support/factory_bot"
 require "decidim/dev/test/rspec_support/warden"
 
