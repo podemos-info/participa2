@@ -37,7 +37,7 @@ RSpec.describe "Votings configuration", type: :system do
     click_link translated(voting.title)
   end
 
-  context "when the user has not yet registered" do
+  context "when the user has not yet registered with Census" do
     it "is prompted to register with census" do
       click_link "Votar"
 
