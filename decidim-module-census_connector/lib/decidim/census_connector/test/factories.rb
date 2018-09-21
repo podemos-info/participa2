@@ -9,7 +9,7 @@ FactoryBot.modify do
       transient do
         person_id { 1 }
         scope { create(:scope) }
-        status { "enabled" }
+        state { "enabled" }
         verification { "not_verified" }
         membership_level { "follower" }
       end
@@ -20,7 +20,7 @@ FactoryBot.modify do
                                metadata: {
                                  "person_id" => 1,
                                  "scope_code" => evaluator.scope.code,
-                                 "status" => evaluator.status,
+                                 "state" => evaluator.state,
                                  "verification" => evaluator.verification,
                                  "membership_level" => evaluator.membership_level
                                })

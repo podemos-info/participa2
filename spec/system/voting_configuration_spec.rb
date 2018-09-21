@@ -4,11 +4,11 @@ require "rails_helper"
 
 require "decidim/assemblies/test/factories"
 require "decidim/votings/test/factories"
+require "decidim/census_connector/test/factories"
 
 RSpec.describe "Votings configuration", type: :system do
   let(:manifest) { Decidim.find_component_manifest("votings") }
   let(:organization) { create(:organization) }
-  let(:user) { create :user, :confirmed, organization: organization }
   let(:assembly) { create(:assembly, organization: organization) }
   let(:component) { create(:component, manifest: manifest, participatory_space: assembly, permissions: permissions) }
   let(:scope) { create(:scope, organization: organization) }
@@ -38,10 +38,22 @@ RSpec.describe "Votings configuration", type: :system do
   end
 
   context "when the user has not yet registered with Census" do
+    let(:user) { create :user, :confirmed, organization: organization }
+
     it "is prompted to register with census" do
       click_link "Votar"
 
       expect(page).to have_link('Autorizar con "Censo"')
+    end
+  end
+
+  context "when the user already registered with Census" do
+    let(:user) { create :user, :with_person, :confirmed, organization: organization }
+
+    it "is prompted to register with census" do
+      click_link "Votar"
+
+      expect(page).to have_link("Cargando cabina de votación...")
     end
   end
 end
