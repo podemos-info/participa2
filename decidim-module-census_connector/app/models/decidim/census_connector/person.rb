@@ -8,7 +8,8 @@ module Decidim
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
 
-      def initialize(person_data, &block)
+      def initialize(user, person_data, &block)
+        @user = user
         @person_data = person_data
         @defer_person_data = block if block_given?
       end
@@ -39,15 +40,15 @@ module Decidim
       end
 
       def scope
-        @scope ||= Decidim::Scope.find_by(code: scope_code)
+        @scope ||= @user.organization.scopes.find_by(code: scope_code)
       end
 
       def address_scope
-        @address_scope ||= Decidim::Scope.find_by(code: address_scope_code)
+        @address_scope ||= @user.organization.scopes.find_by(code: address_scope_code)
       end
 
       def document_scope
-        @document_scope ||= Decidim::Scope.find_by(code: document_scope_code)
+        @document_scope ||= @user.organization.scopes.find_by(code: document_scope_code)
       end
 
       def age

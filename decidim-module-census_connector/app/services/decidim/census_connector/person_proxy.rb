@@ -35,7 +35,7 @@ module Decidim
       end
 
       def person
-        @person ||= Person.new(valid_metadata) { census_person } if has_person?
+        @person ||= Person.new(user, valid_metadata) { census_person } if has_person?
       end
 
       # PUBLIC creates a person with the given params.
