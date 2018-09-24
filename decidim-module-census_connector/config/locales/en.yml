@@ -84,10 +84,16 @@ en:
       account:
         account:
           index:
+            action:
+              cancel_verification: Cancel verification
+              modify: Modify
+              verify: Verify
             data_heading: Personal data
             not_yet_registered: You're not yet registered with Podemos' census.
+            participation_heading: Your participation in Podemos
             pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
             phone_heading: Mobile phone
+            profile_heading: Your Podemos profile
             scope_heading: Location
             sign_up_to_vote: Sign up to take part in votings.
         menu:
