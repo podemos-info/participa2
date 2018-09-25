@@ -13,6 +13,8 @@ es:
         gender: Género
         last_name1: Primer apellido
         last_name2: Segundo apellido
+        phone_country: País
+        phone_number: Número
         postal_code: Código postal
         scope_id: Lugar de participación
       membership_level:
@@ -82,9 +84,16 @@ es:
       account:
         account:
           index:
+            action:
+              cancel_verification: Cancelar verificación
+              modify: Modificar
+              verify: Verificar
             data_heading: Datos personales
             not_yet_registered: Aún no estás registrado en el censo de Podemos.
+            participation_heading: Tu participación en Podemos
             pending_notice: Tu registro en el censo de Podemos está siendo validado. Inténtalo de nuevo más tarde o contáctanos en verificaciones@soporte.podemos.info
+            phone_heading: Teléfono móvil
+            profile_heading: Tu inscripción en Podemos
             scope_heading: Ubicación
             sign_up_to_vote: Apúntate para participar en las votaciones.
         menu:
@@ -93,7 +102,9 @@ es:
         census:
           authorizations:
             data:
-              title: Introduce tus datos personales
+              go_back: Volver
+              other_phone_country: Otro país
+              title: Completa tus datos
             membership_level:
               directions: En Podemos hay diferentes maneras de participar y son todas útiles y bienvenidas. En este paso puedes elegir la que más se acerque a tu nivel de compromiso con Podemos.
               follower:

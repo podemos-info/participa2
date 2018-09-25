@@ -61,9 +61,17 @@ module Decidim
           end
         end
 
+        def pretty_phone
+          "(+#{parsed_phone.country_code}) #{parsed_phone.national}"
+        end
+
         private
 
         attr_reader :person
+
+        def parsed_phone
+          @parsed_phone ||= Phonelib.parse(person.phone)
+        end
       end
     end
   end

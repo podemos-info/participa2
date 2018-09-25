@@ -9,22 +9,28 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
-        helper_method :document_scopes, :local_scope, :non_local_scope, :local_scope_ranges,
+        helper_method :document_scopes, :phone_scopes, :local_scope, :non_local_scope, :local_scope_ranges,
                       :has_person?, :person, :census_service?, :mandatory_census_service?
 
         delegate :person_id, :has_person?, :person, :service_status, to: :person_proxy, allow_nil: true
       end
 
       def document_scopes
-        [local_scope] + current_organization.scopes.where(parent: non_local_scope).order(name: :asc)
+        @document_scopes ||= [local_scope] + current_organization.scopes.where(parent: non_local_scope).order(name: :asc)
+      end
+
+      def phone_scopes
+        @phone_scopes ||= current_organization.scopes.where(code: Phonelib.phone_data.keys).map do |scope|
+          [scope, Phonelib.phone_data[scope.code]]
+        end
       end
 
       def local_scope
-        @local_scope ||= Decidim::Scope.find_by(code: Decidim::CensusConnector.census_local_code)
+        @local_scope ||= current_organization.scopes.find_by(code: Decidim::CensusConnector.census_local_code)
       end
 
       def non_local_scope
-        @non_local_scope ||= Decidim::Scope.find_by(code: Decidim::CensusConnector.census_non_local_code)
+        @non_local_scope ||= current_organization.scopes.find_by(code: Decidim::CensusConnector.census_non_local_code)
       end
 
       # PUBLIC: returns a list of ranges of local scopes ids
