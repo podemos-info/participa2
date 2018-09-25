@@ -9,9 +9,9 @@
     </div>
   </div>
 <% else %>
-  <h2 class="section-heading">Tu inscripción en Podemos</h2>
+  <h2 class="section-heading"><%= t(".profile_heading") %></h2>
   <div class="card card--list card--account">
-    <div class="card--list__item">
+    <div class="card--list__item data_card">
       <div class="card--list__text">
         <div>
           <h3 class="card--list__heading heading6">
@@ -27,15 +27,15 @@
       </div>
       <div class="card--list__data card--list__actions">
         <% if person.verification_received? %>
-          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/>Cancelar verificación</a>
+          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/><%= t(".action.cancel_verification") %></a>
         <% elsif !person.verified? %>
-          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/>Verificar</a>
-          <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%></br>Modificar</a>
+          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+          <a href="<%= decidim_census.root_path(form: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br><%= t(".action.modify") %></a>
         <% end %>
       </div>
     </div>
 
-    <div class="card--list__item">
+    <div class="card--list__item scope_card">
       <div class="card--list__text">
         <div>
           <h3 class="card--list__heading heading6">
@@ -46,30 +46,30 @@
         </div>
       </div>
       <div class="card--list__data card--list__actions">
-        <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+        <a href="<%= decidim_census.root_path(form: :data, part: :location) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
       </div>
     </div>
 
-    <div class="card--list__item">
+    <div class="card--list__item phone_card">
       <div class="card--list__text">
         <div>
           <h3 class="card--list__heading heading6">
-            Teléfono móvil
+            <%= t(".phone_heading") %>
           </h3>
-          <span class="text-small">(+34) 999 999 999</span>
+          <span class="text-small"><%= person_presenter.pretty_phone %></span>
         </div>
       </div>
       <div class="card--list__data card--list__status">
         <span class="card--list__data__icon"><%= icon "x", class: "muted" %><br/>No verificado</span>
       </div>
       <div class="card--list__data card--list__actions">
-          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/>Verificar</a>
-        <a href="<%= decidim_census.root_path(form: :data) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+          <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+        <a href="<%= decidim_census.root_path(form: :data, part: :phone) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
       </div>
     </div>
   </div>
 
-  <h2 class="section-heading">Tu participacion en Podemos</h2>
+  <h2 class="section-heading"><%= t(".participation_heading") %></h2>
   <div class="card card--list card--account">
     <div class="card--list__item">
       <div class="card--list__text">

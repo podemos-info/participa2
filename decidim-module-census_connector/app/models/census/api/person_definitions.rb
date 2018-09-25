@@ -11,7 +11,7 @@ module Census
       PERSON_ATTRIBUTES = %w(first_name last_name1 last_name2
                              gender born_at
                              document_type document_id document_scope_code
-                             scope_code address address_scope_code postal_code
+                             scope_code address phone address_scope_code postal_code
                              membership_level state verification).freeze
 
       DOCUMENT_TYPES = %w(dni nie passport).freeze

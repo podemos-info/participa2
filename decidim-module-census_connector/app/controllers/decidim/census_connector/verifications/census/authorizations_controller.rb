@@ -8,6 +8,7 @@ module Decidim
         # Handles registration and verifications again the external census application
         #
         class AuthorizationsController < Decidim::CensusConnector::ApplicationController
+          helper Decidim::CensusConnector::AuthorizationsHelper
           helper Decidim::SanitizeHelper
 
           helper_method :current_form_path
@@ -51,6 +52,10 @@ module Decidim
 
           private
 
+          def part
+            @part ||= request[:part]
+          end
+
           def step?
             @step ||= request[:form].blank?
           end
@@ -91,12 +96,13 @@ module Decidim
 
           def form_context
             {
-              local_scope: local_scope
+              local_scope: local_scope,
+              part: part
             }
           end
 
           def authorization_params
-            params.permit(:locale, :step, :form, :redirect_url).to_h
+            params.permit(:locale, :step, :part, :form, :redirect_url).to_h
           end
 
           def valid_step(step)

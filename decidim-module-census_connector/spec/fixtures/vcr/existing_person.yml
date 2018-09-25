@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"25fa73053e4e5e7dcf5e2e91541c678f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=c4003ea0-3d2e-4395-ab3b-125a10415849; path=/; expires=Mon, 24 Sep
+        2018 14:05:22 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=156b0d4b-9e1f-4902-be12-20bfe2df4768; path=/; expires=Thu, 24
+        Sep 2020 10:05:22 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - c7101b23-3233-4320-aa9a-ae6abebd5992
+      X-Runtime:
+      - '0.083323'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-SO-011","state":"enabled","verification":"not_verified","external_ids":{"decidim":1},"first_name":"Esteban","last_name1":"Guajardo","last_name2":"Gil","document_type":"dni","document_id":"23069276T","document_scope_code":"ES","born_at":"1996-09-17","gender":"other","address":"Parcela
+        Laura 80 Esc. 597","postal_code":"42178","address_scope_code":"ES-CL-SO-011","email":"soonadams@kub.com","phone":"0034592996504"}'
+    http_version:
+  recorded_at: Mon, 24 Sep 2018 10:05:22 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"25fa73053e4e5e7dcf5e2e91541c678f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=fa9e1144-2a75-4049-90b2-ef5f6bdfaa57; path=/; expires=Mon, 24 Sep
+        2018 14:27:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=0532750d-5488-420f-b8a9-004fe2aa33ac; path=/; expires=Thu, 24
+        Sep 2020 10:27:47 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 05416bdf-2920-4f95-b37c-87b461dee68e
+      X-Runtime:
+      - '0.097484'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-SO-011","state":"enabled","verification":"not_verified","external_ids":{"decidim":1},"first_name":"Esteban","last_name1":"Guajardo","last_name2":"Gil","document_type":"dni","document_id":"23069276T","document_scope_code":"ES","born_at":"1996-09-17","gender":"other","address":"Parcela
+        Laura 80 Esc. 597","postal_code":"42178","address_scope_code":"ES-CL-SO-011","email":"soonadams@kub.com","phone":"0034592996504"}'
+    http_version:
+  recorded_at: Mon, 24 Sep 2018 10:27:47 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"25fa73053e4e5e7dcf5e2e91541c678f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=48fa0fcb-24a7-4ae9-a12e-21a0f29a6e8c; path=/; expires=Tue, 25 Sep
+        2018 13:59:55 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=4a8ad56b-67e6-46c2-b90e-6625eca86767; path=/; expires=Fri, 25
+        Sep 2020 09:59:55 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 38ad1db7-b09d-4fda-b1cc-4c9e934d53b4
+      X-Runtime:
+      - '0.111196'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-SO-011","state":"enabled","verification":"not_verified","external_ids":{"decidim":1},"first_name":"Esteban","last_name1":"Guajardo","last_name2":"Gil","document_type":"dni","document_id":"23069276T","document_scope_code":"ES","born_at":"1996-09-17","gender":"other","address":"Parcela
+        Laura 80 Esc. 597","postal_code":"42178","address_scope_code":"ES-CL-SO-011","email":"soonadams@kub.com","phone":"0034592996504"}'
+    http_version:
+  recorded_at: Tue, 25 Sep 2018 09:59:55 GMT
+recorded_with: VCR 4.0.0
