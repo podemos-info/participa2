@@ -9,9 +9,9 @@
     <div class="row">
       <div class="columns large-8 medium-centered census-form">
         <%= decidim_form_for(@form, url: current_form_path) do |form| %>
-          <%= render partial: "personal_data", locals: { form: form } if @form.personal_data? %>
-          <%= render partial: "location_data", locals: { form: form } if @form.location_data? %>
-          <%= render partial: "phone_data", locals: { form: form } if @form.phone_data? %>
+          <%= render partial: "personal_data_part", locals: { form: form } if @form.personal_part? %>
+          <%= render partial: "location_data_part", locals: { form: form } if @form.location_part? %>
+          <%= render partial: "phone_data_part", locals: { form: form } if @form.phone_part? %>
 
           <div class="card">
             <div class="card__content">
@@ -20,7 +20,9 @@
               </div>
               <% if has_person? %>
                 <p class="text-center">
-                  <a href="<%= decidim_census_account.root_path%>"><%= t(".go_back") %></a>
+                  <a href="<%= decidim_census_account.root_path%>">
+                    <%= t("go_back", scope: "decidim.census_connector.verifications.census.authorizations") %>
+                  </a>
                 </p>
               <% end %>
             </div>

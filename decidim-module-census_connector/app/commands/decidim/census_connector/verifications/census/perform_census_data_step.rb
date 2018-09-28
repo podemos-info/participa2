@@ -57,7 +57,7 @@ module Decidim
           def person_params
             base = { email: user.email }
 
-            if personal_data?
+            if personal_part?
               base.merge!(
                 first_name: first_name,
                 last_name1: last_name1,
@@ -69,7 +69,7 @@ module Decidim
               )
             end
 
-            if location_data?
+            if location_part?
               base.merge!(
                 address: address,
                 postal_code: postal_code,
@@ -79,7 +79,7 @@ module Decidim
               base[:scope_code] = scope_code if address_scope.present?
             end
 
-            base[:phone] = phone if phone_data?
+            base[:phone] = phone if phone_part?
 
             base
           end
@@ -89,7 +89,7 @@ module Decidim
           end
 
           delegate :user, to: :person_proxy
-          delegate :personal_data?, :location_data?, :phone_data?, :local_scope, to: :form
+          delegate :personal_part?, :location_part?, :phone_part?, :local_scope, to: :form
           delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, to: :form
           delegate :born_at, :gender, :address, :postal_code, :phone, to: :form
 

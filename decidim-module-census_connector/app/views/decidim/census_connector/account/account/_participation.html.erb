@@ -1,0 +1,113 @@
+<h2 class="section-heading"><%= t(".title") %></h2>
+<div class="card card--list card--account">
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          <%= t("membership_verification_part.title", scope: "decidim.census_connector.verifications.census.authorizations") %>
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon *person_presenter.membership_level_icon_params %><br/><%= t(".status.#{person.membership_level}") %></span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :verification, part: :membership) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.modify") %></a>
+    </div>
+  </div>
+
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          Militancia
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "check", class: "success" %><br/>Militante</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+    </div>
+  </div>
+
+  <div class="card--list__item card--list__subitem">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          Militancia en redes
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "x", class: "muted" %><br/>No militas en redes</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("task")%><br/>Apuntarse</a>
+    </div>
+  </div>
+
+  <div class="card--list__item card--list__subitem">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6 ">
+          Militancia en círculos
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "check", class: "success" %><br/>San Martín de la Virgen de Moncayo</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+    </div>
+  </div>
+
+  <div class="card--list__item card--list__subitem">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6 ">
+          Equipos de voluntarios y voluntarias
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "check", class: "success" %><br/>Te has apuntado</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+    </div>
+  </div>
+
+  <div class="card--list__item card--list__subitem">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          Equipos de apoderados y apoderadas
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "x", class: "muted" %><br/>No te has apuntado</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("task")%><br/>Apuntarse</a>
+    </div>
+  </div>
+
+  <div class="card--list__item card--list__subitem">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          Colaboración económica
+        </h3>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon "check", class: "success" %><br/>Estás colaborando</span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(form: :membership_level) %>" class="card--list__data__icon"><%=icon("pencil")%><br/>Modificar</a>
+    </div>
+  </div>
+</div>

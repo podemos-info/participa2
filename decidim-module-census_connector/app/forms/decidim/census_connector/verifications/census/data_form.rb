@@ -5,8 +5,6 @@ module Decidim
     module Verifications
       module Census
         class DataForm < Decidim::Form
-          delegate :local_scope, :part, to: :context
-
           attribute :first_name, String
           attribute :last_name1, String
           attribute :last_name2, String
@@ -44,10 +42,16 @@ module Decidim
             @document_scope_id ||= local_scope.id
           end
 
-          %w(personal location phone).each do |part_name|
-            define_method "#{part_name}_data?" do
-              part.blank? || part == part_name
-            end
+          def personal_part?
+            !verified? && (part.blank? || part == "personal")
+          end
+
+          def location_part?
+            part.blank? || part == "location"
+          end
+
+          def phone_part?
+            part.blank? || part == "phone"
           end
 
           def self.international_prefix
@@ -56,8 +60,14 @@ module Decidim
 
           private
 
+          delegate :person, :local_scope, :part, to: :context
+
           def country_code
             @country_code ||= Phonelib.phone_data.dig(@phone_country, :country_code)
+          end
+
+          def verified?
+            @verified ||= person&.verified?
           end
         end
       end

@@ -13,7 +13,7 @@ module Decidim
 
           helper_method :current_form_path
 
-          STEPS = %w(data verification membership_level).freeze
+          STEPS = %w(data verification).freeze
 
           def index
             @form = if has_person?
@@ -97,7 +97,8 @@ module Decidim
           def form_context
             {
               local_scope: local_scope,
-              part: part
+              part: part,
+              person: person
             }
           end
 

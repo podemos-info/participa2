@@ -1,0 +1,16 @@
+
+<div class="card">
+  <div class="card__content">
+    <legend><%= t(".title") %></legend>
+    <div class="row">
+      <div class="column large-4">
+        <%= @form.pretty_phone %>
+      </div>
+      <div class="column large-8">
+        <div class="field">
+          <%= form.text_field :received_code %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card__content">
+    <legend><%= t(".title") %></legend>
+    <p>
+      <%= decidim_sanitize t(".directions") %>
+    </p>
+
+    <div class="field">
+      <%= form.check_box :member %>
+    </div>
+  </div>
+</div>

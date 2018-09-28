@@ -25,7 +25,9 @@ module Decidim
           def call
             return broadcast(:invalid) if form.invalid?
 
-            create_verification
+            create_verification if form.identity_part?
+            update_membership_level if form.membership_part? && result == :ok
+
             add_errors_to_form
             broadcast(result)
           end
@@ -57,6 +59,16 @@ module Decidim
 
           def submitted_files
             @submitted_files ||= form.files.count
+          end
+
+          def update_membership_level
+            @result, @info = person_proxy.create_membership_level(membership_level_params)
+          end
+
+          def membership_level_params
+            {
+              membership_level: form.level
+            }
           end
         end
       end
