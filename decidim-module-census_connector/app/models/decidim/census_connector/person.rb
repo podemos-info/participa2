@@ -4,6 +4,7 @@ module Decidim
   module CensusConnector
     class Person
       include Census::API::PersonDefinitions
+
       delegate :id, to: :scope, prefix: true
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
