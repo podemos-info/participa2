@@ -9,7 +9,7 @@ module Decidim::CensusConnector
     subject { described_class.new(person_proxy, form) }
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, organization: organization) }
+    let(:user) { create(:user, :with_person, organization: organization) }
 
     let(:person_proxy) { PersonProxy.for(user) }
 
@@ -18,11 +18,13 @@ module Decidim::CensusConnector
     end
 
     let(:form) do
-      Verifications::Census::VerificationForm.new(document_file1: document_file1)
-    end
-
-    before do
-      create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 })
+      Verifications::Census::VerificationForm.new(
+        document_file1: document_file1,
+        member: true
+      ).with_context(
+        part: "",
+        person: person_proxy.person
+      )
     end
 
     context "when no document files present" do
