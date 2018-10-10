@@ -50,6 +50,20 @@ module Census
           send_request { post(api_url("people/#{qualified_id}/membership_levels"), params) }
         )
       end
+
+      # PUBLIC start a phone verification for the person.
+      def start_phone_verification(qualified_id, **params)
+        process_response(
+          send_request { get(api_url("people/#{qualified_id}/phone_verifications/new"), params) }
+        )
+      end
+
+      # PUBLIC complete a phone verification for the person.
+      def create_phone_verification(qualified_id, **params)
+        process_response(
+          send_request { post(api_url("people/#{qualified_id}/phone_verifications"), params) }
+        )
+      end
     end
   end
 end

@@ -56,6 +56,17 @@ module Decidim
           end
         end
 
+        def phone_verification_icon_params
+          case person.phone_verification
+          when "not_verified"
+            ["x", class: "muted"]
+          when "reassigned"
+            ["warning", class: "warning"]
+          when "verified"
+            ["check", class: "success"]
+          end
+        end
+
         def membership_level_icon_params
           case person.membership_level
           when "follower"

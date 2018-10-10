@@ -60,6 +60,16 @@ module Decidim
         census_person_api.create_membership_level(qualified_id, **params)
       end
 
+      # PUBLIC start a phone verification for the person.
+      def start_phone_verification(**params)
+        census_person_api.start_phone_verification(qualified_id, **params)
+      end
+
+      # PUBLIC complete a phone verification for the person.
+      def create_phone_verification(**params)
+        census_person_api.create_phone_verification(qualified_id, **params)
+      end
+
       def service_status(force_check: false)
         person.load_deferred_person_data if force_check && census_person_api.service_status.nil?
         census_person_api.service_status

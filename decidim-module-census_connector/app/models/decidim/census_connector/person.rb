@@ -36,6 +36,12 @@ module Decidim
         end
       end
 
+      PHONE_VERIFICATIONS.each do |value|
+        define_method "#{value}_phone?" do
+          phone_verification == value
+        end
+      end
+
       def born_at
         @born_at ||= Date.parse(_born_at) if _born_at.present?
       end
