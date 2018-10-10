@@ -13,7 +13,7 @@ module Decidim
 
           helper_method :form, :step_path
 
-          STEPS = %w(data verification).freeze
+          STEPS = %w(data phone_verification verification).freeze
 
           def index
             @form = if has_person?
@@ -88,7 +88,7 @@ module Decidim
           end
 
           def authorization_params
-            params.permit(:locale, :step, :part, :form, :redirect_url).to_h
+            params.permit(:locale, :step, :redirect_url, :part, :phone).to_h
           end
 
           def valid_step(step)

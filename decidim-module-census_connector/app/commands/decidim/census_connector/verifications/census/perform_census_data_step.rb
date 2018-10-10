@@ -26,6 +26,8 @@ module Decidim
             return broadcast(:invalid) if form.invalid?
 
             save_person
+            start_phone_verification
+
             add_errors_to_form
             broadcast(result)
           end
@@ -43,6 +45,12 @@ module Decidim
                              else
                                person_proxy.create(person_params.merge(origin_qualified_id: origin_qualified_id))
                              end
+          end
+
+          def start_phone_verification
+            return unless result == :ok && verify_phone?
+
+            @result, @info = person_proxy.start_phone_verification(phone_verification_params)
           end
 
           def add_errors_to_form
@@ -82,7 +90,8 @@ module Decidim
               base[:scope_code] = scope_code if address_scope.present?
             end
 
-            base[:phone] = phone if phone_part?
+            # Only update phone when is not verifying it
+            base[:phone] = phone if phone_part? && !phone_verification_required?
 
             base[:email] = user.email if base.any?
 
@@ -94,7 +103,7 @@ module Decidim
           end
 
           delegate :user, to: :person_proxy
-          delegate :personal_part?, :location_part?, :phone_part?, :local_scope, to: :form
+          delegate :personal_part?, :location_part?, :phone_part?, :phone_verification_required?, :verify_phone?, :local_scope, to: :form
           delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, to: :form
           delegate :born_at, :gender, :address, :postal_code, :phone, to: :form
 
@@ -136,6 +145,12 @@ module Decidim
 
           def scopes
             user.organization.scopes
+          end
+
+          def phone_verification_params
+            {
+              phone: phone
+            }
           end
         end
       end

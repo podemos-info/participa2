@@ -23,6 +23,7 @@ module Decidim
 
           attribute :phone_country, String
           attribute :phone_number, String
+          attribute :verify_phone, Boolean
 
           def map_model(person)
             phone_info = Phonelib.parse(person.phone)
@@ -62,18 +63,55 @@ module Decidim
             full_process? || part == "phone"
           end
 
+          def phone_verification_part?
+            full_process? || part == "phone_verification"
+          end
+
+          def phone_verification_required?
+            phone_verified? || phone_verification_part?
+          end
+
+          def verify_phone?
+            verify_phone || phone_verification_required?
+          end
+
           def action
+            if phone_verification_required?
+              :start_phone_verification
+            elsif full_process?
+              :create
+            else
               :update
+            end
           end
 
           def next_step
-            @international_prefix ||= Phonelib.phone_data[Decidim::CensusConnector.census_local_code][:international_prefix]
+            @next_step ||= if verify_phone?
+                             :phone_verification
+                           elsif full_process?
                              :verification
+                           end
+          end
+
+          def next_step_params
+            @next_step_params ||= begin
+              ret = { part: part }
+              ret[:phone] = phone if next_step == :phone_verification
+              ret
+            end
+          end
+
+          def pretty_phone
+            "(+#{parsed_phone.country_code}) #{parsed_phone.national}"
           end
 
           private
 
           delegate :person, :local_scope, :params, to: :context
+
+          def parsed_phone
+            @parsed_phone ||= Phonelib.parse(phone)
+          end
 
           def country_code
             @country_code ||= Phonelib.phone_data.dig(@phone_country, :country_code)
@@ -81,6 +119,10 @@ module Decidim
 
           def verified?
             @verified ||= person&.verified?
+          end
+
+          def phone_verified?
+            @phone_verified ||= person&.verified_phone?
           end
 
           def part

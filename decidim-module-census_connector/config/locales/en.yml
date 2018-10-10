@@ -17,6 +17,9 @@ en:
         phone_number: Number
         postal_code: Postal code
         scope_id: Participation place
+        verify_phone: I want to verify my phone number now
+      phone_verification:
+        received_code: Received code
       verification:
         member: I want to be a Podemos member
   census:
@@ -98,11 +101,15 @@ en:
               cancel_verification: Cancel verification
               modify: Modify
               verify: Verify
-            pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
-            status:
+            document_verification:
               not_verified: Not verified
               verification_received: Verification received
               verification_requested: Verification requested
+              verified: Verified
+            pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+            phone_verification:
+              not_verified: Not verified
+              reassigned: You should use another phone number
               verified: Verified
             title: Your Podemos profile
         menu:
@@ -111,8 +118,11 @@ en:
         census:
           authorizations:
             data:
+              create: Save
               other_phone_country: Other country
+              start_phone_verification: Start phone verification
               title: Complete your data
+              update: Save
             go_back: Go back
             identity_verification_part:
               choose: Choose
@@ -135,10 +145,17 @@ en:
               title: Personal data
             phone_data_part:
               title: Mobile phone
+              verify_directions: We will send you a message to the phone number %{pretty_phone} to verify that you can read it.
+            phone_verification:
+              title: Phone verification
+              verify: Verify phone
             phone_verification_part:
               title: Mobile phone verification
             verification:
               title: Verifications
+              to_follower: I want to cancel my membership
+              to_member: I want to be a member
+              verify: Send
           descriptions:
             census_closure: You need to be registered before %{census_closure}
             document_type: You need to be registered with %{allowed_document_types}

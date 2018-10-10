@@ -17,6 +17,9 @@ es:
         phone_number: Número
         postal_code: Código postal
         scope_id: Lugar de participación
+        verify_phone: Deseo verificar mi teléfono en este momento
+      phone_verification:
+        received_code: Código recibido
       verification:
         member: Deseo afiliarme al partido político Podemos
   census:
@@ -98,11 +101,15 @@ es:
               cancel_verification: Cancelar verificación
               modify: Modificar
               verify: Verificar
-            pending_notice: Tu registro en el censo de Podemos está siendo validado. Inténtalo de nuevo más tarde o contáctanos en verificaciones@soporte.podemos.info
-            status:
+            document_verification:
               not_verified: No verificado
               verification_received: Verificación en progreso
               verification_requested: Debes verificar tu identidad
+              verified: Verificado
+            pending_notice: Tu registro en el censo de Podemos está siendo validado. Inténtalo de nuevo más tarde o contáctanos en verificaciones@soporte.podemos.info
+            phone_verification:
+              not_verified: No verificado
+              reassigned: Debes utilizar otro teléfono
               verified: Verificado
             title: Tu inscripción en Podemos
         menu:
@@ -111,8 +118,11 @@ es:
         census:
           authorizations:
             data:
+              create: Guardar
               other_phone_country: Otro país
+              start_phone_verification: Iniciar verificación del teléfono
               title: Completa tus datos
+              update: Guardar
             go_back: Volver
             identity_verification_part:
               choose: Elegir
@@ -135,10 +145,17 @@ es:
               title: Datos personales
             phone_data_part:
               title: Teléfono móvil
-            phone_verification_part:
+              verify_directions: A continuación se enviará un mensaje al número de teléfono %{pretty_phone} para comprobar que tienes acceso a él.
+            phone_verification:
               title: Verificación del teléfono móvil
+              verify: Verificar teléfono
+            phone_verification_part:
+              title: Introduce el código que has recibido en el número de teléfono %{pretty_phone}.
             verification:
               title: Verificaciones
+              to_follower: Deseo dar de baja mi afiliación
+              to_member: Deseo afiliarme
+              verify: Enviar
           descriptions:
             census_closure: Pueden participar personas inscritas en el territorio antes del %{census_closure}
             document_type: Pueden participar personas inscritas con %{allowed_document_types}
