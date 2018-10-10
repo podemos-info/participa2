@@ -8,15 +8,14 @@
 
     <div class="row">
       <div class="columns large-9 medium-centered census-form">
-        <%= decidim_form_for(@form, url: current_form_path) do |form| %>
-          <%= render partial: "identity_verification_part", locals: { form: form } if @form.identity_part? %>
-          <%= render partial: "membership_verification_part", locals: { form: form } if @form.membership_part? %>
-          <%= render partial: "phone_verification_part", locals: { form: form } if @form.phone_part? %>
+        <%= decidim_form_for(form, url: step_path) do |form| %>
+          <%= render partial: "identity_verification_part", locals: { f: f } if form.identity_part? %>
+          <%= render partial: "membership_verification_part", locals: { f: f } %>
 
           <div class="card">
             <div class="card__content">
               <div class="actions">
-                <%= form.submit t("authorize", scope: "decidim.verifications.authorizations.new"), class: "button expanded" %>
+                <%= f.submit t(".#{form.action}"), class: "button expanded" %>
               </div>
               <% if has_person? %>
                 <p class="text-center">

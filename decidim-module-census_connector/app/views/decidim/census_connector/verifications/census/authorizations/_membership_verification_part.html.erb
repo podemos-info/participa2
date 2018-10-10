@@ -5,8 +5,12 @@
       <%= decidim_sanitize t(".directions") %>
     </p>
 
-    <div class="field">
-      <%= form.check_box :member %>
-    </div>
+    <% if form.membership_required? %>
+      <%= f.hidden_field :member, value: !form.member? %>
+    <% else %>
+      <div class="field">
+        <%= f.check_box :member %>
+      </div>
+    <% end %>
   </div>
 </div>

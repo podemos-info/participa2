@@ -2,18 +2,18 @@
   <div class="card__content">
     <legend><%= t(".title") %></legend>
     <div class="field">
-      <%= form.text_field :first_name %>
+      <%= f.text_field :first_name %>
     </div>
 
     <div class="row">
       <div class="column large-6">
         <div class="field">
-          <%= form.text_field :last_name1 %>
+          <%= f.text_field :last_name1 %>
         </div>
       </div>
       <div class="column large-6">
         <div class="field">
-          <%= form.text_field :last_name2 %>
+          <%= f.text_field :last_name2 %>
         </div>
       </div>
     </div>
@@ -21,15 +21,15 @@
     <div class="row">
       <div class="column large-9">
         <div class="field">
-          <%= form.label :gender %>
+          <%= f.label :gender %>
           <div class="radio-options">
-            <%= form.collection_radio_buttons :gender, Decidim::CensusConnector::Person.genders, :last, :first %>
+            <%= f.collection_radio_buttons :gender, Decidim::CensusConnector::Person.genders, :last, :first %>
           </div>
         </div>
       </div>
       <div class="column large-3">
         <div class="field date">
-          <%= form.date_field :born_at, "data-start-view" => "decade", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
+          <%= f.date_field :born_at, "data-start-view" => "decade", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
         </div>
       </div>
     </div>
@@ -37,18 +37,18 @@
     <div class="row">
       <div class="column large-3">
         <div class="field">
-          <%= form.select :document_type, Decidim::CensusConnector::Person.document_types, include_blank: false %>
+          <%= f.select :document_type, Decidim::CensusConnector::Person.document_types, include_blank: false %>
         </div>
       </div>
       <div class="column large-9">
         <div class="field">
-          <%= form.text_field :document_id %>
+          <%= f.text_field :document_id %>
         </div>
       </div>
     </div>
 
     <div id="document_scope_selector" class="field hide">
-      <%= form.select :document_scope_id, unicode_options_sort(document_country_options(document_scopes)) %>
+      <%= f.select :document_scope_id, unicode_options_sort(document_country_options(document_scopes)) %>
     </div>
   </div>
 </div>

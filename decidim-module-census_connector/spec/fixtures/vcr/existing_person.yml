@@ -174,4 +174,181 @@ http_interactions:
         Laura 80 Esc. 597","postal_code":"42178","address_scope_code":"ES-CL-SO-011","email":"soonadams@kub.com","phone":"0034592996504"}'
     http_version:
   recorded_at: Tue, 25 Sep 2018 09:59:55 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5746e490f236207b5cc4ae5d99287546"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=89cf77ea-6d23-4576-aba5-8ec9e46e276e; path=/; expires=Wed, 10 Oct
+        2018 19:38:13 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1e485598-fd86-4e7b-be65-bc43e55317c7; path=/; expires=Sat, 10
+        Oct 2020 15:38:13 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e9817194-9a73-4fc2-906b-a92acee0138b
+      X-Runtime:
+      - '0.006339'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwZXJzb25faWQiOjEsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1QVi1CSS0wMDUiLCJzdGF0ZSI6ImVuYWJsZWQiLCJ2ZXJpZmljYXRpb24iOiJ2ZXJpZmllZCIsInBob25lX3ZlcmlmaWNhdGlvbiI6Im5vdF92ZXJpZmllZCIsImV4dGVybmFsX2lkcyI6eyJkZWNpZGltIjoxfSwiZmlyc3RfbmFtZSI6Ik3Ds25pY2EiLCJsYXN0X25hbWUxIjoiUmF6byIsImxhc3RfbmFtZTIiOiJDb250cmVyYXMiLCJkb2N1bWVudF90eXBlIjoiZG5pIiwiZG9jdW1lbnRfaWQiOiI4MDgxODA0NlciLCJkb2N1bWVudF9zY29wZV9jb2RlIjoiRVMiLCJib3JuX2F0IjoiMTkzMC0wMy0wNSIsImdlbmRlciI6InVuZGlzY2xvc2VkIiwiYWRkcmVzcyI6IkZlcnJvY2FycmlsIFJvc2EgUXVpcm96LCA1IFB1ZXJ0YSA3MDMiLCJwb3N0YWxfY29kZSI6IjQ4NzM4IiwiYWRkcmVzc19zY29wZV9jb2RlIjoiRVMtUFYtQkktMDA1IiwiZW1haWwiOiJkZXdpdHR3YWxzaEBydW5vbGZvbmdsZWFzb24uYml6IiwicGhvbmUiOiIwMDM0MzY1Nzk3Mjk3In0=
+    http_version:
+  recorded_at: Wed, 10 Oct 2018 15:38:13 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5746e490f236207b5cc4ae5d99287546"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=23b3eea6-17ad-447a-bf80-0940bfe137ac; path=/; expires=Wed, 10 Oct
+        2018 19:38:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=dd8f2f46-3419-43ba-bae1-54340e6a8f89; path=/; expires=Sat, 10
+        Oct 2020 15:38:15 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 9de30e51-51cb-4cf8-a406-9aa306a5a223
+      X-Runtime:
+      - '0.005133'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwZXJzb25faWQiOjEsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1QVi1CSS0wMDUiLCJzdGF0ZSI6ImVuYWJsZWQiLCJ2ZXJpZmljYXRpb24iOiJ2ZXJpZmllZCIsInBob25lX3ZlcmlmaWNhdGlvbiI6Im5vdF92ZXJpZmllZCIsImV4dGVybmFsX2lkcyI6eyJkZWNpZGltIjoxfSwiZmlyc3RfbmFtZSI6Ik3Ds25pY2EiLCJsYXN0X25hbWUxIjoiUmF6byIsImxhc3RfbmFtZTIiOiJDb250cmVyYXMiLCJkb2N1bWVudF90eXBlIjoiZG5pIiwiZG9jdW1lbnRfaWQiOiI4MDgxODA0NlciLCJkb2N1bWVudF9zY29wZV9jb2RlIjoiRVMiLCJib3JuX2F0IjoiMTkzMC0wMy0wNSIsImdlbmRlciI6InVuZGlzY2xvc2VkIiwiYWRkcmVzcyI6IkZlcnJvY2FycmlsIFJvc2EgUXVpcm96LCA1IFB1ZXJ0YSA3MDMiLCJwb3N0YWxfY29kZSI6IjQ4NzM4IiwiYWRkcmVzc19zY29wZV9jb2RlIjoiRVMtUFYtQkktMDA1IiwiZW1haWwiOiJkZXdpdHR3YWxzaEBydW5vbGZvbmdsZWFzb24uYml6IiwicGhvbmUiOiIwMDM0MzY1Nzk3Mjk3In0=
+    http_version:
+  recorded_at: Wed, 10 Oct 2018 15:38:15 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5746e490f236207b5cc4ae5d99287546"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=71071658-df5c-4314-ad9d-200245fd64f6; path=/; expires=Wed, 10 Oct
+        2018 19:38:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f5608040-6f7f-4440-9c16-6ff7069d8d8b; path=/; expires=Sat, 10
+        Oct 2020 15:38:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 38029ff6-62f8-4472-858e-2c5afd82fce1
+      X-Runtime:
+      - '0.006213'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwZXJzb25faWQiOjEsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1QVi1CSS0wMDUiLCJzdGF0ZSI6ImVuYWJsZWQiLCJ2ZXJpZmljYXRpb24iOiJ2ZXJpZmllZCIsInBob25lX3ZlcmlmaWNhdGlvbiI6Im5vdF92ZXJpZmllZCIsImV4dGVybmFsX2lkcyI6eyJkZWNpZGltIjoxfSwiZmlyc3RfbmFtZSI6Ik3Ds25pY2EiLCJsYXN0X25hbWUxIjoiUmF6byIsImxhc3RfbmFtZTIiOiJDb250cmVyYXMiLCJkb2N1bWVudF90eXBlIjoiZG5pIiwiZG9jdW1lbnRfaWQiOiI4MDgxODA0NlciLCJkb2N1bWVudF9zY29wZV9jb2RlIjoiRVMiLCJib3JuX2F0IjoiMTkzMC0wMy0wNSIsImdlbmRlciI6InVuZGlzY2xvc2VkIiwiYWRkcmVzcyI6IkZlcnJvY2FycmlsIFJvc2EgUXVpcm96LCA1IFB1ZXJ0YSA3MDMiLCJwb3N0YWxfY29kZSI6IjQ4NzM4IiwiYWRkcmVzc19zY29wZV9jb2RlIjoiRVMtUFYtQkktMDA1IiwiZW1haWwiOiJkZXdpdHR3YWxzaEBydW5vbGZvbmdsZWFzb24uYml6IiwicGhvbmUiOiIwMDM0MzY1Nzk3Mjk3In0=
+    http_version:
+  recorded_at: Wed, 10 Oct 2018 15:38:17 GMT
 recorded_with: VCR 4.0.0

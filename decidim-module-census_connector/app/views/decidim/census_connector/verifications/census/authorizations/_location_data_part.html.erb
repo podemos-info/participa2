@@ -2,28 +2,28 @@
   <div class="card__content">
     <legend><%= t(".title") %></legend>
     <div class="field">
-      <%= form.text_field :address %>
+      <%= f.text_field :address %>
     </div>
 
     <div class="row">
       <div class="column large-9">
         <div class="field" data-local-scope-ranges="<%= local_scope_ranges.to_json %>">
-          <%= form.scopes_picker :address_scope_id do |scope|
-            { url: decidim.scopes_picker_path(current: scope&.id, field: form.label_for(:address_scope_id)),
+          <%= f.scopes_picker :address_scope_id do |scope|
+            { url: decidim.scopes_picker_path(current: scope&.id, field: f.label_for(:address_scope_id)),
               text: scope_name_for_picker(scope, t("decidim.scopes.prompt")) }
           end %>
         </div>
       </div>
       <div class="column large-3">
         <div class="field">
-          <%= form.text_field :postal_code %>
+          <%= f.text_field :postal_code %>
         </div>
       </div>
     </div>
 
     <div id="scope_selector" class="field hide">
-      <%= form.scopes_picker :scope_id do |scope|
-        { url: decidim.scopes_picker_path(root: local_scope, current: scope&.id, field: form.label_for(:scope_id)),
+      <%= f.scopes_picker :scope_id do |scope|
+        { url: decidim.scopes_picker_path(root: local_scope, current: scope&.id, field: f.label_for(:scope_id)),
           text: scope_name_for_picker(scope, t("decidim.scopes.prompt")) }
       end %>
     </div>

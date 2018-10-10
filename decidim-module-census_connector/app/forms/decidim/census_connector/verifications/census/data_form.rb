@@ -34,6 +34,10 @@ module Decidim
             "#{self.class.international_prefix}#{country_code}#{phone_number}"
           end
 
+          def self.international_prefix
+            @international_prefix ||= Phonelib.phone_data[Decidim::CensusConnector.census_local_code][:international_prefix]
+          end
+
           def document_type
             @document_type ||= Person.document_types.values.first
           end
@@ -42,25 +46,34 @@ module Decidim
             @document_scope_id ||= local_scope.id
           end
 
+          def full_process?
+            part.blank?
+          end
+
           def personal_part?
-            !verified? && (part.blank? || part == "personal")
+            !verified? && (full_process? || part == "personal")
           end
 
           def location_part?
-            part.blank? || part == "location"
+            full_process? || part == "location"
           end
 
           def phone_part?
-            part.blank? || part == "phone"
+            full_process? || part == "phone"
           end
 
-          def self.international_prefix
+          def action
+              :update
+          end
+
+          def next_step
             @international_prefix ||= Phonelib.phone_data[Decidim::CensusConnector.census_local_code][:international_prefix]
+                             :verification
           end
 
           private
 
-          delegate :person, :local_scope, :part, to: :context
+          delegate :person, :local_scope, :params, to: :context
 
           def country_code
             @country_code ||= Phonelib.phone_data.dig(@phone_country, :country_code)
@@ -68,6 +81,10 @@ module Decidim
 
           def verified?
             @verified ||= person&.verified?
+          end
+
+          def part
+            @part ||= params[:part]
           end
         end
       end

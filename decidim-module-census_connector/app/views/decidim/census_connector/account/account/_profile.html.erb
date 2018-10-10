@@ -19,14 +19,14 @@
       </div>
     </div>
     <div class="card--list__data card--list__status">
-      <span class="card--list__data__icon"><%= icon *person_presenter.verification_icon_params %><br/><%= t(".status.#{person.verification}") %></span>
+      <span class="card--list__data__icon"><%= icon *person_presenter.verification_icon_params %><br/><%= t(".document_verification.#{person.verification}") %></span>
     </div>
     <div class="card--list__data card--list__actions">
       <% if person.verification_received? %>
-        <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/><%= t(".action.cancel_verification") %></a>
+        <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/><%= t(".action.cancel_verification") %></a>
       <% elsif !person.verified? %>
-        <a href="<%= decidim_census.root_path(form: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br><%= t(".action.modify") %></a>
-        <a href="<%= decidim_census.root_path(form: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+        <a href="<%= decidim_census.root_path(step: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br><%= t(".action.modify") %></a>
+        <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
       <% end %>
     </div>
   </div>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="card--list__data card--list__actions">
-      <a href="<%= decidim_census.root_path(form: :data, part: :location) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
+      <a href="<%= decidim_census.root_path(step: :data, part: :location) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
     </div>
   </div>
 
@@ -56,11 +56,10 @@
       </div>
     </div>
     <div class="card--list__data card--list__status">
-      <span class="card--list__data__icon"><%= icon "x", class: "muted" %><br/>No verificado</span>
+      <span class="card--list__data__icon"><%= icon *person_presenter.phone_verification_icon_params %><br/><%= t(".phone_verification.#{person.phone_verification}") %></span>
     </div>
     <div class="card--list__data card--list__actions">
-      <a href="<%= decidim_census.root_path(form: :data, part: :phone) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
-      <a href="<%= decidim_census.root_path(form: :verification, part: :phone) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+      <a href="<%= decidim_census.root_path(step: :data, part: :phone) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
     </div>
   </div>
 </div>

@@ -1,17 +1,28 @@
 <div class="card">
   <div class="card__content">
     <legend><%= t(".title") %></legend>
-    <div class="row">
-      <div class="column large-4">
-        <div id="document_scope_selector" class="field">
-          <%= form.select :phone_country, unicode_options_sort(phone_country_options(phone_scopes)) %>
+    <% if form.phone_verification_part? %>
+      <p><%= t(".verify_directions", pretty_phone: form.pretty_phone) %></p>
+    <% else %>
+      <div class="row">
+        <div class="column large-4">
+          <div id="document_scope_selector" class="field">
+            <%= f.select :phone_country, unicode_options_sort(phone_country_options(phone_scopes)) %>
+          </div>
+        </div>
+        <div class="column large-8">
+          <div class="field">
+            <%= f.text_field :phone_number %>
+          </div>
         </div>
       </div>
-      <div class="column large-8">
-        <div class="field">
-          <%= form.text_field :phone_number %>
-        </div>
+    <% end %>
+    <% if form.phone_verification_required? %>
+      <%= f.hidden_field :verify_phone, value: true %>
+    <% else %>
+      <div class="field">
+        <%= f.check_box :verify_phone %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

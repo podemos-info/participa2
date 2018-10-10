@@ -4,7 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        # A command to create a partial authorization for a user.
+        # A command to save person data for a user.
         class PerformCensusDataStep < Rectify::Command
           # Public: Initializes the command.
           #
@@ -35,6 +35,9 @@ module Decidim
           attr_reader :form, :person_proxy, :result, :info
 
           def save_person
+            @result = :ok
+            return unless person_params.any?
+
             @result, @info = if person_proxy.has_person?
                                person_proxy.update(person_params)
                              else
@@ -55,7 +58,7 @@ module Decidim
           end
 
           def person_params
-            base = { email: user.email }
+            base = {}
 
             if personal_part?
               base.merge!(
@@ -80,6 +83,8 @@ module Decidim
             end
 
             base[:phone] = phone if phone_part?
+
+            base[:email] = user.email if base.any?
 
             base
           end

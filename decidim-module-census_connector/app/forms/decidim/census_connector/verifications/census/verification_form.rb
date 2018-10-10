@@ -10,8 +10,6 @@ module Decidim
 
           attribute :member, Boolean
 
-          attribute :received_code, String
-
           attribute :tos_agreement, Boolean
 
           validates :tos_agreement, allow_nil: true, acceptance: true
@@ -32,40 +30,51 @@ module Decidim
             [document_file1, document_file2].compact
           end
 
-          def level
-            member ? :member : :follower
+          def target_level
+            member.presence ? :member : :follower
+          end
+
+          def full_process?
+            part.blank?
           end
 
           def identity_part?
-            !verified? && (part.blank? || !phone_part?)
+            !verified?
           end
 
-          def membership_part?
-            part.blank? || part == "membership"
+          def membership_required?
+            part == "membership"
           end
 
-          def phone_part?
-            part == "phone"
+          def action
+            if membership_required?
+              member? ? :to_follower : :to_member
+            else
+              :verify
+            end
           end
 
-          def pretty_phone
-            "(+#{parsed_phone.country_code}) #{parsed_phone.national}"
+          def changing_membership_level?
+            target_level != person.membership_level
           end
 
-          def member
-            @member.presence || true
+          def next_step; end
+
+          def next_step_params
+            { part: part }
           end
 
           private
 
-          delegate :person, :part, to: :context
-
-          def parsed_phone
-            @parsed_phone ||= Phonelib.parse(person.phone)
-          end
+          delegate :person, :params, to: :context
+          delegate :member?, to: :person
 
           def verified?
             @verified ||= person.verified?
+          end
+
+          def part
+            @part ||= params[:part]
           end
         end
       end
