@@ -85,9 +85,9 @@ module Decidim
                 address: address,
                 postal_code: postal_code,
                 document_scope_code: document_scope_code,
-                address_scope_code: address_scope_code
+                address_scope_code: address_scope_code,
+                scope_code: scope_code
               )
-              base[:scope_code] = scope_code if address_scope.present?
             end
 
             # Only update phone when is not verifying it
