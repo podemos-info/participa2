@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1970-05-31&document_id=70508367G&document_scope_code=ES&document_type=dni&email=user39%40example.org&first_name=Kade&gender=female&last_name1=Baumbach&last_name2&origin_qualified_id=3099%40decidim&phone=0034230013695&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=28ce52ff-9631-4d3f-90b0-f29c638a3d00; path=/; expires=Mon, 15 Oct
+        2018 13:33:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=4dd74bb6-e0fb-4264-b763-f68384c0fa6e; path=/; expires=Thu, 15
+        Oct 2020 09:33:41 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 22142521-388d-4187-b796-62c6bbcbb6a5
+      X-Runtime:
+      - '0.228504'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":73}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:33:41 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/73@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"252fdc599d3944f1f8dffa19b61571a0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=128c7f97-56ec-4bca-8c20-a96ee7129b67; path=/; expires=Mon, 15 Oct
+        2018 13:33:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d3501eef-fcfd-44e2-8105-4378c57ead13; path=/; expires=Thu, 15
+        Oct 2020 09:33:41 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 962bf65b-cefd-49ff-95c6-932471c571b3
+      X-Runtime:
+      - '0.004433'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":73,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3099},"first_name":"Kade","last_name1":"Baumbach","last_name2":null,"document_type":"dni","document_id":"70508367G","document_scope_code":"ES","born_at":"1970-05-31","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user39@example.org","phone":"0034230013695"}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:33:41 GMT
+recorded_with: VCR 4.0.0

@@ -64,7 +64,7 @@ module Decidim
           end
 
           def phone_verification_part?
-            full_process? || part == "phone_verification"
+            part == "phone_verification"
           end
 
           def phone_verification_required?

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user27%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim&phone=00&postal_code=&scope_code
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1945-12-26&document_id=67130854H&document_scope_code=ES&document_type=dni&email=user7%40example.org&first_name=Dana&gender=&last_name1=Davis&last_name2&origin_qualified_id=3067%40decidim&phone=0034329406109&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -26,14 +26,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=c1084429-d3ae-4f86-962e-06dd33124599; path=/; expires=Thu, 11 Oct
-        2018 20:44:15 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=cd80b8da-e501-42ea-995b-94ce0bfb0ae5; path=/; expires=Sun, 11
-        Oct 2020 16:44:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=4c900186-8e63-4b3c-8a6f-6133d278499c; path=/; expires=Mon, 15 Oct
+        2018 13:33:36 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fa3e1a9b-59f3-452e-be3e-74c3c5e267f2; path=/; expires=Thu, 15
+        Oct 2020 09:33:36 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 9084a5dd-df62-499b-948a-01609328f61c
+      - 1b35ef9d-76d0-4a14-aab3-d49d25a95d13
       X-Runtime:
-      - '0.035039'
+      - '0.006740'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -55,7 +55,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"first_name":[{"error":"blank"}],"last_name1":[{"error":"blank"}],"document_id":[{"error":"blank"}],"born_at":[{"error":"blank"}],"gender":[{"error":"blank"}],"address":[{"error":"blank"}],"postal_code":[{"error":"blank"}],"address_scope":[{"error":"blank"}],"scope":[{"error":"blank"}]}'
+      string: '{"gender":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Thu, 11 Oct 2018 16:44:15 GMT
+  recorded_at: Mon, 15 Oct 2018 09:33:36 GMT
 recorded_with: VCR 4.0.0

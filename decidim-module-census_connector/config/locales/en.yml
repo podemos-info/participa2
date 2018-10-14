@@ -118,7 +118,7 @@ en:
         census:
           authorizations:
             data:
-              create: Save
+              create: Send
               other_phone_country: Other country
               start_phone_verification: Start phone verification
               title: Complete your data

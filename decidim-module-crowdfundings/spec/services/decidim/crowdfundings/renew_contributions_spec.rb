@@ -33,7 +33,7 @@ module Decidim
         end
 
         before do
-          stub_request(:post, %r{/api/v1/payments/orders})
+          stub_request(:post, %r{/api/v1/en/payments/orders})
             .to_return(
               status: 201,
               body: json.to_json,

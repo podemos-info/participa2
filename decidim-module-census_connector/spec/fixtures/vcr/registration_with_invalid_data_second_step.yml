@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://mycensus:3001/api/v1/people
+    uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=2000-09-13&document_id=19478882K&document_scope_code=ES&document_type=dni&email=user12%40example.org&first_name=Ewell&gender=female&last_name1=Oberbrunner&last_name2=&origin_qualified_id=1817277%40decidim&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=2000-10-11&document_id=87660024D&document_scope_code=ES&document_type=dni&email=user25%40example.org&first_name=Eda&gender=female&last_name1=Hayes&last_name2=&origin_qualified_id=4270731%40decidim&phone=00&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -25,14 +25,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=444eca5d-0049-476f-9449-f09befcb25c3; path=/; expires=Thu, 13 Sep
-        2018 19:43:05 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=ecebcd33-a5c3-4df5-8f5d-67e68d58621e; path=/; expires=Sun, 13
-        Sep 2020 15:43:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=fa8e86e7-6959-43d8-a4cd-6a39b14d712c; path=/; expires=Thu, 11 Oct
+        2018 20:44:12 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=333a4fc9-afd0-439a-987f-a67d717e3d5c; path=/; expires=Sun, 11
+        Oct 2020 16:44:12 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 16a6d02c-cbe7-4300-8110-375aa1d98521
+      - 72019493-e2bc-40e2-9ee2-8069cb791f4b
       X-Runtime:
-      - '0.198185'
+      - '0.223255'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,12 +55,12 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":43}'
+      string: '{"person_id":53}'
     http_version:
-  recorded_at: Thu, 13 Sep 2018 15:43:05 GMT
+  recorded_at: Thu, 11 Oct 2018 16:44:12 GMT
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/people/43@census
+    uri: http://mycensus:3001/api/v1/en/people/53@census
     body:
       encoding: US-ASCII
       string: ''
@@ -78,18 +79,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a5ece5576fca6e69ba3556a4c6c0d3c0"
+      - W/"20437481bda2089da0f1e6110bd62162"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=ae37d22d-7ed5-4016-8e29-c24599413e1b; path=/; expires=Thu, 13 Sep
-        2018 19:43:05 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6f8bb3fc-2dd4-4e89-8a0d-d8dbb0eaece6; path=/; expires=Sun, 13
-        Sep 2020 15:43:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=96dc2468-47af-4320-af6b-dab1d4e5afc9; path=/; expires=Thu, 11 Oct
+        2018 20:44:12 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=b817f919-76ba-4c7f-8290-fca412a264f5; path=/; expires=Sun, 11
+        Oct 2020 16:44:12 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 58122454-649d-401f-a6ad-864add4f7a9d
+      - c0b6adb7-73da-4dcf-9b36-7bdc5531175f
       X-Runtime:
-      - '0.093619'
+      - '0.016662'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -111,13 +113,72 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":43,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","external_ids":{"decidim":1817277},"first_name":"Ewell","last_name1":"Oberbrunner","last_name2":"","document_type":"dni","document_id":"19478882K","document_scope_code":"ES","born_at":"2000-09-13","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user12@example.org","phone":null}'
+      string: '{"person_id":53,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":4270731},"first_name":"Eda","last_name1":"Hayes","last_name2":"","document_type":"dni","document_id":"87660024D","document_scope_code":"ES","born_at":"2000-10-11","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user25@example.org","phone":"00"}'
     http_version:
-  recorded_at: Thu, 13 Sep 2018 15:43:05 GMT
+  recorded_at: Thu, 11 Oct 2018 16:44:12 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/53@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"d534f12e1df1b7f8da143c21622a6b56"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=5eca673b-33e6-4343-bba8-7bf83681605c; path=/; expires=Thu, 11 Oct
+        2018 20:44:13 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=861fe869-f467-4e72-8cce-a90819a8326c; path=/; expires=Sun, 11
+        Oct 2020 16:44:13 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - f286cfeb-8abb-4198-92cf-040aca8b9f24
+      X-Runtime:
+      - '0.008320'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":53,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":4270731},"first_name":"Eda","last_name1":"Hayes","last_name2":"","document_type":"dni","document_id":"87660024D","document_scope_code":"ES","born_at":"2000-10-11","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user25@example.org","phone":"00"}'
+    http_version:
+  recorded_at: Thu, 11 Oct 2018 16:44:13 GMT
 - request:
     method: post
-    uri: http://mycensus:3001/api/v1/people/43@census/document_verifications
+    uri: http://mycensus:3001/api/v1/en/people/53@census/document_verifications
     body:
       encoding: UTF-8
       string: ''
@@ -140,14 +201,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=737f735a-86c1-4b9e-b437-029ebf50f392; path=/; expires=Thu, 13 Sep
-        2018 19:43:06 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=95b23726-46b5-4e3c-9a8f-020a08aa5042; path=/; expires=Sun, 13
-        Sep 2020 15:43:06 -0000; HttpOnly; SameSite=Lax
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=4b6cef55-7a8b-4d96-b292-d7538fa24555; path=/; expires=Thu, 11 Oct
+        2018 20:44:13 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1dc50cf5-ba95-4bba-a476-51eb5a4f91a6; path=/; expires=Sun, 11
+        Oct 2020 16:44:13 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 2eb8250e-2df5-40ae-8571-d71fd40acaa5
+      - 2cf42aa4-aa20-480e-9817-e8afe27f9e40
       X-Runtime:
-      - '0.125684'
+      - '0.009809'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -171,63 +233,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"files":[{"error":"too_short","count":2}]}'
     http_version:
-  recorded_at: Thu, 13 Sep 2018 15:43:06 GMT
-- request:
-    method: get
-    uri: http://mycensus:3001/api/v1/people/43@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.12.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"9004e62b1a37035cd6e0fe46dd59255f"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_visit=d6d29306-c227-4029-9d2e-d1ad308346ab; path=/; expires=Thu, 13 Sep
-        2018 19:43:06 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=805f5f0f-cbe4-482d-9f11-24806ff54d1f; path=/; expires=Sun, 13
-        Sep 2020 15:43:06 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - 7dff9f02-8f34-46d3-b258-4548b2faa006
-      X-Runtime:
-      - '0.170201'
-      X-Frame-Options:
-      - DENY
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - origin-when-cross-origin
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"person_id":43,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"not_verified","external_ids":{"decidim":1817277},"first_name":"Ewell","last_name1":"Oberbrunner","last_name2":"","document_type":"dni","document_id":"19478882K","document_scope_code":"ES","born_at":"2000-09-13","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user12@example.org","phone":null}'
-    http_version:
-  recorded_at: Thu, 13 Sep 2018 15:43:06 GMT
+  recorded_at: Thu, 11 Oct 2018 16:44:13 GMT
 recorded_with: VCR 4.0.0

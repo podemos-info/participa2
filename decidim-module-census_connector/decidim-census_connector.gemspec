@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_dependency "hutch"
 
   s.add_development_dependency "decidim-dev", compatible_constraint
+  s.add_development_dependency "faker-spanish_document"
 end

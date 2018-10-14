@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user27%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim&phone=00&postal_code=&scope_code
+      string: address=Rua+del+Percebe%2C+1&address_scope_code&born_at=1962-10-06&document_id=66044712M&document_scope_code=ES&document_type=dni&email=user29%40example.org&first_name=Chance&gender=female&last_name1=Cremin&last_name2&origin_qualified_id=3089%40decidim&phone=0034612542883&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -26,14 +26,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=c1084429-d3ae-4f86-962e-06dd33124599; path=/; expires=Thu, 11 Oct
-        2018 20:44:15 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=cd80b8da-e501-42ea-995b-94ce0bfb0ae5; path=/; expires=Sun, 11
-        Oct 2020 16:44:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=cb1ff765-0a98-43b2-a606-7287bb72de5a; path=/; expires=Mon, 15 Oct
+        2018 13:33:40 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=57b93622-570a-42fe-a88e-9321d843c79d; path=/; expires=Thu, 15
+        Oct 2020 09:33:40 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 9084a5dd-df62-499b-948a-01609328f61c
+      - ee082a91-07ec-4296-a369-076430b2ef9b
       X-Runtime:
-      - '0.035039'
+      - '0.012901'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -55,7 +55,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"first_name":[{"error":"blank"}],"last_name1":[{"error":"blank"}],"document_id":[{"error":"blank"}],"born_at":[{"error":"blank"}],"gender":[{"error":"blank"}],"address":[{"error":"blank"}],"postal_code":[{"error":"blank"}],"address_scope":[{"error":"blank"}],"scope":[{"error":"blank"}]}'
+      string: '{"address_scope":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Thu, 11 Oct 2018 16:44:15 GMT
+  recorded_at: Mon, 15 Oct 2018 09:33:40 GMT
 recorded_with: VCR 4.0.0
