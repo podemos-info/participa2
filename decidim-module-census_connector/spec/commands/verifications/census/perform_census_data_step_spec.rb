@@ -35,6 +35,7 @@ module Decidim::CensusConnector
     let(:postal_code) { "08001" }
     let(:phone_country) { "ES" }
     let(:phone_number) { Faker::Number.number(9) }
+    let(:verify_phone) { false }
 
     let(:address_scope) { local_scope }
     let(:address_scope_id) { address_scope.id }
@@ -60,6 +61,7 @@ module Decidim::CensusConnector
         postal_code: postal_code,
         phone_country: phone_country,
         phone_number: phone_number,
+        verify_phone: verify_phone
       ).with_context(
         local_scope: local_scope,
         params: { part: "" },
@@ -73,6 +75,29 @@ module Decidim::CensusConnector
 
     it "broadcasts :ok" do
       expect { subject.call }.to broadcast(:ok)
+    end
+
+    it "doesn't start a phone verification" do
+      allow(person_proxy).to receive(:start_phone_verification)
+      subject.call
+      expect(person_proxy).not_to have_received(:start_phone_verification)
+    end
+
+    context "when phone verification is required" do
+      let(:cassette_target) { "verify_phone" }
+      let(:cassette_status) { "ok" }
+      let(:phone_number) { "666666666" }
+      let(:verify_phone) { true }
+
+      it "broadcasts :ok" do
+        expect { subject.call }.to broadcast(:ok)
+      end
+
+      it "starts a phone verification" do
+        allow(person_proxy).to receive(:start_phone_verification)
+        subject.call
+        expect(person_proxy).to have_received(:start_phone_verification)
+      end
     end
 
     context "when document id not present" do
