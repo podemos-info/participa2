@@ -6,22 +6,25 @@ require "decidim/core/test/factories"
 
 module Decidim::CensusConnector
   describe "Census account", type: :system do
-    let(:organization) { create(:organization) }
-    let(:user) { create(:user, :confirmed, :with_incomplete_person, organization: organization) }
-    let(:person) { person_proxy.person }
-    let(:person_proxy) { PersonProxy.for(user) }
-    let(:cassette) { "existing_person" }
-
     around do |example|
       VCR.use_cassette(cassette, {}, &example)
     end
 
     before do
+      local_scope
       create_person_scopes(organization, person)
       switch_to_host(organization.host)
       login_as user, scope: :user
       visit decidim_census_account.root_path
     end
+
+    let(:organization) { create(:organization) }
+    let(:local_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
+
+    let(:user) { create(:user, :confirmed, :with_person, organization: organization) }
+    let(:person) { person_proxy.person }
+    let(:person_proxy) { PersonProxy.for(user) }
+    let(:cassette) { "existing_person" }
 
     it "shows the personal data information" do
       expect(page).to have_content("PERSONAL DATA")

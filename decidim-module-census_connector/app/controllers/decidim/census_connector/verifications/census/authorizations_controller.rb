@@ -11,33 +11,32 @@ module Decidim
           helper Decidim::CensusConnector::AuthorizationsHelper
           helper Decidim::SanitizeHelper
 
-          helper_method :current_form_path
+          helper_method :form, :step_path
 
-          STEPS = %w(data verification membership_level).freeze
+          STEPS = %w(data phone_verification verification).freeze
 
           def index
             @form = if has_person?
-                      current_form_object.from_model(person).with_context(form_context)
+                      form_class.from_model(person).with_context(form_context)
                     else
-                      current_form_object.new.with_context(form_context)
+                      form_class.new.with_context(form_context)
                     end
 
-            render current_form
+            render step
           end
 
           def create
-            @form = current_form_object.from_params(params).with_context(form_context)
-            current_command.call(person_proxy, @form) do
+            command_class.call(person_proxy, form) do
               on(:ok) do
                 redirect_to next_path
               end
               on(:invalid) do
                 flash.now[:alert] = t("messages.invalid", scope: "census.api")
-                render current_form
+                render step
               end
               on(:error) do
                 flash.now[:error] = t("messages.error", scope: "census.api")
-                render current_form
+                render step
               end
             end
           end
@@ -52,57 +51,44 @@ module Decidim
 
           private
 
-          def part
-            @part ||= request[:part]
+          def step
+            @step ||= valid_step(request[:step])
           end
 
-          def step?
-            @step ||= request[:form].blank?
+          def step_path
+            @step_path ||= decidim_census.authorization_path(authorization_params)
           end
 
-          def current_step
-            @current_step ||= valid_step(request[:step])
+          def form
+            @form ||= form_class.from_params(params).with_context(form_context)
           end
 
-          def next_step
-            @next_step ||= step? && STEPS[STEPS.index(current_step) + 1]
+          def form_class
+            @form_class ||= "decidim/census_connector/verifications/census/#{step}_form".classify.constantize
           end
 
-          def current_form
-            @current_form ||= step? ? current_step : valid_step(request[:form])
-          end
-
-          def current_form_object
-            @current_form_object ||= "decidim/census_connector/verifications/census/#{current_form}_form".classify.constantize
-          end
-
-          def current_command
-            @current_command ||= "decidim/census_connector/verifications/census/perform_census_#{current_form}_step".classify.constantize
+          def command_class
+            @command_class ||= "decidim/census_connector/verifications/census/perform_census_#{step}_step".classify.constantize
           end
 
           def next_path
-            @next_path ||= if next_step
-                             decidim_census.root_path(authorization_params.merge(step: next_step))
-                           else
-                             authorization_params[:redirect_url] || decidim_census_account.root_path
-                           end
-          end
-
-          def current_form_path
-            @current_form_path ||= decidim_census.authorization_path(
-              authorization_params
-            )
+            if form.next_step
+              decidim_census.root_path(authorization_params.merge(step: form.next_step, **form.next_step_params))
+            else
+              authorization_params[:redirect_url] || decidim_census_account.root_path
+            end
           end
 
           def form_context
             {
               local_scope: local_scope,
-              part: part
+              person: person,
+              params: params
             }
           end
 
           def authorization_params
-            params.permit(:locale, :step, :part, :form, :redirect_url).to_h
+            params.permit(:locale, :step, :redirect_url, :part, :phone).to_h
           end
 
           def valid_step(step)

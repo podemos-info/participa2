@@ -4,8 +4,8 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        # A command to create a partial authorization for a user.
-        class PerformCensusMembershipLevelStep < Rectify::Command
+        # A command to complete a phone verification for a person.
+        class PerformCensusPhoneVerificationStep < Rectify::Command
           # Public: Initializes the command.
           #
           # form - A Decidim::Form object.
@@ -25,7 +25,9 @@ module Decidim
           def call
             return broadcast(:invalid) if form.invalid?
 
-            update_membership_level
+            create_phone_verification
+
+            add_errors_to_form
             broadcast(result)
           end
 
@@ -33,15 +35,22 @@ module Decidim
 
           attr_reader :form, :person_proxy, :result, :info
 
-          def update_membership_level
-            @result, @info = person_proxy.create_membership_level(membership_level_params)
+          def create_phone_verification
+            @result, @info = person_proxy.create_phone_verification(phone_verification_params)
           end
 
-          def membership_level_params
+          def add_errors_to_form
+            ErrorConverter.new(form, info[:errors]).run if result == :invalid
+          end
+
+          def phone_verification_params
             {
-              membership_level: form.level
+              phone: phone,
+              received_code: received_code
             }
           end
+
+          delegate :received_code, :phone, to: :form
         end
       end
     end

@@ -1,0 +1,65 @@
+<h2 class="section-heading"><%= t(".title") %></h2>
+<% if person.pending? %>
+  <div class="callout announcement secondary">
+    <div class="row column">
+      <%= t(".pending_notice") %>
+    </div>
+  </div>
+<% end %>
+<div class="card card--list card--account">
+  <div class="card--list__item data_card">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          <%= t("personal_data_part.title", scope: "decidim.census_connector.verifications.census.authorizations") %>
+        </h3>
+        <span class="text-small"><%= person_presenter.full_name %></span><br/>
+        <span class="text-small"><%= person_presenter.full_document %></span><br/>
+        <span class="text-small"><%= person_presenter.gender %></span> - <span class="text-small"><%= person_presenter.born_at %></span>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon *person_presenter.verification_icon_params %><br/><%= t(".document_verification.#{person.verification}") %></span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <% if person.verification_received? %>
+        <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/><%= t(".action.cancel_verification") %></a>
+      <% elsif !person.verified? %>
+        <a href="<%= decidim_census.root_path(step: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br><%= t(".action.modify") %></a>
+        <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card--list__item scope_card">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          <%= t("location_data_part.title", scope: "decidim.census_connector.verifications.census.authorizations") %>
+        </h3>
+        <span class="text-small"><%= person_presenter.full_address %></span><br/>
+        <span class="text-small"><%= person_presenter.participation_scope %></span>
+      </div>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(step: :data, part: :location) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
+    </div>
+  </div>
+
+  <div class="card--list__item phone_card">
+    <div class="card--list__text">
+      <div>
+        <h3 class="card--list__heading heading6">
+          <%= t("phone_data_part.title", scope: "decidim.census_connector.verifications.census.authorizations") %>
+        </h3>
+        <span class="text-small"><%= person_presenter.pretty_phone %></span>
+      </div>
+    </div>
+    <div class="card--list__data card--list__status">
+      <span class="card--list__data__icon"><%= icon *person_presenter.phone_verification_icon_params %><br/><%= t(".phone_verification.#{person.phone_verification}") %></span>
+    </div>
+    <div class="card--list__data card--list__actions">
+      <a href="<%= decidim_census.root_path(step: :data, part: :phone) %>" class="card--list__data__icon"><%=icon("pencil")%><br/><%= t(".action.modify") %></a>
+    </div>
+  </div>
+</div>

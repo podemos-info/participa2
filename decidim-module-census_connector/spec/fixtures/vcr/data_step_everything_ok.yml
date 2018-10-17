@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1921-03-25&document_id=81038431R&document_scope_code=ES&document_type=dni&email=user1%40example.org&first_name=Maye&gender=female&last_name1=Spinka&last_name2&origin_qualified_id=3018%40decidim&phone=0034633706611&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=c1c76ca3-8664-434f-8171-4e1249c8a815; path=/; expires=Mon, 15 Oct
+        2018 13:10:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=b22a2874-6a5a-4905-860a-37bbdcb41490; path=/; expires=Thu, 15
+        Oct 2020 09:10:00 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 8d0d133f-acfc-489f-bd90-94c94f7868fb
+      X-Runtime:
+      - '0.395460'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":66}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:10:00 GMT
+recorded_with: VCR 4.0.0

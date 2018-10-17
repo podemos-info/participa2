@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1981-07-13&document_id=59530068L&document_scope_code=ES&document_type=dni&email=user3%40example.org&first_name=Elissa&gender=female&last_name1=Carroll&last_name2&origin_qualified_id=3063%40decidim&phone=0034209141365&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=fde801d1-443a-4605-9ea2-8af031193c4d; path=/; expires=Mon, 15 Oct
+        2018 13:33:36 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ca3a6970-825f-4482-8fa5-a49fa9112361; path=/; expires=Thu, 15
+        Oct 2020 09:33:36 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - cb778c8e-290f-449c-aea5-f785c034c908
+      X-Runtime:
+      - '0.169153'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":70}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:33:36 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/70@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7bc98e583fc8e31e9c590a6fe5a344f0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=46cc5c5b-e614-4b09-a84d-39b30cc37842; path=/; expires=Mon, 15 Oct
+        2018 13:33:36 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=4e094fca-a95e-40c7-bcb5-f21235f3d262; path=/; expires=Thu, 15
+        Oct 2020 09:33:36 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 61132924-be3a-43c4-9fe7-a1f4938fc1c1
+      X-Runtime:
+      - '0.005125'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":70,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3063},"first_name":"Elissa","last_name1":"Carroll","last_name2":null,"document_type":"dni","document_id":"59530068L","document_scope_code":"ES","born_at":"1981-07-13","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"0034209141365"}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:33:36 GMT
+recorded_with: VCR 4.0.0

@@ -12,13 +12,14 @@ module Census
                              gender born_at
                              document_type document_id document_scope_code
                              scope_code address phone address_scope_code postal_code
-                             membership_level state verification).freeze
+                             membership_level state verification phone_verification).freeze
 
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze
       MEMBERSHIP_LEVELS = %w(follower member).freeze
       STATES = %w(pending enabled cancelled trashed).freeze
       VERIFICATIONS = %w(not_verified verification_requested verification_received verified mistake fraudulent).freeze
+      PHONE_VERIFICATIONS = %w(not_verified reassigned verified).freeze
 
       class_methods do
         def document_types

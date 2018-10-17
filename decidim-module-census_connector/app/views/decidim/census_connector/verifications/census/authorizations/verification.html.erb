@@ -8,57 +8,25 @@
 
     <div class="row">
       <div class="columns large-9 medium-centered census-form">
-        <div class="card">
-          <div class="card__content">
-            <% if @form.information_page %>
-              <h5 class="card__title"><%= strip_tags(translated_attribute(@form.information_page.title)) %></h5>
-              <div class="verification_information"><%= decidim_sanitize translated_attribute(@form.information_page.content) %></div>
-            <% end %>
-            <p>
-              <%= decidim_sanitize t(".directions") %>
-            </p>
-            <%= decidim_form_for(@form, url: current_form_path) do |form| %>
-              <div class="row">
-                <div class="column large-6 document_uploader">
-                  <div class="field">
-                    <%= form.label(:document_file1) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{person.document_type}-sample1.png", alt: t(".sample1-description.#{person.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample1-description.#{person.document_type}") %></div>
-                    <% end %>
-                    <div class="upload">
-                      <%= form.upload :document_file1, accept: "image/*"%>
-                    </div>
-                  </div>
-                </div>
-                <div class="column large-6 document_uploader">
-                  <div class="field">
-                    <%= form.label(:document_file2) do %>
-                      <%= image_tag "decidim/census_connector/verifications/census/#{person.document_type}-sample2.png", alt: t(".sample2-description.#{person.document_type}") %>
-                        <div class="button button__info small secondary"><strong><%= t(".choose") %></strong><br/><%= t(".sample2-description.#{person.document_type}") %></div>
-                    <% end %>
-                    <div class="upload">
-                      <%= form.upload :document_file2, accept: "image/*"%>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <%= decidim_form_for(form, url: step_path) do |f| %>
+          <%= render partial: "identity_verification_part", locals: { f: f } if form.identity_part? %>
+          <%= render partial: "membership_verification_part", locals: { f: f } %>
 
-              <% if @form.terms_and_conditions_page %>
-                <p class="lopd-text">
-                  <strong><%= translated_attribute(@form.terms_and_conditions_page.title) %></strong><br/>
-                  <%= strip_tags(translated_attribute(@form.terms_and_conditions_page.content)) %>
-                </p>
-                <div class="field">
-                  <%= form.check_box :tos_agreement, label: t("tos_agreement", scope: "decidim.devise.registrations.new", link: link_to(t("terms", scope: "decidim.devise.registrations.new"), decidim.page_path(@form.terms_and_conditions_page))) %>
-                </div>
-              <% end %>
-
+          <div class="card">
+            <div class="card__content">
               <div class="actions">
-                <%= form.submit t("authorize", scope: "decidim.verifications.authorizations.new"), class: "button expanded" %>
+                <%= f.submit t(".#{form.action}"), class: "button expanded" %>
               </div>
-            <% end %>
+              <% if has_person? %>
+                <p class="text-center">
+                  <a href="<%= decidim_census_account.root_path%>">
+                    <%= t("go_back", scope: "decidim.census_connector.verifications.census.authorizations") %>
+                  </a>
+                </p>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code&born_at=1962-10-06&document_id=66044712M&document_scope_code=ES&document_type=dni&email=user29%40example.org&first_name=Chance&gender=female&last_name1=Cremin&last_name2&origin_qualified_id=3089%40decidim&phone=0034612542883&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=cb1ff765-0a98-43b2-a606-7287bb72de5a; path=/; expires=Mon, 15 Oct
+        2018 13:33:40 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=57b93622-570a-42fe-a88e-9321d843c79d; path=/; expires=Thu, 15
+        Oct 2020 09:33:40 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - ee082a91-07ec-4296-a369-076430b2ef9b
+      X-Runtime:
+      - '0.012901'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"address_scope":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:33:40 GMT
+recorded_with: VCR 4.0.0

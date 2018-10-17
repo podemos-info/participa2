@@ -4,7 +4,7 @@ module Decidim
   module CensusConnector
     module Verifications
       module Census
-        # A command to create a partial authorization for a user.
+        # A command to save person data for a user.
         class PerformCensusDataStep < Rectify::Command
           # Public: Initializes the command.
           #
@@ -26,6 +26,8 @@ module Decidim
             return broadcast(:invalid) if form.invalid?
 
             save_person
+            start_phone_verification
+
             add_errors_to_form
             broadcast(result)
           end
@@ -35,11 +37,20 @@ module Decidim
           attr_reader :form, :person_proxy, :result, :info
 
           def save_person
+            @result = :ok
+            return unless person_params.any?
+
             @result, @info = if person_proxy.has_person?
                                person_proxy.update(person_params)
                              else
                                person_proxy.create(person_params.merge(origin_qualified_id: origin_qualified_id))
                              end
+          end
+
+          def start_phone_verification
+            return unless result == :ok && verify_phone?
+
+            @result, @info = person_proxy.start_phone_verification(phone_verification_params)
           end
 
           def add_errors_to_form
@@ -55,9 +66,9 @@ module Decidim
           end
 
           def person_params
-            base = { email: user.email }
+            base = {}
 
-            if personal_data?
+            if personal_part?
               base.merge!(
                 first_name: first_name,
                 last_name1: last_name1,
@@ -69,17 +80,20 @@ module Decidim
               )
             end
 
-            if location_data?
+            if location_part?
               base.merge!(
                 address: address,
                 postal_code: postal_code,
                 document_scope_code: document_scope_code,
-                address_scope_code: address_scope_code
+                address_scope_code: address_scope_code,
+                scope_code: scope_code
               )
-              base[:scope_code] = scope_code if address_scope.present?
             end
 
-            base[:phone] = phone if phone_data?
+            # Only update phone when is not verifying it
+            base[:phone] = phone if phone_part? && !phone_verification_required?
+
+            base[:email] = user.email if base.any?
 
             base
           end
@@ -89,7 +103,7 @@ module Decidim
           end
 
           delegate :user, to: :person_proxy
-          delegate :personal_data?, :location_data?, :phone_data?, :local_scope, to: :form
+          delegate :personal_part?, :location_part?, :phone_part?, :phone_verification_required?, :verify_phone?, :local_scope, to: :form
           delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, to: :form
           delegate :born_at, :gender, :address, :postal_code, :phone, to: :form
 
@@ -131,6 +145,12 @@ module Decidim
 
           def scopes
             user.organization.scopes
+          end
+
+          def phone_verification_params
+            {
+              phone: phone
+            }
           end
         end
       end

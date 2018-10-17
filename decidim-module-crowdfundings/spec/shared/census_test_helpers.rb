@@ -3,7 +3,7 @@
 # Helper methods for stubbing Census API calls
 module CensusTestHelpers
   def stub_create_order(order_info, http_status: 201)
-    stub_request(:post, %r{/api/v1/payments/orders})
+    stub_request(:post, %r{/api/v1/en/payments/orders})
       .to_return(
         status: http_status,
         body: order_info.to_json,
@@ -12,7 +12,7 @@ module CensusTestHelpers
   end
 
   def stub_payment_methods(payment_methods, http_status: 200)
-    stub_request(:get, %r{/api/v1/payments/payment_methods})
+    stub_request(:get, %r{/api/v1/en/payments/payment_methods})
       .to_return(
         status: http_status,
         body: status_response(http_status, payment_methods.map(&:to_h)),
@@ -21,7 +21,7 @@ module CensusTestHelpers
   end
 
   def stub_payment_method(payment_method, payment_method_id: payment_method.id, http_status: 200)
-    stub_request(:get, %r{/api/v1/payments/payment_methods/#{payment_method_id}})
+    stub_request(:get, %r{/api/v1/en/payments/payment_methods/#{payment_method_id}})
       .to_return(
         status: http_status,
         body: status_response(http_status, payment_method.to_h),
@@ -30,7 +30,7 @@ module CensusTestHelpers
   end
 
   def stub_orders_total(amount, http_status: 200)
-    stub_request(:get, %r{/api/v1/payments/orders/total})
+    stub_request(:get, %r{/api/v1/en/payments/orders/total})
       .to_return(
         status: http_status,
         body: status_response(http_status, amount: amount * 100),

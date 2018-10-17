@@ -5,7 +5,7 @@ require "spec_helper"
 require "faker"
 require "faker/spanish_document"
 
-describe "Census verification", type: :system do
+describe "Census authorization", type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: %w(census))
   end
@@ -79,13 +79,24 @@ describe "Census verification", type: :system do
     before do
       click_link 'Authorize with "Census"'
 
-      register_with_census
+      register_with_census(verify_phone: verify_phone)
 
       click_link "Foo"
     end
 
+    let(:verify_phone) { false }
+
     context "and everything alright" do
-      let(:cassette) { "regular_verification" }
+      let(:cassette) { "regular_registration" }
+
+      it "grants access to foo" do
+        expect(page).to have_current_path(/foo/)
+      end
+    end
+
+    context "when verifying phone" do
+      let(:cassette) { "phone_verification_registration" }
+      let(:verify_phone) { true }
 
       it "grants access to foo" do
         expect(page).to have_current_path(/foo/)
@@ -95,7 +106,7 @@ describe "Census verification", type: :system do
     context "and too young" do
       let(:age) { 14 }
 
-      let(:cassette) { "child_verification" }
+      let(:cassette) { "child_registration" }
 
       it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
@@ -107,7 +118,7 @@ describe "Census verification", type: :system do
     context "and using passport" do
       let(:document_type) { "Passport" }
 
-      let(:cassette) { "verification_with_passport" }
+      let(:cassette) { "registration_with_passport" }
 
       it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
@@ -116,26 +127,12 @@ describe "Census verification", type: :system do
       end
     end
 
-    context "and too young using passport" do
-      let(:age) { 14 }
-
-      let(:document_type) { "Passport" }
-
-      let(:cassette) { "child_verification_with_passport" }
-
-      it "shows popup to inform that requirements are not met" do
-        expect(page).to have_content(
-          "You need to be a least 18 years old."
-        )
-      end
-    end
-
-    context "and verification has issues in the census side" do
+    context "and registration has issues in the census side" do
       let(:extra_user_params) do
         { email: "scammer@mailinator.com" }
       end
 
-      let(:cassette) { "verification_with_issues" }
+      let(:cassette) { "registration_with_issues" }
 
       it "shows popup to require verification and shows it as pending" do
         expect(page).to have_content(
@@ -183,13 +180,13 @@ describe "Census verification", type: :system do
 
   private
 
-  def register_with_census
-    complete_data_step
+  def register_with_census(verify_phone: false)
+    complete_data_step(verify_phone: verify_phone)
+    complete_phone_step if verify_phone
     complete_document_step
-    complete_membership_step
   end
 
-  def complete_data_step
+  def complete_data_step(verify_phone: false)
     fill_in "Name", with: Faker::Name.first_name
     fill_in "First surname", with: Faker::Name.last_name
 
@@ -210,18 +207,23 @@ describe "Census verification", type: :system do
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
 
+    fill_in "Number", with: "666666666"
+    find("label[for=data_verify_phone]").click if verify_phone
+
     click_button "Send"
+  end
+
+  def complete_phone_step
+    received_code = "9510300"
+
+    fill_in "Received code", with: received_code
+
+    click_button "Verify phone"
   end
 
   def complete_document_step
     attach_file "verification_document_file1", Decidim::Dev.asset("id.jpg"), visible: false
     attach_file "verification_document_file2", Decidim::Dev.asset("id.jpg"), visible: false
-
-    click_button "Send"
-  end
-
-  def complete_membership_step
-    choose "Follower"
 
     click_button "Send"
   end
