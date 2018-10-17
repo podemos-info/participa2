@@ -15,6 +15,10 @@ module Census
         delegate :get, :patch, :post, to: :connection
       end
 
+      def api_url(path)
+        "/api/v1/#{I18n.locale}/#{path}"
+      end
+
       def send_request
         response = yield
         update_service_status true

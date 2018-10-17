@@ -23,12 +23,6 @@ FactoryBot.modify do
       end
     end
 
-    trait :with_incomplete_person do
-      transient do
-        person_id { 1 }
-      end
-    end
-
     after(:create) do |user, evaluator|
       next unless evaluator.person_id
 

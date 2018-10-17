@@ -17,8 +17,11 @@ es:
         phone_number: Número
         postal_code: Código postal
         scope_id: Lugar de participación
-      membership_level:
-        membership_level: Nivel de compromiso
+        verify_phone: Deseo verificar mi teléfono en este momento
+      phone_verification:
+        received_code: Código recibido
+      verification:
+        member: Deseo afiliarme al partido político Podemos
   census:
     api:
       messages:
@@ -84,35 +87,44 @@ es:
       account:
         account:
           index:
+            not_yet_registered: Aún no estás registrado en el censo de Podemos.
+            sign_up_to_vote: Apúntate para participar en las votaciones.
+          participation:
+            action:
+              modify: Modificar
+            status:
+              follower: No te has afiliado
+              member: Te has afiliado
+            title: Tu participación en Podemos
+          profile:
             action:
               cancel_verification: Cancelar verificación
               modify: Modificar
               verify: Verificar
-            data_heading: Datos personales
-            not_yet_registered: Aún no estás registrado en el censo de Podemos.
-            participation_heading: Tu participación en Podemos
+            document_verification:
+              not_verified: No verificado
+              verification_received: Verificación en progreso
+              verification_requested: Debes verificar tu identidad
+              verified: Verificado
             pending_notice: Tu registro en el censo de Podemos está siendo validado. Inténtalo de nuevo más tarde o contáctanos en verificaciones@soporte.podemos.info
-            phone_heading: Teléfono móvil
-            profile_heading: Tu inscripción en Podemos
-            scope_heading: Ubicación
-            sign_up_to_vote: Apúntate para participar en las votaciones.
+            phone_verification:
+              not_verified: No verificado
+              reassigned: Debes utilizar otro teléfono
+              verified: Verificado
+            title: Tu inscripción en Podemos
         menu:
           census: Inscripción en Podemos
       verifications:
         census:
           authorizations:
             data:
-              go_back: Volver
+              create: Enviar
               other_phone_country: Otro país
+              start_phone_verification: Iniciar verificación del teléfono
               title: Completa tus datos
-            membership_level:
-              directions: En Podemos hay diferentes maneras de participar y son todas útiles y bienvenidas. En este paso puedes elegir la que más se acerque a tu nivel de compromiso con Podemos.
-              follower:
-                description: Si te interesa Podemos y defiendes nuestras ideas en los parlamentos de la vida cotidiana y de las redes sociales.
-              member:
-                description: Si deseas participar en los procesos internos y las consultas.
-              title: Elige tu nivel de compromiso
-            verification:
+              update: Guardar
+            go_back: Volver
+            identity_verification_part:
               choose: Elegir
               directions: "<ul><li>Pincha en las imágenes de ejemplo para subir fotos de tu documento, así podremos verificar tu identidad.</li> <li>Puedes hacer las fotos directamente con tu teléfono móvil intentado ajustar los bordes del documento dentro de la pantalla. Si decides no hacerlo así ten en cuenta que sólo admitimos imágenes en formato <strong>.jpg</strong> o <strong>.png</strong>.</li> <li>Si tienes cualquier problema, puedes ponerte en contacto con nosotros enviando un email a <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
               sample1-description:
@@ -123,7 +135,27 @@ es:
                 dni: Reverso del DNI
                 nie: 'Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional'
                 passport: Página adicional del pasaporte (opcional)
-              title: Verifica tu identidad
+              title: Verificación de la identidad
+            location_data_part:
+              title: Ubicación
+            membership_verification_part:
+              directions: Aquí se explican los derechos y deberes de las personas afiliadas a Podemos.
+              title: Afiliación
+            personal_data_part:
+              title: Datos personales
+            phone_data_part:
+              title: Teléfono móvil
+              verify_directions: A continuación se enviará un mensaje al número de teléfono %{pretty_phone} para comprobar que tienes acceso a él.
+            phone_verification:
+              title: Verificación del teléfono móvil
+              verify: Verificar teléfono
+            phone_verification_part:
+              title: Introduce el código que has recibido en el número de teléfono %{pretty_phone}.
+            verification:
+              title: Verificaciones
+              to_follower: Deseo dar de baja mi afiliación
+              to_member: Deseo afiliarme
+              verify: Enviar
           descriptions:
             census_closure: Pueden participar personas inscritas en el territorio antes del %{census_closure}
             document_type: Pueden participar personas inscritas con %{allowed_document_types}

@@ -8,25 +8,34 @@ module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusDataStep do
     subject { described_class.new(person_proxy, form) }
 
+    around do |example|
+      VCR.use_cassette(cassette, {}, &example)
+    end
+
     let(:organization) { create(:organization) }
     let(:user) { create(:user, organization: organization) }
 
     let!(:local_scope) { create(:scope, code: scope_code, organization: organization) }
-    let!(:foreign_scope) { create(:scope, organization: organization) }
+    let!(:foreign_scope) { create(:scope, code: foreign_scope_code, organization: organization) }
     let!(:unrelated_scope) { create(:scope) }
 
     let(:scope_code) { "ES" }
+    let(:foreign_scope_code) { "XX" }
 
     let(:person_proxy) { PersonProxy.for(user) }
+    let(:person) { person_proxy.person }
 
-    let(:first_name) { "Marlin" }
-    let(:last_name1) { "D'Amore" }
-    let(:document_type) { "dni" }
-    let(:document_id) { "71195206V" }
-    let(:born_at) { 18.years.ago }
+    let(:first_name) { Faker::Name.first_name }
+    let(:last_name1) { Faker::Name.last_name }
+    let(:document_type) { :dni }
+    let(:document_id) { Faker::SpanishDocument.generate(document_type) }
+    let(:born_at) { Faker::Date.between(99.years.ago, 18.years.ago) }
     let(:gender) { "female" }
     let(:address) { "Rua del Percebe, 1" }
     let(:postal_code) { "08001" }
+    let(:phone_country) { "ES" }
+    let(:phone_number) { Faker::Number.number(9) }
+    let(:verify_phone) { false }
 
     let(:address_scope) { local_scope }
     let(:address_scope_id) { address_scope.id }
@@ -49,247 +58,237 @@ module Decidim::CensusConnector
         address: address,
         address_scope_id: address_scope_id,
         scope_id: scope_id,
-        postal_code: postal_code
+        postal_code: postal_code,
+        phone_country: phone_country,
+        phone_number: phone_number,
+        verify_phone: verify_phone
       ).with_context(
-        local_scope: local_scope
+        local_scope: local_scope,
+        params: { part: "" },
+        person: person_proxy.person
       )
     end
 
-    before do
-      create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 })
+    let(:cassette) { "data_step_#{cassette_target}_#{cassette_status}" }
+    let(:cassette_target) { "everything" }
+    let(:cassette_status) { "ok" }
 
-      stub_request(:get, "http://mycensus:3001/api/v1/people/1@census")
-        .to_return(status: 200, body: '{"id":1}')
+    it "broadcasts :ok" do
+      expect { subject.call }.to broadcast(:ok)
+    end
+
+    it "doesn't start a phone verification" do
+      allow(person_proxy).to receive(:start_phone_verification)
+      subject.call
+      expect(person_proxy).not_to have_received(:start_phone_verification)
+    end
+
+    context "when phone verification is required" do
+      let(:cassette_target) { "verify_phone" }
+      let(:cassette_status) { "ok" }
+      let(:phone_number) { "666666666" }
+      let(:verify_phone) { true }
+
+      it "broadcasts :ok" do
+        expect { subject.call }.to broadcast(:ok)
+      end
+
+      it "starts a phone verification" do
+        allow(person_proxy).to receive(:start_phone_verification)
+        subject.call
+        expect(person_proxy).to have_received(:start_phone_verification)
+      end
     end
 
     context "when document id not present" do
       let(:document_id) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(document_id: ""))
-          .to_return(status: 422, body: '{"document_id":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API error to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:document_id, "can't be blank"])
-      end
+      let(:cassette_target) { "document_id" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors.first).to eq([:document_id, "can't be blank"])
       end
     end
 
     context "when document id invalid" do
       let(:document_id) { "11111111A" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(document_id: "11111111A"))
-          .to_return(status: 422, body: '{"document_id":[{"error":"invalid"}]}')
-
-        subject.call
-      end
-
-      it "adds the API error to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:document_id, "is invalid"])
-      end
+      let(:cassette_target) { "document_id" }
+      let(:cassette_status) { "invalid" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors.first).to eq([:document_id, "is invalid"])
       end
     end
 
     context "when first name not present" do
       let(:first_name) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(first_name: ""))
-          .to_return(status: 422, body: '{"first_name":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API error to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:first_name, "can't be blank"])
-      end
+      let(:cassette_target) { "first_name" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors.first).to eq([:first_name, "can't be blank"])
       end
     end
 
     context "when first last name not present" do
       let(:last_name1) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(last_name1: ""))
-          .to_return(status: 422, body: '{"last_name1":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API error to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:last_name1, "can't be blank"])
-      end
+      let(:cassette_target) { "last_name" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors.first).to eq([:last_name1, "can't be blank"])
       end
     end
 
     context "when birth date not present" do
       let(:born_at) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(born_at: ""))
-          .to_return(status: 422, body: '{"born_at":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API error to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:born_at]).to eq(["can't be blank"])
-      end
+      let(:cassette_target) { "born_at" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:born_at]).to eq(["can't be blank"])
+      end
+    end
+
+    context "when birth date is invalid" do
+      let(:born_at) { "potato" }
+      let(:cassette_target) { "born_at" }
+      let(:cassette_status) { "invalid" }
+
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API error to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:born_at]).to eq(["is invalid"])
       end
     end
 
     context "when gender not present" do
       let(:gender) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(gender: ""))
-          .to_return(status: 422, body: '{"gender":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:gender]).to eq(["can't be blank"])
-      end
+      let(:cassette_target) { "gender" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:gender]).to eq(["can't be blank"])
       end
     end
 
     context "when gender invalid" do
       let(:gender) { "ardilla" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(gender: "ardilla"))
-          .to_return(status: 422, body: '{"gender":[{"error":"inclusion"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:gender]).to eq(["is not included in the list"])
-      end
+      let(:cassette_target) { "gender" }
+      let(:cassette_status) { "invalid" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:gender]).to eq(["is not included in the list"])
       end
     end
 
     context "when address not present" do
       let(:address) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(address: ""))
-          .to_return(status: 422, body: '{"address":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:address]).to eq(["can't be blank"])
-      end
+      let(:cassette_target) { "address" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:address]).to eq(["can't be blank"])
       end
     end
 
     context "when postal code not present" do
       let(:postal_code) { "" }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(postal_code: ""))
-          .to_return(status: 422, body: '{"postal_code":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:postal_code]).to eq(["can't be blank"])
-      end
+      let(:cassette_target) { "postal_code" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:postal_code]).to eq(["can't be blank"])
       end
     end
 
     context "when address_scope_id not present" do
-      let(:address_scope_id) { nil }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(address_scope_code: nil))
-          .to_return(status: 422, body: '{"address_scope":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
-      end
+      let(:address_scope_id) { "" }
+      let(:cassette_target) { "address_scope_id" }
+      let(:cassette_status) { "missing" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
       end
     end
 
     context "when address_scope_id in other organization" do
       let(:address_scope_id) { unrelated_scope.id }
-
-      before do
-        stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-          .with(body: hash_including(address_scope_code: nil))
-          .to_return(status: 422, body: '{"address_scope":[{"error":"blank"}]}')
-
-        subject.call
-      end
-
-      it "adds the API errors to the form" do
-        expect(form.errors.count).to eq(1)
-        expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
-      end
+      let(:cassette_target) { "address_scope_id" }
+      let(:cassette_status) { "invalid" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)
+      end
+
+      it "adds the API errors to the form" do
+        subject.call
+        expect(form.errors.count).to eq(1)
+        expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
       end
     end
 
@@ -298,33 +297,35 @@ module Decidim::CensusConnector
 
       context "and document_type local" do
         let(:document_type) { "dni" }
+        let(:cassette_target) { "document_scope_id" }
+        let(:cassette_status) { "inferred" }
 
-        it "sends the address scope" do
-          stub = stub_request(
-            :patch, "http://mycensus:3001/api/v1/people/1@census"
-          ).with(
-            body: hash_including(document_scope_code: address_scope.code)
-          ).to_return(status: 202, body: "{}")
-
+        it "broadcasts :ok" do
           expect { subject.call }.to broadcast(:ok)
+        end
 
-          expect(stub).to have_been_requested
+        it "uses the local scope" do
+          subject.call
+
+          expect(person.document_scope).to eq(local_scope)
         end
       end
 
       context "and document_type not local" do
+        before { allow(form).to receive(:document_scope_id).and_return(nil) }
+
         let(:document_type) { "passport" }
+        let(:cassette_target) { "document_scope_id" }
+        let(:cassette_status) { "missing" }
 
-        it "sends the local scope" do
-          stub = stub_request(
-            :patch, "http://mycensus:3001/api/v1/people/1@census"
-          ).with(
-            body: hash_including(document_scope_code: local_scope.code)
-          ).to_return(status: 202, body: "{}")
+        it "broadcasts :invalid" do
+          expect { subject.call }.to broadcast(:invalid)
+        end
 
-          expect { subject.call }.to broadcast(:ok)
-
-          expect(stub).to have_been_requested
+        it "adds the API errors to the form" do
+          subject.call
+          expect(form.errors.count).to eq(1)
+          expect(form.errors[:document_scope_id]).to eq(["can't be blank"])
         end
       end
     end
@@ -334,38 +335,33 @@ module Decidim::CensusConnector
 
       context "and document_type local" do
         let(:document_type) { "dni" }
+        let(:cassette_target) { "document_scope_id" }
+        let(:cassette_status) { "invalid_but_inferred" }
 
-        it "sends the address scope" do
-          stub = stub_request(
-            :patch, "http://mycensus:3001/api/v1/people/1@census"
-          ).with(
-            body: hash_including(document_scope_code: address_scope.code)
-          ).to_return(status: 202, body: "{}")
-
+        it "broadcasts :ok" do
           expect { subject.call }.to broadcast(:ok)
+        end
 
-          expect(stub).to have_been_requested
+        it "uses the local scope" do
+          subject.call
+
+          expect(person.document_scope).to eq(local_scope)
         end
       end
 
       context "and document_type not local" do
         let(:document_type) { "passport" }
-
-        before do
-          stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-            .with(body: hash_including(document_scope_code: nil))
-            .to_return(status: 422, body: '{"document_scope":[{"error":"blank"}]}')
-
-          subject.call
-        end
-
-        it "adds API errors to the form" do
-          expect(form.errors.count).to eq(1)
-          expect(form.errors[:document_scope_id]).to eq(["can't be blank"])
-        end
+        let(:cassette_target) { "document_scope_id" }
+        let(:cassette_status) { "invalid" }
 
         it "broadcasts :invalid" do
           expect { subject.call }.to broadcast(:invalid)
+        end
+
+        it "adds the API errors to the form" do
+          subject.call
+          expect(form.errors.count).to eq(1)
+          expect(form.errors[:document_scope_id]).to eq(["can't be blank"])
         end
       end
     end
@@ -373,60 +369,48 @@ module Decidim::CensusConnector
     shared_examples_for "missing scope_id" do
       context "and address_scope_id not present either" do
         let(:address_scope_id) { nil }
-
-        before do
-          stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-            .with(body: hash_including(address_scope_code: nil))
-            .to_return(status: 422, body: '{"address_scope":[{"error":"blank"}]}')
-
-          subject.call
-        end
-
-        it "adds API errors to the form" do
-          expect(form.errors.count).to eq(1)
-          expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
-        end
+        let(:cassette) { "data_step_#{cassette_target}_#{cassette_status}_without_address" }
 
         it "broadcasts :invalid" do
           expect { subject.call }.to broadcast(:invalid)
+        end
+
+        it "adds API errors to the form" do
+          subject.call
+          expect(form.errors.count).to eq(2)
+          expect(form.errors[:scope_id]).to eq(["can't be blank"])
+          expect(form.errors[:address_scope_id]).to eq(["can't be blank"])
         end
       end
 
       context "and address_scope_id present" do
         context "and local" do
           let(:address_scope_id) { local_scope.id }
+          let(:cassette) { "data_step_#{cassette_target}_#{cassette_status}_with_local_address" }
 
-          it "sends the address scope" do
-            stub = stub_request(
-              :patch, "http://mycensus:3001/api/v1/people/1@census"
-            ).with(
-              body: hash_including(scope_code: local_scope.code)
-            ).to_return(status: 202, body: "{}")
-
+          it "broadcasts :ok" do
             expect { subject.call }.to broadcast(:ok)
+          end
 
-            expect(stub).to have_been_requested
+          it "uses the address scope" do
+            subject.call
+
+            expect(person.scope).to eq(person.address_scope)
           end
         end
 
         context "and not local" do
           let(:address_scope_id) { foreign_scope.id }
-
-          before do
-            stub_request(:patch, "http://mycensus:3001/api/v1/people/1@census")
-              .with(body: hash_including(scope_code: nil))
-              .to_return(status: 422, body: '{"scope":[{"error":"blank"}]}')
-
-            subject.call
-          end
-
-          it "adds the API errors to the form" do
-            expect(form.errors.count).to eq(1)
-            expect(form.errors[:scope_id]).to eq(["can't be blank"])
-          end
+          let(:cassette) { "data_step_#{cassette_target}_#{cassette_status}_with_foreign_address" }
 
           it "broadcasts :invalid" do
             expect { subject.call }.to broadcast(:invalid)
+          end
+
+          it "adds the API errors to the form" do
+            subject.call
+            expect(form.errors.count).to eq(1)
+            expect(form.errors[:scope_id]).to eq(["can't be blank"])
           end
         end
       end
@@ -434,12 +418,16 @@ module Decidim::CensusConnector
 
     context "when scope_id not present" do
       let(:scope_id) { nil }
+      let(:cassette_target) { "scope_id" }
+      let(:cassette_status) { "missing" }
 
       include_examples "missing scope_id"
     end
 
     context "when scope_id not in organization" do
       let(:scope_id) { unrelated_scope.id }
+      let(:cassette_target) { "scope_id" }
+      let(:cassette_status) { "invalid" }
 
       include_examples "missing scope_id"
     end

@@ -50,6 +50,7 @@ module Decidim
 
           def authorize_state
             return not_enabled(:state, state: humanized_state) unless person.enabled?
+
             true
           end
 
@@ -59,12 +60,14 @@ module Decidim
 
           def authorize_age
             return unauthorized(:age, minimum_age: minimum_age) if authorizing_by_age? && person.age < minimum_age
+
             true
           end
 
           def authorize_document_type
             return unauthorized(:document_type, allowed_document_types: humanized_allowed_document_types) if authorizing_by_document_type? &&
                                                                                                              !allowed_document_types.include?(person.document_type)
+
             true
           end
 
@@ -72,16 +75,19 @@ module Decidim
             return unauthorized(:closed_scope) if authorizing_by_scope? && authorizing_by_census_closure? && current_scope &&
                                                   current_scope.ancestor_of?(census_closure_person&.scope)
             return incomplete(:scope) if authorizing_by_scope? && current_scope && current_scope.ancestor_of?(person&.scope)
+
             true
           end
 
           def authorize_census_closure
             return unauthorized(:census_closure, census_closure: humanized_census_closure) if authorizing_by_census_closure? && !census_closure_person&.enabled?
+
             true
           end
 
           def authorize_verification
             return not_verified(minimum_verification_level) if authorizing_by_verification? && !allowed_verification_levels.include?(person.verification)
+
             true
           end
 
@@ -91,6 +97,7 @@ module Decidim
 
           def check_service_status
             return true unless person_proxy&.service_status == false
+
             @status_code = :unauthorized
             @data.except! :action, :cancel
             set_explanation(context: "census.api.messages", key: "error")

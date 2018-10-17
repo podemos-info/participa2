@@ -16,13 +16,17 @@ module Decidim
         end
 
         def full_document
-          ret = "#{I18n.t(person.document_type, scope: "census.api.person.document_type")} #{person.document_id}"
+          ret = "#{I18n.t(person.document_type, scope: "census.api.person.document_type")} - #{person.document_id}"
           ret += " (#{translated_attribute(@person.document_scope.name)})" unless Person.local_document?(person.document_type)
           ret
         end
 
-        def born_info
-          "#{I18n.l(person.born_at, format: :default)} - #{I18n.t(person.gender, scope: "census.api.person.gender")}"
+        def born_at
+          I18n.l(person.born_at, format: :default)
+        end
+
+        def gender
+          I18n.t(person.gender, scope: "census.api.person.gender")
         end
 
         def full_address
@@ -44,9 +48,20 @@ module Decidim
           when "not_verified"
             ["x", class: "muted"]
           when "verification_requested"
-            ["x", class: "muted"]
+            ["warning", class: "warning"]
           when "verification_received"
             ["timer", class: "warning"]
+          when "verified"
+            ["check", class: "success"]
+          end
+        end
+
+        def phone_verification_icon_params
+          case person.phone_verification
+          when "not_verified"
+            ["x", class: "muted"]
+          when "reassigned"
+            ["warning", class: "warning"]
           when "verified"
             ["check", class: "success"]
           end

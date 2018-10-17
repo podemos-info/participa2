@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card__content">
+    <legend><%= t(".title") %></legend>
+    <p>
+      <%= decidim_sanitize t(".directions") %>
+    </p>
+
+    <% if form.membership_required? %>
+      <%= f.hidden_field :member, value: !form.member? %>
+    <% else %>
+      <div class="field">
+        <%= f.check_box :member %>
+      </div>
+    <% end %>
+  </div>
+</div>

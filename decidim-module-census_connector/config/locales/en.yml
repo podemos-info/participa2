@@ -17,8 +17,11 @@ en:
         phone_number: Number
         postal_code: Postal code
         scope_id: Participation place
-      membership_level:
-        membership_level: Engagement level
+        verify_phone: I want to verify my phone number now
+      phone_verification:
+        received_code: Received code
+      verification:
+        member: I want to be a Podemos member
   census:
     api:
       messages:
@@ -84,35 +87,44 @@ en:
       account:
         account:
           index:
+            not_yet_registered: You're not yet registered with Podemos' census.
+            sign_up_to_vote: Sign up to take part in votings.
+          participation:
+            action:
+              modify: Modify
+            status:
+              follower: Follower
+              member: Member
+            title: Your participation in Podemos
+          profile:
             action:
               cancel_verification: Cancel verification
               modify: Modify
               verify: Verify
-            data_heading: Personal data
-            not_yet_registered: You're not yet registered with Podemos' census.
-            participation_heading: Your participation in Podemos
+            document_verification:
+              not_verified: Not verified
+              verification_received: Verification received
+              verification_requested: Verification requested
+              verified: Verified
             pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
-            phone_heading: Mobile phone
-            profile_heading: Your Podemos profile
-            scope_heading: Location
-            sign_up_to_vote: Sign up to take part in votings.
+            phone_verification:
+              not_verified: Not verified
+              reassigned: You should use another phone number
+              verified: Verified
+            title: Your Podemos profile
         menu:
           census: Registration in Podemos
       verifications:
         census:
           authorizations:
             data:
-              go_back: Go back
+              create: Send
               other_phone_country: Other country
+              start_phone_verification: Start phone verification
               title: Complete your data
-            membership_level:
-              directions: Choose your membership level
-              follower:
-                description: To support Podemos activity.
-              member:
-                description: To participate in elections and consultations.
-              title: Membership level
-            verification:
+              update: Save
+            go_back: Go back
+            identity_verification_part:
               choose: Choose
               directions: "<ul><li>Click on the sample images to upload pictures of your document, so that we can verify your identity.</li> <li>You can take pictures directly from your cell phone, making sure to fit the shape of the document into your screen. If you decide not to do it like that, notice that we only accept <strong>.jpg</strong> o <strong>.png</strong> formats.</li> <li>If you have any trouble, you can get in touch with us by sending an email to <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
               sample1-description:
@@ -124,6 +136,26 @@ en:
                 nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
                 passport: Additional passport page (optional)
               title: Identity verification
+            location_data_part:
+              title: Location
+            membership_verification_part:
+              directions: Membership rights and duties of Podemos members explanation.
+              title: Membership
+            personal_data_part:
+              title: Personal data
+            phone_data_part:
+              title: Mobile phone
+              verify_directions: We will send you a message to the phone number %{pretty_phone} to verify that you can read it.
+            phone_verification:
+              title: Phone verification
+              verify: Verify phone
+            phone_verification_part:
+              title: Mobile phone verification
+            verification:
+              title: Verifications
+              to_follower: I want to cancel my membership
+              to_member: I want to be a member
+              verify: Send
           descriptions:
             census_closure: You need to be registered before %{census_closure}
             document_type: You need to be registered with %{allowed_document_types}

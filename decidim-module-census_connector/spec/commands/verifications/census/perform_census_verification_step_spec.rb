@@ -8,40 +8,53 @@ module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusVerificationStep do
     subject { described_class.new(person_proxy, form) }
 
+    around do |example|
+      VCR.use_cassette(cassette, {}, &example)
+    end
+
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, organization: organization) }
+    let(:user) { create(:user, :with_person, organization: organization) }
 
     let(:person_proxy) { PersonProxy.for(user) }
 
     let(:document_file1) do
-      Rack::Test::UploadedFile.new(Decidim::Dev.test_file("id.jpg", "image/jpg"))
+      Rack::Test::UploadedFile.new(Decidim::Dev.test_file("id.jpg", "image/jpg"), "image/jpg")
+    end
+    let(:document_file2) do
+      Rack::Test::UploadedFile.new(Decidim::Dev.test_file("id.jpg", "image/jpg"), "image/jpg")
     end
 
     let(:form) do
-      Verifications::Census::VerificationForm.new(document_file1: document_file1)
+      Verifications::Census::VerificationForm.new(
+        document_file1: document_file1,
+        document_file2: document_file2,
+        member: true
+      ).with_context(
+        params: { part: "" },
+        person: person_proxy.person
+      )
     end
 
-    before do
-      create(:authorization, name: "census", user: user, metadata: { "person_id" => 1 })
+    let(:cassette) { "verification_step_ok" }
+
+    it "broadcasts :ok" do
+      expect { subject.call }.to broadcast(:ok)
     end
 
     context "when no document files present" do
       let(:document_file1) { nil }
+      let(:cassette) { "verification_step_files_missing" }
 
-      before do
-        stub_request(:post, "http://mycensus:3001/api/v1/people/1@census/document_verifications")
-          .to_return(status: 422, body: '{"files":[{"error":"too_short","count":1}]}')
+      it "broadcasts :invalid" do
+        expect { subject.call }.to broadcast(:invalid)
       end
 
       it "adds the API error to the form" do
         subject.call
 
-        expect(form.errors.count).to eq(1)
-        expect(form.errors.first).to eq([:document_file1, "can't be empty"])
-      end
-
-      it "broadcasts :invalid" do
-        expect { subject.call }.to broadcast(:invalid)
+        expect(form.errors.count).to eq(2)
+        expect(form.errors[:document_file1]).to eq(["can't be empty"])
+        expect(form.errors[:document_file2]).to eq(["can't be empty"])
       end
     end
   end

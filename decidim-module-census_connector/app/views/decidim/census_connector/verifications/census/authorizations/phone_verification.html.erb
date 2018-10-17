@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="row collapse">
+    <div class="row collapse">
+      <div class="columns large-8 large-centered text-center page-title">
+        <h1><%= t(".title") %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns large-6 medium-centered census-form">
+        <%= decidim_form_for(form, url: step_path) do |f| %>
+          <%= render partial: "phone_verification_part", locals: { f: f } %>
+          <div class="card">
+            <div class="card__content">
+              <div class="actions">
+                <%= f.submit t(".#{form.action}"), class: "button expanded" %>
+              </div>
+              <% if has_person? %>
+                <p class="text-center">
+                  <a href="<%= decidim_census_account.root_path%>">
+                    <%= t("go_back", scope: "decidim.census_connector.verifications.census.authorizations") %>
+                  </a>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'decidim/census_connector/verifications/census' %>
+<%= stylesheet_link_tag "decidim/census_connector/verifications/census" %>

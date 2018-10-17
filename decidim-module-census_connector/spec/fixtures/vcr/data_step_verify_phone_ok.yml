@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1976-08-24&document_id=68841213M&document_scope_code=ES&document_type=dni&email=user1%40example.org&first_name=Theo&gender=female&last_name1=Cormier&last_name2&origin_qualified_id=3050%40decidim&phone=0034666666666&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=7b707cf9-e36d-49c7-a3ff-038642ed76b7; path=/; expires=Mon, 15 Oct
+        2018 13:24:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fc6e3657-c641-4832-b7b7-235b8f0b54c6; path=/; expires=Thu, 15
+        Oct 2020 09:24:15 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - f27af7fa-04c9-4da2-a628-ca87d87cdb41
+      X-Runtime:
+      - '0.260684'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":69}'
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:24:15 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/69@census/phone_verifications/new?phone=0034666666666
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=b2c2a198-8e37-4d2a-8272-34629bb3d751; path=/; expires=Mon, 15 Oct
+        2018 13:24:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=01672cdf-b1ec-4495-b20b-4320cabb2806; path=/; expires=Thu, 15
+        Oct 2020 09:24:15 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 76a824b5-b6fd-4777-b589-ed4702bc65e7
+      X-Runtime:
+      - '0.013473'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Mon, 15 Oct 2018 09:24:15 GMT
+recorded_with: VCR 4.0.0

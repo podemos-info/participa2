@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card__content">
+    <%= f.hidden_field :phone %>
+    <legend><%= t(".title", pretty_phone: form.pretty_phone) %></legend>
+    <div class="field">
+      <%= f.text_field :received_code %>
+    </div>
+  </div>
+</div>
