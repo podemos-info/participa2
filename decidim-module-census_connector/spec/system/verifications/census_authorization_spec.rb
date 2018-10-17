@@ -79,13 +79,24 @@ describe "Census authorization", type: :system do
     before do
       click_link 'Authorize with "Census"'
 
-      register_with_census
+      register_with_census(verify_phone: verify_phone)
 
       click_link "Foo"
     end
 
+    let(:verify_phone) { false }
+
     context "and everything alright" do
       let(:cassette) { "regular_registration" }
+
+      it "grants access to foo" do
+        expect(page).to have_current_path(/foo/)
+      end
+    end
+
+    context "when verifying phone" do
+      let(:cassette) { "phone_verification_registration" }
+      let(:verify_phone) { true }
 
       it "grants access to foo" do
         expect(page).to have_current_path(/foo/)
@@ -169,12 +180,13 @@ describe "Census authorization", type: :system do
 
   private
 
-  def register_with_census
-    complete_data_step
+  def register_with_census(verify_phone: false)
+    complete_data_step(verify_phone: verify_phone)
+    complete_phone_step if verify_phone
     complete_document_step
   end
 
-  def complete_data_step
+  def complete_data_step(verify_phone: false)
     fill_in "Name", with: Faker::Name.first_name
     fill_in "First surname", with: Faker::Name.last_name
 
@@ -195,7 +207,18 @@ describe "Census authorization", type: :system do
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
 
+    fill_in "Number", with: "666666666"
+    find("label[for=data_verify_phone]").click if verify_phone
+
     click_button "Send"
+  end
+
+  def complete_phone_step
+    received_code = "9510300"
+
+    fill_in "Received code", with: received_code
+
+    click_button "Verify phone"
   end
 
   def complete_document_step
