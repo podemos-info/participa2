@@ -5,6 +5,8 @@ module Decidim
     class Person
       include Census::API::PersonDefinitions
 
+      attr_reader :user
+
       delegate :id, to: :scope, prefix: true
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true

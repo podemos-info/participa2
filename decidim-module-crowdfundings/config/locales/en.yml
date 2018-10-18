@@ -64,6 +64,12 @@ en:
         preview: Preview
         resume: Resume
         title: Actions
+      activism_type:
+        edit: Edit
+        status:
+          active: Active
+          inactive: Inactive
+        title: Economic contribution
       admin:
         campaigns:
           create:

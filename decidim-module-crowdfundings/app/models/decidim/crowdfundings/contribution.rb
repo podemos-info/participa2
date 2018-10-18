@@ -23,6 +23,7 @@ module Decidim
         greater_than: 0
       }
 
+      scope :active, -> { where(state: [:pending, :accepted]) }
       scope :supported_by, ->(user) { where(user: user) }
       scope :is_accepted, -> { where(state: "accepted") }
       scope :is_pending, -> { where(state: "pending") }

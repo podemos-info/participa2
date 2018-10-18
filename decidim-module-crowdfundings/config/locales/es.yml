@@ -64,6 +64,12 @@ es:
         preview: Previsualizar
         resume: Reanudar
         title: Acciones
+      activism_type:
+        edit: Modificar
+        status:
+          active: Estás colaborando económicamente
+          inactive: No estás colaborando económicamente
+        title: Colaboración económica
       admin:
         campaigns:
           create:
