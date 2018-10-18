@@ -7,8 +7,9 @@ module Decidim
       class AccountPresenter
         include Decidim::TranslationsHelper
 
-        def initialize(person)
+        def initialize(person, context:)
           @person = person
+          @context = context
         end
 
         def full_name
@@ -78,6 +79,30 @@ module Decidim
 
         def pretty_phone
           "(+#{parsed_phone.country_code}) #{parsed_phone.national}"
+        end
+
+        def activism_active?
+          @activism_active ||= activism_types_status.any?(&:active)
+        end
+
+        def activism_status
+          if activism_active?
+            :activist
+          else
+            :not_activist
+          end
+        end
+
+        def activism_icon_params
+          if activism_active?
+            ["check", class: "success"]
+          else
+            ["x", class: "muted"]
+          end
+        end
+
+        def activism_types_status
+          @activism_types_status ||= Decidim::CensusConnector.activism_types.activism_types_status_for(person, @context)
         end
 
         private
