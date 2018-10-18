@@ -42,5 +42,11 @@ module Decidim
     config_accessor :default_frequency do
       "monthly"
     end
+
+    def self.active?
+      ActiveRecord::Base.connection.table_exists?("decidim_crowdfundings_campaigns")
+    rescue ActiveRecord::NoDatabaseError
+      false
+    end
   end
 end
