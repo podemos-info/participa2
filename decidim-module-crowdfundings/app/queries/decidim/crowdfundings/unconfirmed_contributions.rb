@@ -5,7 +5,7 @@ module Decidim
     # Returns unconfirmed contributions
     class UnconfirmedContributions < Rectify::Query
       def query
-        Contribution.is_pending
+        Contribution.pending
       end
     end
   end
