@@ -92,9 +92,12 @@ en:
           participation:
             action:
               modify: Modify
+            activism: Activism
             status:
+              activist: Activist
               follower: Follower
               member: Member
+              not_activist: Not activist
             title: Your participation in Podemos
           profile:
             action:

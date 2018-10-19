@@ -22,8 +22,23 @@ module Decidim
 
         root to: "contributions#index"
       end
+
+      initializer "decidim_crowdfundings.register_activism_type" do
+        next unless Decidim::Crowdfundings.active?
+
+        Decidim::CensusConnector.register_activism_type(:crowdfunding) do |person|
+          has_active_contributions = RecurrentContributions.for_user(person.user).merge(ActiveContributions.new).any?
+
+          {
+            active: has_active_contributions,
+            title: t("decidim.crowdfundings.activism_type.title"),
+            status_icon_params: has_active_contributions ? ["check", class: "success"] : ["x", class: "muted"],
+            status_text: t("decidim.crowdfundings.activism_type.status.#{has_active_contributions ? :active : :inactive}"),
+            edit_link: decidim_crowdfundings_user_profile.contributions_path,
+            edit_text: t("decidim.crowdfundings.activism_type.edit")
+          }
+        end
+      end
     end
   end
 end
-
-Decidim.register_global_engine(:decidim_crowdfundings_user_profile, Decidim::Crowdfundings::UserProfileEngine, at: "/crowdfundings")

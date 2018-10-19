@@ -54,6 +54,10 @@ module Decidim
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Crowdfundings::Engine.root}/app/cells")
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Crowdfundings::Engine.root}/app/views") # for partials
       end
+
+      initializer "decidim_crowdfundings.register_global_engines" do
+        Decidim.register_global_engine(:decidim_crowdfundings_user_profile, Decidim::Crowdfundings::UserProfileEngine, at: "/crowdfundings")
+      end
     end
   end
 end

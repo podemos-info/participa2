@@ -7,11 +7,14 @@ module Decidim
         include Decidim::UserProfile
 
         helper_method :person_presenter
-        attr_reader :person_presenter
 
         def index
-          @person_presenter = AccountPresenter.new(person)
+          @person_presenter = AccountPresenter.new(person, context: self)
         end
+
+        private
+
+        attr_reader :person_presenter
       end
     end
   end

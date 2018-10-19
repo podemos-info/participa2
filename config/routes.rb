@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   get "/authorizations" => redirect("/census_account")
 
   mount Decidim::Core::Engine => "/"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
