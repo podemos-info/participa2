@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ecd56a4e6ca1dee8061aeef32f3811cb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=c5946c54-f109-41b0-ab99-b5480c41b5ad; path=/; expires=Fri, 19 Oct
+        2018 19:34:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=214d9653-3dc1-442f-a2b8-ae463195e2ee; path=/; expires=Mon, 19
+        Oct 2020 15:34:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - fe762664-4e03-40e9-83ef-93c38111eeea
+      X-Runtime:
+      - '0.004752'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
+        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957"}'
+    http_version:
+  recorded_at: Fri, 19 Oct 2018 15:34:17 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ecd56a4e6ca1dee8061aeef32f3811cb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=06d59767-f7db-4b3e-96e9-b82138caeb99; path=/; expires=Fri, 19 Oct
+        2018 19:34:18 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1ef6d123-7f50-4330-9bcb-04ee6cd2ff86; path=/; expires=Mon, 19
+        Oct 2020 15:34:18 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - ff682536-b825-4338-9ead-1923392b212f
+      X-Runtime:
+      - '0.007885'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
+        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957"}'
+    http_version:
+  recorded_at: Fri, 19 Oct 2018 15:34:18 GMT
+recorded_with: VCR 4.0.0

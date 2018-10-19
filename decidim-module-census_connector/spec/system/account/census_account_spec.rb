@@ -86,7 +86,7 @@ module Decidim::CensusConnector
       expect(page).to have_content("Membership")
     end
 
-    it "shows the activism" do
+    it "shows the activism status" do
       within ".card--list__item.activism_card" do
         expect(page).to have_content("ACTIVISM")
         expect(page).to have_content("NOT ACTIVIST")

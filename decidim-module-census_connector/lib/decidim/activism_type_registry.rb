@@ -19,15 +19,16 @@ module Decidim
 
       # Public: Calculate the activism status of a person for all registered activism types.
       def activism_types_status_for(person, context)
-        activism_types.values.sort_by { |activism_type| activism_type[:order] }.map do |activism_type|
-          ActivismTypeStatus.new(**context.instance_exec(person, &activism_type[:block]))
+        activism_types.sort_by { |_, activism_type| activism_type[:order] }.map do |name, activism_type|
+          ActivismTypeStatus.new(name: name, **context.instance_exec(person, &activism_type[:block]))
         end.select(&:valid?)
       end
 
       class ActivismTypeStatus
-        attr_accessor :active, :title, :status_text, :status_icon_params, :edit_text, :edit_link
+        attr_accessor :name, :active, :title, :status_text, :status_icon_params, :edit_text, :edit_link
 
-        def initialize(**params)
+        def initialize(name:, **params)
+          @name = name
           @active = params[:active]
           @title = params[:title]
           @status_text = params[:status_text]
