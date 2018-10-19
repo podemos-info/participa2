@@ -12,7 +12,7 @@ return if Rails.env.production?
 desc "Cleanup temporary spec files"
 task :clean do
   [:census_connector, :crowdfundings, :gravity_forms, :votings].each do |component|
-    rm_r "decidim-module-#{component}/spec/decidim_dummy_app"
+    rm_rf "decidim-module-#{component}/spec/decidim_dummy_app"
   end
 end
 

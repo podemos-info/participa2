@@ -10,6 +10,8 @@ require "decidim/census_connector/verifications/census"
 module Decidim
   # Base module for this engine.
   module CensusConnector
+    autoload :ActivismTypeRegistry, "decidim/activism_type_registry"
+
     include ActiveSupport::Configurable
 
     config_accessor :census_local_code do
@@ -39,6 +41,16 @@ module Decidim
     # Census API.
     config_accessor :census_api_debug do
       false
+    end
+
+    # Public: Register a type of activism in the registry
+    def self.register_activism_type(name, order: 0, &block)
+      activism_types.register_activism_type(name, order: order, &block)
+    end
+
+    # Public: Stores an instance of ActivismTypesRegistry
+    def self.activism_types
+      @activism_types ||= ActivismTypeRegistry.new
     end
   end
 end

@@ -92,9 +92,12 @@ es:
           participation:
             action:
               modify: Modificar
+            activism: Militancia
             status:
+              activist: Militante
               follower: No te has afiliado
               member: Te has afiliado
+              not_activist: Simpatizante
             title: Tu participación en Podemos
           profile:
             action:

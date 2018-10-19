@@ -5,20 +5,21 @@ require "spec_helper"
 require "decidim/core/test/factories"
 
 describe "Census registration", type: :system do
-  let(:organization) { create(:organization) }
-  let(:user) { create(:user, :confirmed, organization: organization) }
-
-  let!(:inner_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
-  let!(:exterior_scope) { create(:scope, code: Decidim::CensusConnector.census_non_local_code, organization: organization) }
-  let!(:other_organization_scope) { create(:scope, parent: exterior_scope) }
-
   before do
+    inner_scope && exterior_scope && other_organization_scope
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit decidim_census_account.root_path
     click_link "Registration in Podemos"
     click_link "Sign up to take part in votings"
   end
+
+  let(:organization) { create(:organization) }
+  let(:user) { create(:user, :confirmed, organization: organization) }
+
+  let(:inner_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
+  let(:exterior_scope) { create(:scope, code: Decidim::CensusConnector.census_non_local_code, organization: organization) }
+  let(:other_organization_scope) { create(:scope, parent: exterior_scope) }
 
   it "asks for participation place only for exterior participants" do
     expect(page).to have_no_content("Participation place")

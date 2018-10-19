@@ -5,7 +5,7 @@ module Decidim
     # Returns recurrent monthly contributions that must be renewed
     class PendingMonthlyContributions < Rectify::Query
       def query
-        Contribution.is_accepted.monthly_frequency
+        Contribution.accepted.monthly_frequency
       end
     end
   end

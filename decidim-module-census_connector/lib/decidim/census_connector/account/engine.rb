@@ -21,7 +21,7 @@ module Decidim
           Decidim.menu :user_menu do |menu|
             menu.item I18n.t("menu.census", scope: "decidim.census_connector.account"),
                       decidim_census_account.root_path,
-                      position: 1.0,
+                      position: 1,
                       active: :inclusive
           end
         end
