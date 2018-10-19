@@ -1,6 +1,6 @@
 <h2 class="section-heading"><%= t(".title") %></h2>
 <div class="card card--list card--account">
-  <div class="card--list__item">
+  <div class="card--list__item membership_level_card">
     <div class="card--list__text">
       <div>
         <h3 class="card--list__heading heading6">
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="card--list__item">
+  <div class="card--list__item activism_card">
     <div class="card--list__text">
       <div>
         <h3 class="card--list__heading heading6">
@@ -32,7 +32,7 @@
   </div>
 
   <% person_presenter.activism_types_status.each do |activism_type_status| %>
-    <div class="card--list__item card--list__subitem">
+    <div class="card--list__item card--list__subitem activism_type_<%= activism_type_status.name %>_card">
       <div class="card--list__text">
         <div>
           <h3 class="card--list__heading heading6">

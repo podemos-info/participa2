@@ -27,22 +27,13 @@ module Decidim::CensusConnector
     let(:cassette) { "existing_person" }
 
     it "shows the personal data information" do
-      expect(page).to have_content("PERSONAL DATA")
-      expect(page).to have_content(person.first_name)
-      expect(page).to have_content(person.last_name1)
-      expect(page).to have_content(person.last_name2)
-      expect(page).to have_content(person.document_id)
-    end
-
-    it "shows the location data information" do
-      expect(page).to have_content("LOCATION")
-      expect(page).to have_content(translated(person.address))
-      expect(page).to have_content(translated(person.scope.name))
-    end
-
-    it "shows the person phone" do
-      expect(page).to have_content("MOBILE PHONE")
-      expect(page).to have_content(translated(person.phone))
+      within ".card--list__item.data_card" do
+        expect(page).to have_content("PERSONAL DATA")
+        expect(page).to have_content(person.first_name)
+        expect(page).to have_content(person.last_name1)
+        expect(page).to have_content(person.last_name2)
+        expect(page).to have_content(person.document_id)
+      end
     end
 
     it "allows to modify personal data" do
@@ -52,6 +43,14 @@ module Decidim::CensusConnector
       expect(page).to have_content("Personal data")
     end
 
+    it "shows the location data information" do
+      within ".card--list__item.scope_card" do
+        expect(page).to have_content("LOCATION")
+        expect(page).to have_content(translated(person.address))
+        expect(page).to have_content(translated(person.scope.name))
+      end
+    end
+
     it "allows to modify location data" do
       within ".card--list__item.scope_card" do
         click_link("Modify")
@@ -59,11 +58,39 @@ module Decidim::CensusConnector
       expect(page).to have_content("Location")
     end
 
+    it "shows the person phone" do
+      within ".card--list__item.phone_card" do
+        expect(page).to have_content("MOBILE PHONE")
+        expect(page).to have_content(translated(person.phone))
+      end
+    end
+
     it "allows to modify phone data" do
       within ".card--list__item.phone_card" do
         click_link("Modify")
       end
       expect(page).to have_content("Mobile phone")
+    end
+
+    it "shows the membership level" do
+      within ".card--list__item.membership_level_card" do
+        expect(page).to have_content("MEMBERSHIP")
+        expect(page).to have_content("FOLLOWER")
+      end
+    end
+
+    it "allows to modify membership level" do
+      within ".card--list__item.membership_level_card" do
+        click_link("Modify")
+      end
+      expect(page).to have_content("Membership")
+    end
+
+    it "shows the activism" do
+      within ".card--list__item.activism_card" do
+        expect(page).to have_content("ACTIVISM")
+        expect(page).to have_content("NOT ACTIVIST")
+      end
     end
   end
 end
