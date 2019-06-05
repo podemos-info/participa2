@@ -4,7 +4,7 @@ module Decidim
   # This holds the decidim-crowdfundings version.
   module Crowdfundings
     def self.version
-      "0.14.3"
+      "0.14.4"
     end
   end
 end
