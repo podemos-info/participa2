@@ -44,7 +44,7 @@ end
 
 group :test do
   gem "faker-spanish_document", "~> 0.1"
-  gem "puffing-billy", "~> 1.1"
+  gem "puffing-billy", "~> 2.1"
   gem "vcr", "~> 4.0"
   gem "xxhash"
 end

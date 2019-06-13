@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-
 require "decidim/core/test/factories"
 
 module Decidim::CensusConnector
@@ -15,7 +14,7 @@ module Decidim::CensusConnector
       create_person_scopes(organization, person)
       switch_to_host(organization.host)
       login_as user, scope: :user
-      visit decidim_census_account.delete_account_path
+      visit decidim.delete_account_path
     end
 
     let(:organization) { create(:organization) }
