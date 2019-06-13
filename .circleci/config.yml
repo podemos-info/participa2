@@ -5,7 +5,7 @@ version: 2
 jobs:
   coverage-setup:
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.5.1
 
     steps:
       - run:
@@ -21,7 +21,7 @@ jobs:
 
   coverage-upload:
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.5.1
         environment:
           CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
 
@@ -37,7 +37,7 @@ jobs:
 
   main:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -112,7 +112,7 @@ jobs:
 
   census_connector:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -166,7 +166,7 @@ jobs:
 
   crowdfundings:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -220,7 +220,7 @@ jobs:
 
   gravity_forms:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
 
@@ -284,7 +284,7 @@ jobs:
 
   votings:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
 
