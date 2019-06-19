@@ -1,5 +1,5 @@
 ---
-:scope: 
+:scope:
 :url: http://victorious-dog.w6.gravitydemo.com/gfembed/?f=1
 :body: ''
 :status: 200
@@ -29,7 +29,7 @@
   type='text/javascript' src='http://victorious-dog.w6.gravitydemo.com/wp-content/plugins/gravityforms/js/jquery.maskedinput.min.js?ver=2.2.5.5'></script>\n<script
   type=\"text/javascript\"> var gf_global = {\"gf_currency_config\":{\"name\":\"U.S.
   Dollar\",\"symbol_left\":\"$\",\"symbol_right\":\"\",\"symbol_padding\":\"\",\"thousand_separator\":\",\",\"decimal_separator\":\".\",\"decimals\":2},\"base_url\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\",\"number_formats\":[],\"spinnerUrl\":\"http:\\/\\/victorious-dog.w6.gravitydemo.com\\/wp-content\\/plugins\\/gravityforms\\/images\\/spinner.gif\"};
-  </script>\n                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_1'
+  </script>\n                <div class='gf_browser_chrome gform_wrapper' id='gform_wrapper_1'
   style='display:none'><a id='gf_1' class='gform_anchor' ></a><form method='post'
   enctype='multipart/form-data'  id='gform_1'  action='/gfembed/?f=1#gf_1'>\n                        <div
   class='gform_body'><ul id='gform_fields_1' class='gform_fields top_label form_sublabel_below

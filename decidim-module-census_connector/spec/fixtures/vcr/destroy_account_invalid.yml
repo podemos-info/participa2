@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://mycensus:3001/api/v1/en/people/1@census?channel=decidim&reason=I%20want%20to%20delete%20my%20account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=a63040aa-4ba9-46c3-b47b-6602a72a91c4; path=/; expires=Thu, 13 Jun
+        2019 19:07:03 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=8ebf2e98-ff1f-4a28-840d-e98974c23569; path=/; expires=Sun, 13
+        Jun 2021 15:07:03 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 582563cf-940b-479e-8d54-b24735801bc6
+      X-Runtime:
+      - '0.241117'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Thu, 13 Jun 2019 15:07:03 GMT
+recorded_with: VCR 4.0.0

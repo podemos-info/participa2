@@ -70,6 +70,11 @@ module Decidim
         census_person_api.create_phone_verification(qualified_id, **params)
       end
 
+      # PUBLIC create a cancellation procedure for the given person
+      def create_cancellation(**params)
+        census_person_api.create_cancellation(qualified_id, **params)
+      end
+
       def service_status(force_check: false)
         person.load_deferred_person_data if force_check && census_person_api.service_status.nil?
         census_person_api.service_status

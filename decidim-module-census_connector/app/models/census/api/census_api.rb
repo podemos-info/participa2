@@ -12,7 +12,7 @@ module Census
       end
 
       included do
-        delegate :get, :patch, :post, to: :connection
+        delegate :get, :patch, :post, :delete, to: :connection
       end
 
       def api_url(path)

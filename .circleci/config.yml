@@ -5,7 +5,7 @@ version: 2
 jobs:
   coverage-setup:
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.5.1
 
     steps:
       - run:
@@ -21,7 +21,7 @@ jobs:
 
   coverage-upload:
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.5.1
         environment:
           CC_TEST_REPORTER_ID: 91d24296395746acea5396a1a769bd9555152267abb97da95b6de5631cf8a331
 
@@ -37,7 +37,7 @@ jobs:
 
   main:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -112,7 +112,7 @@ jobs:
 
   census_connector:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -162,11 +162,11 @@ jobs:
             - codeclimate.*.json
 
       - store_artifacts:
-          path: /app/decidim-module-census_connector/decidim_dummy_app/tmp/screenshots
+          path: /root/project/decidim-module-census_connector/spec/decidim_dummy_app/tmp/screenshots
 
   crowdfundings:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -216,11 +216,11 @@ jobs:
             - codeclimate.*.json
 
       - store_artifacts:
-          path: /app/decidim-module-crowdfundings/decidim_dummy_app/tmp/screenshots
+          path: /root/project/decidim-module-crowdfundings/spec/decidim_dummy_app/tmp/screenshots
 
   gravity_forms:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
 
@@ -248,17 +248,6 @@ jobs:
             - /usr/local/bundle
 
       - run:
-          name: Install firefox
-          command: |
-            echo "deb http://ftp.us.debian.org/debian/ sid main" > /etc/apt/sources.list.d/firefox.list
-            apt-get update
-            apt-get install -y firefox
-
-      - run:
-          name: Install geckodriver
-          command: bin/install-geckodriver.sh
-
-      - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
@@ -268,7 +257,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec
+          command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec --fail-fast
 
       - run:
           name: Generate code coverage report
@@ -280,11 +269,11 @@ jobs:
             - codeclimate.*.json
 
       - store_artifacts:
-          path: /app/decidim-module-gravity_forms/decidim_dummy_app/tmp/screenshots
+          path: /root/project/decidim-module-gravity_forms/spec/decidim_dummy_app/tmp/screenshots
 
   votings:
     docker:
-      - image: decidim/decidim@sha256:c0588c1f425fa2433733978fbfa147b4e6cc54be9f6ac4583920158d6a408972
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
         environment:
           DATABASE_USERNAME: postgres
 
@@ -333,7 +322,7 @@ jobs:
             - codeclimate.*.json
 
       - store_artifacts:
-          path: /app/decidim-module-votings/decidim_dummy_app/tmp/screenshots
+          path: /root/project/decidim-module-votings/spec/decidim_dummy_app/tmp/screenshots
 
 workflows:
   version: 2
