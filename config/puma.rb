@@ -44,7 +44,7 @@ pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
 state_path "#{APP_ROOT}/tmp/pids/puma.state"
 
 if current_environment == "development"
-  port 3000
+  bind "tcp://0.0.0.0:3000"
 else
   bind "unix://#{SHARED_ROOT}/tmp/sockets/puma.sock"
   stdout_redirect "#{APP_ROOT}/log/puma_access.log", "#{APP_ROOT}/log/puma_error.log", true

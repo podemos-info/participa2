@@ -64,6 +64,13 @@ module Census
           send_request { post(api_url("people/#{qualified_id}/phone_verifications"), params) }
         )
       end
+
+      # PUBLIC create a cancellation procedure for the given person
+      def create_cancellation(qualified_id, **params)
+        process_response(
+          send_request { delete(api_url("people/#{qualified_id}"), params) }
+        )
+      end
     end
   end
 end
