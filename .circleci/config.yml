@@ -101,13 +101,6 @@ jobs:
           name: Run npm lints
           command: npm run lint
 
-      - add_ssh_keys:
-          fingerprints:
-            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
-
-      - deploy:
-          command: bin/deploy-staging.sh
-
   census_connector:
     docker:
       - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
@@ -322,6 +315,39 @@ jobs:
       - store_artifacts:
           path: /root/project/decidim-module-votings/spec/decidim_dummy_app/tmp/screenshots
 
+  deploy:
+    docker:
+      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+        environment:
+          DATABASE_USERNAME: postgres
+          CENSUS_URL: http://mycensus:3001
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: /tmp
+
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: bundle install
+
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+      - add_ssh_keys:
+          fingerprints:
+            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
+
+      - deploy:
+          command: bin/deploy-staging.sh
+
 workflows:
   version: 2
 
@@ -356,3 +382,7 @@ workflows:
             - gravity_forms
             - votings
             - main
+
+      - deploy:
+          requires:
+            - coverage-upload
