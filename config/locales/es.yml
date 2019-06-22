@@ -21,3 +21,7 @@ es:
         crowdfundings_explanation: Aporta tu granito de arena para que Podemos siga siendo independiente de los bancos
         votings: Votaciones
         votings_explanation: Decide con tu voto el rumbo que quieres que tome Podemos.
+  volunteers:
+    title: "Equipos de voluntarios y voluntarias"
+    active: "Te has apuntado"
+    inactive: "No te has apuntado"
