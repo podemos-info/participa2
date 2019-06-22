@@ -35,15 +35,3 @@ Decidim.content_blocks.register(:homepage, :highlighted) do |content_block|
   content_block.cell = "content_blocks/highlighted"
   content_block.public_name_key = "content_blocks.highlighted.name"
 end
-
-# UPDATABLE: Fix 0.17.1 typo bug (fixed in #5168)
-Decidim::ActionAuthorizer.class_eval do
-  def authorization_handlers
-    if permission&.has_key?("authorization_handler_name")
-      opts = permission["options"]
-      { permission["authorization_handler_name"] => opts.present? ? { "options" => opts } : {} }
-    else
-      permission&.fetch("authorization_handlers", {})
-    end
-  end
-end
