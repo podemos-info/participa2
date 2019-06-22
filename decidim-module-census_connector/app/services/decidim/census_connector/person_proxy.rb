@@ -75,6 +75,11 @@ module Decidim
         census_person_api.create_cancellation(qualified_id, **params)
       end
 
+      # PUBLIC saves addional information for the giver person
+      def save_additional_information(**params)
+        census_person_api.save_additional_information(qualified_id, **params)
+      end
+
       def service_status(force_check: false)
         person.load_deferred_person_data if force_check && census_person_api.service_status.nil?
         census_person_api.service_status

@@ -105,6 +105,15 @@ module Decidim
           @activism_types_status ||= Decidim::CensusConnector.activism_types.activism_types_status_for(person, @context)
         end
 
+        def social_networks
+          @social_networks ||= Hash[
+            Decidim::CensusConnector::Account::SocialNetworkForm.social_networks_info.map do |network, info|
+              nickname = @person.additional_information[:"social_network_#{network}"]
+              [network, {name: info[:name], nickname: nickname, link: info[:url] % { nickname: nickname }}] if nickname
+            end.compact
+          ]
+        end
+
         private
 
         attr_reader :person

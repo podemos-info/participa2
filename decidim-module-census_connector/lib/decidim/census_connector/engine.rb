@@ -37,6 +37,25 @@ module Decidim
           Decidim::CensusConnector::Seeds::Scopes.new(organization).seed
         end
       end
+
+      initializer "register social networks activism type" do
+        Decidim::CensusConnector.register_activism_type(:social_networks, order: 100) do |person|
+          social_networks = Decidim::CensusConnector::Account::SocialNetworkForm.social_networks_info.map do |social_network, info|
+            info[:name] if person.additional_information[:"social_network_#{social_network}"].present?
+          end.compact
+
+          active = social_networks.any?
+
+          {
+            active: active,
+            title: t("social_networks.activism_type.title", scope: "decidim.census_connector.account"),
+            status_icon_params: active ? ["check", class: "success"] : ["x", class: "muted"],
+            status_text: active ? social_networks.to_sentence : t("social_networks.activism_type.inactive", scope: "decidim.census_connector.account"),
+            edit_link: decidim_census_account.social_networks_path,
+            edit_text: t("social_networks.activism_type.modify", scope: "decidim.census_connector.account")
+          }
+        end
+      end
     end
   end
 end
