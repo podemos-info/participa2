@@ -12,7 +12,8 @@ module Decidim
         isolate_namespace Decidim::CensusConnector::Account
 
         routes do
-          resource :account, only: [:index], as: :account
+          resource :account, only: [:index]
+          resources :social_networks, only: [:index, :create, :destroy]
 
           root to: "account#index"
         end

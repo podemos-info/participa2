@@ -52,5 +52,28 @@ module Decidim
     def self.activism_types
       @activism_types ||= ActivismTypeRegistry.new
     end
+
+    def self.social_networks
+      @social_networks ||= {
+        facebook: {
+          name: "Facebook",
+          url: "https://www.facebook.com/%{nickname}",
+          nickname_validation: /^([a-zA-Z\d.]{5,})$/
+        },
+        twitter: {
+          name: "Twitter",
+          url: "https://twitter.com/%{nickname}",
+          nickname_validation: /^@?(\w{1,15})$/
+        }
+      }
+    end
+
+    def self.register_social_network(handle, name:, url:, nickname_validation:)
+      social_networks[handle] = { name: name, url: url, nickname_validation: nickname_validation }
+    end
+
+    def self.unregister_social_network(handle)
+      social_networks.delete handle
+    end
   end
 end

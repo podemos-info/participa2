@@ -114,7 +114,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":51,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1776035},"first_name":"Joanie","last_name1":"Langosh","last_name2":"","document_type":"dni","document_id":"33426612E","document_scope_code":"ES","born_at":"2004-10-11","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user22@example.org","phone":"00"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user22@example.org","phone":"00","additional_information":{}}'
     http_version:
   recorded_at: Thu, 11 Oct 2018 16:43:53 GMT
 - request:

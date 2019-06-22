@@ -20,6 +20,9 @@ es:
         verify_phone: Deseo verificar mi teléfono en este momento
       phone_verification:
         received_code: Código recibido
+      social_network:
+        network: Red
+        nickname: Nombre de usuario
       verification:
         member: Deseo afiliarme al partido político Podemos
   census:
@@ -117,6 +120,21 @@ es:
             title: Tu inscripción en Podemos
         menu:
           census: Inscripción en Podemos
+        social_networks:
+          activism_type:
+            inactive: Ninguna
+            modify: Modificar
+            title: Militancia en redes sociales
+          index:
+            add_description: Indica la red social y tu nombre de usuario.
+            add_title: Añadir red social
+            create: Guardar
+            current_title: Tus redes sociales
+            delete: Borrar
+            inactive: No te has registrado como activista en redes sociales.
+          messages:
+            deleted: La información de tu perfil ha sido borrada.
+            saved: La información de tu perfil en la red social ha sido guardada.
       verifications:
         census:
           authorizations:

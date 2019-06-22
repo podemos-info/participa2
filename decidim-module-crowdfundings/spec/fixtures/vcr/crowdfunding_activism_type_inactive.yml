@@ -56,7 +56,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
-        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957"}'
+        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957","additional_information":{}}'
     http_version:
   recorded_at: Fri, 19 Oct 2018 15:34:13 GMT
 - request:
@@ -115,7 +115,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
-        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957"}'
+        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957","additional_information":{}}'
     http_version:
   recorded_at: Fri, 19 Oct 2018 15:34:14 GMT
 recorded_with: VCR 4.0.0

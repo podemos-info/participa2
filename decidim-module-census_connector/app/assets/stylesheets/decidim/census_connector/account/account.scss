@@ -37,3 +37,16 @@
     }
   }
 }
+
+.card--list.card--social-networks{
+  .card--list__item{
+    .card--list__icon{
+      width: 10rem;
+      .icon,
+      &:hover .icon{
+        opacity: .4;
+        fill: black;
+      }
+    }
+  }
+}

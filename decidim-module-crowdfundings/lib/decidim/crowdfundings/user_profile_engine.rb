@@ -26,7 +26,7 @@ module Decidim
       initializer "decidim_crowdfundings.register_activism_type" do
         next unless Decidim::Crowdfundings.active?
 
-        Decidim::CensusConnector.register_activism_type(:crowdfunding) do |person|
+        Decidim::CensusConnector.register_activism_type(:crowdfunding, order: 10) do |person|
           has_active_contributions = RecurrentContributions.for_user(person.user).merge(ActiveContributions.new).any?
 
           {

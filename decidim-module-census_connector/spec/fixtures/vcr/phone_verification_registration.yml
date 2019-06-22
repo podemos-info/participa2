@@ -228,7 +228,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":31,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"not_verified","phone_verification":"verified","external_ids":{"decidim":2408252},"first_name":"Arianna","last_name1":"Gleason","last_name2":"","document_type":"dni","document_id":"75710004F","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:46:20 GMT
 - request:
@@ -287,7 +287,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":31,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"not_verified","phone_verification":"verified","external_ids":{"decidim":2408252},"first_name":"Arianna","last_name1":"Gleason","last_name2":"","document_type":"dni","document_id":"75710004F","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:46:21 GMT
 - request:
@@ -458,7 +458,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":31,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"verification_received","phone_verification":"verified","external_ids":{"decidim":2408252},"first_name":"Arianna","last_name1":"Gleason","last_name2":"","document_type":"dni","document_id":"75710004F","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:46:22 GMT
 recorded_with: VCR 4.0.0

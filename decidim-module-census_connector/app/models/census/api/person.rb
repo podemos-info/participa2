@@ -71,6 +71,18 @@ module Census
           send_request { delete(api_url("people/#{qualified_id}"), params) }
         )
       end
+
+      # PUBLIC saves addional information for the giver person
+      def save_additional_information(qualified_id, **params)
+        formatted_params = {
+          key: params[:key],
+          json_value: params[:value].to_json
+        }
+
+        process_response(
+          send_request { post(api_url("people/#{qualified_id}/additional_informations"), formatted_params) }
+        )
+      end
     end
   end
 end

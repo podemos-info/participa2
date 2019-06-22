@@ -1,0 +1,50 @@
+<h2 class="section-heading"><%= t(".current_title") %></h2>
+<% if person_presenter.social_networks.any? %>
+  <div class="card card--list card--social-networks">
+    <% person_presenter.social_networks.each do |social_network, info| %>
+      <div class="card--list__item">
+        <div class="card--list__icon">
+          <%= icon social_network, width: 30, height: 30, remove_icon_class: true %>
+        </div>
+        <div class="card--list__text">
+          <div><%= link_to "@#{info[:nickname]}", info[:link] %></div>
+        </div>
+        <div class="card--list__data">
+          <a href="<%= decidim_census_account.social_network_path(social_network) %>" data-method="delete"><%= t(".delete") %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p><%= t(".inactive") %></p>
+<% end %>
+
+<%= decidim_form_for(form, url: decidim_census_account.social_networks_path) do |f| %>
+  <h2 class="section-heading"><%= t(".add_title") %></h2>
+  <div class="card">
+    <div class="card__content">
+      <legend><%= t(".add_description") %></legend>
+      <div class="row">
+        <div class="column large-6">
+          <div class="field">
+            <%= f.select :network, form.class.social_networks_options %>
+          </div>
+        </div>
+        <div class="column large-6">
+          <div class="field">
+            <%= f.text_field :nickname %>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit t(".create"), class: "button expanded" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<p class="text-center">
+  <a href="<%= decidim_census_account.root_path%>">
+    <%= t("go_back", scope: "decidim.census_connector.verifications.census.authorizations") %>
+  </a>
+</p>
