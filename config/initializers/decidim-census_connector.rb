@@ -17,3 +17,10 @@ Decidim::CensusConnector.register_activism_type(:volunteers, order: 100) do |per
     edit_text: t("decidim.census_connector.account.account.participation.action.modify")
   }
 end
+
+Decidim::CensusConnector.register_social_network(
+  :instagram,
+  name: "Instagram",
+  url: "https://www.instagram.com/%{nickname}",
+  nickname_validation: /^@?([a-zA-Z0-9_](?:(?:[a-zA-Z0-9_]|(?:\\.(?!\\.))){0,28}(?:[a-zA-Z0-9_]))?)$/
+)

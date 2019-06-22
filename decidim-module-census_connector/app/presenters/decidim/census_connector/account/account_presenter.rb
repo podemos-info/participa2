@@ -107,9 +107,9 @@ module Decidim
 
         def social_networks
           @social_networks ||= Hash[
-            Decidim::CensusConnector::Account::SocialNetworkForm.social_networks_info.map do |network, info|
+            Decidim::CensusConnector.social_networks.map do |network, info|
               nickname = @person.additional_information[:"social_network_#{network}"]
-              [network, {name: info[:name], nickname: nickname, link: info[:url] % { nickname: nickname }}] if nickname
+              [network, { name: info[:name], nickname: nickname, link: format(info[:url], nickname: nickname) }] if nickname
             end.compact
           ]
         end

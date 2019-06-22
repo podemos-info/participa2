@@ -21,3 +21,7 @@ en:
         crowdfundings_explanation: Your contribution will allow Podemos to keep being independent of banks
         votings: Votings
         votings_explanation: Decide with your vote the direction that Podemos will take
+  volunteers:
+    active: You are a volunteer
+    inactive: You are not a volunteer
+    title: Volunteers team

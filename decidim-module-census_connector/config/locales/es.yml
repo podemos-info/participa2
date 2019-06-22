@@ -20,17 +20,11 @@ es:
         verify_phone: Deseo verificar mi teléfono en este momento
       phone_verification:
         received_code: Código recibido
-      verification:
-        member: Deseo afiliarme al partido político Podemos
       social_network:
         network: Red
         nickname: Nombre de usuario
-    errors:
-      models:
-        social_network:
-          attributes:
-            nickname:
-              invalid_format: El nombre de usuario introducido no es válido.
+      verification:
+        member: Deseo afiliarme al partido político Podemos
   census:
     api:
       messages:
@@ -127,17 +121,17 @@ es:
         menu:
           census: Inscripción en Podemos
         social_networks:
+          activism_type:
+            inactive: Ninguna
+            modify: Modificar
+            title: Militancia en redes sociales
           index:
-            add_title: Añadir red social
             add_description: Indica la red social y tu nombre de usuario.
+            add_title: Añadir red social
             create: Guardar
             current_title: Tus redes sociales
             delete: Borrar
             inactive: No te has registrado como activista en redes sociales.
-          activism_type:
-            title: Militancia en redes sociales
-            inactive: No te has apuntado
-            modify: Modificar
           messages:
             deleted: La información de tu perfil ha sido borrada.
             saved: La información de tu perfil en la red social ha sido guardada.

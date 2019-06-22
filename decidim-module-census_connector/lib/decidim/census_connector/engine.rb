@@ -40,7 +40,7 @@ module Decidim
 
       initializer "register social networks activism type" do
         Decidim::CensusConnector.register_activism_type(:social_networks, order: 100) do |person|
-          social_networks = Decidim::CensusConnector::Account::SocialNetworkForm.social_networks_info.map do |social_network, info|
+          social_networks = Decidim::CensusConnector.social_networks.map do |social_network, info|
             info[:name] if person.additional_information[:"social_network_#{social_network}"].present?
           end.compact
 

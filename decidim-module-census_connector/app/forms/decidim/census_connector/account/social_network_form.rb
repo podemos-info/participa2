@@ -6,17 +6,13 @@ module Decidim
       class SocialNetworkForm < DeleteSocialNetworkForm
         attribute :nickname, String
 
-        def self.social_networks_info
-          @social_networks_info ||= Rails.application.secrets.social_networks
-        end
-
         def self.social_networks_options
-          @social_networks_options ||= social_networks_info.map do |social_network, info|
+          @social_networks_options ||= Decidim::CensusConnector.social_networks.map do |social_network, info|
             [info[:name], social_network]
           end.freeze
         end
 
-        validates :network, inclusion: { in: social_networks_info.keys.map(&:to_s) }
+        validates :network, inclusion: { in: Decidim::CensusConnector.social_networks.keys.map(&:to_s) }
         validates :nickname, presence: true
 
         validate :nickname_format
@@ -34,14 +30,12 @@ module Decidim
         private
 
         def nickname_format
-          if nickname_validator && !nickname_validator.match?(@nickname)
-            errors.add(:nickname, :invalid_format)
-          end
+          errors.add(:nickname, :invalid) if nickname_validator && !nickname_validator.match?(@nickname)
         end
 
         def nickname_validator
           @nickname_validator ||= begin
-            pattern = self.class.social_networks_info.dig(network.to_sym, :nickname_validation) if network
+            pattern = Decidim::CensusConnector.social_networks.dig(network.to_sym, :nickname_validation) if network
             /#{pattern}/ if pattern
           end
         end

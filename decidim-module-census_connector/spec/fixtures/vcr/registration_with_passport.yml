@@ -114,7 +114,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":74,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":7051370},"first_name":"Brigitte","last_name1":"Zemlak","last_name2":"","document_type":"passport","document_id":"CS405232","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:23:16 GMT
 - request:
@@ -173,7 +173,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":74,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":7051370},"first_name":"Brigitte","last_name1":"Zemlak","last_name2":"","document_type":"passport","document_id":"CS405232","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:23:17 GMT
 - request:
@@ -344,7 +344,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":74,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"verification_received","phone_verification":"not_verified","external_ids":{"decidim":7051370},"first_name":"Brigitte","last_name1":"Zemlak","last_name2":"","document_type":"passport","document_id":"CS405232","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:23:17 GMT
 - request:
@@ -403,7 +403,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":74,"membership_level":"follower","scope_code":"ES","state":"enabled","verification":"verification_received","phone_verification":"not_verified","external_ids":{"decidim":7051370},"first_name":"Brigitte","last_name1":"Zemlak","last_name2":"","document_type":"passport","document_id":"CS405232","document_scope_code":"ES","born_at":"2000-10-17","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666"}'
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user3@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Wed, 17 Oct 2018 14:23:18 GMT
 recorded_with: VCR 4.0.0

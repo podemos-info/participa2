@@ -22,6 +22,6 @@ es:
         votings: Votaciones
         votings_explanation: Decide con tu voto el rumbo que quieres que tome Podemos.
   volunteers:
-    title: "Equipos de voluntarios y voluntarias"
-    active: "Te has apuntado"
-    inactive: "No te has apuntado"
+    active: Te has apuntado
+    inactive: No te has apuntado
+    title: Equipos de voluntarios y voluntarias
