@@ -35,11 +35,11 @@ ca:
       actions:
         confirm_destroy: "¿Estàs segur?"
         destroy: Esborrar
+        download_voter_ids: descarregar identificadors de votants
         edit: Editar
         new: Nueva
         preview: Previsualitzar
         title: Accions
-        voters: descarregar identificadors de votants
       admin:
         models:
           voting:
@@ -55,9 +55,6 @@ ca:
           edit:
             title: Editar votación
             update: Actualizar
-          form:
-            end_date_help: Fecha de fin
-            start_date_help: Fecha de inicio
           index:
             title: Votaciones
           new:

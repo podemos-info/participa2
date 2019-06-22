@@ -24,6 +24,7 @@ data:
 search:
   paths:
     - app
+    - config
     - lib
     - decidim-module-census_connector/app
     - decidim-module-census_connector/lib
@@ -67,7 +68,7 @@ search:
 
 ignore_unused:
   - activemodel.attributes.*
-  - activemodel.errors.models.contribution.attributes.*
+  - activemodel.errors.models.*
   - content_blocks.*.name
   - decidim.authorization_handlers.admin.census.help
   - decidim.authorization_handlers.census.*

@@ -248,7 +248,7 @@ jobs:
 
       - run:
           name: Run RSpec tests
-          command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec --fail-fast
+          command: cd decidim-module-gravity_forms && SIMPLECOV=true bundle exec rspec
 
       - run:
           name: Generate code coverage report

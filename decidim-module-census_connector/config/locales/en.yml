@@ -20,6 +20,9 @@ en:
         verify_phone: I want to verify my phone number now
       phone_verification:
         received_code: Received code
+      social_network:
+        network: Network
+        nickname: Nickname
       verification:
         member: I want to be a Podemos member
   census:
@@ -117,6 +120,21 @@ en:
             title: Your Podemos profile
         menu:
           census: Registration in Podemos
+        social_networks:
+          activism_type:
+            inactive: None
+            modify: Modify
+            title: Social network activism
+          index:
+            add_description: Complete your network and nickname.
+            add_title: Add social network
+            create: Save
+            current_title: Your social network profiles
+            delete: Delete
+            inactive: You have not added any social network
+          messages:
+            deleted: Your social network information has been deleted.
+            saved: Your social network information has been saved.
       verifications:
         census:
           authorizations:
@@ -153,7 +171,7 @@ en:
               title: Phone verification
               verify: Verify phone
             phone_verification_part:
-              title: Mobile phone verification
+              title: Enter the code you received on the phone %{pretty_phone}.
             verification:
               title: Verifications
               to_follower: I want to cancel my membership

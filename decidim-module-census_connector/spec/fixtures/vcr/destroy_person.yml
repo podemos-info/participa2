@@ -55,7 +55,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-BU-068","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marilu","last_name1":"Delatorre","last_name2":"Saavedra","document_type":"dni","document_id":"67181652D","document_scope_code":"ES","born_at":"1940-04-22","gender":"undisclosed","address":"Manzana
-        Manuela, 7 Puerta 856","postal_code":"09567","address_scope_code":"ES-CL-BU-068","email":"izettahodkiewicz@stokesrowe.name","phone":"0034425815089"}'
+        Manuela, 7 Puerta 856","postal_code":"09567","address_scope_code":"ES-CL-BU-068","email":"izettahodkiewicz@stokesrowe.name","phone":"0034425815089","additional_information":{}}'
     http_version:
   recorded_at: Thu, 13 Jun 2019 15:48:34 GMT
 - request:

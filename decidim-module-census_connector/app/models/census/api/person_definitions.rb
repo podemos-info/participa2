@@ -12,7 +12,8 @@ module Census
                              gender born_at
                              document_type document_id document_scope_code
                              scope_code address phone address_scope_code postal_code
-                             membership_level state verification phone_verification).freeze
+                             membership_level state verification phone_verification
+                             additional_information).freeze
 
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze
