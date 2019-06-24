@@ -35,7 +35,7 @@ jobs:
 
   main:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -103,7 +103,7 @@ jobs:
 
   census_connector:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -157,7 +157,7 @@ jobs:
 
   crowdfundings:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001
@@ -211,7 +211,7 @@ jobs:
 
   gravity_forms:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
 
@@ -264,7 +264,7 @@ jobs:
 
   votings:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
 
@@ -317,7 +317,7 @@ jobs:
 
   deploy:
     docker:
-      - image: decidim/decidim@sha256:743a212e757a0c0d4cb85cf99251290864b6d02d1a17aa285d342d0bdcff796b
+      - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
         environment:
           DATABASE_USERNAME: postgres
           CENSUS_URL: http://mycensus:3001

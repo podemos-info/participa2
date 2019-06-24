@@ -45,7 +45,7 @@ describe "Gravity forms", type: :system do
 
     context "when a single form available" do
       before do
-        visit main_component_path(component)
+        visit_component
       end
 
       it "redirects to the only available form" do
@@ -68,7 +68,7 @@ describe "Gravity forms", type: :system do
       context "and only one visible" do
         before do
           second_form.update!(hidden: true)
-          visit main_component_path(component)
+          visit_component
         end
 
         it "redirects to the only visible form" do
@@ -79,7 +79,7 @@ describe "Gravity forms", type: :system do
       context "and more than one visible" do
         before do
           second_form.update!(hidden: false)
-          visit main_component_path(component)
+          visit_component
         end
 
         shared_examples_for "a gravity form list" do
@@ -167,16 +167,22 @@ describe "Gravity forms", type: :system do
       create(
         :gravity_form,
         component: component,
-        form_number: 1
+        form_number: 1,
+        require_login: false
+      )
+    end
+    let!(:second_form) do
+      create(
+        :gravity_form,
+        component: component,
+        form_number: 2,
+        require_login: false
       )
     end
 
     before do
-      visit decidim_participatory_process_gravity_forms.gravity_form_path(
-        slug: gravity_form.slug,
-        participatory_process_slug: participatory_space.slug,
-        component_id: component.id
-      )
+      visit_component
+      click_link gravity_form.title["en"]
     end
 
     it "shows gravity form title" do
