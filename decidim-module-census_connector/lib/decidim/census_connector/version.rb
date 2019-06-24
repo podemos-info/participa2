@@ -4,7 +4,7 @@ module Decidim
   # This holds the decidim-census_connector version.
   module CensusConnector
     def self.version
-      "0.14.4"
+      "0.17.1"
     end
   end
 end

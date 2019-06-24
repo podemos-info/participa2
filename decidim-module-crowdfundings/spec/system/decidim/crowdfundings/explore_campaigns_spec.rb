@@ -31,7 +31,7 @@ describe "Explore campaigns", type: :system do
       visit_component
 
       within ".filters" do
-        fill_in :filter_search_text, with: translated(campaigns.first.title)
+        fill_in "filter[search_text]", with: translated(campaigns.first.title)
 
         # The form should be auto-submitted when filter box is filled up, but
         # somehow it's not happening. So we workaround that be explicitly

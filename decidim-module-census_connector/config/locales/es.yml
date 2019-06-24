@@ -71,7 +71,7 @@ es:
           minimum_age: Edad mínima
         name: Censo
     authorization_modals:
-      show:
+      content:
         incomplete:
           cancel: Cancelar
           complete: Modificar los datos personales

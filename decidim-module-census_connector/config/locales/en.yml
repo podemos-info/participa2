@@ -71,7 +71,7 @@ en:
           minimum_age: Minimum age
         name: Census
     authorization_modals:
-      show:
+      content:
         incomplete:
           cancel: Cancel
           complete: Complete your personal data

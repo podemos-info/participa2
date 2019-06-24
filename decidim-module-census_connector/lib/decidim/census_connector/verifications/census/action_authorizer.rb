@@ -55,7 +55,7 @@ module Decidim
           end
 
           def humanized_state
-            I18n.t("state.#{person.state}", scope: "census.api.person").downcase
+            I18n.t("state.#{person.state}", scope: "census.api.person").downcase if person.state
           end
 
           def authorize_age
