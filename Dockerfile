@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.5.3
 MAINTAINER ldiez@podemos.info
 
 ARG rails_env=staging
