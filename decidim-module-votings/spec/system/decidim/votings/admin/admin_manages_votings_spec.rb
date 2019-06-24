@@ -39,10 +39,21 @@ describe "Admin manages votings", type: :system, serves_map: true do
 
     context "with invalid data" do
       before do
+        page.execute_script("$('#voting_start_date').focus()")
+        page.find(".datepicker-dropdown .day", text: "12").click
+        page.find(".datepicker-dropdown .hour", text: "10:00").click
+        page.find(".datepicker-dropdown .minute", text: "10:50").click
+
+        page.execute_script("$('#voting_end_date').focus()")
+        page.find(".datepicker-dropdown .day", text: "12").click
+        page.find(".datepicker-dropdown .hour", text: "12:00").click
+        page.find(".datepicker-dropdown .minute", text: "12:50").click
+
         within ".new_voting" do
           fill_in :voting_voting_domain_name, with: "example.com"
           fill_in :voting_importance, with: "7"
           fill_in :voting_simulation_code, with: "5"
+
           find("*[type=submit]").click
         end
       end
@@ -282,12 +293,12 @@ describe "Admin manages votings", type: :system, serves_map: true do
     fill_in :voting_importance, with: "1"
     fill_in :voting_simulation_code, with: "5"
 
-    page.execute_script("$('#datetime_field_voting_start_date').focus()")
+    page.execute_script("$('#voting_start_date').focus()")
     page.find(".datepicker-dropdown .day", text: "12").click
     page.find(".datepicker-dropdown .hour", text: "10:00").click
     page.find(".datepicker-dropdown .minute", text: "10:50").click
 
-    page.execute_script("$('#datetime_field_voting_end_date').focus()")
+    page.execute_script("$('#voting_end_date').focus()")
     page.find(".datepicker-dropdown .day", text: "12").click
     page.find(".datepicker-dropdown .hour", text: "12:00").click
     page.find(".datepicker-dropdown .minute", text: "12:50").click

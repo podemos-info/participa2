@@ -4,27 +4,26 @@
 
 require File.expand_path("../../../app/commands/decidim/destroy_account", Decidim::Core::Engine.called_from)
 
-module Decidim
-  DestroyAccount.class_eval do
-    alias_method :old_destroy_user_group_memberships, :destroy_user_group_memberships
+# UPDATABLE: Destroy person inside destroying account transaction
+Decidim::DestroyAccount.class_eval do
+  alias_method :old_destroy_follows, :destroy_follows
 
-    private
+  private
 
-    def destroy_user_group_memberships
-      old_destroy_user_group_memberships
+  def destroy_follows
+    old_destroy_follows
 
-      person_proxy.create_cancellation(cancellation_params)
-    end
+    person_proxy.create_cancellation(cancellation_params)
+  end
 
-    def cancellation_params
-      {
-        reason: @form.delete_reason,
-        channel: :decidim
-      }
-    end
+  def cancellation_params
+    {
+      reason: @form.delete_reason,
+      channel: :decidim
+    }
+  end
 
-    def person_proxy
-      @form.context.person_proxy
-    end
+  def person_proxy
+    @form.context.person_proxy
   end
 end

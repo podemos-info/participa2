@@ -198,7 +198,7 @@ describe "Census authorization", type: :system do
 
     year, month, day = birth_date.split("-")
 
-    execute_script("$('#date_field_data_born_at').focus()")
+    execute_script("$('#data_born_at').focus()")
     find(".datepicker-dropdown .year:not(.new):not(.old)", text: year, exact_text: true).click
     find(".datepicker-dropdown .month:not(.new):not(.old)", text: month, exact_text: true).click
     find(".datepicker-dropdown .day:not(.new):not(.old)", text: day, exact_text: true).click

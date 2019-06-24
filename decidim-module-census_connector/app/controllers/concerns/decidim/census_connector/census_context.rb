@@ -52,7 +52,7 @@ module Decidim
       def person_scopes
         @person_scopes ||= begin
           if has_person?
-            person.scope.part_of.append(nil)
+            (person.scope&.part_of || []).append(nil)
           else
             [nil]
           end
