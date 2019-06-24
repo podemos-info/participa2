@@ -25,6 +25,8 @@ Capybara.register_driver :chrome_headless_billy do |app|
                                    options: options)
 end
 
+Capybara.default_max_wait_time = 30
+
 RSpec.configure do |config|
   config.before(:suite) do
     WebMock.allow_net_connect!
