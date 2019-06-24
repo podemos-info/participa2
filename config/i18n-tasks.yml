@@ -72,7 +72,7 @@ ignore_unused:
   - content_blocks.*.name
   - decidim.authorization_handlers.admin.census.help
   - decidim.authorization_handlers.census.*
-  - decidim.authorization_modals.show.*
+  - decidim.authorization_modals.content.*
   - decidim.census_connector.verifications.census.extra_explanation*
   - decidim.components.crowdfundings.*
   - decidim.components.gravity_forms.*
