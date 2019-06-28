@@ -3,7 +3,7 @@
 module Decidim
   module CensusConnector
     class PersonProxy
-      def self.for(user, version_at: nil)
+      def self.for(user, version_at: nil, user_request: nil)
         census_authorization = Decidim::Authorization.find_or_initialize_by(
           user: user,
           name: "census"
@@ -11,12 +11,13 @@ module Decidim
           authorization.metadata = {}
         end
 
-        new(census_authorization, version_at: version_at)
+        new(census_authorization, version_at: version_at, user_request: user_request)
       end
 
-      def initialize(authorization, version_at: nil)
+      def initialize(authorization, version_at: nil, user_request: nil)
         @authorization = authorization
         @version_at = version_at
+        @user_request = user_request
       end
 
       attr_reader :authorization
@@ -87,7 +88,7 @@ module Decidim
 
       private
 
-      attr_reader :version_at
+      attr_reader :version_at, :user_request
 
       def qualified_id
         raise "Person ID not available" unless person_id
@@ -104,7 +105,7 @@ module Decidim
       end
 
       def census_person_api
-        @census_person_api ||= ::Census::API::Person.new
+        @census_person_api ||= ::Census::API::Person.new(user_request)
       end
 
       def census_person
