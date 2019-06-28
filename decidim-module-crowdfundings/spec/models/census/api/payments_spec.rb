@@ -5,10 +5,11 @@ require "spec_helper"
 module Census
   module API
     describe Payments do
-      let(:instance) { described_class.new }
+      let(:instance) { described_class.new(user_request) }
       let(:qualified_id) { "#{person_id}@census" }
       let(:person_id) { 1 }
 
+      let(:user_request) { nil }
       let(:http_status) { 200 }
       let(:result) { response.first }
       let(:info) { response.last }

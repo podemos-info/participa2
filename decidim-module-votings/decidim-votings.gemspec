@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = ["demonodojo@gmail.com"]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/podemos-info/participa2"
-  s.required_ruby_version = ">= 2.3.1"
+  s.required_ruby_version = ">= 2.5.1"
 
   s.name = "decidim-votings"
   s.summary = "A decidim votings module"

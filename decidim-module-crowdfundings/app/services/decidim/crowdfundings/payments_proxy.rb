@@ -3,8 +3,9 @@
 module Decidim
   module Crowdfundings
     class PaymentsProxy
-      def initialize(person_proxy = nil)
+      def initialize(person_proxy = nil, user_request: nil)
         @person_proxy = person_proxy
+        @user_request = user_request
       end
 
       def person_proxy=(person_proxy)
@@ -63,7 +64,7 @@ module Decidim
 
       private
 
-      attr_reader :person_proxy
+      attr_reader :person_proxy, :user_request
 
       def person_annual_total
         return @person_annual_total if defined? @person_annual_total
@@ -73,7 +74,7 @@ module Decidim
       end
 
       def census_payments_api
-        @census_payments_api ||= ::Census::API::Payments.new
+        @census_payments_api ||= ::Census::API::Payments.new(user_request)
       end
 
       def qualified_id

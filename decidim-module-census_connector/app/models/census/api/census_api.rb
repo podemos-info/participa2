@@ -15,6 +15,10 @@ module Census
         delegate :get, :patch, :post, :delete, to: :connection
       end
 
+      def initialize(user_request)
+        @user_request = user_request
+      end
+
       def api_url(path)
         "/api/v1/#{I18n.locale}/#{path}"
       end
@@ -52,6 +56,8 @@ module Census
 
       private
 
+      attr_accessor :user_request
+
       def update_service_status(status)
         Census::API::CensusAPI.service_status = status
       end
@@ -62,6 +68,11 @@ module Census
           conn.request :url_encoded
 
           conn.response :logger, ::Logger.new(STDOUT), bodies: true if Decidim::CensusConnector.census_api_debug
+
+          if user_request
+            conn.headers[:user_agent] = user_request.user_agent
+            conn.headers[:user_ip] = user_request.remote_ip
+          end
 
           conn.adapter Faraday.default_adapter
         end
