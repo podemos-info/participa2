@@ -5,10 +5,10 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1944-01-26&document_id=56962295N&document_scope_code=ES&document_type=dni&email=user31%40example.org&first_name=Conor&gender=ardilla&last_name1=Cormier&last_name2&origin_qualified_id=3091%40decidim&phone=0034238593209&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1955-05-31&document_id=16852081G&document_scope_code=ES&document_type=dni&email=user51%40example.org&first_name=Patience&gender=ardilla&last_name1=Gerhold&last_name2&origin_qualified_id=147%40decidim&phone=0034911210210&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -25,15 +25,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=fb8ddcaa-4a44-4a17-ae51-c34b69114d1e; path=/; expires=Mon, 15 Oct
-        2018 13:33:40 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=eb0bd1ee-79d4-443c-846a-23cb67935b43; path=/; expires=Thu, 15
-        Oct 2020 09:33:40 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=064ea4db-bec1-4aac-ac07-524930440814; path=/; expires=Fri, 28 Jun
+        2019 13:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a05b05eb-d473-4a7a-9b86-7eb6f77e00e6; path=/; expires=Mon, 28
+        Jun 2021 09:16:17 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - dbab5768-9363-445d-a8a4-c194bd4ff5ca
+      - 202a971d-3976-48ce-84c3-7546d32fe690
       X-Runtime:
-      - '0.006604'
+      - '0.006638'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -47,7 +46,7 @@ http_interactions:
       Referrer-Policy:
       - origin-when-cross-origin
       Clear-Site-Data:
-      - '"storage", "executionContexts"'
+      - '"storage"'
       Content-Security-Policy:
       - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
         ''self'' ''unsafe-inline''; report-uri /csp-report'
@@ -57,5 +56,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"gender":[{"error":"inclusion","value":"ardilla"}]}'
     http_version:
-  recorded_at: Mon, 15 Oct 2018 09:33:40 GMT
+  recorded_at: Fri, 28 Jun 2019 09:16:17 GMT
 recorded_with: VCR 4.0.0

@@ -214,7 +214,7 @@ describe "Census authorization", type: :system do
   end
 
   def complete_phone_step
-    received_code = "9510300"
+    received_code = "4188362"
 
     fill_in "Received code", with: received_code
 

@@ -1,14 +1,72 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8502ecca85d0a4511bbda211c36121a7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=bce5accf-3602-4b21-b2c2-c7dcfa107752; path=/; expires=Fri, 28 Jun
+        2019 14:03:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=303197db-edec-4f11-8daf-c4f384d5167d; path=/; expires=Mon, 28
+        Jun 2021 10:03:28 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 66b05cf4-ff22-45fd-9683-aed577c2eaa5
+      X-Runtime:
+      - '0.006035'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwZXJzb25faWQiOjEsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1WQy1BLTkwMSIsInN0YXRlIjoiZW5hYmxlZCIsInZlcmlmaWNhdGlvbiI6InZlcmlmaWVkIiwicGhvbmVfdmVyaWZpY2F0aW9uIjoibm90X3ZlcmlmaWVkIiwiZXh0ZXJuYWxfaWRzIjp7ImRlY2lkaW0iOjF9LCJmaXJzdF9uYW1lIjoiVG9tw6FzIiwibGFzdF9uYW1lMSI6Ik5pZXRvIiwibGFzdF9uYW1lMiI6IkxvZXJhIiwiZG9jdW1lbnRfdHlwZSI6InBhc3Nwb3J0IiwiZG9jdW1lbnRfaWQiOiJDVjE0ODYwMyIsImRvY3VtZW50X3Njb3BlX2NvZGUiOiJYWCIsImJvcm5fYXQiOiIxOTI4LTAyLTA5IiwiZ2VuZGVyIjoibWFsZSIsImFkZHJlc3MiOiJBcnJhYmFsIEFudG9uaW8sIDEyIiwicG9zdGFsX2NvZGUiOiIwMzE2MyIsImFkZHJlc3Nfc2NvcGVfY29kZSI6IkVTLVZDLUEtOTAxIiwiZW1haWwiOiJsZXR0aWVodWVsQGRpY2tpLm9yZyIsInBob25lIjoiMDAzNDM0NzMyMzc5NiIsImFkZGl0aW9uYWxfaW5mb3JtYXRpb24iOnt9fQ==
+    http_version:
+  recorded_at: Fri, 28 Jun 2019 10:03:28 GMT
+- request:
     method: post
     uri: http://mycensus:3001/api/v1/en/people/1@census/phone_verifications
     body:
       encoding: UTF-8
-      string: received_code=1810595
+      string: phone=0034347323796&received_code=2943577
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -25,15 +83,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=9e0c7956-2a15-43b4-9d4f-e4f058c6af5a; path=/; expires=Mon, 15 Oct
-        2018 13:25:39 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=452566de-f0a8-4173-bd8d-255ea355ecb0; path=/; expires=Thu, 15
-        Oct 2020 09:25:39 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=357ee792-534b-4812-8aa3-2ee9b4131ccb; path=/; expires=Fri, 28 Jun
+        2019 14:03:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=6d6db4cc-32a8-438f-b78e-5ae03e58e3b2; path=/; expires=Mon, 28
+        Jun 2021 10:03:28 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 2cd4ae20-fc29-48a7-8a0b-423a99cc1189
+      - 53e1d103-29fe-4b32-bb1e-f7793c6e2ee1
       X-Runtime:
-      - '0.713365'
+      - '8.168500'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -47,7 +104,7 @@ http_interactions:
       Referrer-Policy:
       - origin-when-cross-origin
       Clear-Site-Data:
-      - '"storage", "executionContexts"'
+      - '"storage"'
       Content-Security-Policy:
       - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
         ''self'' ''unsafe-inline''; report-uri /csp-report'
@@ -57,64 +114,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Mon, 15 Oct 2018 09:25:40 GMT
-- request:
-    method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.12.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"2a5e93be827b82cd138f500993d70491"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=2317d66b-18af-4316-ae01-02356374ff88; path=/; expires=Mon, 15 Oct
-        2018 13:27:27 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=25cdbfdc-f5c1-4730-87b3-e77fefa5727a; path=/; expires=Thu, 15
-        Oct 2020 09:27:27 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - ddd188bf-6970-4837-9f35-9499c2907258
-      X-Runtime:
-      - '0.005201'
-      X-Frame-Options:
-      - DENY
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - origin-when-cross-origin
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"member","scope_code":"ES-CL-BU-068","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marilu","last_name1":"Delatorre","last_name2":"Saavedra","document_type":"dni","document_id":"67181652D","document_scope_code":"ES","born_at":"1940-04-22","gender":"undisclosed","address":"Manzana
-        Manuela, 7 Puerta 856","postal_code":"09567","address_scope_code":"ES-CL-BU-068","email":"izettahodkiewicz@stokesrowe.name","phone":"0034425815089","additional_information":{}}'
-    http_version:
-  recorded_at: Mon, 15 Oct 2018 09:27:27 GMT
+  recorded_at: Fri, 28 Jun 2019 10:03:37 GMT
 recorded_with: VCR 4.0.0

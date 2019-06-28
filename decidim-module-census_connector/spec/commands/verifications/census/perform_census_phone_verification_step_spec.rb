@@ -17,7 +17,7 @@ module Decidim::CensusConnector
 
     let(:person_proxy) { PersonProxy.for(user) }
 
-    let(:received_code) { "1810595" }
+    let(:received_code) { "2943577" }
     let(:params) { { part: "" } }
 
     let(:form) do

@@ -5,10 +5,10 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1988-01-07&document_id=&document_scope_code=ES&document_type=dni&email=user41%40example.org&first_name=Branson&gender=female&last_name1=Hand&last_name2&origin_qualified_id=3101%40decidim&phone=0034962903685&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1934-07-27&document_id=&document_scope_code=ES&document_type=dni&email=user17%40example.org&first_name=Yasmine&gender=female&last_name1=Herman&last_name2&origin_qualified_id=113%40decidim&phone=0034238236915&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -25,15 +25,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=98747d3a-64d8-4c70-9025-81b2474fec2e; path=/; expires=Mon, 15 Oct
-        2018 13:33:41 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=28a543fa-27cd-4ada-be77-8b96059eb153; path=/; expires=Thu, 15
-        Oct 2020 09:33:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=727d6c71-c2a7-4d48-84af-e76988c1a0e2; path=/; expires=Fri, 28 Jun
+        2019 13:16:12 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=0a6d4f7e-f271-4ada-b3aa-61e8dface1bc; path=/; expires=Mon, 28
+        Jun 2021 09:16:12 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - d6289d19-052a-465f-911a-4ee1fe6e663a
+      - 28945f45-6ecd-4d7a-b452-d801a990ee39
       X-Runtime:
-      - '0.006939'
+      - '0.007133'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -47,7 +46,7 @@ http_interactions:
       Referrer-Policy:
       - origin-when-cross-origin
       Clear-Site-Data:
-      - '"storage", "executionContexts"'
+      - '"storage"'
       Content-Security-Policy:
       - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
         ''self'' ''unsafe-inline''; report-uri /csp-report'
@@ -57,5 +56,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"document_id":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Mon, 15 Oct 2018 09:33:41 GMT
+  recorded_at: Fri, 28 Jun 2019 09:16:12 GMT
 recorded_with: VCR 4.0.0
