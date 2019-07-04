@@ -16,8 +16,9 @@ describe "Census registration", type: :system do
 
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :confirmed, organization: organization) }
+  let(:census_local_code) { Decidim::CensusConnector.census_local_code }
 
-  let(:inner_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
+  let(:inner_scope) { create(:scope, code: census_local_code, organization: organization) }
   let(:exterior_scope) { create(:scope, code: Decidim::CensusConnector.census_non_local_code, organization: organization) }
   let(:other_organization_scope) { create(:scope, parent: exterior_scope) }
 
@@ -35,5 +36,9 @@ describe "Census registration", type: :system do
     select "Passport", from: "Document type"
 
     expect(page).to have_select("Document country", options: [translated(inner_scope.name), translated(other_organization_scope.name)])
+  end
+
+  it "selects local code in phone country selector" do
+    expect(page).to have_select("Country", selected: "#{translated(inner_scope.name)} (+#{Phonelib.phone_data.dig(census_local_code, :country_code)})")
   end
 end

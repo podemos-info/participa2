@@ -31,6 +31,10 @@ module Decidim
             @phone_number = phone_info.national(false)
           end
 
+          def phone_country
+            @phone_country ||= Decidim::CensusConnector.census_local_code
+          end
+
           def phone
             "#{self.class.international_prefix}#{country_code}#{phone_number}"
           end

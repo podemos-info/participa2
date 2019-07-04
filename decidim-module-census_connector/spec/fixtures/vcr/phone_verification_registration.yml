@@ -481,4 +481,63 @@ http_interactions:
         del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user1@example.org","phone":"00666666666","additional_information":{}}'
     http_version:
   recorded_at: Fri, 28 Jun 2019 10:27:25 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/16@census/phone_verifications/new?phone=0034666666666
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=9ecbd1cf-b5d2-46b5-bc38-1b52986d2098; path=/; expires=Fri, 05 Jul
+        2019 10:59:04 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=db2290fc-fb8d-4355-aad1-756bb8738f11; path=/; expires=Mon, 05
+        Jul 2021 06:59:04 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - ccbab618-87a2-489f-a973-b4938990f05b
+      X-Runtime:
+      - '0.009344'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Fri, 05 Jul 2019 06:59:04 GMT
 recorded_with: VCR 4.0.0
