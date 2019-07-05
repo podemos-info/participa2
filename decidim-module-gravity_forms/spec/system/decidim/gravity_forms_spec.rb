@@ -2,15 +2,16 @@
 
 require "spec_helper"
 
-describe "Gravity forms", type: :system do
+describe "Gravity forms", type: :system, billy: true do
   include_context "with a component"
 
   before do
-    driven_by(:chrome_headless_billy)
     switch_to_host(organization.host)
+    gravity_form
   end
 
   let(:manifest_name) { "gravity_forms" }
+  let(:require_login) { false }
 
   let(:component) do
     create(
@@ -19,6 +20,23 @@ describe "Gravity forms", type: :system do
       settings: { "domain" => "victorious-dog.w6.gravitydemo.com" }
     )
   end
+  let(:gravity_form) do
+    create(
+      :gravity_form,
+      component: component,
+      form_number: 1,
+      require_login: require_login
+    )
+  end
+  let(:second_form) do
+    create(
+      :gravity_form,
+      component: component,
+      form_number: 2,
+      hidden: second_hidden
+    )
+  end
+  let(:second_hidden) { false }
 
   matcher :render_in_iframe do |content|
     match do |page|
@@ -29,71 +47,46 @@ describe "Gravity forms", type: :system do
   end
 
   describe "index page" do
-    let(:require_login) { false }
-
-    before do
-      create(
-        :gravity_form,
-        component: component,
-        title: "My first form",
-        description: "Fill this in to become super cool",
-        slug: "cuki-form",
-        form_number: 1,
-        require_login: require_login
-      )
-    end
-
     context "when a single form available" do
-      before do
-        visit_component
-      end
-
       it "redirects to the only available form" do
+        visit_component
         expect(page).to render_in_iframe("Tell us a little about yourself")
       end
     end
 
     context "when multiple forms available" do
-      let(:second_form) do
-        create(
-          :gravity_form,
-          component: component,
-          title: "My second form",
-          description: "Fill this in to become even cooler",
-          slug: "cuki-form-2",
-          form_number: 2
-        )
-      end
+      before { second_form }
 
       context "and only one visible" do
-        before do
-          second_form.update!(hidden: true)
-          visit_component
-        end
+        let(:second_hidden) { true }
 
         it "redirects to the only visible form" do
+          visit_component
           expect(page).to render_in_iframe("Tell us a little about yourself")
         end
       end
 
       context "and more than one visible" do
-        before do
-          second_form.update!(hidden: false)
-          visit_component
-        end
+        let(:second_hidden) { false }
 
         shared_examples_for "a gravity form list" do
           it "lists all visible forms and titles" do
+            visit_component
+
             expect(page).to have_selector(".card--gravity_form", count: 2)
 
-            expect(page).to have_selector(".card--gravity_form", text: "My first form\nFill this in to become super cool")
-            expect(page).to have_selector(".card--gravity_form", text: "My second form\nFill this in to become even cooler")
+            expect(page).to have_i18n_content(gravity_form.title)
+            expect(page).to have_i18n_content(gravity_form.description)
+            expect(page).to have_i18n_content(second_form.title)
+            expect(page).to have_i18n_content(second_form.description)
           end
         end
 
         shared_examples_for "a locked form" do
           it "does not grant access" do
-            within find(".card--gravity_form", text: "My first form") do
+            visit_component
+
+            within find(".card--gravity_form", text: translated(gravity_form.title)) do
               click_link "Fill in"
             end
 
@@ -104,7 +97,9 @@ describe "Gravity forms", type: :system do
 
         shared_examples_for "a public form" do
           it "grants access" do
-            within find(".card--gravity_form", text: "My first form") do
+            visit_component
+
+            within find(".card--gravity_form", text: translated(gravity_form.title)) do
               click_link "Fill in"
             end
 
@@ -117,29 +112,25 @@ describe "Gravity forms", type: :system do
         end
 
         context "when some hidden forms" do
-          before do
+          before { third_form }
+
+          let(:third_form) do
             create(
               :gravity_form,
               component: component,
-              title: "My third form",
-              description: "I'm invisible",
-              slug: "cuki-form-3",
               form_number: 3,
               hidden: true
             )
-
-            refresh
           end
 
           it_behaves_like "a gravity form list"
         end
 
         context "when user logged in" do
-          let(:require_login) { false }
+          let(:require_login) { true }
 
           before do
             login_as user, scope: :user
-            refresh
           end
 
           it_behaves_like "a public form"
@@ -163,33 +154,17 @@ describe "Gravity forms", type: :system do
   end
 
   describe "show page" do
-    let!(:gravity_form) do
-      create(
-        :gravity_form,
-        component: component,
-        form_number: 1,
-        require_login: false
-      )
-    end
-    let!(:second_form) do
-      create(
-        :gravity_form,
-        component: component,
-        form_number: 2,
-        require_login: false
-      )
-    end
-
-    before do
-      visit_component
-      click_link gravity_form.title["en"]
-    end
+    before { second_form }
 
     it "shows gravity form title" do
+      visit_component
+      click_link translated(gravity_form.title)
       expect(page).to have_i18n_content(gravity_form.title)
     end
 
     it "shows gravity form content" do
+      visit_component
+      click_link translated(gravity_form.title)
       expect(page).to render_in_iframe("Tell us a little about yourself")
     end
   end

@@ -7,9 +7,12 @@ Billy.configure do |config|
   config.cache = true
   config.persist_cache = true
   config.cache_path = "spec/fixtures/billy"
+  config.proxied_request_connect_timeout = 20
+  config.proxied_request_inactivity_timeout = 20
 end
 
 Capybara.register_driver :chrome_headless_billy do |app|
+  WebMock.allow_net_connect!
   options = Selenium::WebDriver::Chrome::Options.new
 
   [
@@ -25,10 +28,10 @@ Capybara.register_driver :chrome_headless_billy do |app|
                                    options: options)
 end
 
-Capybara.default_max_wait_time = 30
+Capybara.default_max_wait_time = 20
 
 RSpec.configure do |config|
-  config.before(:suite) do
-    WebMock.allow_net_connect!
+  config.before(:each, type: :system, billy: true) do
+    driven_by :chrome_headless_billy
   end
 end
