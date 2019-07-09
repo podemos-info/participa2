@@ -101,6 +101,9 @@ jobs:
           name: Run npm lints
           command: npm run lint
 
+      - store_artifacts:
+          path: /root/project/decidim-module-census_connector/spec/decidim_dummy_app/tmp/screenshots
+
   census_connector:
     docker:
       - image: decidim/decidim@sha256:dd56d61390f588f6d3abf192049e63ef15d43a895d06a55979da4541a649b98e
@@ -343,7 +346,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "43:69:49:83:52:61:1b:5c:e4:2c:3c:2b:ea:7b:8f:32"
+            - "89:77:d0:7d:bd:74:28:09:09:b0:d7:25:3a:e7:3e:89"
 
       - deploy:
           command: bin/deploy-staging.sh
