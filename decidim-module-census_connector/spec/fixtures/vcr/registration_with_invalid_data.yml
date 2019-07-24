@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user86%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim&phone=00&postal_code=&scope_code
+      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user66%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim&phone=0034&postal_code=&scope_code
     headers:
       User-Agent:
       - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
@@ -14,10 +14,6 @@ http_interactions:
       - 127.0.0.1
       Content-Type:
       - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 422
@@ -29,14 +25,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=fc6e60c3-b903-4871-aa32-876b06c9f3a4; path=/; expires=Fri, 28 Jun
-        2019 13:17:49 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=aa861079-1e4a-4700-9ef8-abaf19c977d4; path=/; expires=Mon, 28
-        Jun 2021 09:17:49 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=11ba9dc3-05ea-429e-b96a-821bd5989f45; path=/; expires=Wed, 24 Jul
+        2019 21:00:18 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c7115020-98a8-49cc-be49-b73f8edc2cac; path=/; expires=Sat, 24
+        Jul 2021 17:00:18 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - ff2dd6f9-ccc6-4828-a9df-430b0b80b060
+      - af3dc70f-0f85-4d00-bd00-b347dd1f780d
       X-Runtime:
-      - '0.014210'
+      - '0.018776'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -52,13 +48,15 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"first_name":[{"error":"blank"}],"last_name1":[{"error":"blank"}],"document_id":[{"error":"blank"}],"born_at":[{"error":"blank"}],"gender":[{"error":"blank"}],"address":[{"error":"blank"}],"postal_code":[{"error":"blank"}],"address_scope":[{"error":"blank"}],"scope":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Fri, 28 Jun 2019 09:17:49 GMT
+  recorded_at: Wed, 24 Jul 2019 17:00:18 GMT
 recorded_with: VCR 4.0.0

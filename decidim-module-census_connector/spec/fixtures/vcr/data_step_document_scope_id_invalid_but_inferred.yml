@@ -5,16 +5,12 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1960-03-22&document_id=75770602T&document_scope_code=ES&document_type=dni&email=user33%40example.org&first_name=Lukas&gender=female&last_name1=Koss&last_name2&origin_qualified_id=129%40decidim&phone=0034432870323&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1945-01-24&document_id=76347747Y&document_scope_code=ES&document_type=dni&email=user18%40example.org&first_name=Simeon&gender=female&last_name1=Schiller&last_name2&origin_qualified_id=2267%40decidim&phone=0034832813614&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 202
@@ -25,14 +21,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=01fd8d4a-bad9-4cd9-a8a9-a78b8231a005; path=/; expires=Fri, 28 Jun
-        2019 13:16:15 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=060dee12-694e-47af-8578-62ea5aff3fd1; path=/; expires=Mon, 28
-        Jun 2021 09:16:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=84fff9ab-003d-43f8-8091-65063699cabb; path=/; expires=Wed, 24 Jul
+        2019 21:00:06 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=850c369e-4f67-46eb-afdb-15553041d1c0; path=/; expires=Sat, 24
+        Jul 2021 17:00:06 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 817f9fcf-b301-4cf6-b0cf-3a378bc6a4e7
+      - 697adafe-0cae-4452-b1db-b24f3a6ff479
       X-Runtime:
-      - '0.304039'
+      - '0.353226'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -48,18 +44,20 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":52}'
+      string: '{"person_id":56}'
     http_version:
-  recorded_at: Fri, 28 Jun 2019 09:16:15 GMT
+  recorded_at: Wed, 24 Jul 2019 17:00:07 GMT
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/en/people/52@census
+    uri: http://mycensus:3001/api/v1/en/people/56@census
     body:
       encoding: US-ASCII
       string: ''
@@ -67,9 +65,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
+      - gzip, compressed
   response:
     status:
       code: 200
@@ -78,18 +74,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5691c67a1df2e05f13f2600f2600ea2c"
+      - W/"515137b6461c0bf0b39d0ea048753585"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=927a3905-75c6-43c1-b2a3-7622acddde2e; path=/; expires=Fri, 28 Jun
-        2019 13:16:15 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=eca408f1-4055-49f6-8709-28eaf2ac58f1; path=/; expires=Mon, 28
-        Jun 2021 09:16:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=93222a4c-cd2d-4ba4-ae0e-55e598e55f17; path=/; expires=Wed, 24 Jul
+        2019 21:00:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=7dc48b27-54ae-40e4-8652-06ebffaab08d; path=/; expires=Sat, 24
+        Jul 2021 17:00:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 8e8b60c6-79da-49dd-9e91-d662a93b4b3d
+      - 20ae11db-84ae-42a1-9458-db7f79d38e87
       X-Runtime:
-      - '0.203737'
+      - '0.256537'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -105,14 +101,16 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":52,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":129},"first_name":"Lukas","last_name1":"Koss","last_name2":null,"document_type":"dni","document_id":"75770602T","document_scope_code":"ES","born_at":"1960-03-22","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user33@example.org","phone":"0034432870323","additional_information":{}}'
+      string: '{"person_id":56,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":2267},"first_name":"Simeon","last_name1":"Schiller","last_name2":null,"document_type":"dni","document_id":"76347747Y","document_scope_code":"ES","born_at":"1945-01-24","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user18@example.org","phone":"0034832813614","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Fri, 28 Jun 2019 09:16:15 GMT
+  recorded_at: Wed, 24 Jul 2019 17:00:07 GMT
 recorded_with: VCR 4.0.0

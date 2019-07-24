@@ -5,16 +5,12 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1942-09-29&document_id=32650924D&document_scope_code=ES&document_type=dni&email=user49%40example.org&first_name=Lori&gender=female&last_name1=&last_name2&origin_qualified_id=145%40decidim&phone=0034395927011&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1922-01-06&document_id=64160151H&document_scope_code=ES&document_type=dni&email=user48%40example.org&first_name=Vita&gender=female&last_name1=&last_name2&origin_qualified_id=2297%40decidim&phone=0034749045923&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 422
@@ -25,14 +21,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=5505ff98-fcce-45c7-a464-1b87af26bba0; path=/; expires=Fri, 28 Jun
-        2019 13:16:17 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=981684e0-ca48-49ed-9b10-b29557a26ad8; path=/; expires=Mon, 28
-        Jun 2021 09:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=804daf82-7bfb-4f48-92d9-c535f10a6c0a; path=/; expires=Wed, 24 Jul
+        2019 21:00:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c8ab946f-60c1-4262-ae1b-e502f3a2d3f8; path=/; expires=Sat, 24
+        Jul 2021 17:00:10 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 89db39b5-45eb-40f6-b0ee-357645b186b1
+      - e991bb30-731e-499e-8429-d15f5a5e300f
       X-Runtime:
-      - '0.008620'
+      - '0.007221'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -48,13 +44,15 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"last_name1":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Fri, 28 Jun 2019 09:16:17 GMT
+  recorded_at: Wed, 24 Jul 2019 17:00:10 GMT
 recorded_with: VCR 4.0.0

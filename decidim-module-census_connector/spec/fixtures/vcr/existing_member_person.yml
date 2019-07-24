@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9553b1bf84b20422162fcc7248703483"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=6dd81d60-500f-48e6-a6f6-91199b140698; path=/; expires=Wed, 24 Jul
+        2019 21:01:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f62e96c3-39f4-4f39-b5db-601bd092f590; path=/; expires=Sat, 24
+        Jul 2021 17:01:52 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 824bf8f1-ba74-4275-ba63-784bed1dcb47
+      X-Runtime:
+      - '0.005182'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-EX-CC-117","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Javier","last_name1":"Terán","last_name2":"Montañez","document_type":"nie","document_id":"X7546751Z","document_scope_code":"ES","born_at":"1934-01-02","gender":"undisclosed","address":"Poblado
+        Mónica s/n.","postal_code":"10729","address_scope_code":"ES-EX-CC-117","email":"larondaleannon@tillman.name","phone":"0034884032546","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Wed, 24 Jul 2019 17:01:52 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9553b1bf84b20422162fcc7248703483"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=24982013-35e2-4e49-8668-d2b38af09f85; path=/; expires=Wed, 24 Jul
+        2019 21:01:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fe7e94da-9f25-4600-93fd-19519a51c1b6; path=/; expires=Sat, 24
+        Jul 2021 17:01:52 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e3a30c7f-b270-4c41-a11e-8dd61528417b
+      X-Runtime:
+      - '0.009220'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-EX-CC-117","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Javier","last_name1":"Terán","last_name2":"Montañez","document_type":"nie","document_id":"X7546751Z","document_scope_code":"ES","born_at":"1934-01-02","gender":"undisclosed","address":"Poblado
+        Mónica s/n.","postal_code":"10729","address_scope_code":"ES-EX-CC-117","email":"larondaleannon@tillman.name","phone":"0034884032546","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Wed, 24 Jul 2019 17:01:52 GMT
+recorded_with: VCR 4.0.0

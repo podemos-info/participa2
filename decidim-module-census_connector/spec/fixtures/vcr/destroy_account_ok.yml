@@ -2,17 +2,13 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://mycensus:3001/api/v1/en/people/1@census?channel=decidim&reason=I%20want%20to%20delete%20my%20account
+    uri: http://mycensus:3001/api/v1/en/people/5@census?channel=decidim&reason=I%20want%20to%20delete%20my%20account
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - Faraday v0.15.4
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 202
@@ -23,14 +19,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=c530cd3d-0b16-40b0-819e-bea24b262766; path=/; expires=Fri, 28 Jun
-        2019 13:17:56 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=935068fb-fe84-4a41-a0b2-c8fc63b09e6e; path=/; expires=Mon, 28
-        Jun 2021 09:17:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=9209c94a-7b3c-4582-ac1b-a8cca1fed072; path=/; expires=Wed, 24 Jul
+        2019 21:00:11 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a8b90c6c-73b6-43c9-87fc-b616923477dc; path=/; expires=Sat, 24
+        Jul 2021 17:00:11 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 0a2c154f-f720-4cb6-bde2-41a9c9b63a48
+      - 3c12f23c-e6a0-40c5-a9f2-ab8b5cf9c3a5
       X-Runtime:
-      - '0.887469'
+      - '0.228089'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -46,13 +42,15 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Fri, 28 Jun 2019 09:17:56 GMT
+  recorded_at: Wed, 24 Jul 2019 17:00:11 GMT
 recorded_with: VCR 4.0.0
