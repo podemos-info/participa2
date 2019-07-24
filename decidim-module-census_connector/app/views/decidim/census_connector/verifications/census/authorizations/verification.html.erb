@@ -10,7 +10,7 @@
       <div class="columns large-9 medium-centered census-form">
         <%= decidim_form_for(form, url: step_path) do |f| %>
           <%= render partial: "identity_verification_part", locals: { f: f } if form.identity_part? %>
-          <%= render partial: "membership_verification_part", locals: { f: f } %>
+          <%= render partial: "membership_verification_part", locals: { f: f } if form.membership_allowed? %>
 
           <div class="card">
             <div class="card__content">

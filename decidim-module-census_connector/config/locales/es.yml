@@ -43,6 +43,7 @@ es:
         membership_level:
           follower: Simpatizante
           member: Afiliado/a
+          not_allowed: No permitida
         state:
           cancelled: Dado de baja
           pending: Pendiente de validación
@@ -98,8 +99,6 @@ es:
             activism: Militancia
             status:
               activist: Militante
-              follower: No te has afiliado
-              member: Te has afiliado
               not_activist: Simpatizante
             title: Tu participación en Podemos
           profile:

@@ -41,7 +41,10 @@ module Decidim
         end
 
         def membership_level
-          I18n.t(person.membership_level, scope: "census.api.person.membership_level")
+          I18n.t(
+            person.membership_allowed? ? person.membership_level : "not_allowed",
+            scope: "census.api.person.membership_level"
+          )
         end
 
         def verification_icon_params
@@ -69,6 +72,8 @@ module Decidim
         end
 
         def membership_level_icon_params
+          return ["ban", class: "muted"] unless person.membership_allowed?
+
           case person.membership_level
           when "follower"
             ["x", class: "muted"]

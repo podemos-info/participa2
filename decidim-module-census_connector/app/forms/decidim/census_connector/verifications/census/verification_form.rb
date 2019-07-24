@@ -31,6 +31,8 @@ module Decidim
           end
 
           def target_level
+            return :follower unless membership_allowed?
+
             member.presence ? :member : :follower
           end
 
@@ -42,16 +44,14 @@ module Decidim
             !verified?
           end
 
-          def membership_required?
+          def membership_action?
             part == "membership"
           end
 
           def action
-            if membership_required?
-              member? ? :to_follower : :to_member
-            else
-              :verify
-            end
+            return :verify unless membership_allowed? && membership_action?
+
+            member? ? :to_follower : :to_member
           end
 
           def changing_membership_level?
@@ -64,10 +64,11 @@ module Decidim
             { part: part }
           end
 
+          delegate :member?, :membership_allowed?, to: :person
+
           private
 
           delegate :person, :params, to: :context
-          delegate :member?, to: :person
 
           def verified?
             @verified ||= person.verified?
