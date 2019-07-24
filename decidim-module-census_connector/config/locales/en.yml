@@ -143,7 +143,6 @@ en:
               start_phone_verification: Start phone verification
               title: Complete your data
               update: Save
-            leave_for_later: Leave for later
             go_back: Go back
             identity_verification_part:
               choose: Choose
@@ -157,6 +156,7 @@ en:
                 nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
                 passport: Additional passport page (optional)
               title: Identity verification
+            leave_for_later: Leave for later
             location_data_part:
               title: Location
             membership_verification_part:

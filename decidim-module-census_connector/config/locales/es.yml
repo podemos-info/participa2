@@ -143,7 +143,6 @@ es:
               start_phone_verification: Iniciar verificación del teléfono
               title: Completa tus datos
               update: Guardar
-            leave_for_later: Dejar para más adelante
             go_back: Volver
             identity_verification_part:
               choose: Elegir
@@ -157,6 +156,7 @@ es:
                 nie: 'Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional'
                 passport: Página adicional del pasaporte (opcional)
               title: Verificación de la identidad
+            leave_for_later: Dejar para más adelante
             location_data_part:
               title: Ubicación
             membership_verification_part:

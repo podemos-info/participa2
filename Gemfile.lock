@@ -1,36 +1,36 @@
 PATH
   remote: decidim-module-census_connector
   specs:
-    decidim-census_connector (0.17.1)
-      decidim-core (~> 0.17.a)
-      decidim-verifications (~> 0.17.a)
+    decidim-census_connector (0.18.0)
+      decidim-core (~> 0.18.a)
+      decidim-verifications (~> 0.18.a)
       faraday
       hutch
 
 PATH
   remote: decidim-module-crowdfundings
   specs:
-    decidim-crowdfundings (0.17.1)
-      decidim-admin (~> 0.17.a)
-      decidim-census_connector (~> 0.17.a)
-      decidim-core (~> 0.17.a)
+    decidim-crowdfundings (0.18.0)
+      decidim-admin (~> 0.18.a)
+      decidim-census_connector (~> 0.18.a)
+      decidim-core (~> 0.18.a)
       httparty
       iban_bic
 
 PATH
   remote: decidim-module-gravity_forms
   specs:
-    decidim-gravity_forms (0.17.1)
-      decidim-core (~> 0.17.a)
+    decidim-gravity_forms (0.18.0)
+      decidim-core (~> 0.18.a)
 
 PATH
   remote: decidim-module-votings
   specs:
-    decidim-votings (0.17.1)
+    decidim-votings (0.18.0)
       active_model_serializers
       active_record_upsert
-      decidim-admin (~> 0.17.a)
-      decidim-core (~> 0.17.a)
+      decidim-admin (~> 0.18.a)
+      decidim-core (~> 0.18.a)
       timecop
 
 GEM
