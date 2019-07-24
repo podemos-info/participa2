@@ -74,7 +74,7 @@ module Census
             conn.headers[:user_ip] = user_request.remote_ip
           end
 
-          conn.adapter Faraday.default_adapter
+          conn.adapter :em_http
         end
       end
 
