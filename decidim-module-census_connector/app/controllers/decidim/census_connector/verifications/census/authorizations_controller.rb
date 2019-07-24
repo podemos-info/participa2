@@ -11,7 +11,7 @@ module Decidim
           helper Decidim::CensusConnector::AuthorizationsHelper
           helper Decidim::SanitizeHelper
 
-          helper_method :form, :step_path
+          helper_method :form, :step_path, :next_path
 
           STEPS = %w(data phone_verification verification).freeze
 

@@ -17,13 +17,17 @@
               <div class="actions">
                 <%= f.submit t(".#{form.action}"), class: "button expanded" %>
               </div>
-              <% if has_person? %>
-                <p class="text-center">
+              <p class="text-center">
+                <% if form.full_process? %>
+                  <a href="<%= next_path %>">
+                    <%= t("leave_for_later", scope: "decidim.census_connector.verifications.census.authorizations") %>
+                  </a>
+                <% else %>
                   <a href="<%= decidim_census_account.root_path%>">
                     <%= t("go_back", scope: "decidim.census_connector.verifications.census.authorizations") %>
                   </a>
-                </p>
-              <% end %>
+                <% end %>
+              </p>
             </div>
           </div>
         <% end %>

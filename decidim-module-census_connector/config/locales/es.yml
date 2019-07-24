@@ -144,6 +144,7 @@ es:
               start_phone_verification: Iniciar verificación del teléfono
               title: Completa tus datos
               update: Guardar
+            leave_for_later: Dejar para más adelante
             go_back: Volver
             identity_verification_part:
               choose: Elegir
