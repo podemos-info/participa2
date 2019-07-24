@@ -16,8 +16,34 @@ FactoryBot.modify do
     trait :with_person do
       transient do
         person_id { 1 }
-        scope { create(:scope) }
         state { "enabled" }
+        verification { "not_verified" }
+        membership_level { "follower" }
+      end
+    end
+
+    trait :with_member_person do
+      transient do
+        person_id { 2 }
+        state { "enabled" }
+        verification { "verified" }
+        membership_level { "member" }
+      end
+    end
+
+    trait :with_young_person do
+      transient do
+        person_id { 3 }
+        state { "enabled" }
+        verification { "not_verified" }
+        membership_level { "follower" }
+      end
+    end
+
+    trait :with_cancelled_person do
+      transient do
+        person_id { 4 }
+        state { "cancelled" }
         verification { "not_verified" }
         membership_level { "follower" }
       end

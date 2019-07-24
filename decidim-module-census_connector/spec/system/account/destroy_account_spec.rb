@@ -20,7 +20,7 @@ module Decidim::CensusConnector
     let(:organization) { create(:organization) }
     let(:local_scope) { create(:scope, code: Decidim::CensusConnector.census_local_code, organization: organization) }
 
-    let(:user) { create(:user, :confirmed, :with_person, organization: organization) }
+    let(:user) { create(:user, :confirmed, :with_person, organization: organization, person_id: 9) }
     let(:person) { person_proxy.person }
     let(:person_proxy) { PersonProxy.for(user) }
     let(:cassette) { "destroy_person" }

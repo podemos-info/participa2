@@ -50,10 +50,8 @@ describe "Census authorization", type: :system do
   end
 
   let(:dummy_resource) { create(:dummy_resource, component: component) }
-
   let(:age) { 18 }
   let(:document_type) { "DNI" }
-
   let(:cassette) { "require_verification" }
 
   around do |example|
@@ -81,13 +79,15 @@ describe "Census authorization", type: :system do
 
       register_with_census(verify_phone: verify_phone)
 
+      sleep(3) # wait registration to be accepted
+
       click_link "Foo"
     end
 
     let(:verify_phone) { false }
 
     context "and everything alright" do
-      let(:cassette) { "regular_registration" }
+      let(:cassette) { "registration_ok" }
 
       it "grants access to foo" do
         expect(page).to have_current_path(/foo/)
@@ -104,9 +104,8 @@ describe "Census authorization", type: :system do
     end
 
     context "and too young" do
+      let(:cassette) { "registration_with_young" }
       let(:age) { 14 }
-
-      let(:cassette) { "child_registration" }
 
       it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
@@ -116,9 +115,8 @@ describe "Census authorization", type: :system do
     end
 
     context "and using passport" do
-      let(:document_type) { "Passport" }
-
       let(:cassette) { "registration_with_passport" }
+      let(:document_type) { "Passport" }
 
       it "shows popup to inform that requirements are not met" do
         expect(page).to have_content(
@@ -214,7 +212,7 @@ describe "Census authorization", type: :system do
   end
 
   def complete_phone_step
-    received_code = "4188362"
+    received_code = "9999999"
 
     fill_in "Received code", with: received_code
 

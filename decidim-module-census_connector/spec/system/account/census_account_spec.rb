@@ -92,5 +92,41 @@ module Decidim::CensusConnector
         expect(page).to have_content("NOT ACTIVIST")
       end
     end
+
+    context "when the person is a member" do
+      let(:cassette) { "existing_member_person" }
+      let(:user) { create(:user, :confirmed, :with_member_person, organization: organization) }
+
+      it "shows that the membership is not allowed" do
+        within ".card--list__item.membership_level_card" do
+          expect(page).to have_content("MEMBERSHIP")
+          expect(page).to have_content("MEMBER")
+        end
+      end
+
+      it "allows to modify membership level" do
+        within ".card--list__item.membership_level_card" do
+          expect(page).not_to have_content("Modify")
+        end
+      end
+    end
+
+    context "when the person is young" do
+      let(:cassette) { "existing_young_person" }
+      let(:user) { create(:user, :confirmed, :with_young_person, organization: organization) }
+
+      it "shows that the membership is not allowed" do
+        within ".card--list__item.membership_level_card" do
+          expect(page).to have_content("MEMBERSHIP")
+          expect(page).to have_content("NOT ALLOWED")
+        end
+      end
+
+      it "doesn't allow to modify membership level" do
+        within ".card--list__item.membership_level_card" do
+          expect(page).not_to have_content("Modify")
+        end
+      end
+    end
   end
 end
