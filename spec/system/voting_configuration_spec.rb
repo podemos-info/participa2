@@ -48,12 +48,23 @@ RSpec.describe "Votings configuration", type: :system do
   end
 
   context "when the user already registered with Census" do
-    let(:user) { create :user, :with_person, :confirmed, organization: organization }
+    let(:user) { create :user, :with_person, :confirmed, organization: organization, scope: user_scope }
+    let(:user_scope) { scope }
 
-    it "is prompted to register with census" do
+    it "is allowed to enter the voting booth" do
       click_link "Votar"
 
       expect(page).to have_link("Cargando cabina de votación...")
+    end
+
+    context "when the user scope is different from the voting scope" do
+      let(:user_scope) { create(:scope, organization: organization) }
+
+      it "is not allowed to enter the voting booth" do
+        click_link "Votar"
+
+        expect(page).to have_content("Debes estar inscrito en el territorio de la actividad.")
+      end
     end
   end
 end

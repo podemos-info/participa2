@@ -19,6 +19,7 @@ FactoryBot.modify do
         state { "enabled" }
         verification { "not_verified" }
         membership_level { "follower" }
+        scope { nil }
       end
     end
 
@@ -28,6 +29,7 @@ FactoryBot.modify do
         state { "enabled" }
         verification { "verified" }
         membership_level { "member" }
+        scope { nil }
       end
     end
 
@@ -37,6 +39,7 @@ FactoryBot.modify do
         state { "enabled" }
         verification { "not_verified" }
         membership_level { "follower" }
+        scope { nil }
       end
     end
 
@@ -46,6 +49,7 @@ FactoryBot.modify do
         state { "cancelled" }
         verification { "not_verified" }
         membership_level { "follower" }
+        scope { nil }
       end
     end
 

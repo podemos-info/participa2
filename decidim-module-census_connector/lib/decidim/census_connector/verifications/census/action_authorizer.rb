@@ -72,11 +72,27 @@ module Decidim
           end
 
           def authorize_scope
-            return unauthorized(:closed_scope) if authorizing_by_scope? && authorizing_by_census_closure? && current_scope &&
-                                                  current_scope.ancestor_of?(census_closure_person&.scope)
-            return incomplete(:scope) if authorizing_by_scope? && current_scope && current_scope.ancestor_of?(person&.scope)
+            if unauthorized_closed_scope?
+              unauthorized(:closed_scope)
+            elsif incomplete_scope?
+              incomplete(:scope)
+            elsif unauthorized_scope?
+              unauthorized(:scope)
+            else
+              true
+            end
+          end
 
-            true
+          def unauthorized_closed_scope?
+            authorizing_by_scope? && authorizing_by_census_closure? && current_scope && !current_scope.ancestor_of?(census_closure_person&.scope)
+          end
+
+          def incomplete_scope?
+            authorizing_by_scope? && current_scope && !person&.scope
+          end
+
+          def unauthorized_scope?
+            authorizing_by_scope? && current_scope && !current_scope.ancestor_of?(person&.scope)
           end
 
           def authorize_census_closure
