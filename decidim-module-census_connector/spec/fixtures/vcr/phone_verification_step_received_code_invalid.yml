@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"6a7f44a47da36ab9d88fca8dd5127f77"
+      - W/"2218a2b1f54dc841103e6e90ee4d1e11"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=61604c99-96cc-4672-b862-366eae46b4e1; path=/; expires=Wed, 24 Jul
-        2019 21:00:13 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=335c2b8b-1692-491c-b955-151c7d7f8fe9; path=/; expires=Sat, 24
-        Jul 2021 17:00:13 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=2a29539d-3953-4f0e-8e71-c62d42ad26fb; path=/; expires=Thu, 25 Jul
+        2019 20:07:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1e734c79-f562-45d1-96ce-e4ed1b72826e; path=/; expires=Sun, 25
+        Jul 2021 16:07:46 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - c2620f3a-b552-4430-b167-940b2c26ca06
+      - 434f2a96-1712-4aad-9f02-7e1531d3e514
       X-Runtime:
-      - '0.005306'
+      - '0.005682'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,16 +54,16 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-PV-VI-033","state":"enabled","verification":"verified","phone_verification":"verified","external_ids":{"decidim":6},"first_name":"Jerónimo","last_name1":"Madera","last_name2":"Montañez","document_type":"dni","document_id":"58687873S","document_scope_code":"ES","born_at":"1946-03-21","gender":"female","address":"Bajada
-        Benito Verdugo 97 Esc. 454","postal_code":"01715","address_scope_code":"ES-PV-VI-033","email":"antonebreitenberg@king.info","phone":"0034866511761","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-CM-CR-041","state":"enabled","verification":"verified","phone_verification":"verified","external_ids":{"decidim":6},"first_name":"Concepción","last_name1":"Zambrano","last_name2":"Cordero","document_type":"passport","document_id":"WS148837","document_scope_code":"ES","born_at":"1951-11-18","gender":"male","address":"Vía
+        Pública Adela s/n. Puerta 690","postal_code":"13955","address_scope_code":"ES-CM-CR-041","email":"shizuko@heaney.com","phone":"0034491168094","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Wed, 24 Jul 2019 17:00:13 GMT
+  recorded_at: Thu, 25 Jul 2019 16:07:46 GMT
 - request:
     method: post
     uri: http://mycensus:3001/api/v1/en/people/6@census/phone_verifications
     body:
       encoding: UTF-8
-      string: phone=0034866511761&received_code=0000000
+      string: phone=0034491168094&received_code=0000000
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -79,14 +79,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=2202120c-cdb1-4142-ba63-4a1af1c90664; path=/; expires=Wed, 24 Jul
-        2019 21:00:13 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=c92e166a-1e0a-41fe-9df7-f3ccfc309095; path=/; expires=Sat, 24
-        Jul 2021 17:00:13 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=2fdf8bd8-12cc-48b4-8738-e02215f2953c; path=/; expires=Thu, 25 Jul
+        2019 20:07:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a52d367b-ee3c-4222-9c43-ed2fedf88f2d; path=/; expires=Sun, 25
+        Jul 2021 16:07:46 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 213f17fe-ae3a-4c67-9e42-a40079b3fc6b
+      - aa6b60da-b0ac-4b96-85fe-a482e6d65bb0
       X-Runtime:
-      - '0.006268'
+      - '0.006283'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -112,5 +112,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"received_code":[{"error":"invalid"}]}'
     http_version:
-  recorded_at: Wed, 24 Jul 2019 17:00:13 GMT
+  recorded_at: Thu, 25 Jul 2019 16:07:46 GMT
 recorded_with: VCR 4.0.0

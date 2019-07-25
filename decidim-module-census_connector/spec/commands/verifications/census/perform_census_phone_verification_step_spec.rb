@@ -2,7 +2,6 @@
 
 require "spec_helper"
 require "decidim/core/test/factories"
-require "faker/spanish_document"
 
 module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusPhoneVerificationStep do

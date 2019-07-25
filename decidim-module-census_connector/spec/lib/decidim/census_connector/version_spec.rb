@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "decidim/census_connector/version"
 
 describe Decidim::CensusConnector do
   describe "#version" do

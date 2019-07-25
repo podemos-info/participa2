@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"b56169129effc2932e380bfeb35934c6"
+      - W/"9bad6996495feba0a9710c2b5ecdbb1b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=ac9fa392-90d3-4e8c-8c80-bc6270b18c57; path=/; expires=Thu, 25 Jul
-        2019 20:05:58 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=a69cf5e3-94b4-441b-a82d-9568ccf6215f; path=/; expires=Sun, 25
-        Jul 2021 16:05:58 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=3ca4a07b-fd99-4467-9c3d-f1a837232350; path=/; expires=Thu, 25 Jul
+        2019 20:05:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a0184198-0858-4f15-a8a9-faf17cd94948; path=/; expires=Sun, 25
+        Jul 2021 16:05:56 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - c7a8bf95-10eb-4e0c-b39d-c47b1d901c50
+      - 77cdb464-5fa8-4464-b72c-4f7bb9bcc6e6
       X-Runtime:
-      - '0.005853'
+      - '0.005365'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -55,21 +55,73 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-BU-314","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Juana","last_name1":"Palacios","last_name2":"Sarabia","document_type":"dni","document_id":"77364195S","document_scope_code":"ES","born_at":"1946-06-28","gender":"undisclosed","address":"Vía
-        Pública Claudio, 88","postal_code":"64454","address_scope_code":"MK-47","email":"user23@example.org","phone":"0034","additional_information":{},"membership_allowed?":true}'
+        Pública Claudio, 88","postal_code":"64454","address_scope_code":"MK-47","email":"margeretbraun@brakustoy.org","phone":"0034544365028","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:05:58 GMT
+  recorded_at: Thu, 25 Jul 2019 16:05:56 GMT
+- request:
+    method: patch
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: UTF-8
+      string: address&address_scope_code&born_at&document_id&document_scope_code=ES&document_type=dni&email=user23%40example.org&first_name&gender&last_name1&last_name2&phone=0034&postal_code&scope_code
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=64584986-f03c-44e6-b164-9d7d2619aaff; path=/; expires=Thu, 25 Jul
+        2019 20:05:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=7eb6c749-3316-4fa9-8831-c9b40661ba7e; path=/; expires=Sun, 25
+        Jul 2021 16:05:56 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e7907dcc-df81-47db-855b-a7058f0fd9c2
+      X-Runtime:
+      - '0.350065'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Thu, 25 Jul 2019 16:05:56 GMT
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
+    uri: http://mycensus:3001/api/v1/en/people/1@census?version_at=2019-07-24%2016:05:56%20UTC
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
-        Safari/537.36
-      User-Ip:
-      - 127.0.0.1
+      - Faraday v0.15.4
       Accept-Encoding:
       - gzip, compressed
   response:
@@ -80,19 +132,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"b56169129effc2932e380bfeb35934c6"
+      - W/"9bad6996495feba0a9710c2b5ecdbb1b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=88b3739b-0031-4e34-bb7b-159d7af33522; path=/; expires=Thu, 25 Jul
-        2019 20:05:59 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=c45cdd8e-5620-4dca-86ea-1a70482629b9; path=/; expires=Sun, 25
-        Jul 2021 16:05:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=58545b29-e9c1-43b1-bd94-8a16d762c51f; path=/; expires=Thu, 25 Jul
+        2019 20:05:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ec9106a1-1fab-45fb-96fa-871bc79c1c05; path=/; expires=Sun, 25
+        Jul 2021 16:05:56 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 2189a080-f7bf-499d-9075-6aff87eb9d73
+      - e0974e8a-8255-48ab-a1ed-4c5be582f938
       X-Runtime:
-      - '0.006425'
+      - '0.020958'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -117,69 +168,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-BU-314","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Juana","last_name1":"Palacios","last_name2":"Sarabia","document_type":"dni","document_id":"77364195S","document_scope_code":"ES","born_at":"1946-06-28","gender":"undisclosed","address":"Vía
-        Pública Claudio, 88","postal_code":"64454","address_scope_code":"MK-47","email":"user23@example.org","phone":"0034","additional_information":{},"membership_allowed?":true}'
+        Pública Claudio, 88","postal_code":"64454","address_scope_code":"MK-47","email":"margeretbraun@brakustoy.org","phone":"0034544365028","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:05:59 GMT
-- request:
-    method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
-        Safari/537.36
-      User-Ip:
-      - 127.0.0.1
-      Accept-Encoding:
-      - gzip, compressed
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"b56169129effc2932e380bfeb35934c6"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=34b2c085-bfde-45c2-b79a-4ea87af08292; path=/; expires=Thu, 25 Jul
-        2019 20:06:04 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=d1de8a6a-15f3-4674-bf44-c36899dd6464; path=/; expires=Sun, 25
-        Jul 2021 16:06:04 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - 0e905cac-9174-4056-afe5-84e0f03cea3b
-      X-Runtime:
-      - '0.005205'
-      X-Frame-Options:
-      - DENY
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - origin-when-cross-origin
-      Clear-Site-Data:
-      - '"storage"'
-      Content-Security-Policy:
-      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
-        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CL-BU-314","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Juana","last_name1":"Palacios","last_name2":"Sarabia","document_type":"dni","document_id":"77364195S","document_scope_code":"ES","born_at":"1946-06-28","gender":"undisclosed","address":"Vía
-        Pública Claudio, 88","postal_code":"64454","address_scope_code":"MK-47","email":"user23@example.org","phone":"0034","additional_information":{},"membership_allowed?":true}'
-    http_version:
-  recorded_at: Thu, 25 Jul 2019 16:06:04 GMT
+  recorded_at: Thu, 25 Jul 2019 16:05:56 GMT
 recorded_with: VCR 4.0.0

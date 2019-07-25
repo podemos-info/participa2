@@ -67,6 +67,13 @@ FactoryBot.modify do
                              metadata: metadata)
     end
   end
+
+  factory :scope do
+    trait :local do
+      code { Decidim::CensusConnector.census_local_code }
+      initialize_with { Decidim::Scope.find_or_create_by(code: Decidim::CensusConnector.census_local_code) }
+    end
+  end
 end
 
 FactoryBot.define do
