@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a0af36a24fb879fea138c00a24ba5baf"
+      - W/"21d5bdcde81d6bbad58dc506ea0e6fa4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=62188ef5-68da-4ce3-ad55-4a1d40cb85fd; path=/; expires=Thu, 25 Jul
-        2019 20:07:46 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=b6bf65ac-1508-4bfa-9795-44b43ff929ca; path=/; expires=Sun, 25
-        Jul 2021 16:07:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=51fa1be7-d212-4a5d-bac3-7d790608afbe; path=/; expires=Fri, 26 Jul
+        2019 12:15:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d833cbba-13d8-4cb7-b4a5-511d32fce3eb; path=/; expires=Mon, 26
+        Jul 2021 08:15:59 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - '02939c29-be8f-462c-87c7-b801751e615d'
+      - b777cb4f-a805-4195-b0ce-f88fc05c9c42
       X-Runtime:
-      - '0.005247'
+      - '0.005559'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,16 +54,16 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-CM-CR-041","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":6},"first_name":"Concepción","last_name1":"Zambrano","last_name2":"Cordero","document_type":"passport","document_id":"WS148837","document_scope_code":"ES","born_at":"1951-11-18","gender":"male","address":"Vía
-        Pública Adela s/n. Puerta 690","postal_code":"13955","address_scope_code":"ES-CM-CR-041","email":"shizuko@heaney.com","phone":"0034491168094","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-CT-B-117","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":6},"first_name":"Sergio","last_name1":"Ulibarri","last_name2":"Paz","document_type":"nie","document_id":"Y7647309F","document_scope_code":"ES","born_at":"1997-11-05","gender":"female","address":"Entrada
+        Lourdes Merino, 8 Puerta 435","postal_code":"08796","address_scope_code":"ES-CT-B-117","email":"israel@kilback.org","phone":"0034468079112","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:07:46 GMT
+  recorded_at: Fri, 26 Jul 2019 08:15:59 GMT
 - request:
     method: post
     uri: http://mycensus:3001/api/v1/en/people/6@census/phone_verifications
     body:
       encoding: UTF-8
-      string: phone=0034491168094&received_code=9999999
+      string: phone=0034468079112&received_code=9999999
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -79,14 +79,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=7b1dcebd-7736-46a2-ab8c-a550ef91d8e3; path=/; expires=Thu, 25 Jul
-        2019 20:07:46 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=d515da47-7bf0-48ab-a644-4684147de52b; path=/; expires=Sun, 25
-        Jul 2021 16:07:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=72bc3a17-fee3-4087-9555-f9a480801a51; path=/; expires=Fri, 26 Jul
+        2019 12:15:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fdd874e9-d871-40cb-a141-4bb3c27c021d; path=/; expires=Mon, 26
+        Jul 2021 08:15:59 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - d3a9a1dd-e8ef-4717-ac6b-6e167900934e
+      - 43948391-c926-491e-8e53-f7a5eb4e1611
       X-Runtime:
-      - '0.560752'
+      - '0.888161'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -112,5 +112,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:07:46 GMT
+  recorded_at: Fri, 26 Jul 2019 08:16:00 GMT
 recorded_with: VCR 4.0.0

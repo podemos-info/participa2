@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7a57656e5d23f54a407e49b711d7604b"
+      - W/"e796b1ba0d6e1045cd7ca7e8e11dac11"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=acadedd4-0b4e-4c74-8ae6-3d233cda27e5; path=/; expires=Thu, 25 Jul
-        2019 20:06:33 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=a7d25379-9604-4dee-9a4b-161b4c18ffda; path=/; expires=Sun, 25
-        Jul 2021 16:06:33 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=cb3f8365-6e31-407e-9f80-9768d00ae036; path=/; expires=Fri, 26 Jul
+        2019 12:15:55 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=6249bfad-7811-4999-87cd-69f78f5718d6; path=/; expires=Mon, 26
+        Jul 2021 08:15:55 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 638e3d82-cabc-42e2-8c6a-630096a9ac3a
+      - 70168561-53a7-4bc6-8692-12b1999bfbd2
       X-Runtime:
-      - '0.005503'
+      - '0.015637'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,10 +54,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":9,"membership_level":"follower","scope_code":"ES-CM-GU-305","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":9},"first_name":"Óscar","last_name1":"Ballesteros","last_name2":"Rivas","document_type":"nie","document_id":"Z4138370P","document_scope_code":"ES","born_at":"1939-04-15","gender":"other","address":"Vía
-        Soledad Rascón, 91","postal_code":"19709","address_scope_code":"ES-CM-GU-305","email":"abramboehm@volkman.io","phone":"0034620774440","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":9,"membership_level":"follower","scope_code":"ES-CM-GU-300","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":9},"first_name":"Lourdes","last_name1":"Villalobos","last_name2":"Delatorre","document_type":"passport","document_id":"TQB248231","document_scope_code":"ES","born_at":"1991-10-31","gender":"female","address":"Huerta
+        Lilia Arevalo 15","postal_code":"19673","address_scope_code":"ES-CM-GU-300","email":"leolahammes@borer.biz","phone":"0034195009044","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:06:33 GMT
+  recorded_at: Fri, 26 Jul 2019 08:15:55 GMT
 - request:
     method: delete
     uri: http://mycensus:3001/api/v1/en/people/9@census?channel=decidim&reason=I%20just%20want%20to%20delete%20my%20account
@@ -81,14 +81,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=e6a15900-d7b7-43cd-b0c4-1ccc9670fe99; path=/; expires=Thu, 25 Jul
-        2019 20:06:34 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=861c12d0-69f5-4747-b018-9ffb6e22b67b; path=/; expires=Sun, 25
-        Jul 2021 16:06:34 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=7c783838-7d5c-4f33-9750-6c09332ab4a7; path=/; expires=Fri, 26 Jul
+        2019 12:15:58 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ec34f1a4-8def-48c5-a0af-ad9747410640; path=/; expires=Mon, 26
+        Jul 2021 08:15:58 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 597a1574-c2d2-4e07-a7d8-ae0309df2d24
+      - 05b990b5-1515-4ea0-98b7-d5f73246212b
       X-Runtime:
-      - '0.144710'
+      - '0.144538'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -114,5 +114,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Thu, 25 Jul 2019 16:06:34 GMT
+  recorded_at: Fri, 26 Jul 2019 08:15:58 GMT
 recorded_with: VCR 4.0.0
