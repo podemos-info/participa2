@@ -9,10 +9,12 @@
       </div>
     </div>
     <div class="card--list__data card--list__status">
-      <span class="card--list__data__icon"><%= icon *person_presenter.membership_level_icon_params %><br/><%= t(".status.#{person.membership_level}") %></span>
+      <span class="card--list__data__icon"><%= icon *person_presenter.membership_level_icon_params %><br/><%= person_presenter.membership_level %></span>
     </div>
     <div class="card--list__data card--list__actions">
-      <a href="<%= decidim_census.root_path(step: :verification, part: :membership) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.modify") %></a>
+      <% if person.membership_allowed? %>
+        <a href="<%= decidim_census.root_path(step: :verification, part: :membership) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.modify") %></a>
+      <% end %>
     </div>
   </div>
 

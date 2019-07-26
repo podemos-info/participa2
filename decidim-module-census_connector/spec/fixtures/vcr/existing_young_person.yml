@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/3@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"09a417ca67069aca5dc0a268fb766836"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=8469bc4a-786c-4a00-9e90-b4c5e3e9f097; path=/; expires=Fri, 26 Jul
+        2019 12:16:19 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=44373639-eabb-4d44-a991-3a1c1609fce4; path=/; expires=Mon, 26
+        Jul 2021 08:16:19 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 5e64ff98-806a-4a4d-b00c-73754d49a0a6
+      X-Runtime:
+      - '0.005405'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":3,"membership_level":"follower","scope_code":"ES-IB-PM-ME-002","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3},"first_name":"Alfredo","last_name1":"Alcaraz","last_name2":"Villareal","document_type":"nie","document_id":"X1418920G","document_scope_code":"ES","born_at":"2002-02-16","gender":"undisclosed","address":"Escalinata
+        Raúl Olivárez 13 Puerta 607","postal_code":"07523","address_scope_code":"ES-IB-PM-ME-002","email":"evelyne@goodwinullrich.net","phone":"0034703720579","additional_information":{},"membership_allowed?":false}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:19 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/3@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"09a417ca67069aca5dc0a268fb766836"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=7f8f4a31-06b0-427c-9041-676a884a3bf9; path=/; expires=Fri, 26 Jul
+        2019 12:16:19 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=2d3978f7-070d-412e-ac1c-4d2d4209a8e4; path=/; expires=Mon, 26
+        Jul 2021 08:16:19 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 3429aefb-e8c4-45fc-adf3-c7519bd4a583
+      X-Runtime:
+      - '0.005370'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":3,"membership_level":"follower","scope_code":"ES-IB-PM-ME-002","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3},"first_name":"Alfredo","last_name1":"Alcaraz","last_name2":"Villareal","document_type":"nie","document_id":"X1418920G","document_scope_code":"ES","born_at":"2002-02-16","gender":"undisclosed","address":"Escalinata
+        Raúl Olivárez 13 Puerta 607","postal_code":"07523","address_scope_code":"ES-IB-PM-ME-002","email":"evelyne@goodwinullrich.net","phone":"0034703720579","additional_information":{},"membership_allowed?":false}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:19 GMT
+recorded_with: VCR 4.0.0

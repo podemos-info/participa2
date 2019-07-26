@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+load "decidim/gravity_forms/version"
 
 describe Decidim::GravityForms do
   describe "#version" do

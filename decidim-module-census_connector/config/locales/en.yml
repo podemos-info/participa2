@@ -43,6 +43,7 @@ en:
         membership_level:
           follower: Follower
           member: Member
+          not_allowed: Not allowed
         state:
           cancelled: Cancelled
           pending: Pending of approval
@@ -98,8 +99,6 @@ en:
             activism: Activism
             status:
               activist: Activist
-              follower: Follower
-              member: Member
               not_activist: Not activist
             title: Your participation in Podemos
           profile:
@@ -157,6 +156,7 @@ en:
                 nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
                 passport: Additional passport page (optional)
               title: Identity verification
+            leave_for_later: Leave for later
             location_data_part:
               title: Location
             membership_verification_part:

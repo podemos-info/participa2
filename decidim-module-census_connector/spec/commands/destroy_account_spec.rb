@@ -10,7 +10,7 @@ module Decidim
       VCR.use_cassette(cassette, {}, &example)
     end
 
-    let(:user) { create(:user, :with_person, :confirmed) }
+    let(:user) { create(:user, :with_person, :confirmed, person_id: 5) }
     let(:person_proxy) { Decidim::CensusConnector::PersonProxy.for(user) }
     let!(:identity) { create(:identity, user: user) }
     let(:valid) { true }

@@ -16,10 +16,40 @@ FactoryBot.modify do
     trait :with_person do
       transient do
         person_id { 1 }
-        scope { create(:scope) }
         state { "enabled" }
         verification { "not_verified" }
         membership_level { "follower" }
+        scope { nil }
+      end
+    end
+
+    trait :with_member_person do
+      transient do
+        person_id { 2 }
+        state { "enabled" }
+        verification { "verified" }
+        membership_level { "member" }
+        scope { nil }
+      end
+    end
+
+    trait :with_young_person do
+      transient do
+        person_id { 3 }
+        state { "enabled" }
+        verification { "not_verified" }
+        membership_level { "follower" }
+        scope { nil }
+      end
+    end
+
+    trait :with_cancelled_person do
+      transient do
+        person_id { 4 }
+        state { "cancelled" }
+        verification { "not_verified" }
+        membership_level { "follower" }
+        scope { nil }
       end
     end
 
@@ -35,6 +65,13 @@ FactoryBot.modify do
       create(:authorization, user: user,
                              name: "census",
                              metadata: metadata)
+    end
+  end
+
+  factory :scope do
+    trait :local do
+      code { Decidim::CensusConnector.census_local_code }
+      initialize_with { Decidim::Scope.find_or_create_by(code: Decidim::CensusConnector.census_local_code) }
     end
   end
 end

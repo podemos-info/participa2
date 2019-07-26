@@ -2,7 +2,6 @@
 
 require "spec_helper"
 require "decidim/core/test/factories"
-require "faker/spanish_document"
 
 module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusPhoneVerificationStep do
@@ -13,11 +12,11 @@ module Decidim::CensusConnector
     end
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, :with_person, organization: organization) }
+    let(:user) { create(:user, :with_person, organization: organization, person_id: 6) }
 
     let(:person_proxy) { PersonProxy.for(user) }
 
-    let(:received_code) { "2943577" }
+    let(:received_code) { "9999999" }
     let(:params) { { part: "" } }
 
     let(:form) do
@@ -37,6 +36,7 @@ module Decidim::CensusConnector
 
     context "when received code is invalid" do
       let(:cassette) { "phone_verification_step_received_code_invalid" }
+      let(:received_code) { "0000000" }
 
       it "broadcasts :invalid" do
         expect { subject.call }.to broadcast(:invalid)

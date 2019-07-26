@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+load "decidim/crowdfundings/version"
 
 describe Decidim::Crowdfundings do
   describe "#version" do

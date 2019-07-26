@@ -26,7 +26,7 @@
         <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("circle-x")%><br/><%= t(".action.cancel_verification") %></a>
       <% elsif !person.verified? %>
         <a href="<%= decidim_census.root_path(step: :data, part: :personal) %>" class="card--list__data__icon"><%=icon("pencil")%></br><%= t(".action.modify") %></a>
-        <a href="<%= decidim_census.root_path(step: :verification) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
+        <a href="<%= decidim_census.root_path(step: :verification, part: :personal) %>" class="card--list__data__icon"><%=icon("task")%><br/><%= t(".action.verify") %></a>
       <% end %>
     </div>
   </div>

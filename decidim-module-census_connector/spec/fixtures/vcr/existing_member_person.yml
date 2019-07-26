@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"788fa9225eb269f80ea709204647071e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=f69b37d2-30cc-415f-b060-ed768914aa93; path=/; expires=Fri, 26 Jul
+        2019 12:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=8f762bbf-53b3-4d29-a9e8-32527f1a01b9; path=/; expires=Mon, 26
+        Jul 2021 08:16:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 3b037766-efa7-4592-ae1c-0d2d99a22f5f
+      X-Runtime:
+      - '0.005381'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-CL-VA-009","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Carmen","last_name1":"Delvalle","last_name2":"Mireles","document_type":"passport","document_id":"RMC351628","document_scope_code":"XX","born_at":"1953-12-26","gender":"female","address":"Caserio
+        Francisca, 5 Esc. 565","postal_code":"47771","address_scope_code":"ES-CL-VA-009","email":"tom@kovacek.org","phone":"0034753884023","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:17 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"788fa9225eb269f80ea709204647071e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=ab71a8e7-6ab3-4b27-a85a-309daaf17b2e; path=/; expires=Fri, 26 Jul
+        2019 12:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=46c7e30d-2c72-4f06-baa4-996c3c13db06; path=/; expires=Mon, 26
+        Jul 2021 08:16:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 374863e7-f65f-4004-8bbb-e2ace1e3da47
+      X-Runtime:
+      - '0.007174'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-CL-VA-009","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Carmen","last_name1":"Delvalle","last_name2":"Mireles","document_type":"passport","document_id":"RMC351628","document_scope_code":"XX","born_at":"1953-12-26","gender":"female","address":"Caserio
+        Francisca, 5 Esc. 565","postal_code":"47771","address_scope_code":"ES-CL-VA-009","email":"tom@kovacek.org","phone":"0034753884023","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:17 GMT
+recorded_with: VCR 4.0.0

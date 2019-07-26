@@ -43,6 +43,7 @@ es:
         membership_level:
           follower: Simpatizante
           member: Afiliado/a
+          not_allowed: No permitida
         state:
           cancelled: Dado de baja
           pending: Pendiente de validación
@@ -98,8 +99,6 @@ es:
             activism: Militancia
             status:
               activist: Militante
-              follower: No te has afiliado
-              member: Te has afiliado
               not_activist: Simpatizante
             title: Tu participación en Podemos
           profile:
@@ -157,6 +156,7 @@ es:
                 nie: 'Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional'
                 passport: Página adicional del pasaporte (opcional)
               title: Verificación de la identidad
+            leave_for_later: Dejar para más adelante
             location_data_part:
               title: Ubicación
             membership_verification_part:

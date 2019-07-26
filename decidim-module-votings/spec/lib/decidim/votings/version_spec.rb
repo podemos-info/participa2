@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+load "decidim/votings/version"
 
 describe Decidim::Votings do
   describe "#version" do

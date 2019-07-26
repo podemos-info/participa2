@@ -1,0 +1,180 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=cb8d773c-30b9-4167-a331-03e3e14de2c8; path=/; expires=Fri, 26 Jul
+        2019 12:16:03 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c479f34f-6104-4ad7-acd2-81423b27cee6; path=/; expires=Mon, 26
+        Jul 2021 08:16:03 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - f30bad68-d4bd-452c-8b61-2862d2a3467e
+      X-Runtime:
+      - '0.005558'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
+        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
+        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034417334257","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:03 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census?version_at=2019-07-25%2008:16:03%20UTC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=b88c462b-b0fb-4f5c-8e43-ff6e7fa23e9c; path=/; expires=Fri, 26 Jul
+        2019 12:16:03 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c6768437-2810-403c-af2e-89af600ed140; path=/; expires=Mon, 26
+        Jul 2021 08:16:03 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 326961c0-80c8-4409-8037-81194edd1b72
+      X-Runtime:
+      - '0.006804'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
+        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
+        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034417334257","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:03 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=5de1059e-38a7-47f4-bf71-72bb0691b93d; path=/; expires=Fri, 26 Jul
+        2019 12:16:03 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c17b59c9-5154-4d2d-beaf-79a832e16bfb; path=/; expires=Mon, 26
+        Jul 2021 08:16:03 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 2f1d0b86-b5d4-4dae-94a8-8792811b09c8
+      X-Runtime:
+      - '0.005160'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
+        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
+        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034417334257","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Fri, 26 Jul 2019 08:16:03 GMT
+recorded_with: VCR 4.0.0

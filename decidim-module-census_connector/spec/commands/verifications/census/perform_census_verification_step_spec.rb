@@ -2,7 +2,6 @@
 
 require "spec_helper"
 require "decidim/core/test/factories"
-require "faker/spanish_document"
 
 module Decidim::CensusConnector
   describe Verifications::Census::PerformCensusVerificationStep do
@@ -13,8 +12,8 @@ module Decidim::CensusConnector
     end
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, :with_person, organization: organization) }
-
+    let(:user) { create(:user, :with_person, organization: organization, person_id: person_id) }
+    let(:person_id) { 7 }
     let(:person_proxy) { PersonProxy.for(user) }
 
     let(:document_file1) do
@@ -42,6 +41,7 @@ module Decidim::CensusConnector
     end
 
     context "when no document files present" do
+      let(:person_id) { 8 }
       let(:document_file1) { nil }
       let(:cassette) { "verification_step_files_missing" }
 

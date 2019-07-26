@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
+    uri: http://mycensus:3001/api/v1/en/people/6@census
     body:
       encoding: US-ASCII
       string: ''
@@ -10,9 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
+      - gzip, compressed
   response:
     status:
       code: 200
@@ -21,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8502ecca85d0a4511bbda211c36121a7"
+      - W/"21d5bdcde81d6bbad58dc506ea0e6fa4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=bce5accf-3602-4b21-b2c2-c7dcfa107752; path=/; expires=Fri, 28 Jun
-        2019 14:03:28 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=303197db-edec-4f11-8daf-c4f384d5167d; path=/; expires=Mon, 28
-        Jun 2021 10:03:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=51fa1be7-d212-4a5d-bac3-7d790608afbe; path=/; expires=Fri, 26 Jul
+        2019 12:15:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d833cbba-13d8-4cb7-b4a5-511d32fce3eb; path=/; expires=Mon, 26
+        Jul 2021 08:15:59 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 66b05cf4-ff22-45fd-9683-aed577c2eaa5
+      - b777cb4f-a805-4195-b0ce-f88fc05c9c42
       X-Runtime:
-      - '0.006035'
+      - '0.005559'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -48,31 +46,29 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJwZXJzb25faWQiOjEsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1WQy1BLTkwMSIsInN0YXRlIjoiZW5hYmxlZCIsInZlcmlmaWNhdGlvbiI6InZlcmlmaWVkIiwicGhvbmVfdmVyaWZpY2F0aW9uIjoibm90X3ZlcmlmaWVkIiwiZXh0ZXJuYWxfaWRzIjp7ImRlY2lkaW0iOjF9LCJmaXJzdF9uYW1lIjoiVG9tw6FzIiwibGFzdF9uYW1lMSI6Ik5pZXRvIiwibGFzdF9uYW1lMiI6IkxvZXJhIiwiZG9jdW1lbnRfdHlwZSI6InBhc3Nwb3J0IiwiZG9jdW1lbnRfaWQiOiJDVjE0ODYwMyIsImRvY3VtZW50X3Njb3BlX2NvZGUiOiJYWCIsImJvcm5fYXQiOiIxOTI4LTAyLTA5IiwiZ2VuZGVyIjoibWFsZSIsImFkZHJlc3MiOiJBcnJhYmFsIEFudG9uaW8sIDEyIiwicG9zdGFsX2NvZGUiOiIwMzE2MyIsImFkZHJlc3Nfc2NvcGVfY29kZSI6IkVTLVZDLUEtOTAxIiwiZW1haWwiOiJsZXR0aWVodWVsQGRpY2tpLm9yZyIsInBob25lIjoiMDAzNDM0NzMyMzc5NiIsImFkZGl0aW9uYWxfaW5mb3JtYXRpb24iOnt9fQ==
+      encoding: UTF-8
+      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-CT-B-117","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":6},"first_name":"Sergio","last_name1":"Ulibarri","last_name2":"Paz","document_type":"nie","document_id":"Y7647309F","document_scope_code":"ES","born_at":"1997-11-05","gender":"female","address":"Entrada
+        Lourdes Merino, 8 Puerta 435","postal_code":"08796","address_scope_code":"ES-CT-B-117","email":"israel@kilback.org","phone":"0034468079112","additional_information":{},"membership_allowed?":true}'
     http_version:
-  recorded_at: Fri, 28 Jun 2019 10:03:28 GMT
+  recorded_at: Fri, 26 Jul 2019 08:15:59 GMT
 - request:
     method: post
-    uri: http://mycensus:3001/api/v1/en/people/1@census/phone_verifications
+    uri: http://mycensus:3001/api/v1/en/people/6@census/phone_verifications
     body:
       encoding: UTF-8
-      string: phone=0034347323796&received_code=2943577
+      string: phone=0034468079112&received_code=9999999
     headers:
       User-Agent:
       - Faraday v0.15.4
       Content-Type:
       - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 202
@@ -83,14 +79,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=357ee792-534b-4812-8aa3-2ee9b4131ccb; path=/; expires=Fri, 28 Jun
-        2019 14:03:28 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6d6db4cc-32a8-438f-b78e-5ae03e58e3b2; path=/; expires=Mon, 28
-        Jun 2021 10:03:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=72bc3a17-fee3-4087-9555-f9a480801a51; path=/; expires=Fri, 26 Jul
+        2019 12:15:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fdd874e9-d871-40cb-a141-4bb3c27c021d; path=/; expires=Mon, 26
+        Jul 2021 08:15:59 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 53e1d103-29fe-4b32-bb1e-f7793c6e2ee1
+      - 43948391-c926-491e-8e53-f7a5eb4e1611
       X-Runtime:
-      - '8.168500'
+      - '0.888161'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -106,13 +102,15 @@ http_interactions:
       Clear-Site-Data:
       - '"storage"'
       Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Fri, 28 Jun 2019 10:03:37 GMT
+  recorded_at: Fri, 26 Jul 2019 08:16:00 GMT
 recorded_with: VCR 4.0.0

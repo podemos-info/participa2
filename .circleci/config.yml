@@ -56,12 +56,12 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: bundle install
+          command: bundle install --path /home/circleci/project/vendor/bundle
 
       - save_cache:
           key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
-            - /usr/local/bundle
+            - vendor/bundle
 
       - restore_cache:
           keys:
