@@ -59,7 +59,7 @@ module Decidim
           end
 
           def authorize_age
-            return unauthorized(:age, minimum_age: minimum_age) if authorizing_by_age? && person.age < minimum_age
+            return unauthorized(:age, minimum_age: minimum_age) if authorizing_by_age? && person.min_age < minimum_age && person.age < minimum_age
 
             true
           end
