@@ -60,6 +60,12 @@ module Decidim
         @document_scope ||= @user.organization.scopes.find_by(code: document_scope_code)
       end
 
+      def min_age
+        return @min_age if defined?(@min_age)
+
+        @min_age = person_data["age"] || 0
+      end
+
       def age
         @age ||= born_at ? calculate_age : 0
       end
@@ -81,20 +87,7 @@ module Decidim
       end
 
       def calculate_age
-        now = Time.zone.now.to_date
-
-        this_year = now.year
-        this_month = now.month
-        today = now.day
-
-        birth_year = born_at.year
-        birth_month = born_at.month
-        birth_day = born_at.day
-
-        month_of_birth_passed = this_month > birth_month
-        month_of_birth_current_but_day_passed = this_month == birth_month && today >= birth_day
-
-        this_year - birth_year - (month_of_birth_passed || month_of_birth_current_but_day_passed ? 0 : 1)
+        (Time.zone.today.to_s(:number).to_i - born_at.to_s(:number).to_i) / 10_000
       end
     end
   end
