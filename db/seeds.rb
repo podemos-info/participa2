@@ -56,11 +56,11 @@ class ParticipaSeeder
     Decidim::ScopeType.delete_all
     Decidim::Assembly.delete_all
 
-    Decidim::Core::Engine.load_seed unless Rails.env.production?
+    if new_organization?
+      create_homepage_hero_block
+      Decidim::System::CreateDefaultPages.call(organization)
+    end
 
-    create_homepage_hero_block
-
-    Decidim::System::CreateDefaultPages.call(organization) if new_organization?
     Decidim::CensusConnector::Engine.load_seed
   end
 
@@ -69,6 +69,9 @@ class ParticipaSeeder
     create_assembly(title: "Podemos Estatal", promoted: true)
 
     local_scope.children.each do |autonomous_community|
+      print "\r" + " "*80
+      print "\rLoading assemblies... #{local_name(autonomous_community)}"
+
       assembly = create_scoped_assembly(scope: autonomous_community)
 
       # autonomous cities assemblies has no children
@@ -80,17 +83,22 @@ class ParticipaSeeder
           province.children.each do |island|
             island_assembly = create_scoped_assembly(scope: island, parent_assembly: assembly)
             create_towns_assemblies(scope: island, parent_assembly: island_assembly)
+            print "."
           end
         end
       elsif autonomous_community.children.count > 1
         autonomous_community.children.each do |province|
           province_assembly = create_scoped_assembly(scope: province, parent_assembly: assembly)
           create_towns_assemblies(scope: province, parent_assembly: province_assembly)
+          print "."
         end
       else
         create_towns_assemblies(scope: autonomous_community.children[0], parent_assembly: assembly)
+        print "."
       end
     end
+
+    puts "\rLoading assemblies..."
 
     # create exterior assembly
     create_assembly(title: "Podemos Exterior", where: " en el exterior", scope: non_local_scope)
@@ -229,7 +237,7 @@ class ParticipaSeeder
   end
 
   def new_organization?
-    @new_organization ||= Decidim::Organization.where(twitter_handler: "ahorapodemos").exists?
+    @new_organization ||= !Decidim::Organization.where(twitter_handler: "ahorapodemos").exists?
   end
 
   def local_scope
