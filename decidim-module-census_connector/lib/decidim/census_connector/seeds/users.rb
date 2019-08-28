@@ -10,7 +10,7 @@ module Decidim
 
         attr_accessor :organization
 
-        def seed(options = {})
+        def seed(_options)
           puts "Loading admin users..."
           (1..5).each { |id| synchronize_user(id, true) }
 
@@ -45,12 +45,14 @@ module Decidim
           )
 
           authorization.update!(
-            metadata: person_attributes_hash(person, %i(state person_id scope_code verification membership_level document_type age))
+            metadata: person_attributes_hash(person, [:state, :person_id, :scope_code, :verification, :membership_level, :document_type, :age])
           )
         end
 
         def person_attributes_hash(person, attributes)
-          attributes.reduce({}) { |res, attr| res[attr] = person.send(attr); res }
+          attributes.each_with_object({}) do |object, attribute|
+            object[attribute] = person.send(attribute)
+          end
         end
       end
     end

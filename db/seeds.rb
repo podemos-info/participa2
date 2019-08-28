@@ -69,7 +69,7 @@ class ParticipaSeeder
     create_assembly(title: "Podemos Estatal", promoted: true)
 
     local_scope.children.each do |autonomous_community|
-      print "\r" + " "*80
+      print "\r" + " " * 80
       print "\rLoading assemblies... #{local_name(autonomous_community)}"
 
       assembly = create_scoped_assembly(scope: autonomous_community)
