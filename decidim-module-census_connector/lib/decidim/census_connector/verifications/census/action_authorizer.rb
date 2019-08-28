@@ -163,7 +163,7 @@ module Decidim
           end
 
           def person_proxy
-            @person_proxy || Decidim::CensusConnector::PersonProxy.new(authorization) if authorization
+            @person_proxy ||= Decidim::CensusConnector::PersonProxy.new(authorization) if authorization
           end
 
           def census_closure_person
