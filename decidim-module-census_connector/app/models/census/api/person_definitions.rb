@@ -8,7 +8,8 @@ module Census
     module PersonDefinitions
       extend ActiveSupport::Concern
 
-      PERSON_ATTRIBUTES = %w(first_name last_name1 last_name2
+      PERSON_ATTRIBUTES = %w(person_id email
+                             first_name last_name1 last_name2
                              gender born_at
                              document_type document_id document_scope_code
                              scope_code address phone address_scope_code postal_code

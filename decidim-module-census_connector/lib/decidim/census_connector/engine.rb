@@ -30,11 +30,18 @@ module Decidim
       end
 
       def load_seed
+        require "decidim/census_connector/seeds/scopes"
+        require "decidim/census_connector/seeds/users"
+
         Decidim::Scope.delete_all
         Decidim::ScopeType.delete_all
+        Decidim::Authorization.delete_all
+        Decidim::User.delete_all
+        Decidim::SearchableResource.delete_all
 
         Decidim::Organization.find_each do |organization|
           Decidim::CensusConnector::Seeds::Scopes.new(organization).seed
+          Decidim::CensusConnector::Seeds::Users.new(organization).seed
         end
       end
 

@@ -8,7 +8,7 @@
     <div class="row">
       <div class="column large-9">
         <div class="field" data-local-scope-ranges="<%= local_scope_ranges.to_json %>">
-          <%= f.scopes_picker :address_scope_id do |scope|
+          <%= f.scopes_picker :address_scope_id, { checkboxes_on_top: true } do |scope|
             { url: decidim.scopes_picker_path(current: scope&.id, field: f.label_for(:address_scope_id)),
               text: scope_name_for_picker(scope, t("decidim.scopes.prompt")) }
           end %>
@@ -22,7 +22,7 @@
     </div>
 
     <div id="scope_selector" class="field hide">
-      <%= f.scopes_picker :scope_id do |scope|
+      <%= f.scopes_picker :scope_id, { checkboxes_on_top: true } do |scope|
         { url: decidim.scopes_picker_path(root: local_scope, current: scope&.id, field: f.label_for(:scope_id)),
           text: scope_name_for_picker(scope, t("decidim.scopes.prompt")) }
       end %>

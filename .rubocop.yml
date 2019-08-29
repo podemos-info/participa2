@@ -25,7 +25,7 @@ Naming/FileName:
 
 Rails/Output:
   Exclude:
-    - decidim-module-census_connector/lib/decidim/census_connector/seeds/scopes.rb
+    - decidim-module-census_connector/lib/decidim/census_connector/seeds/*.rb
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
