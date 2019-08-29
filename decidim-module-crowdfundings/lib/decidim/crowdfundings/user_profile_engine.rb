@@ -23,6 +23,15 @@ module Decidim
         root to: "contributions#index"
       end
 
+      initializer "decidim_crowdfundings.user_menu" do
+        Decidim.menu :user_menu do |menu|
+          menu.item I18n.t("menu.crowdfundings", scope: "decidim"),
+                    decidim_crowdfundings_user_profile.contributions_path,
+                    position: 1,
+                    active: :inclusive
+        end
+      end
+
       initializer "decidim_crowdfundings.register_activism_type" do
         next unless Decidim::Crowdfundings.active?
 
