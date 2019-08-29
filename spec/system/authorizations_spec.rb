@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Census authorization", type: :system do
+describe "Census authorization", type: :system do
   let(:organization) { create(:organization, available_authorizations: ["census"]) }
   let(:user) { create(:user, :confirmed, organization: organization) }
 

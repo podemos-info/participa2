@@ -14,6 +14,10 @@ FactoryBot.define do
         create(:participatory_process, :with_steps, organization: organization)
       end
     end
+
+    trait :assembly do
+      participatory_space { create(:assembly, :published) }
+    end
   end
 
   factory :voting, class: "Decidim::Votings::Voting" do
@@ -41,6 +45,10 @@ FactoryBot.define do
 
     trait :finished do
       end_date { Time.zone.now - 6.hours }
+    end
+
+    trait :assembly do
+      component { create(:voting_component, :assembly) }
     end
   end
 

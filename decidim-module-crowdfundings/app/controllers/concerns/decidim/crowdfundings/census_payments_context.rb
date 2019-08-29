@@ -14,8 +14,6 @@ module Decidim
         include Decidim::CensusConnector::CensusContext
       end
 
-      private
-
       def payments_proxy
         @payments_proxy ||= Decidim::Crowdfundings::PaymentsProxy.new(person_proxy, user_request: request)
       end
