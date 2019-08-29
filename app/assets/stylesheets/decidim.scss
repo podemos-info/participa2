@@ -64,3 +64,10 @@ $secondary3: #a7e6d9;
 a[href*="/authorizations"], a[href*="/user_interests"]{
   display: none;
 }
+
+.side-panel__tabs .tabs-title {
+  border-bottom: none;
+}
+.side-panel__tabs .tabs-title a {
+  border-bottom: 1px solid #e8e8e8;
+}
