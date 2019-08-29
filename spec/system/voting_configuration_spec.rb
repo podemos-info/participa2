@@ -6,7 +6,7 @@ require "decidim/assemblies/test/factories"
 require "decidim/votings/test/factories"
 require "decidim/census_connector/test/factories"
 
-RSpec.describe "Votings configuration", type: :system do
+describe "Votings configuration", type: :system do
   let(:manifest) { Decidim.find_component_manifest("votings") }
   let(:organization) { create(:organization) }
   let(:assembly) { create(:assembly, organization: organization) }

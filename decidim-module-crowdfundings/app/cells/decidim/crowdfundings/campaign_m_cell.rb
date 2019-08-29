@@ -29,7 +29,7 @@ module Decidim
       end
 
       def payments_proxy
-        context[:payments_proxy]
+        context[:payments_proxy] || controller.payments_proxy
       end
     end
   end

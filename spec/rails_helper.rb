@@ -13,6 +13,7 @@ require File.expand_path("../config/environment", __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require "rspec/rails"
+require "rspec/cells"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -24,6 +25,7 @@ require "rspec/rails"
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 
+require "support/vcr"
 require "decidim/dev/test/rspec_support/capybara"
 require "decidim/dev/test/rspec_support/factory_bot"
 require "decidim/dev/test/rspec_support/route_helpers"
