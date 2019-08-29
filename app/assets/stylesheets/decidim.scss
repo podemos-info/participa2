@@ -71,3 +71,22 @@ a[href*="/authorizations"], a[href*="/user_interests"]{
 .side-panel__tabs .tabs-title a {
   border-bottom: 1px solid #e8e8e8;
 }
+
+.participatory_space__container{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.5rem 0;
+
+  @include breakpoint(medium){
+    padding: 2rem 0;
+  }
+
+  @include breakpoint(mediumlarge){
+    padding: 2.5rem 0;
+  }
+
+  @include breakpoint(large){
+    padding: 3rem 0;
+  }
+}

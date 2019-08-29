@@ -1,9 +1,5 @@
-<% if votings.any? %>
-  <%= cell(
-    "decidim/collapsible_list",
-    votings,
-    cell_options: { context: { current_user: current_user } },
-    list_class: "column",
-    size: votings.count
-    ) %>
+<% votings.each do |voting| %>
+  <div class="columns small-12 medium-6 large-4">
+    <%= cell "decidim/card", voting, context: { current_user: current_user } %>
+  </div>
 <% end %>
