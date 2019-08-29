@@ -5,10 +5,6 @@
 
 
 <div class="row">
-  <div class="columns text-center">
-    <h2 class="heading2"><%= translated_attribute campaign.title %></h2>
-  </div>
-
   <% if campaign.target_amount.present? %>
     <div class="columns section view-side mediumlarge-4 mediumlarge-push-8">
       <%= render 'decidim/crowdfundings/campaigns/totals', user: nil %>
@@ -22,7 +18,7 @@
   <div class="columns mediumlarge-8 <%= campaign.target_amount.present? ? "mediumlarge-pull-4" : "mediumlarge-centered" %>">
     <div class="card">
       <div class="card__content">
-        <%= sanitize translated_attribute campaign.description %>
+        <h2 class="heading2"><%= translated_attribute campaign.title %></h2>
 
         <%= render 'confirm_form' %>
       </div>
