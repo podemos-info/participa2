@@ -32,7 +32,7 @@
           <p>
             <%= t(".current_#{recurrent_contribution.state}_recurrent_support",
                   amount: decidim_number_to_currency(recurrent_contribution.amount),
-                  periodicity: recurrent_contribution.frequency) %>
+                  periodicity: frequency_label(recurrent_contribution.frequency).downcase) %>
           </p>
 
           <p>

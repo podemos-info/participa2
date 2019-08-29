@@ -5,6 +5,12 @@
         <%= percentage_tag campaign %>
       <% end %>
     </div>
-    <%= action_authorized_link_to :support, t('decidim.components.crowdfundings.actions.support'), resource_path, resource: campaign, class: "card__button button button--sc" %>
+    <% if has_recurrent_contribution? %>
+      <%= link_to recurrent_contribution_path, class: "card__button button button--sc" do %>
+        <%= t("change_#{recurrent_contribution.state}_contribution", scope: "decidim.crowdfundings.campaigns.show") %>
+      <% end %>
+    <% else %>
+      <%= action_authorized_link_to :support, t('decidim.components.crowdfundings.actions.support'), resource_path, resource: campaign, class: "card__button button button--sc" %>
+    <% end %>
   </div>
 </div>

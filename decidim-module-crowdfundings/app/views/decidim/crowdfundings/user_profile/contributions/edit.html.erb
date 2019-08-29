@@ -1,4 +1,4 @@
-<h1><%= translated_attribute(campaign.title) %></h1>
+<h2><%= translated_attribute(campaign.title) %></h2>
 <%= decidim_form_for(contribution_form,
                      url: contribution_path(contribution),
                      html: { class: 'form contribution-form' }) do |f| %>

@@ -16,6 +16,12 @@ module Decidim
       validates :external_credit_card_return_url, presence: true, if: :credit_card_external?
       validates :accept_terms_and_conditions, presence: true
 
+      def allowed_payment_method_type
+        return if existing_payment_method? && payment_method
+
+        super
+      end
+
       def fix_payment_method
         return unless payment_method_type.match?(/\A\d+\z/)
         @payment_method_id = payment_method_type.to_i

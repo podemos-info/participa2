@@ -13,7 +13,7 @@ module Decidim
 
       let(:amount) { ::Faker::Number.number(4) }
       let(:frequency) { "punctual" }
-      let(:payment_method_type) { "existing_payment_method" }
+      let(:payment_method_type) { "direct_debit" }
       let(:user_annual_accumulated) { 0 }
       let(:accept_terms_and_conditions) { true }
       let(:attributes) do

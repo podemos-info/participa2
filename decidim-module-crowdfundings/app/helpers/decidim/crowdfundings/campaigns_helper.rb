@@ -29,11 +29,10 @@ module Decidim
         I18n.t("labels.frequencies.#{frequency}", scope: "decidim.crowdfundings")
       end
 
-      # PUBLIC returns a list of payment method options that can
+      # PUBLIC returns a list of payment method type options that can
       # be used in a select input tag.
-      def payment_method_options(except: nil)
-        types = Census::API::PaymentMethodDefinitions::TYPES - [except]
-        types.map do |type|
+      def new_payment_method_options
+        Decidim::Crowdfundings.enabled_payment_methods.map do |type|
           [payment_method_label(type), type]
         end
       end

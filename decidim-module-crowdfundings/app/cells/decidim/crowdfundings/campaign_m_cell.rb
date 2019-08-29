@@ -17,7 +17,16 @@ module Decidim
       end
 
       def description
-        translated_attribute campaign.description
+        if recurrent_contribution
+          t(
+            "current_#{recurrent_contribution.state}_recurrent_support",
+            amount: decidim_number_to_currency(recurrent_contribution.amount),
+            periodicity: frequency_label(recurrent_contribution.frequency).downcase,
+            scope: "decidim.crowdfundings.campaigns.show"
+          )
+        else
+          translated_attribute campaign.description
+        end
       end
 
       def has_amount?
@@ -30,6 +39,21 @@ module Decidim
 
       def payments_proxy
         context[:payments_proxy] || controller.payments_proxy
+      end
+
+      def recurrent_contribution
+        return nil unless campaign.recurrent_support_allowed?
+        return @recurrent_contribution if defined?(@recurrent_contribution)
+
+        @recurrent_contribution = CampaignRecurrentContributions.new(current_user, campaign).first
+      end
+
+      def has_recurrent_contribution?
+        recurrent_contribution.present?
+      end
+
+      def recurrent_contribution_path
+        Decidim::Crowdfundings::UserProfileEngine.routes.url_helpers.edit_contribution_path(recurrent_contribution)
       end
     end
   end

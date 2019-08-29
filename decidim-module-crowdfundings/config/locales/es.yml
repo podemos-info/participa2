@@ -43,6 +43,7 @@ es:
               invalid_format: tiene un formato inválido.
             payment_method_type:
               blank: Debes elegir una forma de pago.
+              invalid: no está permitido.
   decidim:
     components:
       crowdfundings:

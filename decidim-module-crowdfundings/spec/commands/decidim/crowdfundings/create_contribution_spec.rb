@@ -27,8 +27,9 @@ module Decidim
       let(:amount) { ::Faker::Number.number(4).to_i }
       let(:frequency) { "punctual" }
       let(:payment_method_type) { "existing_payment_method" }
-
       let(:payment_method_id) { 1 }
+      let(:payment_method) { create(:payment_method, id: 1) }
+
       let(:iban) { nil }
       let(:external_credit_card_return_url) { "https://example.org/validate/__RESULT__" }
 
@@ -56,6 +57,7 @@ module Decidim
       before do
         stub_orders_total(0)
         stub_create_order(order_info, http_status: http_status)
+        stub_payment_method(payment_method)
       end
 
       context "with existing payment method / Direct debit" do
