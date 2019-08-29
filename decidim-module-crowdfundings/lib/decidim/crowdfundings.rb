@@ -43,6 +43,10 @@ module Decidim
       "monthly"
     end
 
+    config_accessor :enabled_payment_methods do
+      %w(direct_debit credit_card_external).freeze
+    end
+
     def self.active?
       ActiveRecord::Base.connection.table_exists?("decidim_crowdfundings_campaigns")
     rescue ActiveRecord::NoDatabaseError
