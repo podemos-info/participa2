@@ -17,8 +17,8 @@ module Decidim
       end
 
       def allowed_payment_method_type
-        return if payment_method_type.match?(/\A\d+\z/) ||
-                  Decidim::Crowdfundings.enabled_payment_methods.member?(payment_method_type)
+        return if payment_method_type && (payment_method_type.match?(/\A\d+\z/) ||
+                  Decidim::Crowdfundings.enabled_payment_methods.member?(payment_method_type))
 
         errors.add(
           :payment_method_type,
