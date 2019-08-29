@@ -42,6 +42,7 @@ module Decidim
         when false
           current_organization.cta_button_path.presence || decidim.new_user_registration_path
         when :no_person then decidim_census.root_path
+        when :no_verified then decidim_census.root_path(step: :verification, part: :personal)
         else decidim_census_account.root_path
         end
       end
