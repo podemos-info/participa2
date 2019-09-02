@@ -3,9 +3,14 @@
 require "spec_helper"
 
 describe "Edit contribution", type: :system do
+  around do |example|
+    VCR.use_cassette(cassette, {}, &example)
+  end
+
   let(:campaign) { create(:campaign) }
   let(:organization) { campaign.organization }
   let(:user) { create :user, :with_person, :confirmed, organization: organization }
+  let(:cassette) { "existing_person" }
 
   let!(:contribution) do
     create(:contribution,
