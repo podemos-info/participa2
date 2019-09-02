@@ -85,7 +85,9 @@ module Decidim
         end
 
         def related_active_campaigns
-          @related_active_campaigns ||= PersonPrioritizedCampaigns.new(person_participatory_spaces).query.active.where.not(id: contributions.map(&:decidim_crowdfundings_campaign_id))
+          @related_active_campaigns ||= PersonPrioritizedCampaigns.new(person_participatory_spaces).query
+                                                                  .active
+                                                                  .where.not(id: contributions.map(&:decidim_crowdfundings_campaign_id))
         end
 
         def contribution_form
