@@ -34,12 +34,14 @@ module Decidim
 
       let(:amount) { ::Faker::Number.number(4).to_i }
       let(:frequency) { "punctual" }
+      let(:resume) { false }
 
       let(:form) do
         Decidim::Crowdfundings::UserProfile::ContributionForm
           .new(
             amount: amount,
-            frequency: frequency
+            frequency: frequency,
+            resume: resume
           ).with_context(context)
       end
 
@@ -64,6 +66,25 @@ module Decidim
 
         it "broadcasts ok" do
           expect { subject.call }.to broadcast(:ok)
+        end
+
+        context "when contribution was paused and should be resumed" do
+          let(:resume) { true }
+          let(:contribution) do
+            create(:contribution,
+                   :monthly,
+                   :paused,
+                   user: user,
+                   campaign: campaign)
+          end
+
+          it "broadcasts ok" do
+            expect { subject.call }.to broadcast(:ok)
+          end
+
+          it "updates contribution state" do
+            expect { subject.call }.to change(contribution, :state).from("paused").to("accepted")
+          end
         end
       end
     end
