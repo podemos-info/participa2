@@ -6,7 +6,7 @@ module Decidim
     class ContributionsController < Decidim::Crowdfundings::ApplicationController
       include NeedsCampaign
 
-      helper_method :contribution_form, :confirm_form
+      helper_method :contribution_form, :confirm_form, :route_proxy
       helper Decidim::Crowdfundings::ContributionsHelper
 
       def create
@@ -34,8 +34,7 @@ module Decidim
         accept_contribution if params[:result] == "ok"
         reject_contribution if params[:result] == "ko"
 
-        redirect_to EngineRouter.main_proxy(current_component)
-                                .campaign_path(contribution.campaign)
+        redirect_to route_proxy.campaign_path(contribution.campaign)
       end
 
       def accept_contribution
@@ -106,6 +105,10 @@ module Decidim
 
       def campaign_errors
         @campaign_errors ||= contribution_form.errors[:campaign]
+      end
+
+      def route_proxy
+        @route_proxy ||= EngineRouter.main_proxy(current_component)
       end
     end
   end

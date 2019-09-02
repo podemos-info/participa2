@@ -9,6 +9,7 @@ module Decidim
 
         attribute :amount, Integer
         attribute :frequency, String
+        attribute :resume, Boolean
 
         validates :amount,
                   presence: true,

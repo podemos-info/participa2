@@ -38,7 +38,7 @@ describe "Crowdfunding activism type", type: :system do
     within ".card--list__item.activism_type_crowdfunding_card" do
       click_link("Edit")
     end
-    expect(page).to have_content("Your recurrent contributions")
+    expect(page).to have_content("YOUR RECURRENT CONTRIBUTIONS")
   end
 
   context "when the person has a contribution" do
@@ -65,7 +65,7 @@ describe "Crowdfunding activism type", type: :system do
       within ".card--list__item.activism_type_crowdfunding_card" do
         click_link("Edit")
       end
-      expect(page).to have_content("Your recurrent contributions")
+      expect(page).to have_content("YOUR RECURRENT CONTRIBUTIONS")
     end
   end
 end

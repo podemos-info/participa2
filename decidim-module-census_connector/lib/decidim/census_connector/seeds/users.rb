@@ -10,7 +10,7 @@ module Decidim
 
         attr_accessor :organization
 
-        def seed(_options)
+        def seed(*_args)
           puts "Loading admin users..."
           (1..5).each { |id| synchronize_user(id, true) }
 
@@ -27,12 +27,14 @@ module Decidim
           user = Decidim::User.find_or_initialize_by(id: person_data[:external_ids][:decidim])
           person = Decidim::CensusConnector::Person.new(user, person_data.deep_stringify_keys)
 
+          password = person.email.split("@").first.downcase + "participa2"
           user.update!(
             admin: admin,
             email: person.email,
             name: person.first_name,
             nickname: "#{person.first_name} #{person.last_name1.strip[0].upcase}.",
-            password: user.password_confirmation = person.email.split("@").first.downcase + "participa2",
+            password: password,
+            password_confirmation: password,
             confirmed_at: Time.zone.now,
             locale: I18n.default_locale,
             organization: organization,
@@ -50,7 +52,7 @@ module Decidim
         end
 
         def person_attributes_hash(person, attributes)
-          attributes.each_with_object({}) do |object, attribute|
+          attributes.each_with_object({}) do |attribute, object|
             object[attribute] = person.send(attribute)
           end
         end

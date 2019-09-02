@@ -118,4 +118,66 @@ http_interactions:
         Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957","additional_information":{}}'
     http_version:
   recorded_at: Fri, 19 Oct 2018 15:34:14 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"12778b62658af3a3d0250dd89004c6af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=889a0f6d-0fa3-43ee-a25e-02c77b49129c; path=/; expires=Mon, 02 Sep
+        2019 17:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=2c6858ae-8348-4537-9477-be8fee674642; path=/; expires=Thu, 02
+        Sep 2021 13:16:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 10a0996e-82ec-4240-851d-09331e88aea0
+      X-Runtime:
+      - '0.256635'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-EX-BA-119","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marisol","last_name1":"Candelaria","last_name2":"Soria","document_type":"passport","document_id":"VQO717500","document_scope_code":"XX","born_at":"1994-08-25","gender":"undisclosed","address":"Parcela
+        Rosa Campos 66 Esc. 230","postal_code":"06148","address_scope_code":"ES-EX-BA-119","email":"teri@stiedemanngleichner.name","phone":"0034512960690","additional_information":{},"membership_allowed?":true}'
+    http_version:
+  recorded_at: Mon, 02 Sep 2019 13:16:17 GMT
 recorded_with: VCR 4.0.0

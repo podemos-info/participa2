@@ -13,14 +13,16 @@ module Decidim
       paths["db/migrate"] = nil
 
       routes do
-        resources :contributions, only: [:index, :edit, :update] do
-          member do
-            get "pause"
-            get "resume"
+        authenticate(:user) do
+          resources :contributions, only: [:index, :edit, :update] do
+            member do
+              get "pause"
+              get "resume"
+            end
           end
-        end
 
-        root to: "contributions#index"
+          root to: "contributions#index"
+        end
       end
 
       initializer "decidim_crowdfundings.user_menu" do

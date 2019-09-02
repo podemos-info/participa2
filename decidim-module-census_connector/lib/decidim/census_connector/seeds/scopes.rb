@@ -16,6 +16,9 @@ module Decidim
           base_path = options[:base_path] || File.expand_path("../../../../db/seeds/scopes", __dir__)
           cache_path = ENV["SCOPES_CACHE_PATH"].presence || CACHE_PATH
 
+          # Create cache folder if not exists
+          FileUtils.mkdir_p(File.dirname(cache_path))
+
           puts "Loading scope types..."
           save_scope_types("#{base_path}/scope_types.tsv")
 
