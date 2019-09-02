@@ -64,6 +64,12 @@ module Decidim
             contribution.user.id == user.id &&
             contribution.recurrent?
           )
+        when :pause
+          toggle_allow(
+            contribution.user.id == user.id &&
+            contribution.accepted? &&
+            contribution.recurrent?
+          )
         when :resume
           toggle_allow(
             contribution.user.id == user.id &&

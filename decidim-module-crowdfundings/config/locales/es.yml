@@ -57,6 +57,7 @@ es:
             contribution_allowed: Aportaciones permitidas
     crowdfundings:
       actions:
+        cancel: Cancelar
         confirm_destroy: "¿Estás seguro?"
         destroy: Borrar
         edit: Editar
@@ -65,6 +66,7 @@ es:
         preview: Previsualizar
         resume: Reanudar
         title: Acciones
+        view: Ver
       activism_type:
         edit: Modificar
         status:
@@ -187,10 +189,11 @@ es:
           edit:
             select_amount: Selecciona la cantidad
             select_frequency: Selecciona la frecuencia
-            update: Actualiza
+            update: Actualizar
           index:
             no_records_found: No se han encontrado aportaciones.
             title: Tus aportaciones periódicas
+            related_active_campaigns: Campañas que te pueden interesar
           pause:
             fail: No se ha podido suspender tu aportación.
             success: Tu aportación ha sido suspendida satisfactoriamente.
@@ -204,4 +207,4 @@ es:
       support_tag:
         other: Otra
     menu:
-      crowdfundings: Crowdfundings
+      crowdfundings: Colaboración económica

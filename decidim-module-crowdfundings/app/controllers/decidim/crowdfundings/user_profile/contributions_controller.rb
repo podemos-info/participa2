@@ -6,8 +6,8 @@ module Decidim
       # Provides methods for the user to manage his recurrent contributions.
       class ContributionsController < Decidim::Crowdfundings::UserProfile::ApplicationController
         helper Decidim::Crowdfundings::ContributionsHelper
-        helper_method :contributions, :contribution, :campaign,
-                      :contribution_form
+        helper_method :contributions, :contribution, :campaign, :contribution_form,
+                      :related_active_campaigns, :campaign_path
 
         def index; end
 
@@ -36,7 +36,7 @@ module Decidim
         end
 
         def pause
-          enforce_permission_to :update, :contribution, contribution: contribution
+          enforce_permission_to :pause, :contribution, contribution: contribution
 
           UpdateContributionState.call(contribution, "paused") do
             on(:ok) do
@@ -84,6 +84,10 @@ module Decidim
           @campaign ||= contribution.campaign
         end
 
+        def related_active_campaigns
+          @related_active_campaigns ||= PersonPrioritizedCampaigns.new(person_participatory_spaces).query.active.where.not(id: contributions.map(&:decidim_crowdfundings_campaign_id))
+        end
+
         def contribution_form
           @contribution_form ||= if params.include?(:contribution)
                                    form(Decidim::Crowdfundings::UserProfile::ContributionForm).from_params(params, **form_context)
@@ -102,6 +106,10 @@ module Decidim
 
         def return_back_session_key
           session[:"#{params[:controller]}_return_after_update"]
+        end
+
+        def campaign_path(campaign)
+          EngineRouter.main_proxy(campaign.component).campaign_path(campaign)
         end
       end
     end

@@ -1,71 +1,81 @@
-<div class="card">
-  <div class="card-divider">
-    <h2 class="card-title"><%=t '.title' %></h2>
+<h2 class="section-heading"><%=t '.title' %></h2>
+<% if contributions.any? %>
+  <div class="table-scroll">
+    <table class="table-list">
+      <thead>
+      <tr>
+        <th>
+          <%=t 'models.campaign.fields.title', scope: 'decidim.crowdfundings' %>
+        </th>
+        <th class="center">
+          <%=t 'models.contribution.fields.state', scope: 'decidim.crowdfundings' %>
+        </th>
+        <th class="center">
+          <%=t 'models.contribution.fields.frequency', scope: 'decidim.crowdfundings' %>
+        </th>
+        <th class="right">
+          <%=t 'models.contribution.fields.amount', scope: 'decidim.crowdfundings' %>
+        </th>
+        <th class="actions"><%=t 'actions.title', scope: 'decidim.crowdfundings' %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% contributions.each do |contribution| %>
+        <tr>
+          <td>
+            <% if allowed_to? :update, :contribution, contribution: contribution %>
+              <%= link_to translated_attribute(contribution.campaign.title), edit_contribution_path(contribution) %>
+            <% else %>
+              <%= link_to translated_attribute(contribution.campaign.title), campaign_path(contribution.campaign) %>
+            <% end %>
+          </td>
+          <td class="center">
+            <%= state_label contribution.state %>
+          </td>
+          <td class="center">
+            <%= frequency_label contribution.frequency %>
+          </td>
+          <td class="right">
+            <%= decidim_number_to_currency contribution.amount %>
+          </td>
+          <td class="table-list__actions">
+            <%= icon_link_to 'eye',
+                             campaign_path(contribution.campaign),
+                             t('actions.view', scope: 'decidim.crowdfundings'),
+                             class: 'action-icon--view' %>
+            <% if allowed_to? :update, :contribution, contribution: contribution %>
+              <%= icon_link_to 'pencil',
+                               edit_contribution_path(contribution),
+                               t('actions.edit', scope: 'decidim.crowdfundings'),
+                               class: 'action-icon--edit' %>
+            <% end %>
+            <% if allowed_to? :resume, :contribution, contribution: contribution %>
+              <%= icon_link_to 'media-play',
+                               resume_contribution_path(contribution),
+                               t('actions.resume', scope: 'decidim.crowdfundings'),
+                               class: 'action-icon--media-resume' %>
+            <% elsif allowed_to? :pause, :contribution, contribution: contribution %>
+              <%= icon_link_to 'media-pause',
+                               pause_contribution_path(contribution),
+                               t('actions.pause', scope: 'decidim.crowdfundings'),
+                               class: 'action-icon--media-pause' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
-  <div class="card-section">
-    <% if contributions.any? %>
-      <div class="table-scroll">
-        <table class="table-list">
-          <thead>
-          <tr>
-            <th>
-              <%=t 'models.campaign.fields.title', scope: 'decidim.crowdfundings' %>
-            </th>
-            <th class="center">
-              <%=t 'models.contribution.fields.state', scope: 'decidim.crowdfundings' %>
-            </th>
-            <th class="center">
-              <%=t 'models.contribution.fields.frequency', scope: 'decidim.crowdfundings' %>
-            </th>
-            <th class="right">
-              <%=t 'models.contribution.fields.amount', scope: 'decidim.crowdfundings' %>
-            </th>
-            <th class="actions"><%=t 'actions.title', scope: 'decidim.crowdfundings' %></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% contributions.each do |contribution| %>
-            <tr>
-              <td>
-                <%= translated_attribute(contribution.campaign.title) %>
-              </td>
-              <td class="center">
-                <%= state_label contribution.state %>
-              </td>
-              <td class="center">
-                <%= frequency_label contribution.frequency %>
-              </td>
-              <td class="right">
-                <%= decidim_number_to_currency contribution.amount %>
-              </td>
-              <td class="table-list__actions">
-                <% if allowed_to? :update, :contribution, contribution: contribution %>
-                  <%= icon_link_to 'pencil',
-                                   edit_contribution_path(contribution),
-                                   t('actions.edit', scope: 'decidim.crowdfundings'),
-                                   class: 'action-icon--edit' %>
+<% else %>
+  <%=t '.no_records_found' %>
+<% end %>
 
-                  <%= icon_link_to 'media-pause',
-                                   pause_contribution_path(contribution),
-                                   t('actions.pause', scope: 'decidim.crowdfundings'),
-                                   class: 'action-icon--media-pause' %>
+<% if related_active_campaigns.any? %>
+<h2 class="section-heading"><%=t '.related_active_campaigns' %></h2>
 
-                <% end %>
-
-                <% if allowed_to? :resume, :contribution, contribution: contribution %>
-                  <%= icon_link_to 'media-play',
-                                   resume_contribution_path(contribution),
-                                   t('actions.resume', scope: 'decidim.crowdfundings'),
-                                   class: 'action-icon--media-resume' %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <%=t '.no_records_found' %>
-    <% end %>
-  </div>
-</div>
+<ul>
+<% related_active_campaigns.each do |campaign| %>
+  <li><%= link_to translated_attribute(campaign.title), campaign_path(campaign) %></li>
+<% end %>
+</ul>
+<% end %>

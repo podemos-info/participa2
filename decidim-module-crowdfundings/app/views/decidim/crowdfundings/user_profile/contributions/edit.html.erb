@@ -1,4 +1,4 @@
-<h2><%= translated_attribute(campaign.title) %></h2>
+<h2 class="section-heading"><%= translated_attribute(campaign.title) %></h2>
 <%= decidim_form_for(contribution_form,
                      url: contribution_path(contribution),
                      html: { class: 'form contribution-form' }) do |f| %>
@@ -24,7 +24,16 @@
   <% end %>
 
   <div class="form-general-submit">
-    <%= f.submit t('.update'), class: 'button secondary support' %>
+    <% if allowed_to? :resume, :contribution, contribution: contribution %>
+      <%= f.hidden_field :resume, value: true %>
+      <%= f.submit t('actions.resume', scope: 'decidim.crowdfundings'), class: 'button success' %>
+    <% elsif allowed_to? :pause, :contribution, contribution: contribution %>
+      <%= f.submit t('.update'), class: 'button support' %>
+      <%= link_to t('actions.pause', scope: 'decidim.crowdfundings'), pause_contribution_path(contribution), class: "button alert button--right" %>
+    <% else %>
+      <%= f.submit t('.update'), class: 'button support' %>
+    <% end %>
+    <%= link_to t('actions.cancel', scope: 'decidim.crowdfundings'), :back, class: "button hollow" %>
   </div>
 <% end %>
 

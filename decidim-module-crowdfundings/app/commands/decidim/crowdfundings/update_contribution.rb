@@ -25,8 +25,17 @@ module Decidim
       def update_contribution
         contribution.update(
           frequency: form.frequency,
-          amount: form.amount
+          amount: form.amount,
+          **resume_contribution
         )
+      end
+
+      def resume_contribution
+        if contribution.paused? && form.resume
+          { state: "accepted" }
+        else
+          {}
+        end
       end
     end
   end
