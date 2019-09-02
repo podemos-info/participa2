@@ -4,6 +4,7 @@ PATH
     decidim-census_connector (0.18.0)
       decidim-core (~> 0.18.a)
       decidim-verifications (~> 0.18.a)
+      em-http-request
       faraday
       hutch
 

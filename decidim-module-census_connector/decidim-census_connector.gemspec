@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim-core", compatible_constraint
   s.add_dependency "decidim-verifications", compatible_constraint
+  s.add_dependency "em-http-request"
   s.add_dependency "faraday"
   s.add_dependency "hutch"
 
