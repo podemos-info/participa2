@@ -55,6 +55,9 @@ class ParticipaSeeder
     Decidim::Scope.delete_all
     Decidim::ScopeType.delete_all
     Decidim::Assembly.delete_all
+    Decidim::Crowdfundings::Contribution.delete_all
+    Decidim::Crowdfundings::Campaign.delete_all
+    Decidim::Votings::Voting.delete_all
 
     if new_organization?
       create_homepage_hero_block
