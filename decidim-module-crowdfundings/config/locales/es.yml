@@ -192,8 +192,8 @@ es:
             update: Actualizar
           index:
             no_records_found: No se han encontrado aportaciones.
-            title: Tus aportaciones periódicas
             related_active_campaigns: Campañas que te pueden interesar
+            title: Tus aportaciones periódicas
           pause:
             fail: No se ha podido suspender tu aportación.
             success: Tu aportación ha sido suspendida satisfactoriamente.

@@ -192,8 +192,8 @@ en:
             update: Update
           index:
             no_records_found: No contributions found
-            title: Your recurrent contributions
             related_active_campaigns: Related active campaigns
+            title: Your recurrent contributions
           pause:
             fail: Couldn't suspend the contribution.
             success: Your contribution has been successfully suspended.
