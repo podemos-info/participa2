@@ -28,3 +28,5 @@ public/uploads
 .rubocop-https---raw-githubusercontent-com-decidim-decidim-0-18-stable--rubocop-rails-yml
 
 spec/decidim_dummy_app/
+
+.env

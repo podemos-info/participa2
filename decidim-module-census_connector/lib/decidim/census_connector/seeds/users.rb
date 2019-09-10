@@ -16,6 +16,9 @@ module Decidim
 
           puts "Loading regular users..."
           (6..50).each { |id| synchronize_user(id, false) }
+
+          max_id = Decidim::User.maximum(:id)
+          Decidim::User.connection.execute(ActiveRecord::Base.send(:sanitize_sql_array, ["ALTER SEQUENCE decidim_users_id_seq RESTART WITH ?", max_id + 1]))
         end
 
         private
