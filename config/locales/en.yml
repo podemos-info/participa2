@@ -3,7 +3,7 @@ en:
   content_blocks:
     highlighted:
       name: Highlighted activity
-      visit_space: Visit the space
+      take_part: Take part
   decidim:
     content_blocks:
       hero:
