@@ -19,17 +19,17 @@
     </div>
 
     <div class="row">
+      <div class="column large-3">
+        <div class="field date">
+          <%= f.date_field :born_at, "data-start-view" => "decade", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
+        </div>
+      </div>
       <div class="column large-9">
         <div class="field">
           <%= f.label :gender %>
           <div class="radio-options">
             <%= f.collection_radio_buttons :gender, Decidim::CensusConnector::Person.genders, :last, :first %>
           </div>
-        </div>
-      </div>
-      <div class="column large-3">
-        <div class="field date">
-          <%= f.date_field :born_at, "data-start-view" => "decade", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
         </div>
       </div>
     </div>
