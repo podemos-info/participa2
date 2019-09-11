@@ -99,10 +99,11 @@ module Decidim
           end
 
           def origin_qualified_id
-            "#{user.id}@decidim"
+            "#{user.id}@#{Rails.application.engine_name}-#{organization.id}"
           end
 
           delegate :user, to: :person_proxy
+          delegate :organization, to: :user
           delegate :personal_part?, :location_part?, :phone_part?, :phone_verification_required?, :verify_phone?, :local_scope, to: :form
           delegate :first_name, :last_name1, :last_name2, :document_type, :document_id, to: :form
           delegate :born_at, :gender, :address, :postal_code, :phone, to: :form

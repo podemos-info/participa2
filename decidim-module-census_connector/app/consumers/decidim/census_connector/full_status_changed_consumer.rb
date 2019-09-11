@@ -2,25 +2,37 @@
 
 module Decidim
   module CensusConnector
-    class FullStatusChangedConsumer
+    class FullStatusChangedConsumer < ApplicationConsumer
       include ::Hutch::Consumer
+
       consume "census.people.full_status_changed"
 
       def process(message)
-        params = prepare_message(message)
-        authorization = Decidim::Authorization.find_by("metadata->>'person_id' = ?", params["person_id"].to_s)
-        return unless authorization
+        params = parse_message(message)
 
-        authorization.metadata.merge!(params)
-        authorization.save!
+        params[:users].each do |user|
+          authorization = Decidim::Authorization.find_by(user: user, name: "census")
+          next unless authorization
+
+          authorization.metadata.merge!(params[:full_status])
+          authorization.save!
+        end
       end
 
       private
 
-      def prepare_message(message)
-        ret = message.body
-        ret["person_id"] = ret.delete("person").split("@").first.to_i
-        ret
+      def parse_message(message)
+        body = message.body
+        organization_ids = parse_external_ids(body["external_ids"])
+
+        users = organization_ids.map do |organization_id, user_id|
+          Decidim::User.find_by(decidim_organization_id: organization_id, id: user_id)
+        end
+
+        {
+          users: users,
+          full_status: body.except("person", "external_ids")
+        }
       end
     end
   end
