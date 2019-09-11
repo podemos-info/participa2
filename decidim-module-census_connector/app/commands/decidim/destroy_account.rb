@@ -20,7 +20,7 @@ Decidim::DestroyAccount.class_eval do
     result, _info = person_proxy.create_cancellation(cancellation_params)
 
     unless result == :ok
-      @form.errors.add :reason, :census_down
+      @form.errors.add :delete_reason, :census_down
       raise ActiveRecord::Rollback
     end
   end

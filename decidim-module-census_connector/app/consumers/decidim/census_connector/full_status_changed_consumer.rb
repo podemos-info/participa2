@@ -27,7 +27,7 @@ module Decidim
 
         users = organization_ids.map do |organization_id, user_id|
           Decidim::User.find_by(decidim_organization_id: organization_id, id: user_id)
-        end
+        end.compact
 
         {
           users: users,

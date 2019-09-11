@@ -83,7 +83,7 @@ module Decidim
         end
 
         def pretty_phone
-          "(+#{parsed_phone.country_code}) #{parsed_phone.national}"
+          "(+#{parsed_phone.country_code}) #{parsed_phone.raw_national}"
         end
 
         def activism_active?
