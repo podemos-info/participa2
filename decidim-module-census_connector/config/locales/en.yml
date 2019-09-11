@@ -188,3 +188,6 @@ en:
         first_login:
           actions:
             census: Get verified with Podemos census to get full access to the platform
+  errors:
+    messages:
+      census_down: can't be updated when the census service is not available. Please, try again later or contact us if the problem persists.
