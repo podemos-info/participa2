@@ -13,16 +13,20 @@ module Decidim::Devise
     def show
       return old_show unless has_person?
 
+      ret = nil
       Decidim::User.transaction do
-        old_show do |resource|
+        ret = old_show do |resource|
           result, _info = person_proxy.update(email: resource.email)
-
-          if result != :ok
-            @form.errors.add :reason, :census_down
+          unless result == :ok
+            resource.errors.add :email, :census_down
             raise ActiveRecord::Rollback
           end
         end
       end
+
+      return ret if ret
+
+      redirect_to root_path, alert: I18n.t("errors.messages.census_down")
     end
   end
 end

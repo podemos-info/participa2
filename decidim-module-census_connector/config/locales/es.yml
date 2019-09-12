@@ -190,4 +190,4 @@ es:
             census: Verifícate en el censo de Podemos census para tener acceso a toda la plataforma
   errors:
     messages:
-      census_down: no puede ser actualizado cuando el servicio de gestión del censo no está disponible. Por favor, inténtalo de nuevo más tarde o contactanos si el problema persiste.
+      census_down: Tu registro no puede ser actualizado cuando el servicio de gestión del censo no está disponible. Por favor, inténtalo de nuevo más tarde o contactanos si el problema persiste.
