@@ -13,7 +13,16 @@ Decidim::DestroyAccount.class_eval do
   def destroy_follows
     old_destroy_follows
 
-    person_proxy.create_cancellation(cancellation_params)
+    create_cancellation
+  end
+
+  def create_cancellation
+    result, _info = person_proxy.create_cancellation(cancellation_params)
+
+    unless result == :ok
+      @form.errors.add :delete_reason, :census_down
+      raise ActiveRecord::Rollback
+    end
   end
 
   def cancellation_params

@@ -37,7 +37,7 @@ describe ContentBlocks::HighlightedCell, type: :cell do
 
     it "shows the name of the space and a link to it" do
       expect(subject).to have_text(translated(campaign.component.participatory_space.title))
-      expect(subject).to have_text("Visitar el espacio")
+      expect(subject).to have_text("Participa")
     end
 
     it "shows the campaign title and a support button" do
@@ -53,7 +53,7 @@ describe ContentBlocks::HighlightedCell, type: :cell do
 
     it "shows the name of the space and a link to it" do
       expect(subject).to have_text(translated(voting.component.participatory_space.title))
-      expect(subject).to have_text("Visitar el espacio")
+      expect(subject).to have_text("Participa")
     end
 
     it "shows the voting title and a vote button" do

@@ -188,3 +188,6 @@ es:
         first_login:
           actions:
             census: Verifícate en el censo de Podemos census para tener acceso a toda la plataforma
+  errors:
+    messages:
+      census_down: Tu registro no puede ser actualizado cuando el servicio de gestión del censo no está disponible. Por favor, inténtalo de nuevo más tarde o contactanos si el problema persiste.

@@ -2,20 +2,17 @@
 
 module Decidim
   module CensusConnector
-    class FullStatusChangedConsumer < ApplicationConsumer
+    class ConfirmEmailChangeConsumer < ApplicationConsumer
       include ::Hutch::Consumer
 
-      consume "census.people.full_status_changed"
+      consume "census.people.confirm_email_change"
 
       def process(message)
         params = parse_message(message)
 
         params[:users].each do |user|
-          authorization = Decidim::Authorization.find_by(user: user, name: "census")
-          next unless authorization
-
-          authorization.metadata.merge!(params[:full_status])
-          authorization.save!
+          user.email = params[:email]
+          user.save!
         end
       end
 
@@ -27,11 +24,11 @@ module Decidim
 
         users = organization_ids.map do |organization_id, user_id|
           Decidim::User.find_by(decidim_organization_id: organization_id, id: user_id)
-        end.compact
+        end
 
         {
           users: users,
-          full_status: body.except("person", "external_ids")
+          email: body["email"]
         }
       end
     end

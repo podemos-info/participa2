@@ -46,7 +46,7 @@ module Decidim::CensusConnector
     it "shows the location data information" do
       within ".card--list__item.scope_card" do
         expect(page).to have_content("LOCATION")
-        expect(page).to have_content(translated(person.address))
+        expect(page).to have_content(person.address)
         expect(page).to have_content(translated(person.scope.name))
       end
     end
@@ -59,9 +59,11 @@ module Decidim::CensusConnector
     end
 
     it "shows the person phone" do
+      phone = Phonelib.parse(person.phone)
       within ".card--list__item.phone_card" do
         expect(page).to have_content("MOBILE PHONE")
-        expect(page).to have_content(translated(person.phone))
+        expect(page).to have_content(phone.country_code)
+        expect(page).to have_content(phone.raw_national)
       end
     end
 
