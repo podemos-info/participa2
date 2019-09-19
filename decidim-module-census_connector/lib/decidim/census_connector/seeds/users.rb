@@ -27,7 +27,10 @@ module Decidim
           ret, person_data = Census::API::Person.new(nil).find("#{id}@census")
           return unless ret == :ok && person_data&.fetch(:email, nil)
 
-          user = Decidim::User.find_or_initialize_by(id: person_data[:external_ids][:decidim])
+          user_id = person_data[:external_ids][:"#{Rails.application.engine_name}-#{organization.id}"]
+          puts "User ID not found for person #{person_data[:person_id]}." && return unless user_id
+
+          user = Decidim::User.find_or_initialize_by(id: user_id)
           person = Decidim::CensusConnector::Person.new(user, person_data.deep_stringify_keys)
 
           password = person.email.split("@").first.downcase + "participa2"
