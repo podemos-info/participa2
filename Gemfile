@@ -6,7 +6,7 @@ ruby "2.5.3"
 
 gem "dotenv-rails", require: "dotenv/rails-now"
 
-gem "airbrake", "~> 5.8", require: false
+gem "airbrake", "~> 7.4"
 gem "decidim", "~> 0.18.0"
 gem "decidim-census_connector", path: "decidim-module-census_connector"
 gem "decidim-crowdfundings", path: "decidim-module-crowdfundings"
