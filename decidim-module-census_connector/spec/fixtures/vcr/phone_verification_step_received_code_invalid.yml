@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"171974206adcfd8959054dfa6715785c"
+      - W/"4f748d555ef1f5aacc68f65805e74727"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=066dbd6d-c36d-45be-87af-523a4e0fa9c3; path=/; expires=Fri, 26 Jul
-        2019 12:16:00 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=19050723-bbfa-4d9e-9dc9-6636d3dfb8c3; path=/; expires=Mon, 26
-        Jul 2021 08:16:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=e52c5206-bb92-408f-8a35-66f38b72b718; path=/; expires=Tue, 24 Sep
+        2019 16:22:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=83096c1f-26d3-4fab-905f-ef5221d496a1; path=/; expires=Fri, 24
+        Sep 2021 12:22:15 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 70d887aa-8cf0-4aa2-b301-d782e0f6eb52
+      - 66153319-b5e7-4057-9a7d-792c98858918
       X-Runtime:
-      - '0.005451'
+      - '0.006123'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,16 +54,16 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":6,"membership_level":"follower","scope_code":"ES-CT-B-117","state":"enabled","verification":"not_verified","phone_verification":"verified","external_ids":{"decidim":6},"first_name":"Sergio","last_name1":"Ulibarri","last_name2":"Paz","document_type":"nie","document_id":"Y7647309F","document_scope_code":"ES","born_at":"1997-11-05","gender":"female","address":"Entrada
-        Lourdes Merino, 8 Puerta 435","postal_code":"08796","address_scope_code":"ES-CT-B-117","email":"israel@kilback.org","phone":"0034468079112","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":6,"external_ids":{"participa2_application-1":6},"scope_code":"ES-AN-J-085","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"verified","first_name":"Alfonso","last_name1":"Sierra","last_name2":"Banda","document_type":"nie","document_id":"Z6366350R","document_scope_code":"ES","born_at":"1931-07-28","gender":"undisclosed","email":"sydneymckenzie@damore.co","phone":"0034388289186","address":"Escalinata
+        Rubén 2 Esc. 568","address_scope_code":"ES-AN-J-085","postal_code":"23732","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:20.534Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:00 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:15 GMT
 - request:
     method: post
     uri: http://mycensus:3001/api/v1/en/people/6@census/phone_verifications
     body:
       encoding: UTF-8
-      string: phone=0034468079112&received_code=0000000
+      string: phone=0034388289186&received_code=0000000
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -79,14 +79,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=c420080b-3708-4206-8f71-46d6be5e519c; path=/; expires=Fri, 26 Jul
-        2019 12:16:00 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=3a0f47d7-43b8-4f99-ad6d-371c10613be1; path=/; expires=Mon, 26
-        Jul 2021 08:16:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=292ac46f-049a-4e60-855f-73d97db3b7ba; path=/; expires=Tue, 24 Sep
+        2019 16:22:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d9d1d651-6f4b-48f0-b2b4-1dcb419c4462; path=/; expires=Fri, 24
+        Sep 2021 12:22:15 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 59e67527-2bdb-4506-a3c8-085fa8fc9164
+      - 6cd693e9-9f4e-4b40-bd78-d5338a547c34
       X-Runtime:
-      - '0.005869'
+      - '0.006003'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -112,5 +112,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"received_code":[{"error":"invalid"}]}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:00 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:15 GMT
 recorded_with: VCR 4.0.0

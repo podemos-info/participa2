@@ -22,19 +22,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"12778b62658af3a3d0250dd89004c6af"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=38fcbb81-0c31-4c49-8f43-382f56d265f9; path=/; expires=Mon, 02 Sep
-        2019 17:55:58 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6f321c8c-3a76-4029-8c03-3d72c05381dc; path=/; expires=Thu, 02
-        Sep 2021 13:55:58 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=4270c4f9-d8cc-4258-be72-0c4c1ea452fb; path=/; expires=Tue, 24 Sep
+        2019 16:26:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c47555c8-4010-4f31-9804-9f6e218eb947; path=/; expires=Fri, 24
+        Sep 2021 12:26:41 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - ef0bb044-2ea7-4118-8d0b-519d5d85fe69
+      - e6316d51-9258-4d3a-aafd-90ae1438efe5
       X-Runtime:
-      - '0.019263'
+      - '0.005759'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -58,10 +58,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-EX-BA-119","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marisol","last_name1":"Candelaria","last_name2":"Soria","document_type":"passport","document_id":"VQO717500","document_scope_code":"XX","born_at":"1994-08-25","gender":"undisclosed","address":"Parcela
-        Rosa Campos 66 Esc. 230","postal_code":"06148","address_scope_code":"ES-EX-BA-119","email":"teri@stiedemanngleichner.name","phone":"0034512960690","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Mon, 02 Sep 2019 13:55:58 GMT
+  recorded_at: Tue, 24 Sep 2019 12:26:41 GMT
 - request:
     method: get
     uri: http://mycensus:3001/api/v1/en/people/1@census
@@ -84,19 +84,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"12778b62658af3a3d0250dd89004c6af"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=07cc65f2-9298-465e-9605-8e398ea82d73; path=/; expires=Mon, 02 Sep
-        2019 17:58:28 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=1919e312-6930-41ac-97fd-1ce303b278cb; path=/; expires=Thu, 02
-        Sep 2021 13:58:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=379d7db2-9d5e-47ca-8097-85db16192f92; path=/; expires=Tue, 24 Sep
+        2019 16:27:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9c44a3a0-0e10-4436-a664-96b4ae1d73c7; path=/; expires=Fri, 24
+        Sep 2021 12:27:15 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 76554878-a912-44d9-80d2-1d6225201efa
+      - 3d3fcee5-3d3f-40f0-b0fa-703713a0e74c
       X-Runtime:
-      - '0.005164'
+      - '0.005401'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -120,8 +120,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-EX-BA-119","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marisol","last_name1":"Candelaria","last_name2":"Soria","document_type":"passport","document_id":"VQO717500","document_scope_code":"XX","born_at":"1994-08-25","gender":"undisclosed","address":"Parcela
-        Rosa Campos 66 Esc. 230","postal_code":"06148","address_scope_code":"ES-EX-BA-119","email":"teri@stiedemanngleichner.name","phone":"0034512960690","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Mon, 02 Sep 2019 13:58:28 GMT
+  recorded_at: Tue, 24 Sep 2019 12:27:15 GMT
 recorded_with: VCR 4.0.0

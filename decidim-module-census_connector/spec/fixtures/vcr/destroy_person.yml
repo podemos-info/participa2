@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"54144df38bb4ff9ceb62dce6ad27a0c1"
+      - W/"a305101c2a7b0daa57cafe24454a6b4d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=2c91663b-c608-4f50-b8e9-d41170b89bbb; path=/; expires=Thu, 12 Sep
-        2019 12:48:39 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=8478284f-00e9-4ee3-aaf7-dcf98319b65d; path=/; expires=Sun, 12
-        Sep 2021 08:48:39 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=62e1a211-fcee-4d70-8d17-d259cca63ac5; path=/; expires=Tue, 24 Sep
+        2019 16:22:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a1d50c9f-8fc6-4a14-8bce-11409a7c2953; path=/; expires=Fri, 24
+        Sep 2021 12:22:15 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 9048b5fd-3170-4d61-912a-e6a6e532a8d2
+      - 4701a45b-65e8-45f2-a2cf-080f1a6955f0
       X-Runtime:
-      - '0.248910'
+      - '0.005233'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,10 +54,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":9,"membership_level":"follower","scope_code":"ES-CT-GI-185","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"participa2_application-1":9},"first_name":"Marcos","last_name1":"Jasso","last_name2":"Espinal","document_type":"dni","document_id":"50372175J","document_scope_code":"ES","born_at":"1934-08-26","gender":"female","address":"Ferrocarril
-        Alfredo 3","postal_code":"17167","address_scope_code":"ES-CT-GI-185","email":"shirlene@schuster.biz","phone":"0034397164411","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":9,"external_ids":{"participa2_application-1":9},"scope_code":"ES-CL-ZA-256","state":"enabled","membership_level":"follower","verification":"verification_received","phone_verification":"not_verified","first_name":"Caridad","last_name1":"Mota","last_name2":"Canales","document_type":"nie","document_id":"Z5543426V","document_scope_code":"ES","born_at":"1971-10-15","gender":"male","email":"alexandra@hilll.biz","phone":"0034454424411","address":"Glorieta
+        Mariano, 4 Esc. 703","address_scope_code":"ES-CL-ZA-256","postal_code":"49178","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:34.154Z"}'
     http_version:
-  recorded_at: Thu, 12 Sep 2019 08:48:40 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:15 GMT
 - request:
     method: delete
     uri: http://mycensus:3001/api/v1/en/people/9@census?channel=decidim&reason=I%20just%20want%20to%20delete%20my%20account
@@ -81,14 +81,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=36cf8d11-54ef-4a8f-a7a5-42c43e951732; path=/; expires=Thu, 12 Sep
-        2019 12:48:41 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=26002cab-fb46-436c-a99a-f579785b79e9; path=/; expires=Sun, 12
-        Sep 2021 08:48:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=2faa4448-1818-4e1f-9eb9-a6f55d9f8f8c; path=/; expires=Tue, 24 Sep
+        2019 16:22:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=e1eefdbc-2789-4d26-8441-03eba7c068f4; path=/; expires=Fri, 24
+        Sep 2021 12:22:17 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - ade6e09e-ebb9-4926-8f99-b7ec80fae681
+      - e3266c9b-4733-40dd-8442-6ff20b906f5b
       X-Runtime:
-      - '0.245178'
+      - '0.152612'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -114,5 +114,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Thu, 12 Sep 2019 08:48:41 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:17 GMT
 recorded_with: VCR 4.0.0

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1934-01-22&document_id=30181994Z&document_scope_code=ES&document_type=dni&email=user84%40example.org&first_name=Vena&gender=female&last_name1=Rau&last_name2&origin_qualified_id=994%40decidim&phone=0034681085808&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1989-12-25&document_id=32946073E&document_scope_code=ES&document_type=dni&email=user74%40example.org&first_name=Emmy&gender=female&last_name1=Cormier&last_name2&origin_qualified_id=2022%40decidim_module_census_connector_test_app_application-2307&phone=0034147686964&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -21,14 +21,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=b7da2499-bf64-475c-ae9b-1ef80038024b; path=/; expires=Fri, 26 Jul
-        2019 12:16:43 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=242078a4-77f2-4aa0-a811-d46979fafa65; path=/; expires=Mon, 26
-        Jul 2021 08:16:43 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=c03ab61a-1237-43ec-946f-a00fcc1f677e; path=/; expires=Tue, 24 Sep
+        2019 16:22:43 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=82058076-db1c-44f0-a985-278d8fd7763e; path=/; expires=Fri, 24
+        Sep 2021 12:22:43 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6dd0df7b-9904-4310-b19e-71c03bc00257
+      - d9939af4-867e-4f4d-9be7-54c3fbef06cc
       X-Runtime:
-      - '0.199411'
+      - '0.195049'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -52,12 +52,12 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":67}'
+      string: '{"person_id":65}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:43 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:43 GMT
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/en/people/67@census
+    uri: http://mycensus:3001/api/v1/en/people/65@census
     body:
       encoding: US-ASCII
       string: ''
@@ -74,18 +74,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"34917156018df8b71d923b6951ac68e2"
+      - W/"6999f1b1d6eb9ccb17b10f0431b1055a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=4c225e8a-4b04-40d7-98de-3aca1919b9da; path=/; expires=Fri, 26 Jul
-        2019 12:16:44 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=7e0bd090-5acf-446a-9378-7aa525772901; path=/; expires=Mon, 26
-        Jul 2021 08:16:44 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=aadac4a9-35eb-4f91-bd23-11ddda5fb814; path=/; expires=Tue, 24 Sep
+        2019 16:22:43 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=b50bda19-6ab1-48bb-a98e-98b8dd94eff1; path=/; expires=Fri, 24
+        Sep 2021 12:22:43 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 42b5dec0-1cfa-4f8b-b00c-5806ce275b57
+      - 964fd9b9-6dbc-411f-8223-f8f7017defd2
       X-Runtime:
-      - '0.005205'
+      - '0.005760'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -109,8 +109,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":67,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":994},"first_name":"Vena","last_name1":"Rau","last_name2":null,"document_type":"dni","document_id":"30181994Z","document_scope_code":"ES","born_at":"1934-01-22","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user84@example.org","phone":"0034681085808","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":65,"external_ids":{"decidim_module_census_connector_test_app_application-2307":2022},"scope_code":"ES","state":"pending","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Emmy","last_name1":"Cormier","last_name2":null,"document_type":"dni","document_id":"32946073E","document_scope_code":"ES","born_at":"1989-12-25","gender":"female","email":"user74@example.org","phone":"0034147686964","address":"Rua
+        del Percebe, 1","address_scope_code":"ES","postal_code":"08001","additional_information":{},"membership_allowed?":true,"created_at":"2019-09-24T12:22:43.371Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:44 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:43 GMT
 recorded_with: VCR 4.0.0

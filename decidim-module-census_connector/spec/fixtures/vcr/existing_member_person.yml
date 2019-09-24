@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"788fa9225eb269f80ea709204647071e"
+      - W/"1c4b359798473a16ecaddba79176cc08"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=f69b37d2-30cc-415f-b060-ed768914aa93; path=/; expires=Fri, 26 Jul
-        2019 12:16:17 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=8f762bbf-53b3-4d29-a9e8-32527f1a01b9; path=/; expires=Mon, 26
-        Jul 2021 08:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=4d423662-d394-45e1-8432-036a735c6aff; path=/; expires=Tue, 24 Sep
+        2019 16:22:09 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=bfcae471-faa7-46a9-8a2d-398c32d88c2e; path=/; expires=Fri, 24
+        Sep 2021 12:22:09 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 3b037766-efa7-4592-ae1c-0d2d99a22f5f
+      - 49d3b3fd-2a6e-4f23-91a7-cb47e1e69e3d
       X-Runtime:
-      - '0.005381'
+      - '0.005442'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,10 +54,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-CL-VA-009","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Carmen","last_name1":"Delvalle","last_name2":"Mireles","document_type":"passport","document_id":"RMC351628","document_scope_code":"XX","born_at":"1953-12-26","gender":"female","address":"Caserio
-        Francisca, 5 Esc. 565","postal_code":"47771","address_scope_code":"ES-CL-VA-009","email":"tom@kovacek.org","phone":"0034753884023","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":2,"external_ids":{"participa2_application-1":2},"scope_code":"ES-CM-GU-132","state":"enabled","membership_level":"member","verification":"verified","phone_verification":"not_verified","first_name":"Miguel","last_name1":"Razo","last_name2":"Santana","document_type":"nie","document_id":"X6319691G","document_scope_code":"ES","born_at":"1973-07-24","gender":"male","email":"stephenie@zemlak.name","phone":"0034248849946","address":"Manzana
+        José Emilio 3 Esc. 385","address_scope_code":"ES-CM-GU-132","postal_code":"19971","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:13.474Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:17 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:09 GMT
 - request:
     method: get
     uri: http://mycensus:3001/api/v1/en/people/2@census
@@ -80,19 +80,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"788fa9225eb269f80ea709204647071e"
+      - W/"1c4b359798473a16ecaddba79176cc08"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=ab71a8e7-6ab3-4b27-a85a-309daaf17b2e; path=/; expires=Fri, 26 Jul
-        2019 12:16:17 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=46c7e30d-2c72-4f06-baa4-996c3c13db06; path=/; expires=Mon, 26
-        Jul 2021 08:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=8064b570-5423-455c-98c9-0809e8291472; path=/; expires=Tue, 24 Sep
+        2019 16:22:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1432cf4b-8f2e-4386-b745-b1eec091f883; path=/; expires=Fri, 24
+        Sep 2021 12:22:10 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 374863e7-f65f-4004-8bbb-e2ace1e3da47
+      - 9b631727-baa0-4c92-ad5f-d3ffbc88e1de
       X-Runtime:
-      - '0.007174'
+      - '0.006974'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -116,8 +116,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":2,"membership_level":"member","scope_code":"ES-CL-VA-009","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":2},"first_name":"Carmen","last_name1":"Delvalle","last_name2":"Mireles","document_type":"passport","document_id":"RMC351628","document_scope_code":"XX","born_at":"1953-12-26","gender":"female","address":"Caserio
-        Francisca, 5 Esc. 565","postal_code":"47771","address_scope_code":"ES-CL-VA-009","email":"tom@kovacek.org","phone":"0034753884023","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":2,"external_ids":{"participa2_application-1":2},"scope_code":"ES-CM-GU-132","state":"enabled","membership_level":"member","verification":"verified","phone_verification":"not_verified","first_name":"Miguel","last_name1":"Razo","last_name2":"Santana","document_type":"nie","document_id":"X6319691G","document_scope_code":"ES","born_at":"1973-07-24","gender":"male","email":"stephenie@zemlak.name","phone":"0034248849946","address":"Manzana
+        José Emilio 3 Esc. 385","address_scope_code":"ES-CM-GU-132","postal_code":"19971","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:13.474Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:17 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:10 GMT
 recorded_with: VCR 4.0.0
