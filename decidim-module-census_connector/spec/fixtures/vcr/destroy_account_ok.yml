@@ -19,14 +19,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=89bd0619-72df-4852-95eb-453148208ccc; path=/; expires=Wed, 11 Sep
-        2019 21:03:15 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=31d49381-871f-4b5b-a1f6-a156963c4dbd; path=/; expires=Sat, 11
-        Sep 2021 17:03:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=125e7c2d-0a65-41b1-9615-1f5f7e2a3332; path=/; expires=Tue, 24 Sep
+        2019 16:22:37 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9902f344-e31c-4539-bf7e-eeec4ab61c05; path=/; expires=Fri, 24
+        Sep 2021 12:22:37 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - f5deebd6-913c-4a5d-a3cf-f50bb9f6a333
+      - adef0521-b2be-40f7-ac70-a37de6da8c2f
       X-Runtime:
-      - '0.291486'
+      - '0.190059'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -52,5 +52,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Wed, 11 Sep 2019 17:03:15 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:37 GMT
 recorded_with: VCR 4.0.0

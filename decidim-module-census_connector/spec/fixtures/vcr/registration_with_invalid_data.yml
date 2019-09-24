@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user120%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim&phone=0034&postal_code=&scope_code
+      string: address=&address_scope_code&born_at=&document_id=&document_scope_code=ES&document_type=dni&email=user123%40example.org&first_name=&gender=&last_name1=&last_name2=&origin_qualified_id=8755561%40decidim_module_census_connector_test_app_application-2386&phone=0034&postal_code=&scope_code
     headers:
       User-Agent:
       - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
@@ -25,14 +25,14 @@ http_interactions:
       - no-cache
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=3e86fe42-0265-4cba-8978-e5cf2caccd80; path=/; expires=Fri, 26 Jul
-        2019 12:17:56 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=2d64f697-8cda-4f40-b4ab-da4f75eb1529; path=/; expires=Mon, 26
-        Jul 2021 08:17:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=d3141576-9e7a-4f8b-acef-cc481b95017a; path=/; expires=Tue, 24 Sep
+        2019 16:24:29 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=db6ded14-262b-427e-a0ae-ad9e329af652; path=/; expires=Fri, 24
+        Sep 2021 12:24:29 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - de48a66e-7d09-49d2-a6e9-e48fd681be2e
+      - ef84b1fa-f912-46f6-891c-bba3dfab501d
       X-Runtime:
-      - '0.014828'
+      - '0.016187'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -58,5 +58,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"first_name":[{"error":"blank"}],"last_name1":[{"error":"blank"}],"document_id":[{"error":"blank"}],"born_at":[{"error":"blank"}],"gender":[{"error":"blank"}],"address":[{"error":"blank"}],"postal_code":[{"error":"blank"}],"address_scope":[{"error":"blank"}],"scope":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:17:56 GMT
+  recorded_at: Tue, 24 Sep 2019 12:24:29 GMT
 recorded_with: VCR 4.0.0

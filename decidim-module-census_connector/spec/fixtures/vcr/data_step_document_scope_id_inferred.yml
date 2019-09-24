@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1974-08-22&document_id=31918219S&document_scope_code=ES&document_type=dni&email=user76%40example.org&first_name=Marcelino&gender=female&last_name1=Romaguera&last_name2&origin_qualified_id=986%40decidim&phone=0034399778187&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1936-07-16&document_id=57443475D&document_scope_code=ES&document_type=dni&email=user108%40example.org&first_name=Kamille&gender=female&last_name1=Johns&last_name2&origin_qualified_id=2056%40decidim_module_census_connector_test_app_application-2375&phone=0034616887056&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -21,14 +21,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=9cf4de00-e83e-4ac6-acee-b91a709c8795; path=/; expires=Fri, 26 Jul
-        2019 12:16:41 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=be723b96-e6e5-48d8-bbe7-58ea97fa6487; path=/; expires=Mon, 26
-        Jul 2021 08:16:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=199ef3c8-b9fa-4330-852c-fff5e64ace50; path=/; expires=Tue, 24 Sep
+        2019 16:23:03 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=7972dda8-f85c-451a-becd-282385b9e943; path=/; expires=Fri, 24
+        Sep 2021 12:23:03 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6407bdd9-d826-4857-bca1-dc39862ffe60
+      - 352adc7e-1b6f-43f7-9099-7b9992bb17d6
       X-Runtime:
-      - '0.222048'
+      - '0.238570'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -52,12 +52,12 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":66}'
+      string: '{"person_id":68}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:41 GMT
+  recorded_at: Tue, 24 Sep 2019 12:23:04 GMT
 - request:
     method: get
-    uri: http://mycensus:3001/api/v1/en/people/66@census
+    uri: http://mycensus:3001/api/v1/en/people/68@census
     body:
       encoding: US-ASCII
       string: ''
@@ -74,18 +74,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"f448d9adf9bf824c1db7cf15c2091f5a"
+      - W/"5e0c567a120e112b776f2baa992ed898"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=86b6d304-5ce2-40f5-bf58-03d640a4186c; path=/; expires=Fri, 26 Jul
-        2019 12:16:41 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=a269bf29-9b7f-435e-bffb-af20469ecf46; path=/; expires=Mon, 26
-        Jul 2021 08:16:41 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=6074e597-395a-44b9-bdb9-5ab4283caf3e; path=/; expires=Tue, 24 Sep
+        2019 16:23:04 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=569517e7-8468-4100-b9c6-361f41fa4bc3; path=/; expires=Fri, 24
+        Sep 2021 12:23:04 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - c4b30bd9-e6f4-4d4b-a4c4-9457556e9ec1
+      - 21d6987d-b1ca-4647-a6fe-e1805cc0d380
       X-Runtime:
-      - '0.007105'
+      - '0.006972'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -109,8 +109,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":66,"membership_level":"follower","scope_code":"ES","state":"pending","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":986},"first_name":"Marcelino","last_name1":"Romaguera","last_name2":null,"document_type":"dni","document_id":"31918219S","document_scope_code":"ES","born_at":"1974-08-22","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","address_scope_code":"ES","email":"user76@example.org","phone":"0034399778187","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":68,"external_ids":{"decidim_module_census_connector_test_app_application-2375":2056},"scope_code":"ES","state":"pending","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Kamille","last_name1":"Johns","last_name2":null,"document_type":"dni","document_id":"57443475D","document_scope_code":"ES","born_at":"1936-07-16","gender":"female","email":"user108@example.org","phone":"0034616887056","address":"Rua
+        del Percebe, 1","address_scope_code":"ES","postal_code":"08001","additional_information":{},"membership_allowed?":true,"created_at":"2019-09-24T12:23:03.905Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:41 GMT
+  recorded_at: Tue, 24 Sep 2019 12:23:04 GMT
 recorded_with: VCR 4.0.0

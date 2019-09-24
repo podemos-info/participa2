@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"09a417ca67069aca5dc0a268fb766836"
+      - W/"a4bf044f0b532caba370fd6d7a45d329"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=8469bc4a-786c-4a00-9e90-b4c5e3e9f097; path=/; expires=Fri, 26 Jul
-        2019 12:16:19 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=44373639-eabb-4d44-a991-3a1c1609fce4; path=/; expires=Mon, 26
-        Jul 2021 08:16:19 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=bbc27464-c237-474b-85ec-fc8349f9ab3f; path=/; expires=Tue, 24 Sep
+        2019 16:22:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=979fd9f4-ed63-40f1-b160-07b745ab5bda; path=/; expires=Fri, 24
+        Sep 2021 12:22:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 5e64ff98-806a-4a4d-b00c-73754d49a0a6
+      - 9566eb72-63fc-4b67-9f74-6b17fd0070da
       X-Runtime:
-      - '0.005405'
+      - '0.005873'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,10 +54,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":3,"membership_level":"follower","scope_code":"ES-IB-PM-ME-002","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3},"first_name":"Alfredo","last_name1":"Alcaraz","last_name2":"Villareal","document_type":"nie","document_id":"X1418920G","document_scope_code":"ES","born_at":"2002-02-16","gender":"undisclosed","address":"Escalinata
-        Raúl Olivárez 13 Puerta 607","postal_code":"07523","address_scope_code":"ES-IB-PM-ME-002","email":"evelyne@goodwinullrich.net","phone":"0034703720579","additional_information":{},"membership_allowed?":false}'
+      string: '{"person_id":3,"external_ids":{"participa2_application-1":3},"scope_code":"ES-GA-OR-064","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Anita","last_name1":"Bernal","last_name2":"Luevano","document_type":"dni","document_id":"40203046N","document_scope_code":"ES","born_at":"2002-09-18","gender":"female","email":"cameron@bogan.org","phone":"0034858942876","address":"Caserio
+        Andrea 19 Esc. 916","address_scope_code":"ES-GA-OR-064","postal_code":"32434","additional_information":{},"membership_allowed?":false,"created_at":"2016-09-24T12:07:15.352Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:19 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:07 GMT
 - request:
     method: get
     uri: http://mycensus:3001/api/v1/en/people/3@census
@@ -80,19 +80,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"09a417ca67069aca5dc0a268fb766836"
+      - W/"a4bf044f0b532caba370fd6d7a45d329"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=7f8f4a31-06b0-427c-9041-676a884a3bf9; path=/; expires=Fri, 26 Jul
-        2019 12:16:19 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=2d3978f7-070d-412e-ac1c-4d2d4209a8e4; path=/; expires=Mon, 26
-        Jul 2021 08:16:19 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=9e8fbfa8-8cc5-43bf-80d7-a53f9c8ee550; path=/; expires=Tue, 24 Sep
+        2019 16:22:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=b8e8819e-e943-4060-858e-d82bd0332bbf; path=/; expires=Fri, 24
+        Sep 2021 12:22:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 3429aefb-e8c4-45fc-adf3-c7519bd4a583
+      - 2bb01a47-4e3d-4192-a0d3-d9a6e5997a7a
       X-Runtime:
-      - '0.005370'
+      - '0.007408'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -116,8 +116,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":3,"membership_level":"follower","scope_code":"ES-IB-PM-ME-002","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":3},"first_name":"Alfredo","last_name1":"Alcaraz","last_name2":"Villareal","document_type":"nie","document_id":"X1418920G","document_scope_code":"ES","born_at":"2002-02-16","gender":"undisclosed","address":"Escalinata
-        Raúl Olivárez 13 Puerta 607","postal_code":"07523","address_scope_code":"ES-IB-PM-ME-002","email":"evelyne@goodwinullrich.net","phone":"0034703720579","additional_information":{},"membership_allowed?":false}'
+      string: '{"person_id":3,"external_ids":{"participa2_application-1":3},"scope_code":"ES-GA-OR-064","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Anita","last_name1":"Bernal","last_name2":"Luevano","document_type":"dni","document_id":"40203046N","document_scope_code":"ES","born_at":"2002-09-18","gender":"female","email":"cameron@bogan.org","phone":"0034858942876","address":"Caserio
+        Andrea 19 Esc. 916","address_scope_code":"ES-GA-OR-064","postal_code":"32434","additional_information":{},"membership_allowed?":false,"created_at":"2016-09-24T12:07:15.352Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:19 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:07 GMT
 recorded_with: VCR 4.0.0

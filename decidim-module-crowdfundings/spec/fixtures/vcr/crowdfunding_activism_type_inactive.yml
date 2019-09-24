@@ -8,128 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.15.3
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"ecd56a4e6ca1dee8061aeef32f3811cb"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=90b3a21d-a3fa-437a-adb2-2337c3969f44; path=/; expires=Fri, 19 Oct
-        2018 19:34:13 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=936c666a-5d32-4ddb-a5ad-2e5f9e8ab95a; path=/; expires=Mon, 19
-        Oct 2020 15:34:13 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - 67edaac2-340a-483b-b40f-c2c01c0c52f2
-      X-Runtime:
-      - '0.016015'
-      X-Frame-Options:
-      - DENY
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - origin-when-cross-origin
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
-        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957","additional_information":{}}'
-    http_version:
-  recorded_at: Fri, 19 Oct 2018 15:34:13 GMT
-- request:
-    method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.15.3
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"ecd56a4e6ca1dee8061aeef32f3811cb"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=15868c53-8ff8-4ab0-a220-287862406a65; path=/; expires=Fri, 19 Oct
-        2018 19:34:14 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=132bcce6-1c5d-438b-8558-fd49ed22fe3a; path=/; expires=Mon, 19
-        Oct 2020 15:34:14 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - d7adfa88-7263-45bd-884f-8f2b2133d64a
-      X-Runtime:
-      - '0.005058'
-      X-Frame-Options:
-      - DENY
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - origin-when-cross-origin
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-PV-BI-052","state":"enabled","verification":"verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Carmen","last_name1":"Santiago","last_name2":"Cadena","document_type":"dni","document_id":"95384130W","document_scope_code":"ES","born_at":"1999-02-15","gender":"female","address":"Arroyo
-        Antonio s/n.","postal_code":"48381","address_scope_code":"ES-PV-BI-052","email":"barbaraschultz@price.net","phone":"0034387693957","additional_information":{}}'
-    http_version:
-  recorded_at: Fri, 19 Oct 2018 15:34:14 GMT
-- request:
-    method: get
-    uri: http://mycensus:3001/api/v1/en/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
-        Safari/537.36
-      User-Ip:
-      - 127.0.0.1
+      - Faraday v0.15.4
       Accept-Encoding:
       - gzip, compressed
   response:
@@ -140,19 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"12778b62658af3a3d0250dd89004c6af"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=889a0f6d-0fa3-43ee-a25e-02c77b49129c; path=/; expires=Mon, 02 Sep
-        2019 17:16:17 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=2c6858ae-8348-4537-9477-be8fee674642; path=/; expires=Thu, 02
-        Sep 2021 13:16:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=d83f4482-c8d4-4dfb-a21f-d96e235af155; path=/; expires=Tue, 24 Sep
+        2019 16:24:44 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9f6da7cf-971f-45c3-85cb-ddd19d803d5b; path=/; expires=Fri, 24
+        Sep 2021 12:24:44 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 10a0996e-82ec-4240-851d-09331e88aea0
+      - a147ff9c-b2fc-4ea8-b88d-4558cb4c382d
       X-Runtime:
-      - '0.256635'
+      - '0.005562'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -176,8 +54,132 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-EX-BA-119","state":"enabled","verification":"not_verified","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"Marisol","last_name1":"Candelaria","last_name2":"Soria","document_type":"passport","document_id":"VQO717500","document_scope_code":"XX","born_at":"1994-08-25","gender":"undisclosed","address":"Parcela
-        Rosa Campos 66 Esc. 230","postal_code":"06148","address_scope_code":"ES-EX-BA-119","email":"teri@stiedemanngleichner.name","phone":"0034512960690","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Mon, 02 Sep 2019 13:16:17 GMT
+  recorded_at: Tue, 24 Sep 2019 12:24:44 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=1cd35a25-50f4-45b9-b4fd-812de27298e0; path=/; expires=Tue, 24 Sep
+        2019 16:24:44 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=99637d3e-9575-4ebc-ad46-a15083940832; path=/; expires=Fri, 24
+        Sep 2021 12:24:44 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 20ff7fc7-8024-4b8b-8882-b0635f676ec3
+      X-Runtime:
+      - '0.004983'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
+    http_version:
+  recorded_at: Tue, 24 Sep 2019 12:24:44 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=51b953a9-156a-459a-bce0-be7b34ff1dda; path=/; expires=Tue, 24 Sep
+        2019 16:24:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=2d36437d-5f36-4200-bf25-6aabdb5715c4; path=/; expires=Fri, 24
+        Sep 2021 12:24:52 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - b46313f0-01f8-4367-909c-b5b618f32735
+      X-Runtime:
+      - '0.009986'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
+    http_version:
+  recorded_at: Tue, 24 Sep 2019 12:24:52 GMT
 recorded_with: VCR 4.0.0

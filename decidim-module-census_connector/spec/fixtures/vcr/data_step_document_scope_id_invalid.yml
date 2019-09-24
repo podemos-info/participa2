@@ -5,7 +5,7 @@ http_interactions:
     uri: http://mycensus:3001/api/v1/en/people
     body:
       encoding: UTF-8
-      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1939-03-02&document_id=AH461690&document_scope_code&document_type=passport&email=user70%40example.org&first_name=Louisa&gender=female&last_name1=Swift&last_name2&origin_qualified_id=980%40decidim&phone=0034119805346&postal_code=08001&scope_code=ES
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1974-08-11&document_id=TP825472&document_scope_code&document_type=passport&email=user66%40example.org&first_name=Clyde&gender=female&last_name1=Wolf&last_name2&origin_qualified_id=2014%40decidim_module_census_connector_test_app_application-2291&phone=0034857571815&postal_code=08001&scope_code=ES
     headers:
       User-Agent:
       - Faraday v0.15.4
@@ -21,14 +21,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=e0375bfb-736e-4669-b863-a05819b52f8a; path=/; expires=Fri, 26 Jul
-        2019 12:16:39 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=58b59498-6f1f-4a58-9990-0188b7d8ebac; path=/; expires=Mon, 26
-        Jul 2021 08:16:39 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=d130c44c-4692-4009-81b3-69f9b6e6ddce; path=/; expires=Tue, 24 Sep
+        2019 16:22:40 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=db502b66-b9a1-409f-924c-18f44f1ddf0b; path=/; expires=Fri, 24
+        Sep 2021 12:22:40 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 214f3163-8c2d-417a-a907-7ef0c169676d
+      - 0504e607-2429-448c-83cd-d3df2f673e53
       X-Runtime:
-      - '0.008299'
+      - '0.008936'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,5 +54,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"document_scope":[{"error":"blank"}]}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:39 GMT
+  recorded_at: Tue, 24 Sep 2019 12:22:40 GMT
 recorded_with: VCR 4.0.0

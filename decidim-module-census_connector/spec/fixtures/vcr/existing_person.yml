@@ -19,18 +19,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=5b454740-ced6-46be-b754-3343edcd9d11; path=/; expires=Fri, 26 Jul
-        2019 12:16:04 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=f2be59a7-008c-46a7-bc0f-acf6d393f133; path=/; expires=Mon, 26
-        Jul 2021 08:16:04 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=f016732c-76e7-475a-b1b2-79358c58e631; path=/; expires=Tue, 24 Sep
+        2019 16:21:43 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=0ed5116d-b587-4199-b8c1-2f37aad4b37c; path=/; expires=Fri, 24
+        Sep 2021 12:21:43 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - a6cf6727-c89e-4cdd-bcd2-fb33a20cac83
+      - 261d80c6-6308-4cf3-9017-6c28e3eaac85
       X-Runtime:
-      - '0.006415'
+      - '0.005282'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -54,11 +54,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
-        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
-        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034617334257","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:04 GMT
+  recorded_at: Tue, 24 Sep 2019 12:21:43 GMT
 - request:
     method: get
     uri: http://mycensus:3001/api/v1/en/people/1@census
@@ -81,19 +80,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=c8caa862-b60e-4f89-9183-2c3effd97aaa; path=/; expires=Fri, 26 Jul
-        2019 12:16:04 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=4882c70e-cf54-4666-9e62-dbfe76c48b49; path=/; expires=Mon, 26
-        Jul 2021 08:16:04 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=7f855f77-4583-4ca6-922f-825c513222e5; path=/; expires=Tue, 24 Sep
+        2019 16:21:44 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=520eca85-d66c-4a67-b23f-19761eda1036; path=/; expires=Fri, 24
+        Sep 2021 12:21:44 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 399c356c-9c3f-4e4c-9fd0-0d3a504c8239
+      - 4e09e9ac-59c7-4b98-8056-9143342e0d2d
       X-Runtime:
-      - '0.005212'
+      - '0.008125'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -117,11 +116,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
-        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
-        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034617334257","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:04 GMT
+  recorded_at: Tue, 24 Sep 2019 12:21:44 GMT
 - request:
     method: get
     uri: http://mycensus:3001/api/v1/en/people/1@census
@@ -144,19 +142,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"1f39e79a02c3be8cd4002791bd3c5652"
+      - W/"66fb5debfbf1b0b64ca78c7d3eb3d2f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
-      - ahoy_visit=ea9ace0e-8688-4136-bf31-8d3ba596a5c7; path=/; expires=Fri, 26 Jul
-        2019 12:16:05 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=37cb62b5-1fd9-4dd1-b962-57fac9c914b8; path=/; expires=Mon, 26
-        Jul 2021 08:16:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=68e44e87-3817-4f78-9b9f-b486ac756ac0; path=/; expires=Tue, 24 Sep
+        2019 16:21:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=77d8daa4-8a19-4d03-8b8c-069cfaf69dc9; path=/; expires=Fri, 24
+        Sep 2021 12:21:46 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6a67409e-d441-47ab-a391-e1c0f36bad2b
+      - 2cbf5b65-1710-40e2-89bf-abaf83062b12
       X-Runtime:
-      - '0.005932'
+      - '0.005335'
       X-Frame-Options:
       - DENY
       X-Content-Type-Options:
@@ -180,9 +178,65 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"person_id":1,"membership_level":"follower","scope_code":"ES-CT-L-114","state":"enabled","verification":"verification_requested","phone_verification":"not_verified","external_ids":{"decidim":1},"first_name":"José
-        Emilio","last_name1":"Luna","last_name2":"Carrera","document_type":"passport","document_id":"D7318023728","document_scope_code":"ES","born_at":"1985-03-29","gender":"female","address":"Ferrocarril
-        Mariano Tejeda 89 Esc. 150","postal_code":"25242","address_scope_code":"ES-CT-L-114","email":"lawerencemcglynn@erdmanmarks.info","phone":"0034617334257","additional_information":{},"membership_allowed?":true}'
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-AN-GR-162","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Daniel","last_name1":"Venegas","last_name2":"Sierra","document_type":"passport","document_id":"EPQ783477","document_scope_code":"XX","born_at":"1977-09-21","gender":"undisclosed","email":"cariaward@zieme.biz","phone":"0034850965203","address":"Bajada
+        Leonor s/n. Esc. 926","address_scope_code":"ES-AN-GR-162","postal_code":"18241","additional_information":{},"membership_allowed?":true,"created_at":"2016-09-24T12:07:11.404Z"}'
     http_version:
-  recorded_at: Fri, 26 Jul 2019 08:16:05 GMT
+  recorded_at: Tue, 24 Sep 2019 12:21:46 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/EPQ783477@document_id?includes%5B%5D=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"1b2c0815a01d87e2de8a481256a54eff"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=d211a26b-8ea1-47b6-9e44-2f084c5fbf61; path=/; expires=Tue, 24 Sep
+        2019 18:18:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=69ab7475-5c1f-4bb2-98a5-dd81fe3c81af; path=/; expires=Fri, 24
+        Sep 2021 14:18:31 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - a4b7f881-5941-46b6-a6a2-41aee3cc6a17
+      X-Runtime:
+      - '0.021736'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; script-src ''self'' ''unsafe-inline'';
+        style-src ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"email":"cariaward@zieme.biz"}'
+    http_version:
+  recorded_at: Tue, 24 Sep 2019 14:18:31 GMT
 recorded_with: VCR 4.0.0
