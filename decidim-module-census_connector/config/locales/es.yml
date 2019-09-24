@@ -134,6 +134,8 @@ es:
           messages:
             deleted: La información de tu perfil ha sido borrada.
             saved: La información de tu perfil en la red social ha sido guardada.
+      login:
+        login_field: Correo electrónico o número de documento
       verifications:
         census:
           authorizations:
@@ -188,6 +190,9 @@ es:
         first_login:
           actions:
             census: Verifícate en el censo de Podemos census para tener acceso a toda la plataforma
+  devise:
+    failure:
+      not_found_in_database: Correo electrónico, número de documento o contraseña inválidos.
   errors:
     messages:
       census_down: Tu registro no puede ser actualizado cuando el servicio de gestión del censo no está disponible. Por favor, inténtalo de nuevo más tarde o contactanos si el problema persiste.

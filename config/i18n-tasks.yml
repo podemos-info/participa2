@@ -86,6 +86,7 @@ ignore_unused:
   - decidim.verifications.authorizations.first_login.*
   - decidim.votings.admin.models.*
   - decidim.votings.models.*
+  - devise.failure.not_found_in_database
   - errors.messages.census_down
 
 ignore_missing:
@@ -97,4 +98,5 @@ ignore_missing:
   - decidim.scopes.prompt
   - decidim.verifications.authorizations.new.authorize
   - devise.registrations.new.sign_up
+  - devise.sessions.new.sign_in
   - errors.messages.uppercase_only_letters_numbers

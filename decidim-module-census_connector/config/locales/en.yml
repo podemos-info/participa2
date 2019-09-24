@@ -134,6 +134,8 @@ en:
           messages:
             deleted: Your social network information has been deleted.
             saved: Your social network information has been saved.
+      login:
+        login_field: Email or document ID
       verifications:
         census:
           authorizations:
@@ -188,6 +190,9 @@ en:
         first_login:
           actions:
             census: Get verified with Podemos census to get full access to the platform
+  devise:
+    failure:
+      not_found_in_database: Invalid email, document number or password.
   errors:
     messages:
       census_down: Your registration can't be updated when the census service is not available. Please, try again later or contact us if the problem persists.
