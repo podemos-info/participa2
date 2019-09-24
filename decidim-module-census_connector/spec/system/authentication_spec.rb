@@ -42,7 +42,9 @@ module Decidim
           end
 
           before do
+            # rubocop:disable Rails/SkipsModelValidations
             user.update_columns email: person.email
+            # rubocop:enable Rails/SkipsModelValidations
           end
 
           it "authenticates an existing User" do
