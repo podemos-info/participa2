@@ -51,7 +51,6 @@ module Decidim
 
         content_tag(:div,
                     class: "extra__percentage percentage #{css_class}".strip) do
-
           output = []
           5.times do
             output << content_tag(:span, "", class: "percentage__item")
@@ -90,6 +89,7 @@ module Decidim
       # PUBLIC converts the amount collected into a currency string.
       def total_collected_to_currency(total_collected)
         return I18n.t("decidim.crowdfundings.labels.not_available") if total_collected.nil?
+
         decidim_number_to_currency(total_collected)
       end
 

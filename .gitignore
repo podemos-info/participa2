@@ -24,8 +24,8 @@ public/uploads
 /coverage/*
 
 # rubocop cached remote config
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-18-stable--rubocop-yml
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-18-stable--rubocop-rails-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-19-stable--rubocop-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-0-19-stable--rubocop-rails-yml
 
 spec/decidim_dummy_app/
 

@@ -68,6 +68,7 @@ module Decidim
 
       def person_annual_total
         return @person_annual_total if defined? @person_annual_total
+
         @person_annual_total ||= census_payments_api.if_valid(
           census_payments_api.orders_total(person_id: qualified_id, from_date: Time.zone.now.beginning_of_year, until_date: Time.zone.now.end_of_year)
         )

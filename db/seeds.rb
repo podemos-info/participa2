@@ -110,6 +110,7 @@ class ParticipaSeeder
   def create_towns_assemblies(scope:, parent_assembly:)
     scope.children.each do |town|
       next unless @towns.include? town.code
+
       create_scoped_assembly(scope: town, parent_assembly: parent_assembly)
     end
   end

@@ -11,6 +11,7 @@ module Decidim
         # Broadcasts :ok if successful, :invalid otherwise.
         def call
           return broadcast(:invalid) if form.invalid?
+
           create_campaign
           broadcast(:ok)
         end

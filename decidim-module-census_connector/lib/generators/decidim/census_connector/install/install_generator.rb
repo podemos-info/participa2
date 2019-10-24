@@ -14,7 +14,7 @@ module Decidim
         end
 
         def copy_configuration
-          template "config/initializers/decidim-census_connector.rb"
+          template "config/initializers/decidim_census_connector.rb"
         end
       end
     end
