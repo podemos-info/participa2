@@ -7,7 +7,7 @@ ruby "2.5.3"
 gem "dotenv-rails", require: "dotenv/rails-now"
 
 gem "airbrake", "~> 7.4"
-gem "decidim", "~> 0.18.0"
+gem "decidim", "~> 0.19.0"
 gem "decidim-census_connector", path: "decidim-module-census_connector"
 gem "decidim-crowdfundings", path: "decidim-module-crowdfundings"
 gem "decidim-gravity_forms", path: "decidim-module-gravity_forms"
@@ -24,7 +24,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "byebug", platform: :mri
 
-  gem "decidim-dev", "~> 0.18.0"
+  gem "decidim-dev", "~> 0.19.0"
 end
 
 group :development do
