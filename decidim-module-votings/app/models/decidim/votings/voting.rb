@@ -54,6 +54,7 @@ module Decidim
       def status
         return :upcoming unless started?
         return :closed if finished?
+
         :active
       end
 

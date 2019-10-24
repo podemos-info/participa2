@@ -15,6 +15,7 @@ module Decidim
       # Broadcasts :ok if successful, :invalid otherwise.
       def call
         return broadcast(:invalid) unless form.valid? && update_contribution
+
         broadcast(:ok)
       end
 

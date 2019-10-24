@@ -57,6 +57,7 @@ module Decidim::CensusConnector::Verifications::Census
           let(:user_scope) { create(:scope) } # creates an invalid scope to simulate a nil scope without API interaction
 
           it { expect(subject.first).to eq(:incomplete) }
+
           it "explains that user should select a territory" do
             expect(subject.last).to eq(
               action: :complete,
@@ -70,6 +71,7 @@ module Decidim::CensusConnector::Verifications::Census
           let(:user_scope) { create(:scope, organization: organization) }
 
           it { expect(subject.first).to eq(:unauthorized) }
+
           it "explains that user can participate in this territory" do
             expect(subject.last).to eq(
               extra_explanation: { key: "decidim.authorization_handlers.census.extra_explanation.scope", params: {} }
@@ -106,6 +108,7 @@ module Decidim::CensusConnector::Verifications::Census
             end
 
             it { expect(subject.first).to eq(:unauthorized) }
+
             it "explains that user can participate in this territory" do
               expect(subject.last).to eq(
                 extra_explanation: { key: "decidim.authorization_handlers.census.extra_explanation.closed_scope", params: {} }

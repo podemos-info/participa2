@@ -72,6 +72,7 @@ module Decidim
 
       def vote_action_authorizer_class
         return unless vote_authorization_handler_name
+
         @vote_action_authorizer_class ||= Verifications.find_workflow_manifest(vote_authorization_handler_name)&.action_authorizer_class
       end
 

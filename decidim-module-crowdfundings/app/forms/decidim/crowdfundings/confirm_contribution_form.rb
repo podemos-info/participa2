@@ -24,6 +24,7 @@ module Decidim
 
       def fix_payment_method
         return unless payment_method_type.match?(/\A\d+\z/)
+
         @payment_method_id = payment_method_type.to_i
         @payment_method_type = "existing_payment_method"
       end
