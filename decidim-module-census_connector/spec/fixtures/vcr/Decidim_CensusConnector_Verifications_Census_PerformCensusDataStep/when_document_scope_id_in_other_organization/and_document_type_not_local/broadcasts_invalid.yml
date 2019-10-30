@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1942-04-24&document_id=WD521088&document_scope_code&document_type=passport&email=user18%40example.org&first_name=Marlen&gender=female&last_name1=Muller&last_name2&origin_qualified_id=451%40decidim_module_census_connector_test_app_application-612&phone=0034113406061&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=27bc386c-0667-48c4-b029-11d47f3c7f53; path=/; expires=Tue, 29 Oct
+        2019 14:57:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=42a2a28b-62a0-49ef-8e0a-6735ccc62f0d; path=/; expires=Fri, 29
+        Oct 2021 10:57:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 77689224-9435-436f-8287-bf2472ff3d29
+      X-Runtime:
+      - '0.006618'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"document_scope":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:17 GMT
+recorded_with: VCR 4.0.0

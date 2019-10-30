@@ -18,8 +18,7 @@ describe "Votings configuration", type: :system do
   let(:permissions) do
     {
       "vote" => {
-        "authorization_handler_name" => "census",
-        "options" => options
+        "authorization_handlers" => { "census" => { "options" => options } }
       }
     }
   end

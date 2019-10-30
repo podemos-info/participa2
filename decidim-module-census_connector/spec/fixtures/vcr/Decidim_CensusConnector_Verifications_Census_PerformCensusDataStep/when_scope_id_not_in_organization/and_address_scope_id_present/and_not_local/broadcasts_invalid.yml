@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=XX&born_at=1973-11-21&document_id=19011713M&document_scope_code=ES&document_type=dni&email=user51%40example.org&first_name=Mable&gender=female&last_name1=Will&last_name2&origin_qualified_id=484%40decidim_module_census_connector_test_app_application-678&phone=0034942061035&postal_code=08001&scope_code
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=9f80255c-d004-4f7a-9050-17cdc467860a; path=/; expires=Tue, 29 Oct
+        2019 14:57:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=a427d9ea-eb13-49bf-b593-36d931426468; path=/; expires=Fri, 29
+        Oct 2021 10:57:28 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 12557c49-f722-464d-bf11-68896f6914e8
+      X-Runtime:
+      - '0.006774'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"scope":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:28 GMT
+recorded_with: VCR 4.0.0

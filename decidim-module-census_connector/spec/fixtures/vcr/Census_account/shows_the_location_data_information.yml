@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8be4bce01b390a968c884fa825bda3c4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=b24b7a31-cd0d-401a-a9bf-c49010828ed4; path=/; expires=Tue, 29 Oct
+        2019 14:58:22 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=47b719b8-2382-4f06-b8b5-ef20c5eeb315; path=/; expires=Fri, 29
+        Oct 2021 10:58:22 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 53eae407-a0df-471a-b1c6-3aa42616ca83
+      X-Runtime:
+      - '0.005467'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-CM-GU-037","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Vicente","last_name1":"Cervántez","last_name2":"Quiñónez","document_type":"nie","document_id":"X5044095B","document_scope_code":"ES","born_at":"1931-03-24","gender":"male","email":"angeloauer@emmerich.info","phone":"0034888858196","address":"Quinta
+        Jacobo Montemayor 8","address_scope_code":"ES-CM-GU-037","postal_code":"19950","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:33.638Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:22 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8be4bce01b390a968c884fa825bda3c4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=c5bf8f28-6618-4392-a456-89d73abbad3a; path=/; expires=Tue, 29 Oct
+        2019 14:58:22 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=80e61f8d-3ddc-4f6d-aa5a-f7cc2e1e15df; path=/; expires=Fri, 29
+        Oct 2021 10:58:22 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - abaff0b2-e014-4e95-8862-51e83126dabc
+      X-Runtime:
+      - '0.005294'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-CM-GU-037","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Vicente","last_name1":"Cervántez","last_name2":"Quiñónez","document_type":"nie","document_id":"X5044095B","document_scope_code":"ES","born_at":"1931-03-24","gender":"male","email":"angeloauer@emmerich.info","phone":"0034888858196","address":"Quinta
+        Jacobo Montemayor 8","address_scope_code":"ES-CM-GU-037","postal_code":"19950","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:33.638Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:22 GMT
+recorded_with: VCR 4.0.0

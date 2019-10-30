@@ -8,11 +8,18 @@ module Decidim
           attribute :document_file1
           attribute :document_file2
 
+          attribute :prioritize, Boolean
           attribute :member, Boolean
 
           attribute :tos_agreement, Boolean
 
           validates :tos_agreement, allow_nil: true, acceptance: true
+
+          alias prioritize? prioritize
+
+          def prioritize
+            @prioritize ||= params[:prioritize_verification]
+          end
 
           def map_model(person)
             @member = person.member?
@@ -55,7 +62,7 @@ module Decidim
           end
 
           def changing_membership_level?
-            target_level != person.membership_level
+            target_level.to_s != person.membership_level
           end
 
           def next_step; end

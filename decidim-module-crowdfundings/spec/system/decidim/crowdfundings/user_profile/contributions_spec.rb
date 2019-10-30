@@ -2,15 +2,10 @@
 
 require "spec_helper"
 
-describe "Explore contributions", type: :system do
-  around do |example|
-    VCR.use_cassette(cassette, {}, &example)
-  end
-
+describe "Explore contributions", :vcr, type: :system do
   let(:campaign) { create(:campaign) }
   let(:organization) { campaign.organization }
   let(:user) { create :user, :with_person, :confirmed, organization: organization }
-  let(:cassette) { "existing_person" }
 
   before do
     switch_to_host(organization.host)

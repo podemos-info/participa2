@@ -58,6 +58,7 @@ module Decidim
 
           def verification_params
             {
+              prioritize: form.prioritize?,
               files: form.files
             }
           end

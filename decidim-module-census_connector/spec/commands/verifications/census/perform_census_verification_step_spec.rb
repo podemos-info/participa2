@@ -4,12 +4,8 @@ require "spec_helper"
 require "decidim/core/test/factories"
 
 module Decidim::CensusConnector
-  describe Verifications::Census::PerformCensusVerificationStep do
-    subject { described_class.new(person_proxy, form) }
-
-    around do |example|
-      VCR.use_cassette(cassette, {}, &example)
-    end
+  describe Verifications::Census::PerformCensusVerificationStep, :vcr do
+    subject { described_class.new(person_proxy, form).call }
 
     let(:organization) { create(:organization) }
     let(:user) { create(:user, :with_person, organization: organization, person_id: person_id) }
@@ -27,30 +23,64 @@ module Decidim::CensusConnector
       Verifications::Census::VerificationForm.new(
         document_file1: document_file1,
         document_file2: document_file2,
-        member: true
+        member: member,
+        prioritize: prioritize
       ).with_context(
         params: { part: "" },
         person: person_proxy.person
       )
     end
 
-    let(:cassette) { "verification_step_ok" }
+    let(:member) { false }
+    let(:prioritize) { false }
 
-    it "broadcasts :ok" do
-      expect { subject.call }.to broadcast(:ok)
+    let(:verification_request) do
+      a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/document_verifications")
+    end
+
+    let(:prioritized_request) do
+      a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/document_verifications")
+        .with(body: hash_including(prioritize: "true"))
+    end
+
+    let(:member_request) do
+      a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/membership_levels")
+        .with(body: hash_including(membership_level: "member"))
+    end
+
+    it { expect { subject }.to broadcast(:ok) }
+    it { expect_after_subject(verification_request).to have_been_made.once }
+    it { expect_after_subject(prioritized_request).not_to have_been_made }
+    it { expect_after_subject(member_request).not_to have_been_made }
+
+    context "when user request to be a member too" do
+      let(:member) { true }
+
+      it { expect { subject }.to broadcast(:ok) }
+      it { expect_after_subject(verification_request).to have_been_made.once }
+      it { expect_after_subject(prioritized_request).not_to have_been_made }
+      it { expect_after_subject(member_request).to have_been_made.once }
+    end
+
+    context "when verification should be prioritized" do
+      let(:prioritize) { true }
+
+      it { expect { subject }.to broadcast(:ok) }
+      it { expect_after_subject(verification_request).to have_been_made.once }
+      it { expect_after_subject(prioritized_request).to have_been_made.once }
+      it { expect_after_subject(member_request).not_to have_been_made }
     end
 
     context "when no document files present" do
       let(:person_id) { 8 }
       let(:document_file1) { nil }
-      let(:cassette) { "verification_step_files_missing" }
 
       it "broadcasts :invalid" do
-        expect { subject.call }.to broadcast(:invalid)
+        expect { subject }.to broadcast(:invalid)
       end
 
       it "adds the API error to the form" do
-        subject.call
+        subject
 
         expect(form.errors.count).to eq(2)
         expect(form.errors[:document_file1]).to eq(["can't be empty"])

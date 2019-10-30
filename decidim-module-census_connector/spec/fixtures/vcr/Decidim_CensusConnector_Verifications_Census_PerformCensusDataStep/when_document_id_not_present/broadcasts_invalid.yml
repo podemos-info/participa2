@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1966-08-04&document_id=&document_scope_code=ES&document_type=dni&email=user20%40example.org&first_name=Frances&gender=female&last_name1=Wilkinson&last_name2&origin_qualified_id=453%40decidim_module_census_connector_test_app_application-616&phone=0034431632720&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=e1a192ba-0f30-4072-bbf0-3dd83be173d2; path=/; expires=Tue, 29 Oct
+        2019 14:57:17 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=022999b6-1fc7-4967-8dc5-574f616af516; path=/; expires=Fri, 29
+        Oct 2021 10:57:17 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 9e78a947-9902-4a00-a4d1-0d4ddc789c98
+      X-Runtime:
+      - '0.008240'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"document_id":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:17 GMT
+recorded_with: VCR 4.0.0

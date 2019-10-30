@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/3@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"cde2fa75b18127baa52bd1c80d31c369"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=f9a32df6-ac3f-4820-8746-4fbee82d95ca; path=/; expires=Tue, 29 Oct
+        2019 14:58:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1882feb0-a482-4e06-8b69-34402afde504; path=/; expires=Fri, 29
+        Oct 2021 10:58:31 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - aef3dc9e-b309-4a82-a89d-8f95eac802c9
+      X-Runtime:
+      - '0.006235'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":3,"external_ids":{"participa2_application-1":3},"scope_code":"ES-AN-GR-120","state":"enabled","membership_level":"follower","verification":"verification_requested","phone_verification":"not_verified","first_name":"María
+        Teresa","last_name1":"Santana","last_name2":"Ramos","document_type":"dni","document_id":"36150953J","document_scope_code":"ES","born_at":"2002-10-12","gender":"undisclosed","email":"scotthaag@orngreen.org","phone":"0034728465009","address":"Calleja
+        Martín 66","address_scope_code":"LV-062","postal_code":"88800","additional_information":{},"membership_allowed?":false,"created_at":"2016-10-29T10:45:39.837Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:31 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/3@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"cde2fa75b18127baa52bd1c80d31c369"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=1837dc50-f52a-444f-92bc-83c063c88af0; path=/; expires=Tue, 29 Oct
+        2019 14:58:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=cd437cf8-1cd9-47ef-96a8-18d5c3c83384; path=/; expires=Fri, 29
+        Oct 2021 10:58:31 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 0efe91f1-9a53-44d8-9b12-c86e76468f60
+      X-Runtime:
+      - '0.006326'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":3,"external_ids":{"participa2_application-1":3},"scope_code":"ES-AN-GR-120","state":"enabled","membership_level":"follower","verification":"verification_requested","phone_verification":"not_verified","first_name":"María
+        Teresa","last_name1":"Santana","last_name2":"Ramos","document_type":"dni","document_id":"36150953J","document_scope_code":"ES","born_at":"2002-10-12","gender":"undisclosed","email":"scotthaag@orngreen.org","phone":"0034728465009","address":"Calleja
+        Martín 66","address_scope_code":"LV-062","postal_code":"88800","additional_information":{},"membership_allowed?":false,"created_at":"2016-10-29T10:45:39.837Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:31 GMT
+recorded_with: VCR 4.0.0

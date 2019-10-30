@@ -5,7 +5,7 @@ require "spec_helper"
 require "faker"
 require "faker/spanish_document"
 
-describe "Census authorization", type: :system do
+describe "Census authorization", :vcr, type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: %w(census))
   end
@@ -52,11 +52,6 @@ describe "Census authorization", type: :system do
   let(:dummy_resource) { create(:dummy_resource, component: component) }
   let(:age) { 18 }
   let(:document_type) { "DNI" }
-  let(:cassette) { "require_verification" }
-
-  around do |example|
-    VCR.use_cassette(cassette, {}, &example)
-  end
 
   before do |example|
     Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
@@ -87,15 +82,12 @@ describe "Census authorization", type: :system do
     let(:verify_phone) { false }
 
     context "and everything alright" do
-      let(:cassette) { "registration_ok" }
-
       it "grants access to foo" do
         expect(page).to have_current_path(/foo/)
       end
     end
 
     context "when verifying phone" do
-      let(:cassette) { "phone_verification_registration" }
       let(:verify_phone) { true }
 
       it "grants access to foo" do
@@ -104,7 +96,6 @@ describe "Census authorization", type: :system do
     end
 
     context "and too young" do
-      let(:cassette) { "registration_with_young" }
       let(:age) { 14 }
 
       it "shows popup to inform that requirements are not met" do
@@ -115,7 +106,6 @@ describe "Census authorization", type: :system do
     end
 
     context "and using passport" do
-      let(:cassette) { "registration_with_passport" }
       let(:document_type) { "Passport" }
 
       it "shows popup to inform that requirements are not met" do
@@ -130,8 +120,6 @@ describe "Census authorization", type: :system do
         { email: "scammer@mailinator.com" }
       end
 
-      let(:cassette) { "registration_with_issues" }
-
       it "shows popup to require verification and shows it as pending" do
         expect(page).to have_content(
           "Your registration with Podemos is pending of approval."
@@ -141,8 +129,6 @@ describe "Census authorization", type: :system do
   end
 
   context "when registering with census with invalid data in the first step" do
-    let(:cassette) { "registration_with_invalid_data" }
-
     before do
       click_link 'Authorize with "Census"'
 
@@ -161,8 +147,6 @@ describe "Census authorization", type: :system do
   end
 
   context "when registering with census with invalid data in the second step" do
-    let(:cassette) { "registration_with_invalid_data_second_step" }
-
     before do
       click_link 'Authorize with "Census"'
 

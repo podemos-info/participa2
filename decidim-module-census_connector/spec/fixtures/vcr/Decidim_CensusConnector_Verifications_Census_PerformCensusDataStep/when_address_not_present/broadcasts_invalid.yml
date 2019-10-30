@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=&address_scope_code=ES&born_at=1990-12-15&document_id=14979909D&document_scope_code=ES&document_type=dni&email=user53%40example.org&first_name=Marian&gender=female&last_name1=Halvorson&last_name2&origin_qualified_id=486%40decidim_module_census_connector_test_app_application-682&phone=0034672869318&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=2b4a83d1-46b2-42a4-99bc-571171b15b7a; path=/; expires=Tue, 29 Oct
+        2019 14:57:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=decc6b1f-9c78-4175-8b5d-63740f470cb4; path=/; expires=Fri, 29
+        Oct 2021 10:57:28 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e210261a-5b91-4e66-bde3-8c7197430f14
+      X-Runtime:
+      - '0.006994'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"address":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:28 GMT
+recorded_with: VCR 4.0.0

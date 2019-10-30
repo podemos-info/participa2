@@ -70,6 +70,7 @@ en:
           census_closure: Census closure date
           enforce_scope: Limit participation to people in the activity scope
           minimum_age: Minimum age
+          prioritize_verification: Prioritize verifications
         name: Census
     authorization_modals:
       content:

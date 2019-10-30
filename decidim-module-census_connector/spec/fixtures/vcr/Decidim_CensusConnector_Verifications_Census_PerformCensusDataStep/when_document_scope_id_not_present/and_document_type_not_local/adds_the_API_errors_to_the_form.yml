@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1990-08-22&document_id=QDO752309&document_scope_code&document_type=passport&email=user9%40example.org&first_name=Darrell&gender=female&last_name1=Marvin&last_name2&origin_qualified_id=442%40decidim_module_census_connector_test_app_application-594&phone=0034772087975&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=a7b701b8-92ba-4996-b3be-c7e1bdc2aed3; path=/; expires=Tue, 29 Oct
+        2019 14:57:12 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=4e0fc70f-0eba-4ca2-8a05-0fe62914d9be; path=/; expires=Fri, 29
+        Oct 2021 10:57:12 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - d76f8002-ef09-44c2-b50d-6220c2dead7a
+      X-Runtime:
+      - '0.007026'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"document_scope":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:12 GMT
+recorded_with: VCR 4.0.0

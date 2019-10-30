@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1930-12-07&document_id=23584256X&document_scope_code=ES&document_type=dni&email=user36%40example.org&first_name=Rod&gender=female&last_name1=Johnson&last_name2&origin_qualified_id=469%40decidim_module_census_connector_test_app_application-648&phone=0034666666666&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=e5f9f494-ccb8-433f-96b0-0e5fbaaca448; path=/; expires=Tue, 29 Oct
+        2019 14:57:21 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=fc15d123-6865-4934-b65a-9ba86df45cbf; path=/; expires=Fri, 29
+        Oct 2021 10:57:21 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 9fcf5ad1-2b45-4baf-a8a3-5ae8a236ac94
+      X-Runtime:
+      - '0.211760'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":69}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:21 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/69@census/phone_verifications/new?phone=0034666666666
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=6ac0252e-291e-4563-84c7-494816166efb; path=/; expires=Tue, 29 Oct
+        2019 14:57:21 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c57b3416-1c0c-421a-a9b4-fde4eafc3a11; path=/; expires=Fri, 29
+        Oct 2021 10:57:21 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 5a9876db-daa2-4589-81eb-987bef985dbd
+      X-Runtime:
+      - '0.319899'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:21 GMT
+recorded_with: VCR 4.0.0

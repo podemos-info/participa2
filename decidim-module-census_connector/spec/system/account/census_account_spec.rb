@@ -4,11 +4,7 @@ require "spec_helper"
 require "decidim/core/test/factories"
 
 module Decidim::CensusConnector
-  describe "Census account", type: :system do
-    around do |example|
-      VCR.use_cassette(cassette, {}, &example)
-    end
-
+  describe "Census account", :vcr, type: :system do
     before do
       local_scope
       create_person_scopes(organization, person)
@@ -23,7 +19,6 @@ module Decidim::CensusConnector
     let(:user) { create(:user, :confirmed, :with_person, organization: organization) }
     let(:person) { person_proxy.person }
     let(:person_proxy) { PersonProxy.for(user) }
-    let(:cassette) { "existing_person" }
 
     it "shows the personal data information" do
       within ".card--list__item.data_card" do
@@ -95,7 +90,6 @@ module Decidim::CensusConnector
     end
 
     context "when the person is a member" do
-      let(:cassette) { "existing_member_person" }
       let(:user) { create(:user, :confirmed, :with_member_person, organization: organization) }
 
       it "shows that the membership is not allowed" do
@@ -113,7 +107,6 @@ module Decidim::CensusConnector
     end
 
     context "when the person is young" do
-      let(:cassette) { "existing_young_person" }
       let(:user) { create(:user, :confirmed, :with_young_person, organization: organization) }
 
       it "shows that the membership is not allowed" do

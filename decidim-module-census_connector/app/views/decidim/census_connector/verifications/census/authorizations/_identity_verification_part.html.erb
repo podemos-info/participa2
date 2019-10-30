@@ -9,6 +9,7 @@
       <h5 class="card__title"><%= strip_tags(translated_attribute(form.information_page.title)) %></h5>
       <div class="verification_information"><%= decidim_sanitize translated_attribute(form.information_page.content) %></div>
     <% end %>
+    <%= f.hidden_field :prioritize %>
     <div class="row">
       <div class="column large-6 document_uploader">
         <div class="field">

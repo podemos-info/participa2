@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8be4bce01b390a968c884fa825bda3c4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=d9676979-4998-4583-81f1-6b83a7b8bb5a; path=/; expires=Tue, 29 Oct
+        2019 14:57:42 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=73f6355e-eea4-4480-812d-ffc39e61149d; path=/; expires=Fri, 29
+        Oct 2021 10:57:42 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 20edca70-5f7c-48e5-bff0-e10a8c961225
+      X-Runtime:
+      - '0.005651'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":1,"external_ids":{"participa2_application-1":1},"scope_code":"ES-CM-GU-037","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Vicente","last_name1":"Cervántez","last_name2":"Quiñónez","document_type":"nie","document_id":"X5044095B","document_scope_code":"ES","born_at":"1931-03-24","gender":"male","email":"angeloauer@emmerich.info","phone":"0034888858196","address":"Quinta
+        Jacobo Montemayor 8","address_scope_code":"ES-CM-GU-037","postal_code":"19950","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:33.638Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:42 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/X5044095B@document_id?includes%5B%5D=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3a2befcbb8f2740e6522e216d7551628"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=625dd02a-9347-46b0-8b4b-316f8d1cfd32; path=/; expires=Tue, 29 Oct
+        2019 14:57:43 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1ca1409f-0bf7-4d5d-a6b9-79527f227703; path=/; expires=Fri, 29
+        Oct 2021 10:57:43 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 608c68ea-1547-468f-a8ff-1196922bd44b
+      X-Runtime:
+      - '0.005998'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"email":"angeloauer@emmerich.info"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:43 GMT
+recorded_with: VCR 4.0.0

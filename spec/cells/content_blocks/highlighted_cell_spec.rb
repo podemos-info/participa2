@@ -6,12 +6,8 @@ require "decidim/census_connector/test/factories"
 require "decidim/crowdfundings/test/factories"
 require "decidim/votings/test/factories"
 
-describe ContentBlocks::HighlightedCell, type: :cell do
+describe ContentBlocks::HighlightedCell, :vcr, type: :cell do
   subject { cell(content_block.cell, content_block).call }
-
-  around do |example|
-    VCR.use_cassette(cassette, {}, &example)
-  end
 
   controller Decidim::PagesController
 
@@ -19,7 +15,6 @@ describe ContentBlocks::HighlightedCell, type: :cell do
   let(:content_block) { create :content_block, organization: organization, manifest_name: :highlighted, scope: :homepage, settings: settings }
   let(:settings) { {} }
   let(:current_user) { create :user, organization: organization }
-  let(:cassette) { "" }
 
   before do
     allow(controller).to receive(:current_organization).and_return(organization)
@@ -33,7 +28,6 @@ describe ContentBlocks::HighlightedCell, type: :cell do
   context "when has an assembly with a crowdfunding campaign" do
     let(:manifest) { Decidim.find_component_manifest("crowdfundings") }
     let!(:campaign) { create(:campaign, :assembly, reference: "I-CAMP-2019-08-30") }
-    let(:cassette) { "crowdfunding_campaign" }
 
     it "shows the name of the space and a link to it" do
       expect(subject).to have_text(translated(campaign.component.participatory_space.title))
@@ -49,7 +43,6 @@ describe ContentBlocks::HighlightedCell, type: :cell do
   context "when has an assembly with an active voting" do
     let(:manifest) { Decidim.find_component_manifest("votings") }
     let!(:voting) { create(:voting, :n_votes, :assembly) }
-    let(:cassette) { "voting" }
 
     it "shows the name of the space and a link to it" do
       expect(subject).to have_text(translated(voting.component.participatory_space.title))

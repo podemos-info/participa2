@@ -4,12 +4,8 @@ require "rails_helper"
 
 require "decidim/census_connector/test/factories"
 
-describe Decidim::ContentBlocks::HeroCell, type: :cell do
+describe Decidim::ContentBlocks::HeroCell, :vcr, type: :cell do
   subject { cell(content_block.cell, content_block).call }
-
-  around do |example|
-    VCR.use_cassette(cassette, {}, &example)
-  end
 
   controller Decidim::PagesController
 
@@ -17,7 +13,6 @@ describe Decidim::ContentBlocks::HeroCell, type: :cell do
   let(:content_block) { create :content_block, organization: organization, manifest_name: :hero, scope: :homepage, settings: settings }
   let(:settings) { {} }
   let(:user) { create :user, organization: organization }
-  let(:cassette) { "" }
 
   before do
     allow(controller).to receive(:current_organization).and_return(organization)

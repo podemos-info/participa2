@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1984-05-28&document_id=69524195W&document_scope_code=ES&document_type=dni&email=user39%40example.org&first_name=Ansel&gender=female&last_name1=Spencer&last_name2&origin_qualified_id=472%40decidim_module_census_connector_test_app_application-654&phone=0034326776283&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=77df84c5-f876-4538-bce9-b754e873e1bb; path=/; expires=Tue, 29 Oct
+        2019 14:57:23 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=b271ed4a-7a9a-46c2-9843-bde8f44b6dd0; path=/; expires=Fri, 29
+        Oct 2021 10:57:23 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 9e5f7a9a-0383-4256-8f66-0b0f577c9a33
+      X-Runtime:
+      - '0.723372'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":72}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:24 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/72@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2c5aa39aa54e2f6d475783b981a6bcf5"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=cde80b57-fcf3-414e-8a26-db2d535eb2e9; path=/; expires=Tue, 29 Oct
+        2019 14:57:24 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d4c24e67-d442-4070-9589-3ec7eb4d43fc; path=/; expires=Fri, 29
+        Oct 2021 10:57:24 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - b3ec1db8-6a31-4bb3-8c2c-4c0ebffa5581
+      X-Runtime:
+      - '0.440045'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":72,"external_ids":{"decidim_module_census_connector_test_app_application-654":472},"scope_code":"ES","state":"pending","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Ansel","last_name1":"Spencer","last_name2":null,"document_type":"dni","document_id":"69524195W","document_scope_code":"ES","born_at":"1984-05-28","gender":"female","email":"user39@example.org","phone":"0034326776283","address":"Rua
+        del Percebe, 1","address_scope_code":"ES","postal_code":"08001","additional_information":{},"membership_allowed?":true,"created_at":"2019-10-29T10:57:23.961Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:24 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/es/payments/orders/total?campaign_code=I-CAMP-2019-08-30
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Rails Testing
+      User-Ip:
+      - 0.0.0.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e6a312b1d452aa705e11d045f19ba9f7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=43f706a5-2178-4a44-88a7-4a4100836f78; path=/; expires=Tue, 29 Oct
+        2019 15:13:02 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=610ce5bf-9eb2-4c7e-888f-da4a31e5a9b9; path=/; expires=Fri, 29
+        Oct 2021 11:13:02 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 67ae86a6-038f-4d50-a615-7021a711e1e9
+      X-Runtime:
+      - '0.003881'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"amount":0}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 11:13:02 GMT
+recorded_with: VCR 4.0.0

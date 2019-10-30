@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code&born_at=1934-01-02&document_id=46402996J&document_scope_code=ES&document_type=dni&email=user12%40example.org&first_name=Jonatan&gender=female&last_name1=Hackett&last_name2&origin_qualified_id=445%40decidim_module_census_connector_test_app_application-600&phone=0034165917804&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=87e554ac-f420-4418-ab0c-32bee72f28ae; path=/; expires=Tue, 29 Oct
+        2019 14:57:15 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9f5180a4-d3b3-4d27-aa91-5cb1eb3d4970; path=/; expires=Fri, 29
+        Oct 2021 10:57:15 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 0a23203c-d968-4a19-9f07-ccace797a1e7
+      X-Runtime:
+      - '0.006231'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"address_scope":[{"error":"blank"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:15 GMT
+recorded_with: VCR 4.0.0

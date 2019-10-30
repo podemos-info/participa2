@@ -3,12 +3,8 @@
 require "spec_helper"
 
 module Decidim::Devise
-  describe ConfirmationsController, type: :controller do
+  describe ConfirmationsController, :vcr, type: :controller do
     routes { Decidim::Core::Engine.routes }
-
-    around do |example|
-      VCR.use_cassette(cassette, {}, &example)
-    end
 
     let(:organization) { create(:organization) }
     let(:user) { create(:user, :with_person, :confirmed, person_id: 10) }
@@ -30,7 +26,6 @@ module Decidim::Devise
 
       before { allow(person_proxy).to receive(:update).and_return(census_result) }
 
-      let(:cassette) { "confirm_email_change" }
       let(:confirmation_token) { user.confirmation_token }
       let(:census_result) { [:ok, []] }
       let(:params) do

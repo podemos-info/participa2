@@ -52,6 +52,7 @@ class ParticipaSeeder
       available_authorizations: ["census"]
     )
 
+    Decidim::Newsletter.delete_all
     Decidim::Scope.delete_all
     Decidim::ScopeType.delete_all
     Decidim::Assembly.delete_all

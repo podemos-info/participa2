@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/9@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7ff34371c0f47261fb6acd5d4e2e75d0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=fd054287-52ec-4293-bfc1-a857d17ae486; path=/; expires=Tue, 29 Oct
+        2019 14:58:08 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=aee86e3a-dce7-4011-ae03-a8b676fd8a71; path=/; expires=Fri, 29
+        Oct 2021 10:58:08 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 77cf3718-d011-43d2-8fce-e9c29a01f8e8
+      X-Runtime:
+      - '0.010085'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":9,"external_ids":{"participa2_application-1":9},"scope_code":"ES-CT-L-255","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Esteban","last_name1":"Cabrera","last_name2":"Fonseca","document_type":"dni","document_id":"85115203T","document_scope_code":"ES","born_at":"1990-08-08","gender":"other","email":"granvilledare@zboncak.info","phone":"0034690670751","address":"Glorieta
+        José Verdugo s/n.","address_scope_code":"ES-CT-L-255","postal_code":"25579","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:53.320Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:08 GMT
+- request:
+    method: delete
+    uri: http://mycensus:3001/api/v1/en/people/9@census?channel=decidim&reason=I%20just%20want%20to%20delete%20my%20account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=3e79b5f2-dd97-41a6-bafe-c1a9f826b8df; path=/; expires=Tue, 29 Oct
+        2019 14:58:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=01a8fdc6-8197-4bb0-af5e-a2e182e4677e; path=/; expires=Fri, 29
+        Oct 2021 10:58:10 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 0a76801c-e4ef-40a8-8c5d-29a7360050e5
+      X-Runtime:
+      - '0.151187'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:10 GMT
+recorded_with: VCR 4.0.0

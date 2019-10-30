@@ -70,6 +70,7 @@ es:
           census_closure: Fecha de cierre del censo
           enforce_scope: Restringir la participación a las personas inscritas en el ámbito territorial de la actividad
           minimum_age: Edad mínima
+          prioritize_verification: Priorizar verificaciones
         name: Censo
     authorization_modals:
       content:

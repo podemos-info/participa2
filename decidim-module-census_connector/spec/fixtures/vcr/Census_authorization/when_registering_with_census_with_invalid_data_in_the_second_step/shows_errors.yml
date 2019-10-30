@@ -1,0 +1,249 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=2001-10-29&document_id=69016151M&document_scope_code=ES&document_type=dni&email=user134%40example.org&first_name=Schuyler&gender=female&last_name1=Schumm&last_name2=&origin_qualified_id=4270731%40decidim_module_census_connector_test_app_application-759&phone=0034666666666&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=a4336838-f53e-4f0e-bd54-69a5736f7ce4; path=/; expires=Tue, 29 Oct
+        2019 14:59:53 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f8455acb-f3f1-47bc-95a8-40d3b084a0d6; path=/; expires=Fri, 29
+        Oct 2021 10:59:53 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 2f209d3e-81df-4863-8b9c-0ec489287634
+      X-Runtime:
+      - '0.330890'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":80}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:59:53 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/80@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"55ba1bc089995e07913180fd2cedc04b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=43c75241-3009-410b-aeed-5847c15fa715; path=/; expires=Tue, 29 Oct
+        2019 14:59:53 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=6142cbee-ee16-4030-a09c-d6bd857746a3; path=/; expires=Fri, 29
+        Oct 2021 10:59:53 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - cb14a3b6-01bb-45db-8384-8abd17ff2840
+      X-Runtime:
+      - '0.006906'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":80,"external_ids":{"decidim_module_census_connector_test_app_application-759":4270731},"scope_code":"ES","state":"pending","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Schuyler","last_name1":"Schumm","last_name2":"","document_type":"dni","document_id":"69016151M","document_scope_code":"ES","born_at":"2001-10-29","gender":"female","email":"user134@example.org","phone":"0034666666666","address":"Rua
+        del Percebe, 1","address_scope_code":"ES","postal_code":"08001","additional_information":{},"membership_allowed?":true,"created_at":"2019-10-29T10:59:53.387Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:59:53 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/80@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"55ba1bc089995e07913180fd2cedc04b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=672afb12-6be0-479b-a059-64a907b396a8; path=/; expires=Tue, 29 Oct
+        2019 14:59:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=018c2add-ae4d-4795-a8c2-6411abdd63ca; path=/; expires=Fri, 29
+        Oct 2021 10:59:54 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 1d73a67f-37f3-40a6-8a21-f57c467ba1dd
+      X-Runtime:
+      - '0.006179'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":80,"external_ids":{"decidim_module_census_connector_test_app_application-759":4270731},"scope_code":"ES","state":"pending","membership_level":"follower","verification":"not_verified","phone_verification":"not_verified","first_name":"Schuyler","last_name1":"Schumm","last_name2":"","document_type":"dni","document_id":"69016151M","document_scope_code":"ES","born_at":"2001-10-29","gender":"female","email":"user134@example.org","phone":"0034666666666","address":"Rua
+        del Percebe, 1","address_scope_code":"ES","postal_code":"08001","additional_information":{},"membership_allowed?":true,"created_at":"2019-10-29T10:59:53.387Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:59:54 GMT
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people/80@census/document_verifications
+    body:
+      encoding: UTF-8
+      string: files%5B%5D&prioritize=
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=637bb624-6b8c-45be-8ecf-b78cb5882be8; path=/; expires=Tue, 29 Oct
+        2019 14:59:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=bf89953b-c9eb-4040-924e-80e9411875e0; path=/; expires=Fri, 29
+        Oct 2021 10:59:54 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e1c88950-c787-4632-aa33-ee7dc59bf453
+      X-Runtime:
+      - '0.006040'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"files":[{"error":"too_short","count":2}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:59:54 GMT
+recorded_with: VCR 4.0.0

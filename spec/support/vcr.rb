@@ -10,4 +10,5 @@ VCR.configure do |config|
   config.default_cassette_options = { record: ENV["VCR_RECORD_MODE"]&.to_sym || :new_episodes }
 
   config.hook_into :webmock
+  config.configure_rspec_metadata!
 end

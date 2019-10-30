@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1941-07-02&document_id=88828283Y&document_scope_code=ES&document_type=dni&email=user11%40example.org&first_name=Gilbert&gender=female&last_name1=Bayer&last_name2&origin_qualified_id=444%40decidim_module_census_connector_test_app_application-598&phone=0034277678145&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=d341055c-9d22-46b7-9578-525a770ca2f9; path=/; expires=Tue, 29 Oct
+        2019 14:57:14 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=19d4375a-e4d0-4cfd-8a4e-8a418467fe98; path=/; expires=Fri, 29
+        Oct 2021 10:57:14 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 3d4c5742-27c3-4f0a-9d5f-4c2a9d0dc264
+      X-Runtime:
+      - '0.220458'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":66}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:14 GMT
+recorded_with: VCR 4.0.0

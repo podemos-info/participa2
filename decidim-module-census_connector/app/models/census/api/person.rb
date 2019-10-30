@@ -31,7 +31,7 @@ module Census
 
       # PUBLIC add a verification process for the person.
       def create_verification(qualified_id, **params)
-        files = params[:files].map do |file|
+        params[:files] = params[:files].map do |file|
           {
             filename: file.original_filename,
             content_type: file.content_type,
@@ -40,7 +40,7 @@ module Census
         end
 
         process_response(
-          send_request { post(api_url("people/#{qualified_id}/document_verifications"), files: files) }
+          send_request { post(api_url("people/#{qualified_id}/document_verifications"), params) }
         )
       end
 
