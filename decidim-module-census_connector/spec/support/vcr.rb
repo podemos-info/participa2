@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "webmock/rspec"
+
 VCR.configure do |config|
   config.ignore_request do |request|
     URI(request.uri).port != URI(ENV["CENSUS_URL"]).port

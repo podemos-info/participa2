@@ -10,6 +10,7 @@ module Decidim
             @minimum_age = options["minimum_age"]
             @census_closure = options["census_closure"]
             @allowed_verification_levels = options["allowed_verification_levels"]
+            @prioritize_verification = options["prioritize_verification"]
             @enforce_scope = options["enforce_scope"]
           end
 
@@ -40,6 +41,10 @@ module Decidim
 
           def authorizing_by_verification?
             @allowed_verification_levels.present?
+          end
+
+          def prioritize_verification?
+            authorizing_by_verification? && @prioritize_verification
           end
 
           def humanized_allowed_document_types

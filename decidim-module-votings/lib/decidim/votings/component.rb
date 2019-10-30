@@ -24,20 +24,6 @@ Decidim.register_component(:votings) do |component|
     settings.attribute :resources_permissions_enabled, type: :boolean, default: true
   end
 
-  component.settings(:step) do |settings|
-    # Add your settings per step
-  end
-
-  # # Register an optional resource that can be referenced from other resources.
-  # component.register_resource do |resource|
-  #   resource.model_class_name = "Decidim::<EngineName>::<ResourceName>"
-  #   resource.template = "decidim/<engine_name>/<resource_view_folder>/linked_<resource_name_plural>"
-  # end
-
-  component.register_stat :some_stat do |components, start_at, end_at|
-    # Register some stat number to the application
-  end
-
   component.seeds do |participatory_space|
     component = Decidim::Component.create!(
       name: Decidim::Components::Namer.new(participatory_space.organization.available_locales, :votings).i18n_name,

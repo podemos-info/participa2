@@ -24,6 +24,7 @@ module Decidim::CensusConnector
         document_file1: document_file1,
         document_file2: document_file2,
         member: member,
+        prioritize: prioritize
       ).with_context(
         params: { part: "" },
         person: person_proxy.person
@@ -31,6 +32,16 @@ module Decidim::CensusConnector
     end
 
     let(:member) { false }
+    let(:prioritize) { false }
+
+    let(:verification_request) do
+      a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/document_verifications")
+    end
+
+    let(:prioritized_request) do
+      a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/document_verifications")
+        .with(body: hash_including(prioritize: "true"))
+    end
 
     let(:member_request) do
       a_request(:post, "http://mycensus:3001/api/v1/en/people/7@census/membership_levels")
@@ -38,15 +49,28 @@ module Decidim::CensusConnector
     end
 
     it { expect { subject }.to broadcast(:ok) }
+    it { subject; expect(verification_request).to have_been_made.once }
+    it { subject; expect(prioritized_request).not_to have_been_made }
     it { subject; expect(member_request).not_to have_been_made }
 
     context "when user request to be a member too" do
       let(:member) { true }
 
       it { expect { subject }.to broadcast(:ok) }
+      it { subject; expect(verification_request).to have_been_made.once }
+      it { subject; expect(prioritized_request).not_to have_been_made }
       it { subject; expect(member_request).to have_been_made.once }
     end
-    it { subject; expect(member_request).not_to have_been_made }
+
+    context "when verification should be prioritized" do
+      let(:prioritize) { true }
+
+      it { expect { subject }.to broadcast(:ok) }
+      it { subject; expect(verification_request).to have_been_made.once }
+      it { subject; expect(prioritized_request).to have_been_made.once }
+      it { subject; expect(member_request).not_to have_been_made }
+    end
+
     context "when no document files present" do
       let(:person_id) { 8 }
       let(:document_file1) { nil }

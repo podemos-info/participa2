@@ -28,7 +28,7 @@ module Decidim
             params[:allowed_scope] = current_scope.code if authorizing_by_scope?
             params[:census_closure] = census_closure if authorizing_by_census_closure?
             params[:allowed_verifications] = allowed_verification_levels if authorizing_by_verification?
-
+            params[:prioritize_verification] = true if prioritize_verification?
             params[:step] = if @status_code == :not_verified
                               "verification"
                             else
@@ -42,7 +42,7 @@ module Decidim
           delegate :authorizing_by_age?, :minimum_age, to: :census_options
           delegate :authorizing_by_document_type?, :allowed_document_types, :humanized_allowed_document_types, to: :census_options
           delegate :authorizing_by_census_closure?, :humanized_census_closure, :census_closure, to: :census_options
-          delegate :authorizing_by_verification?, :allowed_verification_levels, :minimum_verification_level, to: :census_options
+          delegate :authorizing_by_verification?, :prioritize_verification?, :allowed_verification_levels, :minimum_verification_level, to: :census_options
 
           def census_options
             @census_options ||= ActionAuthorizerOptions.new(options)
