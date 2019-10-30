@@ -19,10 +19,9 @@ end
 
 def action_authorizer_options(voting)
   vote_permissions = voting&.permissions&.fetch("vote", nil) || voting.component.permissions&.fetch("vote", nil)
+  vote_permissions = vote_permissions.dig("authorization_handlers", "census")
 
-  if vote_permissions&.fetch("authorization_handler_name") == "census"
-    Decidim::CensusConnector::Verifications::Census::ActionAuthorizerOptions.new(
-      vote_permissions["options"] || {}
-    )
-  end
+  return nil unless vote_permissions
+
+  Decidim::CensusConnector::Verifications::Census::ActionAuthorizerOptions.new(vote_permissions["options"] || {})
 end

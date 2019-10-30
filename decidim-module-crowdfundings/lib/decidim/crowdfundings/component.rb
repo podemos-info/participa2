@@ -41,9 +41,9 @@ Decidim.register_component(:crowdfundings) do |component|
     instance = instances[:resource] || instances[:component]
     permissions = instance.permissions["support"]
 
-    raise "The handler for this action must be census" unless permissions && permissions["authorization_handler_name"] == "census"
+    raise "The handler for this action must be census" unless permissions && permissions["authorization_handlers"]["census"]
 
-    options = permissions["options"]
+    options = permissions["authorization_handlers"]["census"]["options"]
 
     minimum_age = options["minimum_age"]
     raise "You need to define a minimum_age key" unless minimum_age
