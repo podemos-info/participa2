@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1932-03-27&document_id=14526831P&document_scope_code=ES&document_type=dni&email=user17%40example.org&first_name=Aglae&gender=female&last_name1=Reichert&last_name2&origin_qualified_id=450%40decidim_module_census_connector_test_app_application-610&phone=0034220543818&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=f5031576-d0ec-4d4f-a720-4c05969c22e2; path=/; expires=Tue, 29 Oct
+        2019 14:57:16 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=41e491df-c394-42bb-9de3-e7dda516ccea; path=/; expires=Fri, 29
+        Oct 2021 10:57:16 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 73aa4424-74b0-4838-8ecd-429141906552
+      X-Runtime:
+      - '0.455657'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":68}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:16 GMT
+recorded_with: VCR 4.0.0

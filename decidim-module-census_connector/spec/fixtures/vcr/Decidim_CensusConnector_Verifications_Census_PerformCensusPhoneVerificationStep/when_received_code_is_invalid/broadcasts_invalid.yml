@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/6@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"80e679598b267d541c7e5f250137208f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=32967472-9cb1-4ed1-9561-8e9961e9024d; path=/; expires=Tue, 29 Oct
+        2019 14:58:08 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=e9233fca-93d8-45c6-9016-bd605b0dd222; path=/; expires=Fri, 29
+        Oct 2021 10:58:08 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - d02221c8-10b0-466b-a53e-5b2e83fca8c4
+      X-Runtime:
+      - '0.005534'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":6,"external_ids":{"participa2_application-1":6},"scope_code":"ES-CL-SG-044","state":"enabled","membership_level":"follower","verification":"not_verified","phone_verification":"verified","first_name":"Concepción","last_name1":"Romero","last_name2":"Avilés","document_type":"passport","document_id":"S7155397570","document_scope_code":"ES","born_at":"1993-05-03","gender":"male","email":"augustus@glover.co","phone":"0034168321112","address":"Ferrocarril
+        Rosario Delgadillo 28 Puerta 252","address_scope_code":"ES-CL-SG-044","postal_code":"40894","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:45.655Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:08 GMT
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people/6@census/phone_verifications
+    body:
+      encoding: UTF-8
+      string: phone=0034168321112&received_code=0000000
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=1113fb8e-37a1-4edb-80ab-39f1673b5edb; path=/; expires=Tue, 29 Oct
+        2019 14:58:08 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c7a628ac-84ac-4965-a67a-5d3e14170e30; path=/; expires=Fri, 29
+        Oct 2021 10:58:08 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - ca7948d4-9458-4af2-8570-ecb184b04b21
+      X-Runtime:
+      - '0.010868'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"received_code":[{"error":"invalid"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:08 GMT
+recorded_with: VCR 4.0.0

@@ -5,12 +5,8 @@ require "decidim/core/test/factories"
 require "decidim/census_connector/verifications/census/action_authorizer"
 
 module Decidim::CensusConnector::Verifications::Census
-  describe ActionAuthorizer do
+  describe ActionAuthorizer, :vcr do
     subject(:authorizer) { described_class.new(authorization, options, component, resource) }
-
-    around do |example|
-      VCR.use_cassette(cassette, {}, &example)
-    end
 
     let(:user) { create(:user, :confirmed, :with_person, organization: organization, scope: user_scope) }
     let(:user_scope) { nil }
@@ -37,7 +33,6 @@ module Decidim::CensusConnector::Verifications::Census
       )
     end
     let(:organization) { component.organization }
-    let(:cassette) { "unused_cassette" }
 
     describe "#authorize" do
       subject(:method_call) { authorizer.authorize }
@@ -81,7 +76,6 @@ module Decidim::CensusConnector::Verifications::Census
 
         context "when census is closed" do
           let(:options) { { "enforce_scope" => 1, "census_closure" => 1.day.ago.to_s(:db) } }
-          let(:cassette) { "person_closure" }
           let(:resource_scope) { create(:scope, organization: organization, code: resource_scope_code) }
           let(:user_scope) { nil }
           let(:resource_scope_code) { person.scope_code }
@@ -91,7 +85,6 @@ module Decidim::CensusConnector::Verifications::Census
 
           context "when user has changed its scope recently" do
             let(:resource_scope_code) { "ES-AN-CA-020" }
-            let(:cassette) { "person_closure_with_scope_change" }
 
             before do
               resource_scope

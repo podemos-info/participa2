@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b1775f275d8fc2e4d5d36ad8f2bdb59e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=799ff1dd-6afa-42ac-8111-70738fd7dea7; path=/; expires=Tue, 29 Oct
+        2019 14:58:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=00f11d13-58ba-46be-aa55-f8cc82029a7c; path=/; expires=Fri, 29
+        Oct 2021 10:58:28 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 692955c2-0135-4888-bb91-37628c814717
+      X-Runtime:
+      - '0.005618'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"external_ids":{"participa2_application-1":2},"scope_code":"ES-CL-VA-011","state":"enabled","membership_level":"member","verification":"verified","phone_verification":"not_verified","first_name":"Fernando","last_name1":"Magaña","last_name2":"Preciado","document_type":"passport","document_id":"JLF161651","document_scope_code":"XX","born_at":"1925-05-20","gender":"undisclosed","email":"major@gerlach.info","phone":"0034678792557","address":"Polígono
+        María del Carmen Armendáriz 8","address_scope_code":"ES-CL-VA-011","postal_code":"47884","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:36.587Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:28 GMT
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/en/people/2@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/62.0.3202.94
+        Safari/537.36
+      User-Ip:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip, compressed
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b1775f275d8fc2e4d5d36ad8f2bdb59e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_track=true; path=/; HttpOnly; SameSite=Lax
+      - ahoy_visit=ad10aed9-3ff3-409f-b47c-07aa53257fba; path=/; expires=Tue, 29 Oct
+        2019 14:58:28 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=28ee6fe7-c55e-41d8-b19f-f91c4d3acf95; path=/; expires=Fri, 29
+        Oct 2021 10:58:28 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - f7d11aad-258d-43bb-8d52-54da87763cbc
+      X-Runtime:
+      - '0.005540'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":2,"external_ids":{"participa2_application-1":2},"scope_code":"ES-CL-VA-011","state":"enabled","membership_level":"member","verification":"verified","phone_verification":"not_verified","first_name":"Fernando","last_name1":"Magaña","last_name2":"Preciado","document_type":"passport","document_id":"JLF161651","document_scope_code":"XX","born_at":"1925-05-20","gender":"undisclosed","email":"major@gerlach.info","phone":"0034678792557","address":"Polígono
+        María del Carmen Armendáriz 8","address_scope_code":"ES-CL-VA-011","postal_code":"47884","additional_information":{},"membership_allowed?":true,"created_at":"2016-10-29T10:45:36.587Z"}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:58:28 GMT
+recorded_with: VCR 4.0.0

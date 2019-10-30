@@ -12,5 +12,6 @@ VCR.configure do |config|
     match_requests_on: [:method, VCR.request_matchers.uri_without_param(:version_at)]
   }
 
+  config.configure_rspec_metadata!
   config.hook_into :webmock
 end

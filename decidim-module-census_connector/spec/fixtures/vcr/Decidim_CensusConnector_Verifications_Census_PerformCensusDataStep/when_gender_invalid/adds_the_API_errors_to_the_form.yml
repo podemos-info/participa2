@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1962-07-06&document_id=74619640G&document_scope_code=ES&document_type=dni&email=user24%40example.org&first_name=Nona&gender=ardilla&last_name1=Cummings&last_name2&origin_qualified_id=457%40decidim_module_census_connector_test_app_application-624&phone=0034829996766&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=47e138a7-a92f-4b53-9949-5a5cf592e5d5; path=/; expires=Tue, 29 Oct
+        2019 14:57:18 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=5be901ed-9bb3-489e-ae76-14c441fe02c4; path=/; expires=Fri, 29
+        Oct 2021 10:57:18 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 25a661ea-3462-453f-9d4d-d325993cb98c
+      X-Runtime:
+      - '0.006705'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"gender":[{"error":"inclusion","value":"ardilla"}]}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:18 GMT
+recorded_with: VCR 4.0.0

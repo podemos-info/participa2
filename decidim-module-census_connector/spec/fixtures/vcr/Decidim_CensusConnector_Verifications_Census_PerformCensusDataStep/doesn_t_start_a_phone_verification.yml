@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mycensus:3001/api/v1/en/people
+    body:
+      encoding: UTF-8
+      string: address=Rua+del+Percebe%2C+1&address_scope_code=ES&born_at=1923-10-29&document_id=52921605P&document_scope_code=ES&document_type=dni&email=user7%40example.org&first_name=Vernon&gender=female&last_name1=Luettgen&last_name2&origin_qualified_id=440%40decidim_module_census_connector_test_app_application-590&phone=0034390105549&postal_code=08001&scope_code=ES
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=60e2f34b-763a-483a-88e5-0408a0efca2e; path=/; expires=Tue, 29 Oct
+        2019 14:57:10 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=028eeae7-4877-4735-af89-aa0a15548a63; path=/; expires=Fri, 29
+        Oct 2021 10:57:10 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - e0939b95-9b7d-4888-b88d-9109cde8b8ac
+      X-Runtime:
+      - '2.075797'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage"'
+      Content-Security-Policy:
+      - 'default-src https: ''self'' data:; connect-src https: ''self'' ws:; script-src
+        ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline''; report-uri
+        /csp-report'
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"person_id":64}'
+    http_version:
+  recorded_at: Tue, 29 Oct 2019 10:57:12 GMT
+recorded_with: VCR 4.0.0

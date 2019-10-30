@@ -4,11 +4,7 @@ require "spec_helper"
 require "decidim/core/test/factories"
 
 module Decidim::CensusConnector
-  describe "Destroy account", type: :system do
-    around do |example|
-      VCR.use_cassette(cassette, {}, &example)
-    end
-
+  describe "Destroy account", :vcr, type: :system do
     before do
       local_scope
       create_person_scopes(organization, person)
@@ -23,7 +19,6 @@ module Decidim::CensusConnector
     let(:user) { create(:user, :confirmed, :with_person, organization: organization, person_id: 9) }
     let(:person) { person_proxy.person }
     let(:person_proxy) { PersonProxy.for(user) }
-    let(:cassette) { "destroy_person" }
 
     it "the user can delete his account" do
       fill_in :delete_account_delete_reason, with: "I just want to delete my account"

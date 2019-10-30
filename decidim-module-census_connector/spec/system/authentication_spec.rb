@@ -31,15 +31,10 @@ module Decidim
           expect(page).to have_content(user.name)
         end
 
-        context "when logging in with the document ID" do
+        context "when logging in with the document ID", :vcr do
           let(:user) { create(:user, :confirmed, :with_person, password: password, organization: organization) }
           let(:person) { person_proxy.person }
           let(:person_proxy) { CensusConnector::PersonProxy.for(user) }
-          let(:cassette) { "authentication_with_document" }
-
-          around do |example|
-            VCR.use_cassette(cassette, {}, &example)
-          end
 
           before do
             # rubocop:disable Rails/SkipsModelValidations

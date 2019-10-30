@@ -5,11 +5,7 @@ require "spec_helper"
 require "decidim/core/test/factories"
 require "decidim/census_connector/test/person_scopes"
 
-describe "Crowdfunding activism type", type: :system do
-  around do |example|
-    VCR.use_cassette(cassette, {}, &example)
-  end
-
+describe "Crowdfunding activism type", :vcr, type: :system do
   before do
     local_scope
     create_person_scopes(organization, person)
@@ -24,8 +20,6 @@ describe "Crowdfunding activism type", type: :system do
   let(:user) { create(:user, :confirmed, :with_person, organization: organization) }
   let(:person) { person_proxy.person }
   let(:person_proxy) { Decidim::CensusConnector::PersonProxy.for(user) }
-
-  let(:cassette) { "crowdfunding_activism_type_inactive" }
 
   it "shows the crowdfunding activism type" do
     within ".card--list__item.activism_type_crowdfunding_card" do
@@ -44,7 +38,6 @@ describe "Crowdfunding activism type", type: :system do
   context "when the person has a contribution" do
     before { contribution }
 
-    let(:cassette) { "crowdfunding_activism_type_active" }
     let(:contribution) { create(:contribution, :monthly, :accepted, user: user) }
 
     it "shows the activism status" do
