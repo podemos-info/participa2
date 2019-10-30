@@ -643,7 +643,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.1)
-    puffing-billy (2.1.1)
+    puffing-billy (2.2.0)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
