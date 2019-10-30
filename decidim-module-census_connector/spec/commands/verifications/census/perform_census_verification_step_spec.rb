@@ -49,26 +49,26 @@ module Decidim::CensusConnector
     end
 
     it { expect { subject }.to broadcast(:ok) }
-    it { subject; expect(verification_request).to have_been_made.once }
-    it { subject; expect(prioritized_request).not_to have_been_made }
-    it { subject; expect(member_request).not_to have_been_made }
+    it { expect_after_subject(verification_request).to have_been_made.once }
+    it { expect_after_subject(prioritized_request).not_to have_been_made }
+    it { expect_after_subject(member_request).not_to have_been_made }
 
     context "when user request to be a member too" do
       let(:member) { true }
 
       it { expect { subject }.to broadcast(:ok) }
-      it { subject; expect(verification_request).to have_been_made.once }
-      it { subject; expect(prioritized_request).not_to have_been_made }
-      it { subject; expect(member_request).to have_been_made.once }
+      it { expect_after_subject(verification_request).to have_been_made.once }
+      it { expect_after_subject(prioritized_request).not_to have_been_made }
+      it { expect_after_subject(member_request).to have_been_made.once }
     end
 
     context "when verification should be prioritized" do
       let(:prioritize) { true }
 
       it { expect { subject }.to broadcast(:ok) }
-      it { subject; expect(verification_request).to have_been_made.once }
-      it { subject; expect(prioritized_request).to have_been_made.once }
-      it { subject; expect(member_request).not_to have_been_made }
+      it { expect_after_subject(verification_request).to have_been_made.once }
+      it { expect_after_subject(prioritized_request).to have_been_made.once }
+      it { expect_after_subject(member_request).not_to have_been_made }
     end
 
     context "when no document files present" do
