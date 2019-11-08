@@ -25,7 +25,7 @@ module Decidim
       private
 
       def can_vote?
-        !voting.finished? && authorized?(:vote, resource: voting)
+        !user.managed? && !voting.finished? && authorized?(:vote, resource: voting)
       end
 
       def can_simulate_vote?

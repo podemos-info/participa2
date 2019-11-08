@@ -3,8 +3,9 @@
 require "spec_helper"
 
 describe Decidim::Votings::Permissions do
-  subject { described_class.new(user, permission_action, context).permissions.allowed? }
+  subject { permission.allowed? }
 
+  let(:permission) { described_class.new(user, permission_action, context).permissions }
   let(:user) { create(:user, organization: voting_component.organization) }
   let(:permission_action) { Decidim::PermissionAction.new(action) }
   let(:voting) { create(:voting) }
@@ -46,14 +47,24 @@ describe Decidim::Votings::Permissions do
   end
 
   describe "voting" do
+    subject { permission }
+
     let(:action) do
       { scope: :public, action: :vote, subject: :voting }
     end
 
+    it { is_expected.to be_allowed }
+
     context "when voting finished" do
       let(:voting) { create(:voting, start_date: Time.zone.now - 2.days, end_date: Time.zone.now - 1.day) }
 
-      it { is_expected.to eq false }
+      it { is_expected.not_to be_allowed }
+    end
+
+    context "when user is managed" do
+      let(:user) { create(:user, :managed, organization: voting_component.organization) }
+
+      it { is_expected.not_to be_allowed }
     end
   end
 end
